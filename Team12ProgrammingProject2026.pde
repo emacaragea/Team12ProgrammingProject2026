@@ -8,7 +8,7 @@ import java.io.IOException;
 void setup() {
   BufferedReader reader;
   try {
-    reader = new BufferedReader(new FileReader("flights_full.csv"));
+    reader = new BufferedReader(new FileReader(sketchPath("flights_full.csv")));  //using sketchPath to correctly find this file from any machine
     String line = reader.readLine();
     while (line != null) {
       println(line);
