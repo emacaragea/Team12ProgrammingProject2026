@@ -1,4 +1,5 @@
 //2PM, 11/03/26, Jesse Margarites
+//Used a faster method than loadBytes and loadStrings with the BufferedReader. This makes it easier to read it line by line with a scanner
 
 import java.io.BufferedReader;
 import java.io.FileReader;
