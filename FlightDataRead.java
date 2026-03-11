@@ -1,28 +1,27 @@
-//package com.journaldev.readfileslinebyline;
+//2PM, 11/03/26, Jesse Margarites
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ReadFileLineByLineUsingBufferedReader {
+public class FlightDataRead {
 
  public static void main(String[] args) {
   BufferedReader reader;
 
   try {
-   reader = new BufferedReader(new FileReader("flights2k.csv"));
+   reader = new BufferedReader(new FileReader("flights_full.csv"));
    String line = reader.readLine();
 
    while (line != null) {
     System.out.println(line);
-    // read next line
     line = reader.readLine();
    }
 
    reader.close();
-  } catch (IOException e) {
-   e.printStackTrace();
-  }
+  } catch(Exception e){System.out.println(e);}
+   
+  
  }
 
 }
