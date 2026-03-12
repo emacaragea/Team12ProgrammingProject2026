@@ -1,4 +1,5 @@
-//Amanda de Moraes , example of loading page, 9:29 AM, 12/3
+//Amanda de Moraes, 9:29 AM, 12/3
+//code for a possible loading page.
 public class Loading {
 PFont titleFont;
 PFont labelFont;
