@@ -1,63 +1,69 @@
-// Ema Caragea, added map background setup, 12/3/2026 10:00
+// Ema Caragea, added map background setup, started working on airport placement, 12/3/2026 10:00
+// Ema Caragea, added and fixed position of airports, added animations for airports, 13/03/2026, 18:00
 
 PImage usMap;
+PFont fontRegular;
+PFont fontBold;
 
-final float MAP_LEFT   = -135.0;  // was -125, pushed west coast right
-final float MAP_RIGHT  =  -60.0;  // was -66, pulled east coast left
-final float MAP_TOP    =   52.0;  // was 49, pushed northern airports down
-final float MAP_BOTTOM =   22.0;  // was 24, pulled southern airports up
-
-// a small lookup table of airports (code, name, lat, lon)
+final float MAP_LEFT   = -130.0;
+final float MAP_RIGHT  =  -60.0;
+final float MAP_TOP    =   55.0;
+final float MAP_BOTTOM =   18.0;
 
 Airport[] airports;
 
 void setup() {
   size(1400, 800);
-  usMap = loadImage("us_map.png");
+  usMap       = loadImage("usmap.jpg");
+  fontRegular = createFont("Arial", 12);
+  fontBold    = createFont("Arial Bold", 12);
+  textFont(fontRegular);
   initAirports();
 }
 
 void draw() {
-  background(#4169e1);
+  background(10, 15, 25);
   drawMap();
   drawAirports();
 }
 
 void drawMap() {
-  tint(255, 200);
   image(usMap, 0, 0, width, height);
-  noTint();
+  fill(0, 10, 30, 55);
+  noStroke();
+  rect(0, 0, width, height);
 }
 
 void initAirports() {
-  // format: code, city name, latitude, longitude
-  //more -longitude goes left
-  //more latitude goes up
   airports = new Airport[] {
-    new Airport("JFK", "New York",      40.64,  -73.78),
-    new Airport("LAX", "Los Angeles",   33.94, -118.41),
-    new Airport("ORD", "Chicago",       41.97,  -87.90),
-    new Airport("DFW", "Dallas",        32.90,  -97.04),
-    new Airport("ATL", "Atlanta",       33.64,  -84.43),
-    new Airport("MIA", "Miami",         25.79,  -80.29),
-    new Airport("SEA", "Seattle",       48.45, -120.30),
-    new Airport("DEN", "Denver",        39.86, -104.67),
-    new Airport("SFO", "San Francisco", 35.82, -123.38),
-    new Airport("BOS", "Boston",        42.37,  -71.02)
+    new Airport("ATL", "Atlanta",        31.64,  -81.43,  1),
+    new Airport("DFW", "Dallas",         30.90,  -94.04,  2),
+    new Airport("DEN", "Denver",         37.86, -101.67,  3),
+    new Airport("ORD", "Chicago",        39.97,  -84.90,  4),
+    new Airport("LAX", "Los Angeles",    31.94, -115.41,  5),
+    new Airport("CLT", "Charlotte",      33.21,  -77.94,  6),
+    new Airport("MCO", "Orlando",        26.43,  -78.31,  7),
+    new Airport("LAS", "Las Vegas",      34.08, -112.15,  8),
+    new Airport("PHX", "Phoenix",        31.43, -109.01,  9),
+    new Airport("MIA", "Miami",          23.79,  -77.29, 10),
+    new Airport("SEA", "Seattle",        45.45, -119.31, 11),
+    new Airport("IAH", "Houston",        27.99,  -92.34, 12),
+    new Airport("JFK", "New York",       38.64,  -70.78, 13),
+    new Airport("SFO", "San Francisco",  34.62, -119.38, 14),
+    new Airport("BOS", "Boston",         40.37,  -68.00, 15)
   };
-}
-
-void mousePressed() {
-  // converts your click position back to lon/lat
-  float clickedLon = map(mouseX, 0, width, MAP_LEFT, MAP_RIGHT);
-  float clickedLat = map(mouseY, 0, height, MAP_TOP, MAP_BOTTOM);
-  println("Clicked lon: " + clickedLon + "  lat: " + clickedLat);
 }
 
 void drawAirports() {
   for (Airport a : airports) {
     a.draw();
   }
+}
+
+void mousePressed() {
+  float lon = map(mouseX, 0, width, MAP_LEFT, MAP_RIGHT);
+  float lat = map(mouseY, 0, height, MAP_TOP, MAP_BOTTOM);
+  println("lon: " + lon + "  lat: " + lat);
 }
 
 float lonToX(float lon) {
@@ -71,70 +77,90 @@ float latToY(float lat) {
 
 
 
-
-
-
-
-
-
-
 class Airport {
   String code;
   String city;
   float lat, lon;
-  float x, y;          // pixel position on screen
-  boolean hovered;     // is the mouse hovering over it?
+  float x, y;
+  boolean hovered;
+  float dotSize;
+  float currentSize;
 
-  Airport(String code, String city, float lat, float lon) {
-    this.code = code;
-    this.city = city;
-    this.lat  = lat;
-    this.lon  = lon;
-    this.x    = lonToX(lon);   // convert to screen position immediately
-    this.y    = latToY(lat);
+  Airport(String code, String city, float lat, float lon, int rank) {
+    this.code        = code;
+    this.city        = city;
+    this.lat         = lat;
+    this.lon         = lon;
+    this.x           = lonToX(lon);
+    this.y           = latToY(lat);
+    this.dotSize     = map(rank, 1, 15, 14, 7);
+    this.currentSize = dotSize;
   }
 
   void draw() {
-    hovered = dist(mouseX, mouseY, x, y) < 10;  // check if mouse is nearby
+    hovered = dist(mouseX, mouseY, x, y) < 15;
 
-    // outer glow ring
-    noFill();
-    stroke(0, 180, 255, 60);
-    strokeWeight(6);
-    ellipse(x, y, 18, 18);
-
-    // main dot
+    float targetSize;
     if (hovered) {
-      fill(255, 220, 0);        // yellow when hovered
-      stroke(255, 255, 255);
+      targetSize = dotSize * 1.5;
     } else {
-      fill(0, 180, 255);        // blue normally
-      stroke(255, 255, 255, 150);
+      targetSize = dotSize;
     }
-    strokeWeight(1.5);
-    ellipse(x, y, 8, 8);
+    currentSize += (targetSize - currentSize) * 0.15;
 
-    // show label when hovered
+    strokeWeight(1.5);
     if (hovered) {
-      drawLabel();
+      fill(255, 220, 0);
+      stroke(255, 255, 255, 200);
+    } else {
+      fill(0, 160, 230);
+      stroke(100, 210, 255, 200);
+    }
+    ellipse(x, y, currentSize, currentSize);
+
+    drawCodeLabel();
+    if (hovered) {
+      drawHoverLabel();
     }
   }
 
-  void drawLabel() {
- 
-    float labelX = x + 12;
-    float labelY = y - 10;
-    
-    textSize(12);
-    float boxW = textWidth(code + " - " + city) + 10;
-
-    fill(15, 15, 30, 220);
+  void drawCodeLabel() {
+    if (hovered) {
+      fill(255, 220, 0);
+    } else {
+      fill(255, 255, 255, 220);
+    }
     noStroke();
-    rect(labelX - 5, labelY - 13, boxW, 18, 4);
+    textFont(fontBold);
+    textSize(11);
+    textAlign(CENTER, TOP);
+    text(code, x, y + currentSize / 2 + 4);
+    textFont(fontRegular);
+  }
 
-    
+  void drawHoverLabel() {
+    String label = code + "  " + city;
+    float labelX  = x + currentSize / 2 + 8;
+    float labelY  = y - 8;
+
+    textFont(fontBold);
+    textSize(13);
+    float boxW = textWidth(label) + 14;
+    float boxH = 20;
+
+    fill(0, 0, 0, 80);
+    noStroke();
+    rect(labelX - 4, labelY - 13, boxW + 2, boxH + 2, 5);
+
+    fill(5, 10, 30, 230);
+    stroke(0, 180, 255, 150);
+    strokeWeight(1);
+    rect(labelX - 5, labelY - 14, boxW, boxH, 5);
+
     fill(255);
+    noStroke();
     textAlign(LEFT, TOP);
-    text(code + " - " + city, labelX, labelY - 12);
+    text(label, labelX, labelY - 12);
+    textFont(fontRegular);
   }
 }
