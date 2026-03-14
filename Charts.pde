@@ -15,9 +15,9 @@ class Charts
         pieCharts = new ArrayList<PieChart>();
     }
 
-    void addBarChart(String[] labels, int[] values, float x, float y, float w, float h, color[] barColors)
+    void addBarChart(String title, String[] labels, int[] values, float x, float y, float w, float h, color[] barColors)
     {
-        barCharts.add(new BarChart(labels, values, x, y, w, h, barColors));
+        barCharts.add(new BarChart(title, labels, values, x, y, w, h, barColors));
     }
 
     void addPieChart(String[] labels, float[] values, float x, float y, float diameter, color[] sliceColors)
