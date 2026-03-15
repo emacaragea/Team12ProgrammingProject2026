@@ -1,9 +1,19 @@
 // Ema Caragea, added map background setup, started working on airport placement, 12/3/2026 10:00
 // Ema Caragea, added and fixed position of airports, added animations for airports, 13/03/2026, 18:00
+// Ema Caragea, added animated flight arcs with airplane icons, 14/3/2026, 15:30
 
 PImage usMap;
 PFont fontRegular;
 PFont fontBold;
+
+PImage planeOnTime;
+PImage planeDelayed;
+PImage planeCancelled;
+
+int currentScreen = 0;  // 0 = map screen, 1 = route detail screen
+FlightArc selectedArc = null;
+
+FlightArc[] arcs;
 
 final float MAP_LEFT   = -130.0;
 final float MAP_RIGHT  =  -60.0;
@@ -14,17 +24,27 @@ Airport[] airports;
 
 void setup() {
   size(1400, 800);
-  usMap       = loadImage("usmap.jpg");
-  fontRegular = createFont("Arial", 12);
-  fontBold    = createFont("Arial Bold", 12);
+  usMap          = loadImage("usmap.jpg");
+  fontRegular    = createFont("Arial", 12);
+  fontBold       = createFont("Arial Bold", 12);
   textFont(fontRegular);
+  planeOnTime    = loadImage("onTimeAirplane.png");
+  planeDelayed   = loadImage("delayedAirplane.png");
+  planeCancelled = loadImage("cancelledAirplane.png");
   initAirports();
+  initArcs();
 }
 
 void draw() {
   background(10, 15, 25);
-  drawMap();
-  drawAirports();
+
+  if (currentScreen == 0) {
+    drawMap();
+    drawArcs();
+    drawAirports();
+  } else if (currentScreen == 1) {
+    drawRoutePage();  //link to flight details page
+  }
 }
 
 void drawMap() {
@@ -55,15 +75,53 @@ void initAirports() {
 }
 
 void drawAirports() {
-  for (Airport a : airports) {
-    a.draw();
+  for (int i = 0; i < airports.length; i++) {
+    airports[i].draw();
   }
 }
 
+void initArcs() {
+  // format: origin code, destination code, status
+  // status: "onTime", "delayed", "cancelled"
+  arcs = new FlightArc[] {
+    new FlightArc("LAX", "JFK",  "onTime"),
+    new FlightArc("ATL", "ORD",  "delayed"),
+    new FlightArc("SFO", "DFW",  "cancelled"),
+    new FlightArc("SEA", "MIA",  "onTime"),
+    new FlightArc("BOS", "LAX",  "delayed")
+  };
+}
+
+void drawArcs() {
+  for (int i = 0; i < arcs.length; i++) {
+    arcs[i].draw();
+  }
+}
+
+// finds an airport from the airports array by its code
+Airport findAirport(String code) {
+  for (int i = 0; i < airports.length; i++) {
+    if (airports[i].code.equals(code)) {
+      return airports[i];
+    }
+  }
+  return null;
+}
+
 void mousePressed() {
-  float lon = map(mouseX, 0, width, MAP_LEFT, MAP_RIGHT);
-  float lat = map(mouseY, 0, height, MAP_TOP, MAP_BOTTOM);
-  println("lon: " + lon + "  lat: " + lat);
+  for (int i = 0; i < arcs.length; i++) {
+    if (arcs[i].isClicked()) {
+      selectedArc = arcs[i];   // save which arc was clicked, so that later on the Flights page it knows what to show
+      currentScreen = 1;
+      return;
+    }
+  }
+
+  if (currentScreen == 0) {
+    float lon = map(mouseX, 0, width, MAP_LEFT, MAP_RIGHT);
+    float lat = map(mouseY, 0, height, MAP_TOP, MAP_BOTTOM);
+    println("lon: " + lon + "  lat: " + lat);
+  }
 }
 
 float lonToX(float lon) {
@@ -75,92 +133,3 @@ float latToY(float lat) {
 }
 
 
-
-
-class Airport {
-  String code;
-  String city;
-  float lat, lon;
-  float x, y;
-  boolean hovered;
-  float dotSize;
-  float currentSize;
-
-  Airport(String code, String city, float lat, float lon, int rank) {
-    this.code        = code;
-    this.city        = city;
-    this.lat         = lat;
-    this.lon         = lon;
-    this.x           = lonToX(lon);
-    this.y           = latToY(lat);
-    this.dotSize     = map(rank, 1, 15, 14, 7);
-    this.currentSize = dotSize;
-  }
-
-  void draw() {
-    hovered = dist(mouseX, mouseY, x, y) < 15;
-
-    float targetSize;
-    if (hovered) {
-      targetSize = dotSize * 1.5;
-    } else {
-      targetSize = dotSize;
-    }
-    currentSize += (targetSize - currentSize) * 0.15;
-
-    strokeWeight(1.5);
-    if (hovered) {
-      fill(255, 220, 0);
-      stroke(255, 255, 255, 200);
-    } else {
-      fill(0, 160, 230);
-      stroke(100, 210, 255, 200);
-    }
-    ellipse(x, y, currentSize, currentSize);
-
-    drawCodeLabel();
-    if (hovered) {
-      drawHoverLabel();
-    }
-  }
-
-  void drawCodeLabel() {
-    if (hovered) {
-      fill(255, 220, 0);
-    } else {
-      fill(255, 255, 255, 220);
-    }
-    noStroke();
-    textFont(fontBold);
-    textSize(11);
-    textAlign(CENTER, TOP);
-    text(code, x, y + currentSize / 2 + 4);
-    textFont(fontRegular);
-  }
-
-  void drawHoverLabel() {
-    String label = code + "  " + city;
-    float labelX  = x + currentSize / 2 + 8;
-    float labelY  = y - 8;
-
-    textFont(fontBold);
-    textSize(13);
-    float boxW = textWidth(label) + 14;
-    float boxH = 20;
-
-    fill(0, 0, 0, 80);
-    noStroke();
-    rect(labelX - 4, labelY - 13, boxW + 2, boxH + 2, 5);
-
-    fill(5, 10, 30, 230);
-    stroke(0, 180, 255, 150);
-    strokeWeight(1);
-    rect(labelX - 5, labelY - 14, boxW, boxH, 5);
-
-    fill(255);
-    noStroke();
-    textAlign(LEFT, TOP);
-    text(label, labelX, labelY - 12);
-    textFont(fontRegular);
-  }
-}
