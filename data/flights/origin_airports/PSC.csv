@@ -1,0 +1,485 @@
+FL_DATE,MKT_CARRIER,MKT_CARRIER_FL_NUM,ORIGIN,ORIGIN_CITY_NAME,ORIGIN_STATE_ABR,ORIGIN_WAC,DEST,DEST_CITY_NAME,DEST_STATE_ABR,DEST_WAC,CRS_DEP_TIME,DEP_TIME,CRS_ARR_TIME,ARR_TIME,CANCELLED,DIVERTED,DISTANCE
+1/1/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,600,612,709,725,0,0,172
+1/1/2022 0:00,AS,2259,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1750,1809,1855,1913,0,0,172
+1/1/2022 0:00,AS,2329,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1133,1125,1238,1224,0,0,172
+1/1/2022 0:00,AS,2344,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,935,939,1040,1048,0,0,172
+1/1/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,924,922,1042,1032,0,0,172
+1/1/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1325,1345,1437,1444,0,0,172
+1/1/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,845,844,1358,1401,0,0,1254
+1/1/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,554,555,855,840,0,0,521
+1/1/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1234,1316,1519,1546,0,0,521
+1/1/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1316,1640,1653,0,0,852
+1/1/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1600,1652,1749,0,0,620
+1/1/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,,902,,1,0,852
+1/2/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,600,611,709,705,0,0,172
+1/2/2022 0:00,AS,2259,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1750,2014,1855,2128,0,0,172
+1/2/2022 0:00,AS,2329,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1133,1307,1238,1503,0,0,172
+1/2/2022 0:00,AS,2344,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,935,932,1040,1101,0,0,172
+1/2/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1649,1735,1934,2007,0,0,521
+1/2/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,710,709,831,815,0,0,172
+1/2/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1121,1115,1234,1223,0,0,172
+1/2/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1729,1819,1845,1954,0,0,172
+1/2/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,643,1154,1149,0,0,1254
+1/2/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,554,554,855,831,0,0,521
+1/2/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1234,1232,1519,1508,0,0,521
+1/2/2022 0:00,G4,1225,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,841,1006,1206,1328,0,0,977
+1/2/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1408,1640,1737,0,0,852
+1/2/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1517,1652,1716,0,0,620
+1/2/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,540,,905,,1,0,852
+1/3/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,600,755,709,944,0,0,172
+1/3/2022 0:00,AS,2259,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1750,1821,1855,1923,0,0,172
+1/3/2022 0:00,AS,2329,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1133,1252,1238,1443,0,0,172
+1/3/2022 0:00,AS,2344,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,935,943,1040,1210,0,0,172
+1/3/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1649,1644,1934,1918,0,0,521
+1/3/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,710,,831,,1,0,172
+1/3/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1121,,1234,,1,0,172
+1/3/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1729,,1845,,1,0,172
+1/3/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,633,1154,1119,0,0,1254
+1/3/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,554,552,855,840,0,0,521
+1/3/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1234,1252,1519,1547,0,0,521
+1/3/2022 0:00,G4,294,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,2035,,2238,,1,0,732
+1/3/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1316,1640,1644,0,0,852
+1/3/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1505,1652,1743,0,0,620
+1/3/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,,902,,1,0,852
+1/4/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1527,1402,1639,0,0,172
+1/4/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,723,715,905,0,0,172
+1/4/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1218,1235,1316,0,0,172
+1/4/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,840,910,1001,0,0,172
+1/4/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,,1816,,1,0,172
+1/4/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1649,1705,1934,2001,0,0,521
+1/4/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,710,724,831,842,0,0,172
+1/4/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1121,1119,1234,1220,0,0,172
+1/4/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1729,1733,1845,1846,0,0,172
+1/4/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,649,1154,1159,0,0,1254
+1/4/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,554,606,855,851,0,0,521
+1/4/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1234,1305,1519,1535,0,0,521
+1/4/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,,1640,,1,0,852
+1/4/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1521,1652,1717,0,0,620
+1/4/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,527,902,908,0,0,852
+1/5/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1440,1402,1550,0,0,172
+1/5/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,,715,,1,0,172
+1/5/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1155,1235,1300,0,0,172
+1/5/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,804,910,1108,0,0,172
+1/5/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1738,1816,1912,0,0,172
+1/5/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1655,1934,1955,0,0,521
+1/5/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,523,645,646,0,0,172
+1/5/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1143,1239,1247,0,0,172
+1/5/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1830,1837,1952,0,0,172
+1/5/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,632,1146,1145,0,0,1254
+1/5/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,604,852,906,0,0,521
+1/5/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1247,1516,1508,0,0,521
+1/5/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,,1640,,1,0,852
+1/5/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1516,1652,1748,0,0,620
+1/5/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,553,902,1016,0,0,852
+1/6/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,,1402,,1,0,172
+1/6/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,630,715,839,0,0,172
+1/6/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1151,1235,1256,0,0,172
+1/6/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,2057,2030,2203,0,0,172
+1/6/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,850,910,1140,0,0,172
+1/6/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1751,1816,1932,0,0,172
+1/6/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1653,1934,1922,0,0,521
+1/6/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,,645,,1,0,172
+1/6/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1124,1239,1230,0,0,172
+1/6/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1740,1837,1846,0,0,172
+1/6/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,629,1146,1204,0,0,1254
+1/6/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,600,852,859,0,0,521
+1/6/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1510,1516,1740,0,0,521
+1/6/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,2047,2334,48,0,0,977
+1/6/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1532,1640,1903,0,0,852
+1/6/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1516,1652,1709,0,0,620
+1/6/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,,902,,1,0,852
+1/7/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1333,1402,1433,0,0,172
+1/7/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,612,715,720,0,0,172
+1/7/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1130,1235,1235,0,0,172
+1/7/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,2104,2030,2207,0,0,172
+1/7/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,838,910,941,0,0,172
+1/7/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1947,1816,2051,0,0,172
+1/7/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1655,1934,1931,0,0,521
+1/7/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,1056,645,1151,0,0,172
+1/7/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1124,1239,1236,0,0,172
+1/7/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1907,1837,2016,0,0,172
+1/7/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,632,1146,1125,0,0,1254
+1/7/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,558,852,838,0,0,521
+1/7/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1507,0,0,521
+1/7/2022 0:00,G4,244,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,2121,2122,2321,2324,0,0,732
+1/7/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1306,1640,1619,0,0,852
+1/7/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1436,1652,1637,0,0,620
+1/7/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,520,902,826,0,0,852
+1/8/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1302,1402,1408,0,0,172
+1/8/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,601,715,717,0,0,172
+1/8/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1216,1235,1317,0,0,172
+1/8/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,818,910,925,0,0,172
+1/8/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1711,1816,1811,0,0,172
+1/8/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,519,645,639,0,0,172
+1/8/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1128,1239,1232,0,0,172
+1/8/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1722,1837,1827,0,0,172
+1/8/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,627,1146,1128,0,0,1254
+1/8/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,558,852,848,0,0,521
+1/8/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1232,1516,1501,0,0,521
+1/8/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1308,1640,1616,0,0,852
+1/8/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1432,1652,1624,0,0,620
+1/8/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,527,902,905,0,0,852
+1/9/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1259,1402,1351,0,0,172
+1/9/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,640,715,746,0,0,172
+1/9/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1129,1235,1225,0,0,172
+1/9/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1940,2030,2051,0,0,172
+1/9/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,812,910,917,0,0,172
+1/9/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1725,1816,1824,0,0,172
+1/9/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1652,1934,1931,0,0,521
+1/9/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,521,645,629,0,0,172
+1/9/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1145,1239,1235,0,0,172
+1/9/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1727,1837,1829,0,0,172
+1/9/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,635,1146,1207,0,0,1254
+1/9/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,559,852,855,0,0,521
+1/9/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1320,1516,1554,0,0,521
+1/9/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,2040,2334,16,0,0,977
+1/9/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1318,1640,1641,0,0,852
+1/9/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1631,1652,1831,0,0,620
+1/9/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,525,902,916,0,0,852
+1/10/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1254,1402,1355,0,0,172
+1/10/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,604,715,716,0,0,172
+1/10/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1125,1235,1219,0,0,172
+1/10/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1929,2030,2028,0,0,172
+1/10/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,806,910,916,0,0,172
+1/10/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1730,1816,1842,0,0,172
+1/10/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1645,1934,1930,0,0,521
+1/10/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,519,645,636,0,0,172
+1/10/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1117,1239,1223,0,0,172
+1/10/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1726,1837,1828,0,0,172
+1/10/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,630,1146,1131,0,0,1254
+1/10/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,558,852,850,0,0,521
+1/10/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1233,1516,1506,0,0,521
+1/10/2022 0:00,G4,244,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,1659,1652,1859,1855,0,0,732
+1/10/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1307,1640,1626,0,0,852
+1/10/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1432,1652,1632,0,0,620
+1/10/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,527,902,907,0,0,852
+1/11/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1300,1402,1401,0,0,172
+1/11/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,606,715,720,0,0,172
+1/11/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1120,1235,1225,0,0,172
+1/11/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,757,910,916,0,0,172
+1/11/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1718,1816,1824,0,0,172
+1/11/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1650,1934,1917,0,0,521
+1/11/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,519,645,619,0,0,172
+1/11/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1121,1239,1219,0,0,172
+1/11/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1724,1837,1825,0,0,172
+1/11/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,631,1146,1137,0,0,1254
+1/11/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,559,852,849,0,0,521
+1/11/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1236,1516,1505,0,0,521
+1/11/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1305,1640,1607,0,0,852
+1/11/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1430,1652,1626,0,0,620
+1/11/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,525,902,857,0,0,852
+1/12/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1307,1402,1406,0,0,172
+1/12/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,613,715,711,0,0,172
+1/12/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1126,1235,1231,0,0,172
+1/12/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,800,910,903,0,0,172
+1/12/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1724,1816,1816,0,0,172
+1/12/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1638,1934,1908,0,0,521
+1/12/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,521,645,623,0,0,172
+1/12/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1302,1239,1355,0,0,172
+1/12/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1721,1837,1836,0,0,172
+1/12/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,634,1146,1138,0,0,1254
+1/12/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,556,852,831,0,0,521
+1/12/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1232,1516,1502,0,0,521
+1/12/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1305,1640,1613,0,0,852
+1/12/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1434,1652,1631,0,0,620
+1/12/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,522,902,833,0,0,852
+1/13/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1259,1402,1349,0,0,172
+1/13/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,601,715,719,0,0,172
+1/13/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1125,1235,1229,0,0,172
+1/13/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1921,2030,2026,0,0,172
+1/13/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,759,910,905,0,0,172
+1/13/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1707,1816,1810,0,0,172
+1/13/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1729,1934,2004,0,0,521
+1/13/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,522,645,633,0,0,172
+1/13/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1126,1239,1224,0,0,172
+1/13/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1727,1837,1826,0,0,172
+1/13/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,631,1146,1125,0,0,1254
+1/13/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,557,852,842,0,0,521
+1/13/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1506,0,0,521
+1/13/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,2014,2334,2330,0,0,977
+1/13/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,,1640,,1,0,852
+1/13/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1439,1652,1627,0,0,620
+1/13/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,519,902,850,0,0,852
+1/14/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1320,1402,1421,0,0,172
+1/14/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,,715,,1,0,172
+1/14/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1139,1235,1236,0,0,172
+1/14/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1935,2030,2030,0,0,172
+1/14/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,826,910,1008,0,0,172
+1/14/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1711,1816,1811,0,0,172
+1/14/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1653,1934,1921,0,0,521
+1/14/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,,645,,1,0,172
+1/14/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,,1239,,1,0,172
+1/14/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1725,1837,1826,0,0,172
+1/14/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,631,1146,1202,0,0,1254
+1/14/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,558,852,859,0,0,521
+1/14/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1551,1516,1823,0,0,521
+1/14/2022 0:00,G4,244,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,2122,,2322,,1,0,732
+1/14/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,,1640,,1,0,852
+1/14/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1514,1652,1702,0,0,620
+1/14/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,517,902,908,0,0,852
+1/15/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1312,1402,1410,0,0,172
+1/15/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,606,715,710,0,0,172
+1/15/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1150,1235,1304,0,0,172
+1/15/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,806,910,926,0,0,172
+1/15/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1811,1816,1910,0,0,172
+1/15/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,1243,645,1337,0,0,172
+1/15/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1500,1454,1609,1553,0,0,172
+1/15/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,,1146,,1,0,1254
+1/15/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,,852,,1,0,521
+1/15/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1245,1516,1515,0,0,521
+1/15/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1517,1640,1826,0,0,852
+1/15/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1533,1652,1724,0,0,620
+1/15/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,,902,,1,0,852
+1/16/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1253,1402,1359,0,0,172
+1/16/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,609,715,729,0,0,172
+1/16/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1127,1235,1244,0,0,172
+1/16/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1917,2030,2014,0,0,172
+1/16/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,800,910,914,0,0,172
+1/16/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1757,1816,1859,0,0,172
+1/16/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,522,645,627,0,0,172
+1/16/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1500,1456,1609,1556,0,0,172
+1/16/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,1105,1146,1603,0,0,1254
+1/16/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,615,852,841,0,0,521
+1/16/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1523,0,0,521
+1/16/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,2319,2334,256,0,0,977
+1/16/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1314,1640,1625,0,0,852
+1/16/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1435,1652,1626,0,0,620
+1/16/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,529,902,913,0,0,852
+1/17/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1302,1402,1404,0,0,172
+1/17/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,618,715,719,0,0,172
+1/17/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1122,1235,1236,0,0,172
+1/17/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1912,2030,2018,0,0,172
+1/17/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,800,910,904,0,0,172
+1/17/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1707,1816,1814,0,0,172
+1/17/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1651,1934,1920,0,0,521
+1/17/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,519,645,621,0,0,172
+1/17/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1119,1239,1222,0,0,172
+1/17/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1725,1837,1829,0,0,172
+1/17/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,633,1146,1125,0,0,1254
+1/17/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,557,852,829,0,0,521
+1/17/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1509,0,0,521
+1/17/2022 0:00,G4,244,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,1728,1723,1928,1932,0,0,732
+1/17/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1303,1640,1610,0,0,852
+1/17/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1435,1652,1624,0,0,620
+1/17/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,528,902,846,0,0,852
+1/18/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1310,1402,1406,0,0,172
+1/18/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,559,715,655,0,0,172
+1/18/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1138,1235,1234,0,0,172
+1/18/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,803,910,903,0,0,172
+1/18/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1719,1816,1811,0,0,172
+1/18/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1650,1934,1916,0,0,521
+1/18/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,520,645,619,0,0,172
+1/18/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1132,1239,1231,0,0,172
+1/18/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1729,1837,1825,0,0,172
+1/18/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,625,1146,1109,0,0,1254
+1/18/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,553,852,831,0,0,521
+1/18/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1505,0,0,521
+1/18/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1307,1640,1625,0,0,852
+1/18/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1435,1652,1645,0,0,620
+1/18/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,1708,902,2023,0,0,852
+1/19/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,,1402,,1,0,172
+1/19/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,607,715,707,0,0,172
+1/19/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1135,1235,1232,0,0,172
+1/19/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,758,910,854,0,0,172
+1/19/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1747,1816,1901,0,0,172
+1/19/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1649,1934,1920,0,0,521
+1/19/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,519,645,619,0,0,172
+1/19/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1123,1239,1231,0,0,172
+1/19/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1730,1837,1826,0,0,172
+1/19/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,625,1146,1119,0,0,1254
+1/19/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,623,852,858,0,0,521
+1/19/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1500,0,0,521
+1/19/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1313,1640,1633,0,0,852
+1/19/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1516,1652,1659,0,0,620
+1/19/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,527,902,848,0,0,852
+1/20/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1310,1402,1405,0,0,172
+1/20/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,607,715,713,0,0,172
+1/20/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1126,1235,1231,0,0,172
+1/20/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1931,2030,2038,0,0,172
+1/20/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,805,910,912,0,0,172
+1/20/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1707,1816,1811,0,0,172
+1/20/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1649,1934,1913,0,0,521
+1/20/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,518,645,624,0,0,172
+1/20/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1125,1239,1231,0,0,172
+1/20/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1726,1837,1833,0,0,172
+1/20/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,630,1146,1148,0,0,1254
+1/20/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,600,852,837,0,0,521
+1/20/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1232,1516,1510,0,0,521
+1/20/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,2013,2334,2334,0,0,977
+1/20/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,,1640,,1,0,852
+1/20/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,,1652,,1,0,620
+1/20/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,515,902,845,0,0,852
+1/21/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1255,1402,1403,0,0,172
+1/21/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,849,715,952,0,0,172
+1/21/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1154,1235,1259,0,0,172
+1/21/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1919,2030,2026,0,0,172
+1/21/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,1200,910,1257,0,0,172
+1/21/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1951,1816,2045,0,0,172
+1/21/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1640,1934,1914,0,0,521
+1/21/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,521,645,636,0,0,172
+1/21/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1313,1239,1426,0,0,172
+1/21/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1726,1837,1828,0,0,172
+1/21/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,631,1146,1153,0,0,1254
+1/21/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,558,852,852,0,0,521
+1/21/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1239,1516,1515,0,0,521
+1/21/2022 0:00,G4,164,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,2039,2043,2239,2244,0,0,732
+1/21/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1315,1640,1644,0,0,852
+1/21/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1432,1652,1617,0,0,620
+1/22/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,,1402,,1,0,172
+1/22/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,603,715,712,0,0,172
+1/22/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1128,1235,1219,0,0,172
+1/22/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,755,910,921,0,0,172
+1/22/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1750,1816,1848,0,0,172
+1/22/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,517,645,627,0,0,172
+1/22/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1154,1239,1245,0,0,172
+1/22/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1730,1837,2013,0,1,172
+1/22/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,629,1146,1149,0,0,1254
+1/22/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,557,852,845,0,0,521
+1/22/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1235,1516,1509,0,0,521
+1/22/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1306,1640,1621,0,0,852
+1/22/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1441,1652,1624,0,0,620
+1/23/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1320,1402,1437,0,0,172
+1/23/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,607,715,709,0,0,172
+1/23/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1123,1235,1237,0,0,172
+1/23/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,2016,2030,,1,0,172
+1/23/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,757,910,903,0,0,172
+1/23/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1934,1816,2042,0,0,172
+1/23/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1651,1934,1918,0,0,521
+1/23/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,706,645,1451,0,1,172
+1/23/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,,1239,,1,0,172
+1/23/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1737,1837,1858,0,0,172
+1/23/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,631,1146,1149,0,0,1254
+1/23/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,558,852,842,0,0,521
+1/23/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1236,1516,1518,0,0,521
+1/23/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,2006,2334,2321,0,0,977
+1/23/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1306,1640,1627,0,0,852
+1/23/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1439,1652,1630,0,0,620
+1/23/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,529,902,840,0,0,852
+1/24/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1310,1402,1437,0,0,172
+1/24/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,604,715,713,0,0,172
+1/24/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1126,1235,1236,0,0,172
+1/24/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1920,2030,2020,0,0,172
+1/24/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,912,910,1028,0,0,172
+1/24/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1730,1816,1824,0,0,172
+1/24/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1649,1934,1914,0,0,521
+1/24/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,523,645,702,0,0,172
+1/24/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1122,1239,1231,0,0,172
+1/24/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1728,1837,1824,0,0,172
+1/24/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,630,1146,1120,0,0,1254
+1/24/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,554,852,827,0,0,521
+1/24/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1502,0,0,521
+1/24/2022 0:00,G4,262,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,924,913,1124,1116,0,0,732
+1/24/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1309,1640,1633,0,0,852
+1/24/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1441,1652,1622,0,0,620
+1/24/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,518,902,842,0,0,852
+1/25/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1250,1402,1352,0,0,172
+1/25/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,609,715,703,0,0,172
+1/25/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1122,1235,1219,0,0,172
+1/25/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,800,910,853,0,0,172
+1/25/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1707,1816,1812,0,0,172
+1/25/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1645,1934,1911,0,0,521
+1/25/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,514,645,611,0,0,172
+1/25/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,,1239,,1,0,172
+1/25/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1724,1837,1820,0,0,172
+1/25/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,623,1146,1143,0,0,1254
+1/25/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,552,852,835,0,0,521
+1/25/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1233,1516,1507,0,0,521
+1/25/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1516,1640,1830,0,0,852
+1/25/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,2115,1652,2328,0,0,620
+1/25/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,,902,,1,0,852
+1/26/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1250,1402,1354,0,0,172
+1/26/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,605,715,712,0,0,172
+1/26/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1144,1235,1245,0,0,172
+1/26/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,759,910,916,0,0,172
+1/26/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1708,1816,1821,0,0,172
+1/26/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1647,1934,1914,0,0,521
+1/26/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,519,645,639,0,0,172
+1/26/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1215,1239,1313,0,0,172
+1/26/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1725,1837,1827,0,0,172
+1/26/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,626,1146,1142,0,0,1254
+1/26/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,556,852,830,0,0,521
+1/26/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1234,1516,1507,0,0,521
+1/26/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1305,1640,1632,0,0,852
+1/26/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1429,1652,1611,0,0,620
+1/26/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,1524,902,1825,0,0,852
+1/27/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1452,1402,1552,0,0,172
+1/27/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,605,715,717,0,0,172
+1/27/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1130,1235,1235,0,0,172
+1/27/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1916,2030,2017,0,0,172
+1/27/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,800,910,1203,0,1,172
+1/27/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1736,1816,1846,0,0,172
+1/27/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1649,1934,1920,0,0,521
+1/27/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,615,645,742,0,0,172
+1/27/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1408,1239,1522,0,0,172
+1/27/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1724,1837,1834,0,0,172
+1/27/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,631,1146,1146,0,0,1254
+1/27/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,556,852,828,0,0,521
+1/27/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1233,1516,1503,0,0,521
+1/27/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,2025,2334,2338,0,0,977
+1/27/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1440,1640,1813,0,0,852
+1/27/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1602,1652,1758,0,0,620
+1/27/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,524,902,848,0,0,852
+1/28/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1303,1402,1406,0,0,172
+1/28/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,605,715,714,0,0,172
+1/28/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1126,1235,1249,0,0,172
+1/28/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1919,2030,2021,0,0,172
+1/28/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,800,910,934,0,0,172
+1/28/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1741,1816,1848,0,0,172
+1/28/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1653,1934,1929,0,0,521
+1/28/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,520,645,622,0,0,172
+1/28/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1727,1837,1829,0,0,172
+1/28/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,630,1146,1136,0,0,1254
+1/28/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,556,852,825,0,0,521
+1/28/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1238,1516,1508,0,0,521
+1/28/2022 0:00,G4,164,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,2039,2052,2239,2257,0,0,732
+1/28/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1306,1640,1615,0,0,852
+1/28/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1437,1652,1631,0,0,620
+1/28/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,521,902,902,0,0,852
+1/29/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1255,1402,1349,0,0,172
+1/29/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,606,715,700,0,0,172
+1/29/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1119,1235,1216,0,0,172
+1/29/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,757,910,903,0,0,172
+1/29/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1713,1816,1814,0,0,172
+1/29/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,520,645,614,0,0,172
+1/29/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1116,1239,1218,0,0,172
+1/29/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1723,1837,1815,0,0,172
+1/29/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,632,1146,1122,0,0,1254
+1/29/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,559,852,831,0,0,521
+1/29/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1224,1516,1501,0,0,521
+1/29/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1304,1640,1627,0,0,852
+1/29/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1630,1652,1811,0,0,620
+1/29/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,519,902,843,0,0,852
+1/30/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1313,1402,1426,0,0,172
+1/30/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,600,715,659,0,0,172
+1/30/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1154,1235,1251,0,0,172
+1/30/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1917,2030,2022,0,0,172
+1/30/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,754,910,857,0,0,172
+1/30/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1709,1816,1811,0,0,172
+1/30/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1650,1934,1920,0,0,521
+1/30/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,521,645,622,0,0,172
+1/30/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1119,1239,1219,0,0,172
+1/30/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1727,1837,1844,0,0,172
+1/30/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,629,1146,1122,0,0,1254
+1/30/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,558,852,835,0,0,521
+1/30/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1253,1516,1521,0,0,521
+1/30/2022 0:00,G4,1301,PSC,"Pasco/Kennewick/Richland, WA",WA,93,AZA,"Phoenix, AZ",AZ,81,2011,1955,2334,2308,0,0,977
+1/30/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1304,1640,1605,0,0,852
+1/30/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1437,1652,1638,0,0,620
+1/30/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,520,902,836,0,0,852
+1/31/2022 0:00,AS,2028,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1258,1510,1402,1611,0,0,172
+1/31/2022 0:00,AS,2101,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,610,604,715,705,0,0,172
+1/31/2022 0:00,AS,2140,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1130,1123,1235,1231,0,0,172
+1/31/2022 0:00,AS,2157,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1925,1915,2030,2012,0,0,172
+1/31/2022 0:00,AS,2158,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,805,757,910,902,0,0,172
+1/31/2022 0:00,AS,2180,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1711,1704,1816,1816,0,0,172
+1/31/2022 0:00,DL,3628,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1655,1645,1934,1919,0,0,521
+1/31/2022 0:00,DL,3632,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,523,517,645,617,0,0,172
+1/31/2022 0:00,DL,3655,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1127,1122,1239,1225,0,0,172
+1/31/2022 0:00,DL,3685,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SEA,"Seattle, WA",WA,93,1730,1726,1837,1827,0,0,172
+1/31/2022 0:00,DL,3698,PSC,"Pasco/Kennewick/Richland, WA",WA,93,MSP,"Minneapolis, MN",MN,63,635,627,1146,1118,0,0,1254
+1/31/2022 0:00,DL,3773,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,600,550,852,820,0,0,521
+1/31/2022 0:00,DL,3782,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SLC,"Salt Lake City, UT",UT,87,1239,1232,1516,1459,0,0,521
+1/31/2022 0:00,G4,244,PSC,"Pasco/Kennewick/Richland, WA",WA,93,LAS,"Las Vegas, NV",NV,85,1653,1649,1853,1850,0,0,732
+1/31/2022 0:00,UA,4772,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,1315,1309,1640,1625,0,0,852
+1/31/2022 0:00,UA,4799,PSC,"Pasco/Kennewick/Richland, WA",WA,93,SFO,"San Francisco, CA",CA,91,1445,1443,1652,1637,0,0,620
+1/31/2022 0:00,UA,5788,PSC,"Pasco/Kennewick/Richland, WA",WA,93,DEN,"Denver, CO",CO,82,530,524,902,829,0,0,852

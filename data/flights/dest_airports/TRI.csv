@@ -1,0 +1,332 @@
+FL_DATE,MKT_CARRIER,MKT_CARRIER_FL_NUM,ORIGIN,ORIGIN_CITY_NAME,ORIGIN_STATE_ABR,ORIGIN_WAC,DEST,DEST_CITY_NAME,DEST_STATE_ABR,DEST_WAC,CRS_DEP_TIME,DEP_TIME,CRS_ARR_TIME,ARR_TIME,CANCELLED,DIVERTED,DISTANCE
+1/1/2022 0:00,AA,3015,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2006,2009,2324,2341,0,0,868
+1/1/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1535,1530,1853,1844,0,0,868
+1/1/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1845,1831,1954,1942,0,0,119
+1/1/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1301,1250,1407,1346,0,0,119
+1/1/2022 0:00,AA,6207,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,909,903,1018,1030,0,0,119
+1/1/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,905,900,1009,959,0,0,227
+1/1/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2050,2045,2156,2143,0,0,227
+1/1/2022 0:00,DL,5502,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1600,1556,1704,1655,0,0,227
+1/2/2022 0:00,AA,3015,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2006,2004,2324,2313,0,0,868
+1/2/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1352,1349,1710,1650,0,0,868
+1/2/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1812,1940,1921,2055,0,0,119
+1/2/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1301,1653,1407,1749,0,0,119
+1/2/2022 0:00,AA,6192,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2224,2302,2329,13,0,0,119
+1/2/2022 0:00,AA,6207,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,909,904,1018,1035,0,0,119
+1/2/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1311,1319,1413,1425,0,0,227
+1/2/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2245,,2353,,1,0,227
+1/2/2022 0:00,DL,4940,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1010,1005,1116,1108,0,0,227
+1/2/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1651,,1756,,1,0,227
+1/2/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,810,806,915,904,0,0,227
+1/2/2022 0:00,G4,1962,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1135,1131,1310,1257,0,0,535
+1/2/2022 0:00,G4,2036,PIE,"St. Petersburg, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,650,644,834,816,0,0,590
+1/3/2022 0:00,AA,3015,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2006,2000,2324,2313,0,0,868
+1/3/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1352,1350,1710,1647,0,0,868
+1/3/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1812,1845,1921,1935,0,0,119
+1/3/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1301,1455,1407,1549,0,0,119
+1/3/2022 0:00,AA,6192,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2224,2313,2329,8,0,0,119
+1/3/2022 0:00,AA,6207,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,909,1049,1018,1138,0,0,119
+1/3/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1311,1353,1413,1454,0,0,227
+1/3/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2245,,2353,,1,0,227
+1/3/2022 0:00,DL,4940,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1010,1006,1116,1103,0,0,227
+1/3/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1651,1647,1756,1749,0,0,227
+1/3/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,810,836,915,937,0,0,227
+1/4/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1358,1717,1708,0,0,868
+1/4/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2058,2333,14,0,0,868
+1/4/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,2312,2143,2359,0,0,119
+1/4/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,918,1035,1000,0,0,119
+1/4/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1619,1734,1714,0,0,119
+1/4/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1254,1409,1353,0,0,119
+1/4/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1311,1311,1413,1413,0,0,227
+1/4/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2245,2239,2353,2335,0,0,227
+1/4/2022 0:00,DL,4940,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1010,1005,1116,1108,0,0,227
+1/4/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1651,1649,1756,1744,0,0,227
+1/4/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,810,907,915,1010,0,0,227
+1/5/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1405,1717,1712,0,0,868
+1/5/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2102,2333,2358,0,0,868
+1/5/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2024,2129,2132,0,0,119
+1/5/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,919,1035,1026,0,0,119
+1/5/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1630,1734,1737,0,0,119
+1/5/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1253,1409,1359,0,0,119
+1/5/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2231,2349,2329,0,0,227
+1/5/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1511,1616,1609,0,0,227
+1/5/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,1003,1104,1114,0,0,227
+1/5/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,825,820,924,919,0,0,227
+1/6/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1357,1717,1702,0,0,868
+1/6/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2011,2333,2319,0,0,868
+1/6/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2019,2129,2122,0,0,119
+1/6/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,926,1035,1026,0,0,119
+1/6/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1641,1734,1744,0,0,119
+1/6/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1259,1409,1351,0,0,119
+1/6/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2235,2349,2339,0,0,227
+1/6/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1510,1616,1609,0,0,227
+1/6/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1027,1130,1131,0,0,227
+1/6/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,811,919,943,0,0,227
+1/6/2022 0:00,G4,2121,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1632,1818,1801,0,0,535
+1/7/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1354,1717,1700,0,0,868
+1/7/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2010,2333,2319,0,0,868
+1/7/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2019,2129,2115,0,0,119
+1/7/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,916,1035,1035,0,0,119
+1/7/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1624,1734,1718,0,0,119
+1/7/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1258,1409,1357,0,0,119
+1/7/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2239,2349,2335,0,0,227
+1/7/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1511,1616,1616,0,0,227
+1/7/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1027,1130,1135,0,0,227
+1/7/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,807,919,918,0,0,227
+1/8/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1354,1717,1711,0,0,868
+1/8/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2051,2333,2358,0,0,868
+1/8/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,2036,2143,2140,0,0,119
+1/8/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,917,907,1027,1008,0,0,119
+1/8/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1624,1734,1734,0,0,119
+1/8/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1256,1409,1344,0,0,119
+1/8/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2234,2349,2329,0,0,227
+1/8/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1508,1616,1604,0,0,227
+1/8/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,956,1104,1052,0,0,227
+1/8/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,812,919,909,0,0,227
+1/9/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1400,1717,1724,0,0,868
+1/9/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2049,2333,2349,0,0,868
+1/9/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2040,2129,2131,0,0,119
+1/9/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,914,1035,1027,0,0,119
+1/9/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1621,1734,1737,0,0,119
+1/9/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1303,1409,1404,0,0,119
+1/9/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2237,2349,2331,0,0,227
+1/9/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1510,1616,1606,0,0,227
+1/9/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1123,0,0,227
+1/9/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,811,919,903,0,0,227
+1/9/2022 0:00,G4,2126,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1653,1818,1827,0,0,535
+1/10/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1358,1717,1701,0,0,868
+1/10/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2015,2333,2327,0,0,868
+1/10/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2019,2129,2125,0,0,119
+1/10/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,1014,1035,1109,0,0,119
+1/10/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1623,1734,1729,0,0,119
+1/10/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1434,1409,1531,0,0,119
+1/10/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1351,1349,1455,1449,0,0,227
+1/10/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2244,2349,2355,0,0,227
+1/10/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1701,1807,1801,0,0,227
+1/10/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1127,0,0,227
+1/10/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,808,919,914,0,0,227
+1/11/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1351,1717,1712,0,0,868
+1/11/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2010,2333,2324,0,0,868
+1/11/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,2027,2143,2129,0,0,119
+1/11/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,925,1035,1023,0,0,119
+1/11/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1716,1734,1802,0,0,119
+1/11/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1300,1409,1351,0,0,119
+1/11/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2228,2349,2322,0,0,227
+1/11/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1510,1616,1618,0,0,227
+1/11/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,955,1104,1103,0,0,227
+1/11/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,809,919,917,0,0,227
+1/12/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1352,1717,1704,0,0,868
+1/12/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2012,2333,2316,0,0,868
+1/12/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2019,2129,2128,0,0,119
+1/12/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,914,1035,1024,0,0,119
+1/12/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1616,1734,1720,0,0,119
+1/12/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1321,1409,1418,0,0,119
+1/12/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2228,2349,2331,0,0,227
+1/12/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1524,1616,1622,0,0,227
+1/12/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,955,1104,1052,0,0,227
+1/12/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,811,919,907,0,0,227
+1/13/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1359,1717,1711,0,0,868
+1/13/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2010,2333,2326,0,0,868
+1/13/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2016,2129,2116,0,0,119
+1/13/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,914,1035,1029,0,0,119
+1/13/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1629,1734,1731,0,0,119
+1/13/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1258,1409,1350,0,0,119
+1/13/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1351,1342,1455,1448,0,0,227
+1/13/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2230,2349,2334,0,0,227
+1/13/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1656,1807,1801,0,0,227
+1/13/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1027,1130,1126,0,0,227
+1/13/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,803,919,912,0,0,227
+1/13/2022 0:00,G4,2121,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1628,1818,1814,0,0,535
+1/14/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1356,1717,1659,0,0,868
+1/14/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2007,2333,2313,0,0,868
+1/14/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,,2129,,1,0,119
+1/14/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,915,1035,1020,0,0,119
+1/14/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1619,1734,1734,0,0,119
+1/14/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1256,1409,1352,0,0,119
+1/14/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1351,1348,1455,1453,0,0,227
+1/14/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2239,2349,2338,0,0,227
+1/14/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1654,1807,1803,0,0,227
+1/14/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1031,1130,1134,0,0,227
+1/14/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,814,919,929,0,0,227
+1/15/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1512,1717,1813,0,0,868
+1/15/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2033,2333,2331,0,0,868
+1/15/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,,2143,,1,0,119
+1/15/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,917,909,1027,959,0,0,119
+1/15/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1619,1734,1711,0,0,119
+1/15/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1253,1409,1346,0,0,119
+1/15/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2332,2349,42,0,0,227
+1/15/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1511,1616,1606,0,0,227
+1/15/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,949,1104,1051,0,0,227
+1/16/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1357,1717,1705,0,0,868
+1/16/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2014,2333,2328,0,0,868
+1/16/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,,2129,,1,0,119
+1/16/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,,1035,,1,0,119
+1/16/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,,1734,,1,0,119
+1/16/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,,1409,,1,0,119
+1/16/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2302,2349,9,0,0,227
+1/16/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1546,1616,1711,0,0,227
+1/16/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,956,1104,1132,0,0,227
+1/16/2022 0:00,G4,2126,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1700,1818,1822,0,0,535
+1/17/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1355,1717,1704,0,0,868
+1/17/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2013,2333,2325,0,0,868
+1/17/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,,2129,,1,0,119
+1/17/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,,1035,,1,0,119
+1/17/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1619,1734,1722,0,0,119
+1/17/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,,1409,,1,0,119
+1/17/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1340,1443,1443,0,0,227
+1/17/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2238,2349,2342,0,0,227
+1/17/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1808,1807,1914,0,0,227
+1/17/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1133,0,0,227
+1/17/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,809,919,924,0,0,227
+1/18/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1352,1717,1703,0,0,868
+1/18/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2007,2333,2308,0,0,868
+1/18/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,2032,2143,2141,0,0,119
+1/18/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,922,1035,1022,0,0,119
+1/18/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1624,1734,1730,0,0,119
+1/18/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1321,1409,1430,0,0,119
+1/18/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2235,2349,2329,0,0,227
+1/18/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1510,1616,1614,0,0,227
+1/18/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,956,1104,1058,0,0,227
+1/18/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,806,919,915,0,0,227
+1/19/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1353,1717,1659,0,0,868
+1/19/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2022,2333,2329,0,0,868
+1/19/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2019,2129,2144,0,0,119
+1/19/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,916,1035,1031,0,0,119
+1/19/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1623,1734,1740,0,0,119
+1/19/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1259,1409,1419,0,0,119
+1/19/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2224,2349,2325,0,0,227
+1/19/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1513,1616,1615,0,0,227
+1/19/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,1008,1104,1125,0,0,227
+1/19/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,810,919,912,0,0,227
+1/20/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1354,1717,1653,0,0,868
+1/20/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2038,2333,2331,0,0,868
+1/20/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2225,2129,2345,0,0,119
+1/20/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,914,1035,1016,0,0,119
+1/20/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1617,1734,1712,0,0,119
+1/20/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1300,1409,1404,0,0,119
+1/20/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1342,1443,1437,0,0,227
+1/20/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2239,2349,2335,0,0,227
+1/20/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1658,1807,1751,0,0,227
+1/20/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1020,1130,1124,0,0,227
+1/20/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,810,919,907,0,0,227
+1/20/2022 0:00,G4,2121,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1642,1818,1818,0,0,535
+1/21/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1355,1717,1655,0,0,868
+1/21/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2041,2333,2347,0,0,868
+1/21/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2022,2129,2219,0,0,119
+1/21/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,914,1035,1017,0,0,119
+1/21/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1618,1734,1724,0,0,119
+1/21/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1255,1409,1349,0,0,119
+1/21/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1339,1443,1427,0,0,227
+1/21/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2240,2349,2339,0,0,227
+1/21/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1700,1807,1752,0,0,227
+1/21/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1027,1130,1124,0,0,227
+1/21/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,812,919,922,0,0,227
+1/22/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1358,1717,1658,0,0,868
+1/22/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2009,2333,2313,0,0,868
+1/22/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,2134,2143,2221,0,0,119
+1/22/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,917,952,1027,1039,0,0,119
+1/22/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1619,1734,1743,0,0,119
+1/22/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1348,1409,1451,0,0,119
+1/22/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2230,2349,2321,0,0,227
+1/22/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1511,1616,1603,0,0,227
+1/22/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,955,1104,1106,0,0,227
+1/22/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,810,919,914,0,0,227
+1/23/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1351,1717,1648,0,0,868
+1/23/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2024,2333,2340,0,0,868
+1/23/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2045,2129,2211,0,0,119
+1/23/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,1022,1035,1111,0,0,119
+1/23/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1620,1734,1734,0,0,119
+1/23/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1253,1409,1403,0,0,119
+1/23/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1337,1443,1431,0,0,227
+1/23/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2236,2349,2338,0,0,227
+1/23/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1700,1807,1759,0,0,227
+1/23/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1129,0,0,227
+1/23/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,810,919,909,0,0,227
+1/23/2022 0:00,G4,2126,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1716,1818,1854,0,0,535
+1/24/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1351,1717,1656,0,0,868
+1/24/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2010,2333,2300,0,0,868
+1/24/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2014,2129,2124,0,0,119
+1/24/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,916,1035,1014,0,0,119
+1/24/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1620,1734,1750,0,0,119
+1/24/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1254,1409,1352,0,0,119
+1/24/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1336,1443,1439,0,0,227
+1/24/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2238,2349,2337,0,0,227
+1/24/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1658,1807,1756,0,0,227
+1/24/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1132,0,0,227
+1/24/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,806,919,907,0,0,227
+1/25/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1408,1717,1713,0,0,868
+1/25/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2017,2333,2314,0,0,868
+1/25/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,2028,2143,2128,0,0,119
+1/25/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,921,1035,1004,0,0,119
+1/25/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1616,1734,1709,0,0,119
+1/25/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1251,1409,1348,0,0,119
+1/25/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2229,2349,2322,0,0,227
+1/25/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1509,1616,1621,0,0,227
+1/25/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,957,1104,1059,0,0,227
+1/25/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,810,919,909,0,0,227
+1/26/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1357,1717,1648,0,0,868
+1/26/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2013,2333,2306,0,0,868
+1/26/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2024,2129,2121,0,0,119
+1/26/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,912,1035,1013,0,0,119
+1/26/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1735,1734,1827,0,0,119
+1/26/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1254,1409,1354,0,0,119
+1/26/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2229,2349,2322,0,0,227
+1/26/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1510,1616,1605,0,0,227
+1/26/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,957,1104,1115,0,0,227
+1/26/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,810,919,910,0,0,227
+1/27/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1358,1717,1656,0,0,868
+1/27/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2010,2333,2258,0,0,868
+1/27/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2017,2129,2115,0,0,119
+1/27/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,916,1035,1009,0,0,119
+1/27/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1624,1734,1715,0,0,119
+1/27/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1254,1409,1359,0,0,119
+1/27/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1341,1443,1437,0,0,227
+1/27/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2229,2349,2332,0,0,227
+1/27/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1659,1807,1758,0,0,227
+1/27/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1028,1130,1150,0,0,227
+1/27/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,809,919,907,0,0,227
+1/27/2022 0:00,G4,2121,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1633,1818,1835,0,0,535
+1/28/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1356,1717,1703,0,0,868
+1/28/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2010,2333,2314,0,0,868
+1/28/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2037,2129,2142,0,0,119
+1/28/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,915,1035,1019,0,0,119
+1/28/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1617,1734,1729,0,0,119
+1/28/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1254,1409,1347,0,0,119
+1/28/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1336,1443,1437,0,0,227
+1/28/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,,2349,,1,0,227
+1/28/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1831,1807,1957,0,0,227
+1/28/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1140,0,0,227
+1/28/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,803,919,904,0,0,227
+1/29/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1358,1717,1708,0,0,868
+1/29/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,641,2333,1004,0,0,868
+1/29/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2040,2030,2143,2130,0,0,119
+1/29/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,917,908,1027,1020,0,0,119
+1/29/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1613,1734,1731,0,0,119
+1/29/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1253,1409,1343,0,0,119
+1/29/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2241,2349,2345,0,0,227
+1/29/2022 0:00,DL,5052,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1515,1512,1616,1608,0,0,227
+1/29/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1000,959,1104,1112,0,0,227
+1/29/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,1158,919,1258,0,0,227
+1/30/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1352,1717,1657,0,0,868
+1/30/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2008,2333,2311,0,0,868
+1/30/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2021,2129,2115,0,0,119
+1/30/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,945,1035,1045,0,0,119
+1/30/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1736,1734,1825,0,0,119
+1/30/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1256,1409,1351,0,0,119
+1/30/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1336,1443,1434,0,0,227
+1/30/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2236,2349,2333,0,0,227
+1/30/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1702,1807,1808,0,0,227
+1/30/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1142,0,0,227
+1/30/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,821,919,922,0,0,227
+1/30/2022 0:00,G4,2126,SFB,"Sanford, FL",FL,33,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1638,1635,1818,1814,0,0,535
+1/31/2022 0:00,AA,3096,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1401,1359,1717,1753,0,0,868
+1/31/2022 0:00,AA,3197,DFW,"Dallas/Fort Worth, TX",TX,74,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2017,2010,2333,2320,0,0,868
+1/31/2022 0:00,AA,5656,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2025,2021,2129,2119,0,0,119
+1/31/2022 0:00,AA,5684,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,925,917,1035,1012,0,0,119
+1/31/2022 0:00,AA,6020,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1626,1614,1734,1719,0,0,119
+1/31/2022 0:00,AA,6111,CLT,"Charlotte, NC",NC,36,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1303,1254,1409,1354,0,0,119
+1/31/2022 0:00,DL,4820,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1341,1341,1443,1450,0,0,227
+1/31/2022 0:00,DL,4904,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,2243,2233,2349,2348,0,0,227
+1/31/2022 0:00,DL,4954,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1703,1656,1807,1800,0,0,227
+1/31/2022 0:00,DL,5083,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,1030,1025,1130,1124,0,0,227
+1/31/2022 0:00,DL,5219,ATL,"Atlanta, GA",GA,34,TRI,"Bristol/Johnson City/Kingsport, TN",TN,54,815,816,919,916,0,0,227

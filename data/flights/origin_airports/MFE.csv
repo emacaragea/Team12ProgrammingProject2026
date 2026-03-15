@@ -1,0 +1,369 @@
+FL_DATE,MKT_CARRIER,MKT_CARRIER_FL_NUM,ORIGIN,ORIGIN_CITY_NAME,ORIGIN_STATE_ABR,ORIGIN_WAC,DEST,DEST_CITY_NAME,DEST_STATE_ABR,DEST_WAC,CRS_DEP_TIME,DEP_TIME,CRS_ARR_TIME,ARR_TIME,CANCELLED,DIVERTED,DISTANCE
+1/1/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1256,1252,1438,1417,0,0,469
+1/1/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,739,726,925,849,0,0,469
+1/1/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1955,1958,2139,2132,0,0,469
+1/1/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,900,944,1043,1112,0,0,469
+1/1/2022 0:00,G4,38,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1803,1755,1913,1907,0,0,1210
+1/1/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,932,,1058,,1,0,316
+1/1/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1202,,1328,,1,0,316
+1/1/2022 0:00,UA,4937,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1701,1654,1827,1812,0,0,316
+1/1/2022 0:00,UA,6146,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,720,708,842,814,0,0,316
+1/2/2022 0:00,AA,1197,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,739,731,924,909,0,0,469
+1/2/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1256,1309,1438,1440,0,0,469
+1/2/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,557,742,726,0,0,469
+1/2/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1155,1342,1337,0,0,469
+1/2/2022 0:00,AA,5848,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1628,1629,1810,1811,0,0,469
+1/2/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,857,909,1040,1037,0,0,469
+1/2/2022 0:00,G4,237,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2142,2231,2254,2346,0,0,1210
+1/2/2022 0:00,G4,2413,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,2012,,2341,,1,0,1059
+1/2/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,509,633,614,0,0,316
+1/2/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1202,,1328,,1,0,316
+1/2/2022 0:00,UA,4937,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1701,1656,1827,1810,0,0,316
+1/2/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1408,1640,1529,1803,0,0,316
+1/3/2022 0:00,AA,1197,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,739,735,924,907,0,0,469
+1/3/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1256,1250,1438,1422,0,0,469
+1/3/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,558,742,737,0,0,469
+1/3/2022 0:00,AA,5848,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1628,,1810,,1,0,469
+1/3/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1955,2010,2139,2139,0,0,469
+1/3/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,900,902,1043,1030,0,0,469
+1/3/2022 0:00,G4,38,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2147,2149,2257,2301,0,0,1210
+1/3/2022 0:00,G4,597,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,1225,,1446,,1,0,967
+1/3/2022 0:00,G4,6413,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,1030,1140,1359,1507,0,0,1059
+1/3/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,514,633,614,0,0,316
+1/3/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1202,1200,1328,1316,0,0,316
+1/3/2022 0:00,UA,4937,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1701,1728,1827,1852,0,0,316
+1/3/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1408,1400,1529,1503,0,0,316
+1/3/2022 0:00,UA,6146,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,720,,842,,1,0,316
+1/4/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1304,1448,1449,0,0,469
+1/4/2022 0:00,AA,2096,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,744,738,930,912,0,0,469
+1/4/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,559,743,740,0,0,469
+1/4/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1600,1749,1738,0,0,469
+1/4/2022 0:00,AA,4080,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1151,1343,1321,0,0,469
+1/4/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,859,1048,1038,0,0,469
+1/4/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,717,834,827,0,0,316
+1/4/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,930,1106,1040,0,0,316
+1/4/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1339,1340,1456,0,0,316
+1/4/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,1707,1832,1913,0,0,316
+1/4/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1406,1535,1530,0,0,316
+1/5/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1259,1448,1427,0,0,469
+1/5/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,558,743,729,0,0,469
+1/5/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1604,1749,1742,0,0,469
+1/5/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,746,934,916,0,0,469
+1/5/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1939,2129,2112,0,0,469
+1/5/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,859,1048,1027,0,0,469
+1/5/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1651,1646,1800,1800,0,0,1210
+1/5/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,714,834,837,0,0,316
+1/5/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,937,1106,1050,0,0,316
+1/5/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1204,1340,1322,0,0,316
+1/5/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,1712,1832,1820,0,0,316
+1/5/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1404,1535,1516,0,0,316
+1/6/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1337,1448,1505,0,0,469
+1/6/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,610,743,744,0,0,469
+1/6/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1603,1749,1742,0,0,469
+1/6/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1159,1340,1333,0,0,469
+1/6/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,747,934,1030,0,0,469
+1/6/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1935,2129,2109,0,0,469
+1/6/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,929,1048,1100,0,0,469
+1/6/2022 0:00,G4,2451,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,1059,1240,1437,0,0,1059
+1/6/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1211,1242,1320,1351,0,0,1210
+1/6/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,512,633,621,0,0,316
+1/6/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,714,834,822,0,0,316
+1/6/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,1021,1106,1148,0,0,316
+1/6/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1309,1340,1426,0,0,316
+1/6/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,,1832,,1,0,316
+1/6/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1412,1535,1536,0,0,316
+1/7/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1327,1448,1458,0,0,469
+1/7/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,557,743,733,0,0,469
+1/7/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1605,1749,1740,0,0,469
+1/7/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1247,1340,1421,0,0,469
+1/7/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,2038,2129,2206,0,0,469
+1/7/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,,1048,,1,0,469
+1/7/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1146,1148,1255,1247,0,0,1210
+1/7/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,953,,1211,,1,0,967
+1/7/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,509,633,615,0,0,316
+1/7/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,712,834,817,0,0,316
+1/7/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1213,1340,1324,0,0,316
+1/7/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,1707,1832,1826,0,0,316
+1/7/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1409,1535,1529,0,0,316
+1/8/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,555,743,735,0,0,469
+1/8/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1628,1749,1812,0,0,469
+1/8/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1320,1340,1453,0,0,469
+1/8/2022 0:00,AA,5848,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1317,1338,1459,1528,0,0,469
+1/8/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,749,934,1003,0,0,469
+1/8/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,856,1048,1030,0,0,469
+1/8/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,712,834,813,0,0,316
+1/8/2022 0:00,UA,4232,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1402,1540,1511,0,0,316
+1/8/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1204,1340,1322,0,0,316
+1/8/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,1713,1832,1944,0,0,316
+1/8/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,508,637,611,0,0,316
+1/9/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1259,1448,1426,0,0,469
+1/9/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,556,743,732,0,0,469
+1/9/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1602,1749,1739,0,0,469
+1/9/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1939,2129,2110,0,0,469
+1/9/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,903,1048,1037,0,0,469
+1/9/2022 0:00,G4,2311,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,907,1240,1242,0,0,1059
+1/9/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2226,2223,2335,2323,0,0,1210
+1/9/2022 0:00,G4,97,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1151,1348,1300,1449,0,0,1210
+1/9/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,707,834,820,0,0,316
+1/9/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1213,1340,1343,0,0,316
+1/9/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,,1832,,1,0,316
+1/9/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1420,1535,1540,0,0,316
+1/10/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1317,1448,1445,0,0,469
+1/10/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,558,743,727,0,0,469
+1/10/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1606,1749,1749,0,0,469
+1/10/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1249,1340,1426,0,0,469
+1/10/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,741,934,924,0,0,469
+1/10/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,917,1048,1100,0,0,469
+1/10/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1246,1235,1355,1336,0,0,1210
+1/10/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,922,908,1140,1119,0,0,967
+1/10/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,507,633,614,0,0,316
+1/10/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,705,834,827,0,0,316
+1/10/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,932,1106,1052,0,0,316
+1/10/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1208,1340,1322,0,0,316
+1/10/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,1706,1832,1819,0,0,316
+1/10/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1557,1535,1714,0,0,316
+1/11/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1259,1448,1426,0,0,469
+1/11/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,556,743,727,0,0,469
+1/11/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1555,1749,1730,0,0,469
+1/11/2022 0:00,AA,4080,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1158,1343,1343,0,0,469
+1/11/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,744,934,914,0,0,469
+1/11/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,,1048,,1,0,469
+1/11/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,706,834,824,0,0,316
+1/11/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,933,1106,1049,0,0,316
+1/11/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1206,1340,1326,0,0,316
+1/11/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,1746,1832,1853,0,0,316
+1/11/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1730,1535,1850,0,0,316
+1/12/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1254,1448,1427,0,0,469
+1/12/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,556,743,730,0,0,469
+1/12/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1600,1749,1735,0,0,469
+1/12/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1154,1340,1336,0,0,469
+1/12/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1933,2129,2110,0,0,469
+1/12/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,859,1048,1045,0,0,469
+1/12/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1651,1640,1800,1753,0,0,1210
+1/12/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,1050,834,1156,0,0,316
+1/12/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,935,1106,1054,0,0,316
+1/12/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1203,1340,1316,0,0,316
+1/12/2022 0:00,UA,473,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1715,,1832,,1,0,316
+1/12/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1407,1535,1527,0,0,316
+1/13/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1304,1448,1450,0,0,469
+1/13/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,557,743,724,0,0,469
+1/13/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1603,1749,1744,0,0,469
+1/13/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,,1340,,1,0,469
+1/13/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,741,934,922,0,0,469
+1/13/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,2030,2129,2154,0,0,469
+1/13/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,915,1048,1050,0,0,469
+1/13/2022 0:00,G4,2451,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,853,1240,1223,0,0,1059
+1/13/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1211,1233,1320,1328,0,0,1210
+1/13/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,511,633,619,0,0,316
+1/13/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,708,834,845,0,0,316
+1/13/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,932,1106,1050,0,0,316
+1/13/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1210,1340,1328,0,0,316
+1/13/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1408,1535,1521,0,0,316
+1/14/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1257,1448,1432,0,0,469
+1/14/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,556,743,732,0,0,469
+1/14/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1557,1749,1734,0,0,469
+1/14/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1153,1340,1330,0,0,469
+1/14/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,,934,,1,0,469
+1/14/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,903,1048,1036,0,0,469
+1/14/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1146,1139,1255,1259,0,0,1210
+1/14/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,922,1002,1140,1221,0,0,967
+1/14/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,507,633,618,0,0,316
+1/14/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,709,834,846,0,0,316
+1/14/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1206,1340,1324,0,0,316
+1/14/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1407,1535,1518,0,0,316
+1/15/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,555,743,739,0,0,469
+1/15/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1600,1749,1740,0,0,469
+1/15/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1238,1340,1408,0,0,469
+1/15/2022 0:00,AA,5848,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1317,1329,1459,1532,0,0,469
+1/15/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,1135,934,1322,0,0,469
+1/15/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,901,1048,1051,0,0,469
+1/15/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,709,834,814,0,0,316
+1/15/2022 0:00,UA,4232,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1413,1540,1530,0,0,316
+1/15/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1219,1340,1332,0,0,316
+1/15/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,556,637,706,0,0,316
+1/16/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1258,1448,1424,0,0,469
+1/16/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,558,743,729,0,0,469
+1/16/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1709,1749,1844,0,0,469
+1/16/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,,1340,,1,0,469
+1/16/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,,934,,1,0,469
+1/16/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1941,2129,2121,0,0,469
+1/16/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,900,1048,1033,0,0,469
+1/16/2022 0:00,G4,2311,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,857,1240,1211,0,0,1059
+1/16/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2226,2235,2335,2339,0,0,1210
+1/16/2022 0:00,G4,97,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1151,1139,1300,1243,0,0,1210
+1/16/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,711,834,826,0,0,316
+1/16/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1209,1340,1324,0,0,316
+1/16/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1409,1535,1530,0,0,316
+1/17/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1301,1448,1429,0,0,469
+1/17/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,556,743,728,0,0,469
+1/17/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1557,1749,1731,0,0,469
+1/17/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1241,1340,1410,0,0,469
+1/17/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1936,2129,2119,0,0,469
+1/17/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,900,1048,1043,0,0,469
+1/17/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2124,2116,2233,2219,0,0,1210
+1/17/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,922,,1140,,1,0,967
+1/17/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,510,633,613,0,0,316
+1/17/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,708,834,818,0,0,316
+1/17/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,931,1106,1046,0,0,316
+1/17/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1208,1340,1319,0,0,316
+1/17/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1410,1535,1527,0,0,316
+1/18/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1256,1448,1426,0,0,469
+1/18/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,558,743,740,0,0,469
+1/18/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1557,1749,1734,0,0,469
+1/18/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1153,1340,1335,0,0,469
+1/18/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,1104,1048,1230,0,0,469
+1/18/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,714,834,834,0,0,316
+1/18/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,932,1106,1051,0,0,316
+1/18/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1204,1340,1320,0,0,316
+1/18/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1404,1535,1521,0,0,316
+1/19/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1316,1448,1449,0,0,469
+1/19/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,559,743,733,0,0,469
+1/19/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1640,1749,1811,0,0,469
+1/19/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1241,1340,1751,0,1,469
+1/19/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,744,934,915,0,0,469
+1/19/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1944,2129,2116,0,0,469
+1/19/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,,1048,,1,0,469
+1/19/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1651,1635,1800,1758,0,0,1210
+1/19/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,707,834,846,0,0,316
+1/19/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,932,1106,1052,0,0,316
+1/19/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1215,1340,1345,0,0,316
+1/19/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1640,1535,1819,0,0,316
+1/20/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1655,1448,1818,0,0,469
+1/20/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,655,743,827,0,0,469
+1/20/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1616,1749,1738,0,0,469
+1/20/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,743,934,917,0,0,469
+1/20/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1938,2129,2106,0,0,469
+1/20/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,903,1048,1036,0,0,469
+1/20/2022 0:00,G4,2451,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,904,1240,1236,0,0,1059
+1/20/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1211,1200,1320,1311,0,0,1210
+1/20/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,641,633,750,0,0,316
+1/20/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,709,834,851,0,0,316
+1/20/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,928,1106,1046,0,0,316
+1/20/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1248,1340,1417,0,0,316
+1/20/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1407,1535,1520,0,0,316
+1/21/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1258,1448,1423,0,0,469
+1/21/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,557,743,732,0,0,469
+1/21/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1620,1749,1758,0,0,469
+1/21/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,742,934,920,0,0,469
+1/21/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,2115,2129,2248,0,0,469
+1/21/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,900,1048,1054,0,0,469
+1/21/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2226,2221,2335,2325,0,0,1210
+1/21/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,922,,1140,,1,0,967
+1/21/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,718,834,822,0,0,316
+1/21/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1241,1340,1401,0,0,316
+1/21/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1527,1535,1643,0,0,316
+1/21/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,512,637,617,0,0,316
+1/22/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,551,743,724,0,0,469
+1/22/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1600,1749,1730,0,0,469
+1/22/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1154,1340,1322,0,0,469
+1/22/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,741,934,908,0,0,469
+1/22/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,924,1048,1100,0,0,469
+1/22/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,716,834,831,0,0,316
+1/22/2022 0:00,UA,4232,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1725,1540,1835,0,0,316
+1/22/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1207,1340,1316,0,0,316
+1/22/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,,637,,1,0,316
+1/23/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1258,1448,1422,0,0,469
+1/23/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,621,743,750,0,0,469
+1/23/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1600,1749,1726,0,0,469
+1/23/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,743,934,915,0,0,469
+1/23/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1936,2129,2106,0,0,469
+1/23/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,931,1048,1104,0,0,469
+1/23/2022 0:00,G4,2311,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,858,1240,1215,0,0,1059
+1/23/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2226,2235,2335,2337,0,0,1210
+1/23/2022 0:00,G4,97,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1151,1139,1300,1238,0,0,1210
+1/23/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,714,834,840,0,0,316
+1/23/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1206,1340,1327,0,0,316
+1/23/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1559,1535,1714,0,0,316
+1/24/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1255,1448,1418,0,0,469
+1/24/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,555,743,725,0,0,469
+1/24/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1606,1749,1744,0,0,469
+1/24/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1156,1340,1334,0,0,469
+1/24/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,745,934,910,0,0,469
+1/24/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,856,1048,1031,0,0,469
+1/24/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2212,2210,2321,2312,0,0,1210
+1/24/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,922,911,1140,1120,0,0,967
+1/24/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,712,834,839,0,0,316
+1/24/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,933,1106,1103,0,0,316
+1/24/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1214,1340,1350,0,0,316
+1/24/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1417,1535,1534,0,0,316
+1/24/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,510,637,618,0,0,316
+1/25/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1256,1448,1423,0,0,469
+1/25/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,555,743,727,0,0,469
+1/25/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1604,1749,1737,0,0,469
+1/25/2022 0:00,AA,4080,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1158,1343,1328,0,0,469
+1/25/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,855,1048,1025,0,0,469
+1/25/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,709,834,829,0,0,316
+1/25/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,1054,1106,1205,0,0,316
+1/25/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1204,1340,1342,0,0,316
+1/25/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1404,1535,1525,0,0,316
+1/26/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1257,1448,1429,0,0,469
+1/26/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,553,743,722,0,0,469
+1/26/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1556,1749,1721,0,0,469
+1/26/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1152,1340,1325,0,0,469
+1/26/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,746,934,917,0,0,469
+1/26/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1942,2129,2112,0,0,469
+1/26/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,854,1048,1025,0,0,469
+1/26/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1651,1642,1800,1750,0,0,1210
+1/26/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,708,834,815,0,0,316
+1/26/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,931,1106,1059,0,0,316
+1/26/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1207,1340,1343,0,0,316
+1/26/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1404,1535,1525,0,0,316
+1/27/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1317,1448,1447,0,0,469
+1/27/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,557,743,730,0,0,469
+1/27/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1556,1749,1721,0,0,469
+1/27/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,742,934,907,0,0,469
+1/27/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,1939,2129,2142,0,0,469
+1/27/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,857,1048,1028,0,0,469
+1/27/2022 0:00,G4,2451,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,913,1240,1239,0,0,1059
+1/27/2022 0:00,G4,97,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2204,2153,2313,2304,0,0,1210
+1/27/2022 0:00,UA,1683,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,504,633,608,0,0,316
+1/27/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,706,834,816,0,0,316
+1/27/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,930,1106,1051,0,0,316
+1/27/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1220,1340,1338,0,0,316
+1/27/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1401,1535,1527,0,0,316
+1/28/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1311,1448,1442,0,0,469
+1/28/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,551,743,735,0,0,469
+1/28/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1605,1749,1741,0,0,469
+1/28/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1155,1340,1325,0,0,469
+1/28/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,743,934,920,0,0,469
+1/28/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,856,1048,1027,0,0,469
+1/28/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2226,2300,2335,8,0,0,1210
+1/28/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,917,,1135,,1,0,967
+1/28/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,714,834,822,0,0,316
+1/28/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1228,1340,1345,0,0,316
+1/28/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1414,1535,1554,0,0,316
+1/28/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,509,637,614,0,0,316
+1/29/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,558,743,733,0,0,469
+1/29/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1557,1749,1734,0,0,469
+1/29/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1150,1340,1328,0,0,469
+1/29/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,744,934,922,0,0,469
+1/29/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,856,1048,1032,0,0,469
+1/29/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,720,834,845,0,0,316
+1/29/2022 0:00,UA,4232,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1404,1540,1519,0,0,316
+1/29/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1252,1340,1407,0,0,316
+1/29/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,507,637,612,0,0,316
+1/30/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1257,1448,1429,0,0,469
+1/30/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,555,743,730,0,0,469
+1/30/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1612,1749,1742,0,0,469
+1/30/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1157,1340,1351,0,0,469
+1/30/2022 0:00,AA,5852,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,750,751,934,930,0,0,469
+1/30/2022 0:00,AA,5879,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1947,2126,2129,2300,0,0,469
+1/30/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,902,1048,1037,0,0,469
+1/30/2022 0:00,G4,2311,MFE,"Mission/McAllen/Edinburg, TX",TX,74,SFB,"Sanford, FL",FL,33,907,910,1240,1237,0,0,1059
+1/30/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2226,2205,2335,2313,0,0,1210
+1/30/2022 0:00,G4,97,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,1156,1153,1305,1311,0,0,1210
+1/30/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,733,834,845,0,0,316
+1/30/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1211,1340,1327,0,0,316
+1/30/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1411,1535,1521,0,0,316
+1/31/2022 0:00,AA,2085,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1304,1300,1448,1430,0,0,469
+1/31/2022 0:00,AA,2768,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,600,556,743,729,0,0,469
+1/31/2022 0:00,AA,3616,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1606,1555,1749,1724,0,0,469
+1/31/2022 0:00,AA,5830,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,1200,1152,1340,1331,0,0,469
+1/31/2022 0:00,AA,702,MFE,"Mission/McAllen/Edinburg, TX",TX,74,DFW,"Dallas/Fort Worth, TX",TX,74,903,856,1048,1027,0,0,469
+1/31/2022 0:00,G4,42,MFE,"Mission/McAllen/Edinburg, TX",TX,74,LAS,"Las Vegas, NV",NV,85,2212,2240,2321,2355,0,0,1210
+1/31/2022 0:00,G4,601,MFE,"Mission/McAllen/Edinburg, TX",TX,74,BNA,"Nashville, TN",TN,54,917,,1135,,1,0,967
+1/31/2022 0:00,UA,1787,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,716,712,834,833,0,0,316
+1/31/2022 0:00,UA,4306,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,940,936,1106,1147,0,0,316
+1/31/2022 0:00,UA,4372,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1214,1206,1340,1339,0,0,316
+1/31/2022 0:00,UA,5248,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,1414,1409,1535,1525,0,0,316
+1/31/2022 0:00,UA,6187,MFE,"Mission/McAllen/Edinburg, TX",TX,74,IAH,"Houston, TX",TX,74,515,524,637,631,0,0,316
