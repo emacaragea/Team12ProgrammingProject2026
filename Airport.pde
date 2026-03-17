@@ -34,11 +34,15 @@ class Airport{
         }
     }
     @Override
-    public boolean equals(Object obj) {
-      if (this == obj) return true;
-      if (obj == null || !(obj instanceof Airport)) return false;
-      Airport other = (Airport) obj;
-      return this.airportName.equals(other.airportName);
+    public boolean equals(Object thisObject) {
+      if (this == thisObject){
+        return true;
+      }
+      if (thisObject == null || !(thisObject instanceof Airport)) {
+        return false;
+      }
+      Airport airportObject = (Airport) thisObject;
+      return this.airportName.equals(airportObject.airportName);
     }
 
 
