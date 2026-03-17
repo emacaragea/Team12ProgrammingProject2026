@@ -1,10 +1,12 @@
-//11AM, 12/02/26, Jesse Margarites
+//12PM, 17/03/26, Jesse Margarites
 class Airport{
-    String airportName;
-    ArrayList<Flight> flightsLeaving;
-    ArrayList<Flight> flightsIncoming;
-    Airport(String airportName){
+    private String airportName;
+    private int worldAreaCode;
+    private ArrayList<Flight> flightsLeaving;
+    private ArrayList<Flight> flightsIncoming;
+    Airport(String airportName, int worldAreaCode){
         this.airportName = airportName;
+        this.worldAreaCode = worldAreaCode;
     }
 
     void setAirportName(String airportName){
@@ -12,6 +14,12 @@ class Airport{
     }
     String getAirportName(){
         return airportName;
+    }
+    void setWorldAreaCode(int worldAreaCode){
+        this.worldAreaCode = worldAreaCode;
+    }
+    int getWorldAreaCode(){
+        return worldAreaCode;
     }
     void addFlightsLeaving(Flight flightX){
         flightsLeaving.add(flightX); //CHECK WORKS

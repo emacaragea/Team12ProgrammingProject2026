@@ -4,8 +4,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+final static int SCREEN_WIDTH = 500;
+final static int SCREEN_HEIGHT = 450;
 
 void setup() {
+  
   BufferedReader reader;
   try {
     reader = new BufferedReader(new FileReader(sketchPath("flights_full.csv")));  //using sketchPath to correctly find this file from any machine

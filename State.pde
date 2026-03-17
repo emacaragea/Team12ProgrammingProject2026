@@ -1,7 +1,12 @@
-//11AM, 12/02/26, Jesse Margarites
+//12PM, 17/03/26, Jesse Margarites
+//cannot make fonts static 
+final  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
+final  PFont LABEL_FONT = createFont("Helvetica Bold", 16);
+final  PFont SMALL_FONT = createFont("Helvetica", 13);
 class State{
-    String stateName;
-    ArrayList<Airport> listOfAirports;
+    private String stateName;
+    private ArrayList<Airport> listOfAirports;
+
 
     State(String stateName){
         this.stateName = stateName;
@@ -21,10 +26,9 @@ class State{
         //HAS TO BE EXACT NAME
         //could create a method for if they are searching for an airport that is in a different state 
         if(listOfAirports!=null){
-            boolean foundAirport = false;
             int numberOfAiports = listOfAirports.size();
             int counter =0;
-            while(!foundAirport || counter<numberOfAiports){
+            while(counter<numberOfAiports){
                 if (listOfAirports.get(counter).getAirportName().equals(airportName)){
                     return listOfAirports.get(counter);
                 }
@@ -39,6 +43,27 @@ class State{
     
     ArrayList<Airport> getAirportList(){
         return listOfAirports;
+    }
+
+    void stateDraw(String stateName){
+        //example
+        int textXCoordinate = 20;
+        int textYCoordinate = 20;
+        size(600, 600);// ?
+        textFont(TITLE_FONT);
+        text(stateName, textXCoordinate, textYCoordinate);
+
+        textFont(LABEL_FONT);
+        textYCoordinate+=20;
+        text("Airports: ", textXCoordinate, textYCoordinate);
+
+        for (int counter=0; counter<listOfAirports.size(); counter++){
+            textYCoordinate+=10;
+            text((counter+1)+": "+ listOfAirports.get(counter), textXCoordinate, textYCoordinate);
+
+        }
+
+
     }
 
 }
