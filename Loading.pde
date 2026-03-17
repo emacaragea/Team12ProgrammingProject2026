@@ -3,16 +3,16 @@
 
 Loading loading;
 
-void setup() {
-  size(1400, 800);
-  smooth();
-  loading = new Loading();
-  loading.setup();
-}
+//void setup() {
+//  size(1400, 800);
+//  smooth();
+//  loading = new Loading();
+//  loading.setup();
+//}
 
-void draw() {
-  loading.draw();
-}
+//void draw() {
+//  loading.draw();
+//}
 
 class Loading {
   PFont titleFont;

@@ -1,8 +1,6 @@
-//12PM, 17/03/26, Jesse Margarites
+//4PM, 17/03/26, Jesse Margarites
 //cannot make fonts static 
-final  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
-final  PFont LABEL_FONT = createFont("Helvetica Bold", 16);
-final  PFont SMALL_FONT = createFont("Helvetica", 13);
+
 class State{
     private String stateName;
     private ArrayList<Airport> listOfAirports;
@@ -19,7 +17,9 @@ class State{
         return stateName;
     }
     void addAirport(Airport airportX){
-        listOfAirports.add(airportX);
+        if(!listOfAirports.contains(airportX)){
+            listOfAirports.add(airportX);
+        }
         
     }
     Airport getAirport(String airportName){
@@ -46,20 +46,22 @@ class State{
     }
 
     void stateDraw(String stateName){
+        PFont TITLE_FONT = createFont("Helvetica Bold", 24);
+        PFont LABEL_FONT = createFont("Helvetica Bold", 16);
+        PFont SMALL_FONT = createFont("Helvetica", 13);
         //example
         int textXCoordinate = 20;
         int textYCoordinate = 20;
-        size(600, 600);// ?
         textFont(TITLE_FONT);
         text(stateName, textXCoordinate, textYCoordinate);
 
         textFont(LABEL_FONT);
-        textYCoordinate+=20;
+        textYCoordinate+=40;
         text("Airports: ", textXCoordinate, textYCoordinate);
 
         for (int counter=0; counter<listOfAirports.size(); counter++){
-            textYCoordinate+=10;
-            text((counter+1)+": "+ listOfAirports.get(counter), textXCoordinate, textYCoordinate);
+            textYCoordinate+=20;
+            text((counter+1)+": "+ listOfAirports.get(counter).getAirportName(), textXCoordinate, textYCoordinate);
 
         }
 

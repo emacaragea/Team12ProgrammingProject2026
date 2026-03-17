@@ -1,4 +1,4 @@
-//12PM, 17/03/26, Jesse Margarites
+//4PM, 17/03/26, Jesse Margarites
 class Airport{
     private String airportName;
     private int worldAreaCode;
@@ -7,6 +7,8 @@ class Airport{
     Airport(String airportName, int worldAreaCode){
         this.airportName = airportName;
         this.worldAreaCode = worldAreaCode;
+        this.flightsLeaving = new ArrayList<Flight>();
+        this.flightsIncoming = new ArrayList<Flight>();
     }
 
     void setAirportName(String airportName){
@@ -22,13 +24,18 @@ class Airport{
         return worldAreaCode;
     }
     void addFlightsLeaving(Flight flightX){
-        flightsLeaving.add(flightX); //CHECK WORKS
+        if(!flightsLeaving.contains((flightX))){
+            flightsLeaving.add(flightX); //CHECK WORKS
+        }
     }
     void addFlightsIncoming(Flight flightX){
-        flightsLeaving.add(flightX); //CHECK WORKS
+        if(!flightsIncoming.contains(flightX)){
+            flightsIncoming.add(flightX); //CHECK WORKS
+        }
     }
 
 
     
 }
+
 
