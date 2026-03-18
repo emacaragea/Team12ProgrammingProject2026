@@ -24,6 +24,14 @@ void setup() {
   planeCancelled = loadImage("cancelledAirplane.png");
   initAirports();
   initArcs();
+
+  final  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
+  final  PFont LABEL_FONT = createFont("Helvetica Bold", 16);
+  final  PFont SMALL_FONT = createFont("Helvetica", 13);
+
+  stateName = convertStateCodeToStateName("CO");
+  CO = new State(stateName);
+  readFileByState("CO", CO);
 }
 
 String convertStateCodeToStateName(String stateCode){
@@ -53,7 +61,7 @@ String convertStateCodeToStateName(String stateCode){
 }
 
 void readFileByState(String stateCode, State currentState){
-  String filePath = "/Users/jessm/Desktop/TetsingState/data/flights/dest_states/";
+  String filePath = "/Users/jessm/Desktop/TetsingState/data/flights/origin_states/";
   String fileEnding = ".csv";
   BufferedReader reader;
   try {

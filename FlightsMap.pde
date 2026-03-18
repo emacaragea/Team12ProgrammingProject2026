@@ -83,7 +83,7 @@ void initArcs() {
 
 void drawArcs() {
   for (int i = 0; i < arcs.length; i++) {
-    arcs[i].draw();
+    arcs[i].FlightArcDraw();
   }
 }
 
