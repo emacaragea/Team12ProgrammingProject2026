@@ -6,7 +6,9 @@ class Screen{
     private int screenType;
     private int lastScreenType;
     private ArrayList<Integer> screenHistory = new ArrayList<Integer>();
+    private ArrayList<State> stateList = new ArrayList<State>();
     private int screenHistoryIndex = 0;
+    private int currentStateIndex;
     final int HOME_SCREEN = 1;
     final int AIRPORT_SCREEN = 2;
     final int STATE_SCREEN = 3;
@@ -35,7 +37,7 @@ class Screen{
         return screenType;
     }
 
-    void screenDraw(){
+    void screenDraw(String name){
         fill(BACKGROUND_COLOR);
         drawHomeBar();
         switch(screenType){
@@ -46,7 +48,7 @@ class Screen{
             drawAirportScreen();
             break;
             case 3:
-            drawStateScreen();
+            drawStateScreen(name);
             break;
             case 4:
             drawFlightScreen();
@@ -81,7 +83,12 @@ class Screen{
 
     }
 
-    void drawStateScreen(){
+    void drawStateScreen(String name){
+        String stateName = convertStateCodeToStateName(name);
+        stateList.add(new State(stateName));
+        currentStateIndex = stateList.size()-1;
+        readFileByState(stateName, stateList.get(currentStateIndex));
+        
 
     }
 
