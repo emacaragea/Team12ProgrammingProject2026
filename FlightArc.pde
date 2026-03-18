@@ -2,8 +2,8 @@
 // Ema Caragea, code was written on 14/03/2026, more details on FlightMap.pde
 
 class FlightArc {
-  Airport origin;
-  Airport destination;
+  AirportCoordinates origin;
+  AirportCoordinates destination;
   String status;
 
   float t;

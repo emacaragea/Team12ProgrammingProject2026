@@ -20,7 +20,7 @@ final float MAP_RIGHT  =  -60.0;
 final float MAP_TOP    =   55.0;
 final float MAP_BOTTOM =   18.0;
 
-Airport[] airports;
+AirportCoordinates[] airports;
 
 void setup() {
   size(1400, 800);
@@ -55,22 +55,22 @@ void drawMap() {
 }
 
 void initAirports() {
-  airports = new Airport[] {
-    new Airport("ATL", "Atlanta",        31.64,  -81.43,  1),
-    new Airport("DFW", "Dallas",         30.90,  -94.04,  2),
-    new Airport("DEN", "Denver",         37.86, -101.67,  3),
-    new Airport("ORD", "Chicago",        39.97,  -84.90,  4),
-    new Airport("LAX", "Los Angeles",    31.94, -115.41,  5),
-    new Airport("CLT", "Charlotte",      33.21,  -77.94,  6),
-    new Airport("MCO", "Orlando",        26.43,  -78.31,  7),
-    new Airport("LAS", "Las Vegas",      34.08, -112.15,  8),
-    new Airport("PHX", "Phoenix",        31.43, -109.01,  9),
-    new Airport("MIA", "Miami",          23.79,  -77.29, 10),
-    new Airport("SEA", "Seattle",        45.45, -119.31, 11),
-    new Airport("IAH", "Houston",        27.99,  -92.34, 12),
-    new Airport("JFK", "New York",       38.64,  -70.78, 13),
-    new Airport("SFO", "San Francisco",  34.62, -119.38, 14),
-    new Airport("BOS", "Boston",         40.37,  -68.00, 15)
+  airports = new AirportCoordinates[] {
+    new AirportCoordinates("ATL", "Atlanta",        31.64,  -81.43,  1),
+    new AirportCoordinates("DFW", "Dallas",         30.90,  -94.04,  2),
+    new AirportCoordinates("DEN", "Denver",         37.86, -101.67,  3),
+    new AirportCoordinates("ORD", "Chicago",        39.97,  -84.90,  4),
+    new AirportCoordinates("LAX", "Los Angeles",    31.94, -115.41,  5),
+    new AirportCoordinates("CLT", "Charlotte",      33.21,  -77.94,  6),
+    new AirportCoordinates("MCO", "Orlando",        26.43,  -78.31,  7),
+    new AirportCoordinates("LAS", "Las Vegas",      34.08, -112.15,  8),
+    new AirportCoordinates("PHX", "Phoenix",        31.43, -109.01,  9),
+    new AirportCoordinates("MIA", "Miami",          23.79,  -77.29, 10),
+    new AirportCoordinates("SEA", "Seattle",        45.45, -119.31, 11),
+    new AirportCoordinates("IAH", "Houston",        27.99,  -92.34, 12),
+    new AirportCoordinates("JFK", "New York",       38.64,  -70.78, 13),
+    new AirportCoordinates("SFO", "San Francisco",  34.62, -119.38, 14),
+    new AirportCoordinates("BOS", "Boston",         40.37,  -68.00, 15)
   };
 }
 
@@ -99,7 +99,7 @@ void drawArcs() {
 }
 
 // finds an airport from the airports array by its code
-Airport findAirport(String code) {
+AirportCoordinates findAirport(String code) {
   for (int i = 0; i < airports.length; i++) {
     if (airports[i].code.equals(code)) {
       return airports[i];

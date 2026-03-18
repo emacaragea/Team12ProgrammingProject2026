@@ -1,25 +1,25 @@
 //Ema Caragea added airpors and their attributes 12- 13/ 03/ 2026
 //Ema Caragea created a separate file for Airport class 15/03/2026, 15:00
 
-//class Airport {
-//  String code;
-//  String city;
-//  float lat, lon;
-//  float x, y;
-//  boolean hovered;
-//  float dotSize;
-//  float currentSize;
+class AirportCoordinates {
+ String code;
+ String city;
+ float lat, lon;
+ float x, y;
+ boolean hovered;
+ float dotSize;
+ float currentSize;
 
-//  Airport(String code, String city, float lat, float lon, int rank) {
-//    this.code        = code;
-//    this.city        = city;
-//    this.lat         = lat;
-//    this.lon         = lon;
-//    this.x           = lonToX(lon);
-//    this.y           = latToY(lat);
-//    this.dotSize     = map(rank, 1, 15, 14, 7);
-//    this.currentSize = dotSize;
-//  }
+ AirportCoordinates(String code, String city, float lat, float lon, int rank) {
+   this.code        = code;
+   this.city        = city;
+   this.lat         = lat;
+   this.lon         = lon;
+   this.x           = lonToX(lon);
+   this.y           = latToY(lat);
+   this.dotSize     = map(rank, 1, 15, 14, 7);
+   this.currentSize = dotSize;
+ }
 
   void draw() {
     hovered = dist(mouseX, mouseY, x, y) < 15;
