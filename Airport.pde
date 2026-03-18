@@ -33,6 +33,12 @@ class Airport{
             flightsIncoming.add(flightX); //CHECK WORKS
         }
     }
+    int getNumberOfFlightsLeaving(){
+        return flightsLeaving.size()+1;
+    }
+    int getNumberOfFlightsIncoming(){
+        return flightsIncoming.size()+1;
+    }
     @Override
     public boolean equals(Object thisObject) {
       if (this == thisObject){
