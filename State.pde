@@ -54,9 +54,9 @@ class State{
     void setBarGraphValues(){
         graphTitle = "Flight per airport " + stateName;
         int barLabelsLength = listOfAirports.size();
-        String[] barLabels = new String[barLabelsLength];
-        int[] barValues = new int[barLabelsLength];
-        color[] barColors = new int[barLabelsLength];
+        barLabels = new String[barLabelsLength];
+        barValues = new int[barLabelsLength];
+        barColors = new int[barLabelsLength];
         for(int i = 0; i<listOfAirports.size(); i++){
             barLabels[i] = listOfAirports.get(i).getAirportName();
             barColors[i] = color(54, 110, 190);
