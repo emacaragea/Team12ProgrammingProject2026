@@ -83,11 +83,13 @@ class Screen{
 
     }
 
-    void drawStateScreen(String name){
-        String stateName = convertStateCodeToStateName(name);
-        stateList.add(new State(stateName));
+    void drawStateScreen(String code){
+        String stateName = convertStateCodeToStateName(code);
+        State thisState = new State(stateName);
+        stateList.add(thisState);
         currentStateIndex = stateList.size()-1;
-        readFileByState(stateName, stateList.get(currentStateIndex));
+        readFileByState(code, thisState);
+        thisState.stateDraw(stateName);
         
 
     }

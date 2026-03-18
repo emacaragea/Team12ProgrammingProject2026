@@ -125,6 +125,7 @@ String nextToken(Scanner sc) {
 
 
 void draw() {
-  CO.stateDraw(stateName);
+  Screen screen1 = new Screen(3);
+  screen1.drawStateScreen("CO");
   
 }
