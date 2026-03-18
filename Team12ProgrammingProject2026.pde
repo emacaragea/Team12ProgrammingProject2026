@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-final static int SCREEN_WIDTH = 500;
-final static int SCREEN_HEIGHT = 450;
+final static int SCREEN_WIDTH = 1400;
+final static int SCREEN_HEIGHT = 800;
 
 //change maybe
 State CO;
@@ -36,6 +36,7 @@ String convertStateCodeToStateName(String stateCode){
       currentLine = reader.readLine();
       Scanner lineScanner = new Scanner(currentLine).useDelimiter(","); 
       String currentCode = lineScanner.next();
+      
       if(currentCode.equals(stateCode)){
         //println(lineScanner.next());
         return lineScanner.next();
@@ -81,6 +82,7 @@ void readFileByState(String stateCode, State currentState){
       int cancelled = lineScan.nextInt();
       int diverted = lineScan.nextInt();
       double airportDistance = lineScan.nextDouble();
+      lineScan.close();
 
       Airport originAirport = new Airport(originCityName, originWorldAreaCode);
       Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode);

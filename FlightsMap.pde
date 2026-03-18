@@ -22,20 +22,9 @@ final float MAP_BOTTOM =   18.0;
 
 AirportCoordinates[] airports;
 
-void setup() {
-  size(1400, 800);
-  usMap          = loadImage("usmap.jpg");
-  fontRegular    = createFont("Arial", 12);
-  fontBold       = createFont("Arial Bold", 12);
-  textFont(fontRegular);
-  planeOnTime    = loadImage("onTimeAirplane.png");
-  planeDelayed   = loadImage("delayedAirplane.png");
-  planeCancelled = loadImage("cancelledAirplane.png");
-  initAirports();
-  initArcs();
-}
 
-void draw() {
+
+void flightMapDraw() {
   background(10, 15, 25);
 
   if (currentScreen == 0) {
