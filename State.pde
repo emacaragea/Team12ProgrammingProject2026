@@ -8,6 +8,7 @@ class State{
     private String[] barLabels;
     private int[] barValues;
     private color[] barColors;
+    Charts charts;
 
 
     State(String stateName){
@@ -57,9 +58,8 @@ class State{
         for(int i = 0; i<listOfAirports.size(); i++){
             barLabels[i] = listOfAirports.get(i).getAirportName();
             barColors[i] = color(54, 110, 190);
-            //barValues[i] = listOfAirports.get(i).getAirport
+            barValues[i] = listOfAirports.get(i).getNumberOfFlightsLeaving();
         }
-
     }
 
     void stateDraw(String stateName){
@@ -71,11 +71,11 @@ class State{
         int textYCoordinate = 20;
         textFont(TITLE_FONT);
         text(stateName, textXCoordinate, textYCoordinate);
-
+        setBarGraphValues();
         textFont(LABEL_FONT);
         textYCoordinate+=40;
         text("Airports: ", textXCoordinate, textYCoordinate);
-
+        charts.addBarChart(graphTitle, barLabels, barValues, 50, 50, 300, 200, barColors, true);
         for (int counter=0; counter<listOfAirports.size(); counter++){
             textYCoordinate+=20;
             text((counter+1)+": "+ listOfAirports.get(counter).getAirportName(), textXCoordinate, textYCoordinate);
