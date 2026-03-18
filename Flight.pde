@@ -1,3 +1,4 @@
+import java.util.Comparator; //Amanda de moraes, 18/03/26, Comparator interface
 // 4PM, 17/03/26, Jesse Margarites
 class Flight{
     //fileds may be empty
@@ -95,6 +96,22 @@ class Flight{
     public void setAirportDistanceInMiles(double airportDistanceInMiles) {
         this.airportDistanceInMiles = airportDistanceInMiles;
     }
+    //Amanda de moraes, 18/3, 1:09
+    //comparators for the sorting table and helper methods for the format method
+     //comparators
+
+    // comparator to sort flights by flight number (ascending)
+    Comparator<Flight> sortByFlightNum = new Comparator<Flight>() {
+        public int compare(Flight a, Flight b) {
+            return Integer.compare(a.flightNumber, b.flightNumber);
+        }
+    };
+    //comparator to sort flights by distance (ascending)
+    Comparator<Flight> sortByDistance = new Comparator<Flight>() {
+        public int compare(Flight a, Flight b) {
+            return Double.compare(a.airportDistanceInMiles, b.airportDistanceInMiles);
+        }
+    };
     
     
 }
