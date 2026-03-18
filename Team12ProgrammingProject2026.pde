@@ -7,9 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 final  static int SCREEN_WIDTH = 1400;
 final  static int SCREEN_HEIGHT = 800;
-final  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
-final  PFont LABEL_FONT = createFont("Helvetica Bold", 16);
-final  PFont SMALL_FONT = createFont("Helvetica", 13);
+
 //change maybe
 State CO;
 String stateName;
@@ -26,6 +24,10 @@ void setup() {
   planeCancelled = loadImage("cancelledAirplane.png");
   initAirports();
   initArcs();
+
+  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
+ PFont LABEL_FONT = createFont("Helvetica Bold", 16);
+ PFont SMALL_FONT = createFont("Helvetica", 13);
 
   stateName = convertStateCodeToStateName("CO");
   CO = new State(stateName);
