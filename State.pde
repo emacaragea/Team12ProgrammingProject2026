@@ -54,9 +54,9 @@ class State{
     void setBarGraphValues(){
         graphTitle = "Flight per airport " + stateName;
         int barLabelsLength = listOfAirports.size();
-        barLabels = new String[barLabelsLength];
-        barValues = new int[barLabelsLength];
-        barColors = new int[barLabelsLength];
+        String[] barLabels = new String[barLabelsLength];
+        int[] barValues = new int[barLabelsLength];
+        color[] barColors = new int[barLabelsLength];
         for(int i = 0; i<listOfAirports.size(); i++){
             barLabels[i] = listOfAirports.get(i).getAirportName();
             barColors[i] = color(54, 110, 190);
@@ -74,7 +74,7 @@ class State{
         int textYCoordinate = 20;
         textFont(TITLE_FONT);
         text(stateName, textXCoordinate, textYCoordinate);
-        setBarGraphValues();
+        this.setBarGraphValues();
         textFont(LABEL_FONT);
         textYCoordinate+=40;
         text("Airports: ", textXCoordinate, textYCoordinate);
