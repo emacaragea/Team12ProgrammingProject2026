@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-final static int SCREEN_WIDTH = 500;
-final static int SCREEN_HEIGHT = 450;
+final static float SCREEN_WIDTH = 500;
+final static float SCREEN_HEIGHT = 450;
 
 //change maybe
 State CO;
@@ -14,7 +14,7 @@ String stateName;
 
 
 void setup() {
-  size(900, 900);
+  size(SCREEN_WIDTH, SCREEN_HEIGHT);
   final  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
   final  PFont LABEL_FONT = createFont("Helvetica Bold", 16);
   final  PFont SMALL_FONT = createFont("Helvetica", 13);
