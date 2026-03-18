@@ -78,13 +78,12 @@ class State{
         textFont(LABEL_FONT);
         textYCoordinate+=40;
         text("Airports: ", textXCoordinate, textYCoordinate);
-        charts.addBarChart(graphTitle, barLabels, barValues, 50, 50, 300, 200, barColors, true);
         for (int counter=0; counter<listOfAirports.size(); counter++){
             textYCoordinate+=20;
             text((counter+1)+": "+ listOfAirports.get(counter).getAirportName(), textXCoordinate, textYCoordinate);
 
         }
-
+        charts.addBarChart(graphTitle, barLabels, barValues, 50, 50, 300, 200, barColors, true);
 
     }
 
