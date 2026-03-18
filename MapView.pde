@@ -1,4 +1,4 @@
-// Ema Caragea, MapView class handles zoom and pan, 18/03/2026, 15:00
+// Ema Caragea, MapView class handles zoom and pan, 18/03/2026
 
 class MapView {
   float zoom;
@@ -48,22 +48,13 @@ class MapView {
 
   void handleZoom(float count) {
     float zoomFactor = -count * 0.1;
-    float newZoom    = zoom + zoomFactor;
-
-    if (newZoom < 1.0) {
-      newZoom = 1.0;
-    }
-    if (newZoom > 6.0) {
-      newZoom = 6.0;
-    }
-
-    float zoomRatio = newZoom / zoom;
+    float newZoom    = constrain(zoom + zoomFactor, 1.0, 6.0);
+    float zoomRatio  = newZoom / zoom;
     offsetX = mouseX - zoomRatio * (mouseX - offsetX);
     offsetY = mouseY - zoomRatio * (mouseY - offsetY);
     zoom    = newZoom;
   }
 
-  // converts screen mouse position to map position accounting for zoom
   float mapMouseX() {
     return (mouseX - offsetX) / zoom;
   }

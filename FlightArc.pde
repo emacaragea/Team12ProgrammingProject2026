@@ -1,31 +1,33 @@
 //Ema Caragea, moved FlightArc class to a separate file, 15/03/2026, 15:00
 // Ema Caragea, code was written on 14/03/2026, more details on FlightMap.pde
 
+// Ema Caragea, moved FlightArc class to a separate file, 15/03/2026
+// Ema Caragea, refactored to hold screen reference, 18/03/2026
+
 class FlightArc {
+  FlightMapScreen    screen;
   AirportCoordinates origin;
   AirportCoordinates destination;
-  String status;
+  String             status;
 
   float t;
   float speed;
-
-  float cx1, cy1;
-  float cx2, cy2;
-
-  float midX, midY;       // midpoint of the arc for hover detection
+  float cx1, cy1, cx2, cy2;
+  float midX, midY;
 
   PImage planeImg;
-  int planeSize = 28;
+  int    planeSize = 28;
 
   boolean hovered;
-  float currentWeight;    // animates smoothly between thin and thick
-  float currentAlpha;     // animates smoothly between dim and bright
+  float   currentWeight;
+  float   currentAlpha;
 
-  FlightArc(String originCode, String destCode, String status) {
-    this.origin      = findAirport(originCode);
-    this.destination = findAirport(destCode);
+  FlightArc(FlightMapScreen screen, String originCode, String destCode, String status) {
+    this.screen      = screen;
+    this.origin      = screen.findAirport(originCode);
+    this.destination = screen.findAirport(destCode);
     this.status      = status;
-    this.t           = 0.5;   // start at midpoint when not animating
+    this.t           = 0.5;
     this.speed       = random(0.0015, 0.003);
     this.hovered     = false;
     this.currentWeight = 1.5;
@@ -46,76 +48,54 @@ class FlightArc {
     cx2 = destination.x + (mx - destination.x) * 0.5 + perpX * lift;
     cy2 = destination.y + (my - destination.y) * 0.5 + perpY * lift;
 
-    // midpoint of the bezier curve for hover detection
     midX = bezierPoint(origin.x, cx1, cx2, destination.x, 0.5);
     midY = bezierPoint(origin.y, cy1, cy2, destination.y, 0.5);
 
-    if (status.equals("onTime")) {
-      planeImg = planeOnTime;
-    } else if (status.equals("delayed")) {
-      planeImg = planeDelayed;
-    } else {
-      planeImg = planeCancelled;
+    if      (status.equals("onTime"))  planeImg = screen.planeOnTime;
+    else if (status.equals("delayed")) planeImg = screen.planeDelayed;
+    else                               planeImg = screen.planeCancelled;
+  }
+
+  void draw() {
+    hovered = false;
+    for (int i = 0; i <= 20; i++) {
+      float sample = i / 20.0;
+      float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
+      float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
+      if (dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), sx, sy) < 20) {
+        hovered = true;
+      }
     }
+
+    float targetAlpha = hovered ? 220 : 50;
+    currentWeight += (3.5 - currentWeight) * 0.1;
+    currentAlpha  += (targetAlpha - currentAlpha) * 0.1;
+
+    drawArcLine();
+    drawPlane();
+
+    t += speed;
+    if (t > 1.0) t = 0.0;
   }
 
- void FlightArcDraw() {
-  // check mouse distance against multiple points along the arc so that it recognises the hover all along the route
-  hovered = false;
-  for (int i = 0; i <= 20; i++) {
-    float sample = i / 20.0;
-    float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
-    float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
-    if (dist(mapView.mapMouseX(), mapView.mapMouseY(), sx, sy) < 20) {
-      hovered = true;
+  boolean isClicked() {
+    for (int i = 0; i <= 20; i++) {
+      float sample = i / 20.0;
+      float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
+      float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
+      if (dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), sx, sy) < 20) {
+        return true;
+      }
     }
+    return false;
   }
-
-  float targetWeight;
-  float targetAlpha;
-  if (hovered) {
-    targetWeight = 3.5;
-    targetAlpha  = 220;
-  } else {
-    targetWeight = 3.5;
-    targetAlpha  = 50;
-  }
-  currentWeight += (targetWeight - currentWeight) * 0.1;
-  currentAlpha  += (targetAlpha  - currentAlpha)  * 0.1;
-
-  drawArcLine();
-  drawPlane();
-
-  t += speed;
-  if (t > 1.0) {
-    t = 0.0;
-  }
-}
-
-boolean isClicked() {
-  for (int i = 0; i <= 20; i++) {
-    float sample = i / 20.0;
-    float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
-    float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
-    if (dist(mapView.mapMouseX(), mapView.mapMouseY(), sx, sy) < 20) {
-      return true;
-    }
-  }
-  return false;
-}
 
   void drawArcLine() {
     noFill();
     strokeWeight(currentWeight);
-
-    if (status.equals("onTime")) {
-      stroke(0, 210, 100, currentAlpha);
-    } else if (status.equals("delayed")) {
-      stroke(255, 200, 0, currentAlpha);
-    } else {
-      stroke(255, 60, 60, currentAlpha);
-    }
-
+    if      (status.equals("onTime"))  stroke(0,   210, 100, currentAlpha);
+    else if (status.equals("delayed")) stroke(255, 200, 0,   currentAlpha);
+    else                               stroke(255, 60,  60,  currentAlpha);
     bezier(origin.x, origin.y, cx1, cy1, cx2, cy2, destination.x, destination.y);
   }
 
@@ -123,27 +103,17 @@ boolean isClicked() {
     float x = bezierPoint(origin.x, cx1, cx2, destination.x, t);
     float y = bezierPoint(origin.y, cy1, cy2, destination.y, t);
 
-    float tAhead = t + 0.01;
-    if (tAhead > 1.0) {
-      tAhead = 1.0;
-    }
+    float tAhead = min(t + 0.01, 1.0);
     float xAhead = bezierPoint(origin.x, cx1, cx2, destination.x, tAhead);
     float yAhead = bezierPoint(origin.y, cy1, cy2, destination.y, tAhead);
+    float angle  = atan2(yAhead - y, xAhead - x);
 
-    float angle = atan2(yAhead - y, xAhead - x);
-
-    // make plane slightly bigger on hover
-  float drawSize;
-if (hovered) {
-  drawSize = planeSize * 1.4;
-} else {
-  drawSize = planeSize * 1.0;  
-}
+    float drawSize = hovered ? planeSize * 1.4 : planeSize;
 
     blendMode(SCREEN);
     pushMatrix();
     translate(x, y);
-    rotate(angle);   
+    rotate(angle);
     imageMode(CENTER);
     image(planeImg, 0, 0, drawSize, drawSize);
     popMatrix();

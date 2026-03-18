@@ -8,6 +8,8 @@ import java.io.IOException;
 final  static int SCREEN_WIDTH = 1400;
 final  static int SCREEN_HEIGHT = 800;
 
+FlightMapScreen flightMap;
+
 //change maybe
 State CO;
 String stateName;
@@ -15,16 +17,11 @@ String stateName;
 
 void setup() {
   size(1400, 800);
-  usMap          = loadImage("usmap.jpg");
-  fontRegular    = createFont("Arial", 12);
-  fontBold       = createFont("Arial Bold", 12);
-  textFont(fontRegular);
-  planeOnTime    = loadImage("onTimeAirplane.png");
-  planeDelayed   = loadImage("delayedAirplane.png");
-  planeCancelled = loadImage("cancelledAirplane.png");
-  mapView = new MapView();
-  initAirports();
-  initArcs();
+
+  //Map setup 
+  flightMap = new FlightMapScreen();
+  flightMap.setup();
+
 
   PFont TITLE_FONT = createFont("Helvetica Bold", 24);
  PFont LABEL_FONT = createFont("Helvetica Bold", 16);
@@ -125,9 +122,17 @@ String nextToken(Scanner sc) {
 
 
 void draw() {
+
+  flightMap.draw();
+
   Screen screen1 = new Screen(3);
   screen1.drawStateScreen("CO");
   
   
   //flightMapDraw();
 }
+
+void mousePressed()               { flightMap.mousePressed(); }
+void mouseDragged()               { flightMap.mouseDragged(); }
+void mouseReleased()              { flightMap.mouseReleased(); }
+void mouseWheel(MouseEvent event) { flightMap.mouseWheel(event); }
