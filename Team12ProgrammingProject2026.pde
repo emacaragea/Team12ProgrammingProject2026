@@ -22,6 +22,7 @@ void setup() {
   planeOnTime    = loadImage("onTimeAirplane.png");
   planeDelayed   = loadImage("delayedAirplane.png");
   planeCancelled = loadImage("cancelledAirplane.png");
+  mapView = new MapView();
   initAirports();
   initArcs();
 
