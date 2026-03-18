@@ -22,7 +22,7 @@ class AirportCoordinates {
  }
 
   void draw() {
-    hovered = dist(mouseX, mouseY, x, y) < 15;
+    hovered = dist(mapView.mapMouseX(), mapView.mapMouseY(), x, y) < 15;
 
     float targetSize;
     if (hovered) {

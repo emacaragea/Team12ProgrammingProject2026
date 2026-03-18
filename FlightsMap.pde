@@ -21,6 +21,7 @@ final float MAP_TOP    =   55.0;
 final float MAP_BOTTOM =   18.0;
 
 AirportCoordinates[] airports;
+MapView mapView;
 
 void setup() {
   size(1400, 800);
@@ -31,6 +32,7 @@ void setup() {
   planeOnTime    = loadImage("onTimeAirplane.png");
   planeDelayed   = loadImage("delayedAirplane.png");
   planeCancelled = loadImage("cancelledAirplane.png");
+  mapView = new MapView();
   initAirports();
   initArcs();
 }
@@ -39,11 +41,13 @@ void draw() {
   background(10, 15, 25);
 
   if (currentScreen == 0) {
-    drawMap();
-    drawArcs();
-    drawAirports();
+    mapView.begin();
+      drawMap();
+      drawArcs();
+      drawAirports();
+    mapView.end();
   } else if (currentScreen == 1) {
-    drawRoutePage();  //link to flight details page
+    drawRoutePage();
   }
 }
 
@@ -109,18 +113,31 @@ AirportCoordinates findAirport(String code) {
 }
 
 void mousePressed() {
-  for (int i = 0; i < arcs.length; i++) {
-    if (arcs[i].isClicked()) {
-      selectedArc = arcs[i];   // save which arc was clicked, so that later on the Flights page it knows what to show
-      currentScreen = 1;
-      return;
-    }
-  }
-
   if (currentScreen == 0) {
-    float lon = map(mouseX, 0, width, MAP_LEFT, MAP_RIGHT);
-    float lat = map(mouseY, 0, height, MAP_TOP, MAP_BOTTOM);
-    println("lon: " + lon + "  lat: " + lat);
+    for (int i = 0; i < arcs.length; i++) {
+      if (arcs[i].isClicked()) {
+        selectedArc   = arcs[i];
+        currentScreen = 1;
+        return;
+      }
+    }
+    mapView.startDrag();
+  }
+}
+
+void mouseDragged() {
+  if (currentScreen == 0) {
+    mapView.updateDrag();
+  }
+}
+
+void mouseReleased() {
+  mapView.stopDrag();
+}
+
+void mouseWheel(MouseEvent event) {
+  if (currentScreen == 0) {
+    mapView.handleZoom(event.getCount());
   }
 }
 

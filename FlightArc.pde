@@ -66,7 +66,7 @@ class FlightArc {
     float sample = i / 20.0;
     float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
     float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
-    if (dist(mouseX, mouseY, sx, sy) < 20) {
+    if (dist(mapView.mapMouseX(), mapView.mapMouseY(), sx, sy) < 20) {
       hovered = true;
     }
   }
@@ -97,7 +97,7 @@ boolean isClicked() {
     float sample = i / 20.0;
     float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
     float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
-    if (dist(mouseX, mouseY, sx, sy) < 20) {
+    if (dist(mapView.mapMouseX(), mapView.mapMouseY(), sx, sy) < 20) {
       return true;
     }
   }
