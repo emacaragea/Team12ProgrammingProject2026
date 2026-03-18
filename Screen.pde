@@ -91,8 +91,6 @@ class Screen{
         currentStateIndex = stateList.size()-1;
         readFileByState(code, thisState);
         thisState.stateDraw(stateName);
-        
-
     }
 
     void drawFlightScreen(){

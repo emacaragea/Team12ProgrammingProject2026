@@ -4,6 +4,10 @@
 class State{
     private String stateName;
     private ArrayList<Airport> listOfAirports;
+    private String graphTitle;
+    private String[] barLabels;
+    private int[] barValues;
+    private color[] barColors;
 
 
     State(String stateName){
@@ -43,6 +47,19 @@ class State{
     
     ArrayList<Airport> getAirportList(){
         return listOfAirports;
+    }
+
+    void setBarGraphValues(){
+        graphTitle = "Flight per airport " + stateName;
+        String[] barLabels = new String[listOfAirports.size()];
+        int[] barValues = new int[listOfAirports.size()];
+        color[] barColors = new int[listOfAirports.size()];
+        for(int i = 0; i<listOfAirports.size(); i++){
+            barLabels[i] = listOfAirports.get(i).getAirportName();
+            barColors[i] = color(54, 110, 190);
+            //barValues[i] = listOfAirports.get(i).getAirport
+        }
+
     }
 
     void stateDraw(String stateName){
