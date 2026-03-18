@@ -128,4 +128,5 @@ void draw() {
   Screen screen1 = new Screen(3);
   screen1.drawStateScreen("CO");
   
+  flightMapDraw();
 }
