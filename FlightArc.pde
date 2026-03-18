@@ -59,7 +59,7 @@ class FlightArc {
     }
   }
 
- void draw() {
+ void FlightArcDraw() {
   // check mouse distance against multiple points along the arc so that it recognises the hover all along the route
   hovered = false;
   for (int i = 0; i <= 20; i++) {

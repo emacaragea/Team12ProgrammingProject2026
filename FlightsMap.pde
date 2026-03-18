@@ -23,21 +23,9 @@ final float MAP_BOTTOM =   18.0;
 AirportCoordinates[] airports;
 MapView mapView;
 
-void setup() {
-  size(1400, 800);
-  usMap          = loadImage("usmap.jpg");
-  fontRegular    = createFont("Arial", 12);
-  fontBold       = createFont("Arial Bold", 12);
-  textFont(fontRegular);
-  planeOnTime    = loadImage("onTimeAirplane.png");
-  planeDelayed   = loadImage("delayedAirplane.png");
-  planeCancelled = loadImage("cancelledAirplane.png");
-  mapView = new MapView();
-  initAirports();
-  initArcs();
-}
 
-void draw() {
+
+void flightMapDraw() {
   background(10, 15, 25);
 
   if (currentScreen == 0) {
@@ -98,7 +86,7 @@ void initArcs() {
 
 void drawArcs() {
   for (int i = 0; i < arcs.length; i++) {
-    arcs[i].draw();
+    arcs[i].FlightArcDraw();
   }
 }
 

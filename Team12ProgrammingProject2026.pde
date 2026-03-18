@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-final static int SCREEN_WIDTH = 500;
-final static int SCREEN_HEIGHT = 450;
+final  static int SCREEN_WIDTH = 1400;
+final  static int SCREEN_HEIGHT = 800;
 
 //change maybe
 State CO;
@@ -24,6 +24,14 @@ void setup() {
   planeCancelled = loadImage("cancelledAirplane.png");
   initAirports();
   initArcs();
+
+  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
+ PFont LABEL_FONT = createFont("Helvetica Bold", 16);
+ PFont SMALL_FONT = createFont("Helvetica", 13);
+
+  stateName = convertStateCodeToStateName("CO");
+  CO = new State(stateName);
+  readFileByState("CO", CO);
 }
 
 String convertStateCodeToStateName(String stateCode){
@@ -36,6 +44,7 @@ String convertStateCodeToStateName(String stateCode){
       currentLine = reader.readLine();
       Scanner lineScanner = new Scanner(currentLine).useDelimiter(","); 
       String currentCode = lineScanner.next();
+      
       if(currentCode.equals(stateCode)){
         //println(lineScanner.next());
         return lineScanner.next();
@@ -52,7 +61,7 @@ String convertStateCodeToStateName(String stateCode){
 }
 
 void readFileByState(String stateCode, State currentState){
-  String filePath = "/Users/jessm/Desktop/TetsingState/data/flights/dest_states/";
+  String filePath = "/Users/jessm/Desktop/TetsingState/data/flights/origin_states/";
   String fileEnding = ".csv";
   BufferedReader reader;
   try {
@@ -81,6 +90,7 @@ void readFileByState(String stateCode, State currentState){
       int cancelled = lineScan.nextInt();
       int diverted = lineScan.nextInt();
       double airportDistance = lineScan.nextDouble();
+      lineScan.close();
 
       Airport originAirport = new Airport(originCityName, originWorldAreaCode);
       Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode);

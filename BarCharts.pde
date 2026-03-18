@@ -11,6 +11,11 @@
 //              Added axes and scale markings 
 //              Implemented a hover effect over bars with tooltip
 
+// Orla Kealy 18:00 PM 15/03/2026
+// Description: Added data filter option to charts
+//              Improved safe handling of changing data size
+//              Fixed bug where labels overlapped
+
 class BarChart
 {
   String[] labels;
@@ -25,6 +30,42 @@ class BarChart
 
   BarChart(String title, String[] labels, int[] values, float x, float y, float w, float h, color[] barColors)
   {
+    this.title = title;
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    
+    setData(labels, values, barColors);
+  }
+  
+  void setData(String[] labels, int[] values, color[] barColors)
+  {
+    boolean dataChanged = false;
+    
+    // Detect if data changed - from filters
+    if (this.labels == null || this.labels.length != labels.length)
+    {
+      dataChanged = true;
+    }
+    else
+    {
+      for (int i = 0; i < labels.length; i++)
+      {
+        if (!labels[i].equals(this.labels[i]) || values[i] != this.values[i])
+        {
+          dataChanged = true;
+          break;
+        }
+      }
+    }
+    
+    // If nothing changed, don't reset
+    if (!dataChanged)
+    {
+      return;
+    }
+    
     // Checks data lengths - removes chart if not equal
     if (labels.length != values.length)
     {
@@ -38,7 +79,6 @@ class BarChart
     {
       this.labels = labels;
       this.values = values;
-      this.title = title;
       
       // Initialise hover scale for each bar
       hoverScale = new float[labels.length];
@@ -61,12 +101,9 @@ class BarChart
           this.barColors[i] = color(54, 110, 190);
         }
       }
+      
+      animationProgress = 0;
     }
-
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
   }
   
   void resetAnimation()
@@ -163,18 +200,34 @@ class BarChart
         fill(barColor);                               // bar colour
         noStroke();
         rect(scaledX, scaledY, scaledWidth, scaledHeight);  // draw bar
-
-        // Draw labels
-        fill(0);                                              // label colour
-        textAlign(CENTER);
-        text(labels[i], barX + actualBarWidth / 2, y + h + 15);   // draw label
         
         // Hover detection
-        if (mouseX > barX && mouseX < barX + actualBarWidth &&
-            mouseY > barY && mouseY < barY + barHeight)
+        if (mouseX > scaledX && mouseX < scaledX + scaledWidth &&
+                  mouseY > scaledY && mouseY < scaledY + scaledHeight)
         {
           hoverLabel = labels[i];
           hoverValue = values[i];
+        }
+      }
+      
+      // Draw labels
+      fill(0);
+      textAlign(CENTER);
+      textSize(11);
+
+      int labelStep = max(1, labels.length / 15);  // aim for ~15 visible labels
+
+      for (int j = 0; j < labels.length; j++)
+      {
+        if (j % labelStep == 0)
+        {
+          float labelX = x + j * barWidth + barWidth / 2;
+    
+          pushMatrix();
+          translate(labelX, y + h + 15);
+          rotate(-PI/4);   // rotate slightly to avoid overlap
+          text(labels[j], 0, 0);
+          popMatrix();
         }
       }
       
