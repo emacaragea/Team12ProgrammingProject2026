@@ -11,6 +11,7 @@ class State{
     Charts charts;
 
 
+
     State(String stateName){
         this.stateName = stateName;
         this.listOfAirports = new ArrayList<Airport>(); //Since every state has an airport
@@ -52,9 +53,10 @@ class State{
 
     void setBarGraphValues(){
         graphTitle = "Flight per airport " + stateName;
-        String[] barLabels = new String[listOfAirports.size()];
-        int[] barValues = new int[listOfAirports.size()];
-        color[] barColors = new int[listOfAirports.size()];
+        int barLabelsLength = listOfAirports.size();
+        String[] barLabels = new String[barLabelsLength];
+        int[] barValues = new int[barLabelsLength];
+        color[] barColors = new int[barLabelsLength];
         for(int i = 0; i<listOfAirports.size(); i++){
             barLabels[i] = listOfAirports.get(i).getAirportName();
             barColors[i] = color(54, 110, 190);
@@ -63,6 +65,7 @@ class State{
     }
 
     void stateDraw(String stateName){
+        charts = new Charts();
         PFont TITLE_FONT = createFont("Helvetica Bold", 24);
         PFont LABEL_FONT = createFont("Helvetica Bold", 16);
         PFont SMALL_FONT = createFont("Helvetica", 13);
