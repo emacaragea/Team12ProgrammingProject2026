@@ -14,8 +14,10 @@ class Screen{
     final int STATE_SCREEN = 3;
     final int FLIGHT_SCREEN = 4;
     final int LOADING_SCREEN = 5;
-    final int ARROW_X = 15;
-    final int ARROW_Y = 20;
+    final int BACK_ARROW_X = 15;
+    final int BACK_ARROW_Y = 20;
+    final int FORWARD_ARROW_X = 85;
+    final int FORWARD_ARROW_Y = 20;
     final int ARROW_HEIGHT = 6;
     final int ARROW_LENGTH = 20;
     final int HOME_BUTTON_X = 50;
@@ -67,12 +69,20 @@ class Screen{
         strokeWeight(2);
         noFill();
 
-        line(ARROW_X, ARROW_Y, ARROW_X+ARROW_LENGTH, ARROW_Y);
+        line(BACK_ARROW_X, BACK_ARROW_Y, BACK_ARROW_X+ARROW_LENGTH, BACK_ARROW_Y);
 
-        line(ARROW_X, ARROW_Y, ARROW_X+ARROW_HEIGHT, ARROW_Y-ARROW_HEIGHT);
-        line(ARROW_X, ARROW_Y, ARROW_X+ARROW_HEIGHT, ARROW_Y+ARROW_HEIGHT);
+        line(BACK_ARROW_X, BACK_ARROW_Y, BACK_ARROW_X+ARROW_HEIGHT, BACK_ARROW_Y-ARROW_HEIGHT);
+        line(BACK_ARROW_X, BACK_ARROW_Y, BACK_ARROW_X+ARROW_HEIGHT, BACK_ARROW_Y+ARROW_HEIGHT);
         //drawHomeButton
         rect(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_SIZE, HOME_BUTTON_SIZE);
+
+        //draw forward arrow
+        line(FORWARD_ARROW_X, FORWARD_ARROW_Y, FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y);
+        line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
+            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y - ARROW_HEIGHT);
+
+        line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
+            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);
     }
 
     void drawHomeScreen(){
@@ -109,9 +119,17 @@ class Screen{
     }
 
     void goBack(int mX, int mY){
-        if(mX > ARROW_X && mX < ARROW_X + ARROW_LENGTH && 
-            mY > ARROW_Y && mY < ARROW_Y + ARROW_HEIGHT){
+        if(mX > BACK_ARROW_X && mX < BACK_ARROW_X + ARROW_LENGTH && 
+            mY > BACK_ARROW_Y && mY < BACK_ARROW_Y + ARROW_HEIGHT){
                 screenHistoryIndex--;
+                setScreenType(screenHistory.get(screenHistoryIndex));
+        }
+    }
+
+    void goForward(int mX, int mY){
+        if(mX > FORWARD_ARROW_X && mX < FORWARD_ARROW_X + ARROW_LENGTH && 
+            mY > FORWARD_ARROW_Y && mY < FORWARD_ARROW_Y + ARROW_HEIGHT){
+                screenHistoryIndex++;
                 setScreenType(screenHistory.get(screenHistoryIndex));
         }
     }

@@ -52,6 +52,7 @@ class State{
     }
 
     void setBarGraphValues(){
+        //12:00 PM, 18/03/2026, Niko write set bar graph values
         graphTitle = "Flight per airport " + stateName;
         int barLabelsLength = listOfAirports.size();
         barLabels = new String[barLabelsLength];
@@ -83,7 +84,7 @@ class State{
             text((counter+1)+": "+ listOfAirports.get(counter).getAirportName(), textXCoordinate, textYCoordinate);
 
         }
-        charts.addBarChart(graphTitle, barLabels, barValues, 50, 50, 300, 200, barColors, true);
+        charts.addBarChart(graphTitle, barLabels, barValues, 50, 200, 300, 200, barColors, true);
         charts.draw();
         
 
