@@ -1,8 +1,12 @@
 //niko 10:00 AM 12/03/26 create and outline screen class
 //niko 10:30 AM 12/03/26 write screenDraw and drawHomeBar
+//niko 12:00 PM 18/03/26 code home bar button functions
+import java.util.ArrayList;
 class Screen{
-    int screentype;
-
+    private int screenType;
+    private int lastScreenType;
+    private ArrayList<Integer> screenHistory = new ArrayList<Integer>();
+    private int screenHistoryIndex = 0;
     final int HOME_SCREEN = 1;
     final int AIRPORT_SCREEN = 2;
     final int STATE_SCREEN = 3;
@@ -10,13 +14,20 @@ class Screen{
     final int LOADING_SCREEN = 5;
     final int ARROW_X = 15;
     final int ARROW_Y = 20;
+    final int ARROW_HEIGHT = 6;
+    final int ARROW_LENGTH = 20;
+    final int HOME_BUTTON_X = 50;
+    final int HOME_BUTTON_Y = 10;
+    final int HOME_BUTTON_SIZE = 20;
     final color BACKGROUND_COLOR = (0);
 
     Screen(int type){
-        screentype = type;
+        screenType = type;
     }
 
     void setScreenType(int type){
+        screenHistory.add(type);
+        screenHistoryIndex++;
         screenType = type;
     }
 
@@ -27,7 +38,7 @@ class Screen{
     void screenDraw(){
         fill(BACKGROUND_COLOR);
         drawHomeBar();
-        switch(screentype){
+        switch(screenType){
             case 1:
             drawHomeScreen();
             break;
@@ -48,18 +59,18 @@ class Screen{
 
     void drawHomeBar(){
         fill(200);
-        rect(0, 0, 400, 40);
+        rect(0, 0, 1400, 40);
         //draw backArrow
         stroke(255);
         strokeWeight(2);
         noFill();
 
-        line(ARROW_X, ARROW_Y, ARROW_X+20, ARROW_Y);
+        line(ARROW_X, ARROW_Y, ARROW_X+ARROW_LENGTH, ARROW_Y);
 
-        line(ARROW_X, ARROW_Y, ARROW_X+6, ARROW_y-6);
-        line(ARROW_X, ARROW_Y, ARROW_X+6, ARROW_Y+6);
+        line(ARROW_X, ARROW_Y, ARROW_X+ARROW_HEIGHT, ARROW_Y-ARROW_HEIGHT);
+        line(ARROW_X, ARROW_Y, ARROW_X+ARROW_HEIGHT, ARROW_Y+ARROW_HEIGHT);
         //drawHomeButton
-
+        rect(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_SIZE, HOME_BUTTON_SIZE);
     }
 
     void drawHomeScreen(){
@@ -80,5 +91,20 @@ class Screen{
 
     void drawLoadScreen(){
 
+    }
+
+    void goHome(int mX, int mY){
+        if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 
+            mY > HOME_BUTTON_Y && mY < HOME_BUTTON_Y + HOME_BUTTON_SIZE){
+                setScreenType(1);
+        }
+    }
+
+    void goBack(int mX, int mY){
+        if(mX > ARROW_X && mX < ARROW_X + ARROW_LENGTH && 
+            mY > ARROW_Y && mY < ARROW_Y + ARROW_HEIGHT){
+                screenHistoryIndex--;
+                setScreenType(screenHistory.get(screenHistoryIndex));
+        }
     }
 }
