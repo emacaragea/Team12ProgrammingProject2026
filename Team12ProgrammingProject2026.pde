@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-final static float SCREEN_WIDTH = 500;
-final static float SCREEN_HEIGHT = 450;
+final static int SCREEN_WIDTH = 500;
+final static int SCREEN_HEIGHT = 450;
 
 //change maybe
 State CO;
@@ -14,17 +14,18 @@ String stateName;
 
 
 void setup() {
-  size(SCREEN_WIDTH, SCREEN_HEIGHT);
-  final  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
-  final  PFont LABEL_FONT = createFont("Helvetica Bold", 16);
-  final  PFont SMALL_FONT = createFont("Helvetica", 13);
- 
-
-  stateName = convertStateCodeToStateName("CO");
-  CO = new State(stateName);
-  readFileByState("CO", CO);
-
+  size(1400, 800);
+  usMap          = loadImage("usmap.jpg");
+  fontRegular    = createFont("Arial", 12);
+  fontBold       = createFont("Arial Bold", 12);
+  textFont(fontRegular);
+  planeOnTime    = loadImage("onTimeAirplane.png");
+  planeDelayed   = loadImage("delayedAirplane.png");
+  planeCancelled = loadImage("cancelledAirplane.png");
+  initAirports();
+  initArcs();
 }
+
 String convertStateCodeToStateName(String stateCode){
   String filePath = "/Users/jessm/Desktop/TetsingState/data/StateNameAndCode.csv";
   BufferedReader reader;
