@@ -33,7 +33,7 @@ void setup() {
 }
 
 String convertStateCodeToStateName(String stateCode){
-  String filePath = "/Users/jessm/Desktop/TetsingState/data/StateNameAndCode.csv";
+  String filePath = "data/StateNameAndCode.csv";
   BufferedReader reader;
   try {
     reader = new BufferedReader(new FileReader(sketchPath(filePath)));  //using sketchPath to correctly find this file from any machine
@@ -59,7 +59,7 @@ String convertStateCodeToStateName(String stateCode){
 }
 
 void readFileByState(String stateCode, State currentState){
-  String filePath = "/Users/jessm/Desktop/TetsingState/data/flights/origin_states/";
+  String filePath = "data/flights/origin_states/";
   String fileEnding = ".csv";
   BufferedReader reader;
   try {
@@ -123,7 +123,7 @@ String nextToken(Scanner sc) {
 
 void draw() {
 
-  flightMap.draw();
+  //flightMap.draw();
 
   Screen screen1 = new Screen(3);
   screen1.drawStateScreen("CO");
