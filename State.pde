@@ -85,7 +85,7 @@ class State{
 
         }
         charts.addBarChart(graphTitle, barLabels, barValues, 50, 200, 300, 200, barColors, true);
-        charts.draw();
+        charts.chartsDraw();
         
 
     }

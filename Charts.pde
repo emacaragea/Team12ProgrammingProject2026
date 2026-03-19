@@ -49,7 +49,7 @@ class Charts
       scatterPlots.add(new ScatterPlot(title, xLabel, yLabel, xValues, yValues, labels, x, y, w, h));
     }
 
-    void draw()
+    void chartsDraw()
     {
         for (int i = 0; i < barCharts.size(); i++)
         {
