@@ -4,3 +4,5 @@ Team Members:
   Orla Kealy, 25384039
   Nika Charles, 25348716
   Ema-Alexia Caragea, 25384850
+  
+  Documentation file: https://docs.google.com/document/d/1oSzA7C6wYy7CJAvB7A0RAGOxb4DWNvOlukWF9T4Q0Os/edit?usp=sharing
