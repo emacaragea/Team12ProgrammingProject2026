@@ -1,5 +1,6 @@
 import java.util.Comparator; //Amanda de moraes, 18/03/26, Comparator interface
 // 4PM, 17/03/26, Jesse Margarites
+//4PM, 19/03/26, Jesse Margarites fixed some errors
 class Flight{
     //fileds may be empty
     private String flightDate;
@@ -30,70 +31,76 @@ class Flight{
         this.airportDistanceInMiles = airportDistanceInMiles;
     }
     //Not sure if we will need se methods but I implemented them for now
-    public String getFlightDate() {
+    String getFlightDate() {
         return flightDate;
     }
-    public void setFlightDate(String flightDate) {
+    void setFlightDate(String flightDate) {
         this.flightDate = flightDate;
     }
-    public String getAirlineCode() {
+    void setFlightNumber(int flightNumber){
+        this.flightNumber = flightNumber;
+    }
+    int getFlightNumber(){
+        return flightNumber;
+    }
+    String getAirlineCode() {
         return airlineCode;
     }
-    public void setAirlineCode(String airlineCode) {
+    void setAirlineCode(String airlineCode) {
         this.airlineCode = airlineCode;
     }
-    public Airport getOriginAirport() {
+    Airport getOriginAirport() {
         return originAirport;
     }
-    public void setOriginAirport(Airport originAirport) {
+    void setOriginAirport(Airport originAirport) {
         this.originAirport = originAirport;
     }
-    public Airport getDestinationAirport() {
+    Airport getDestinationAirport() {
         return destinationAirport;
     }
-    public void setDestinationAirport(Airport destinationAirport) {
+    void setDestinationAirport(Airport destinationAirport) {
         this.destinationAirport = destinationAirport;
     }
-    public String getScheduledDepartureTime() {
+    String getScheduledDepartureTime() {
         return scheduledDepartureTime;
     }
-    public void setScheduledDepartureTime(String scheduledDepartureTime) {
+    void setScheduledDepartureTime(String scheduledDepartureTime) {
         this.scheduledDepartureTime = scheduledDepartureTime;
     }
-    public String getActualDepartureTime() {
+    String getActualDepartureTime() {
         return actualDepartureTime;
     }
-    public void setActualDepartureTime(String actualDepartureTime) {
+    void setActualDepartureTime(String actualDepartureTime) {
         this.actualDepartureTime = actualDepartureTime;
     }
-    public String getScheduledArrivalTime() {
+    String getScheduledArrivalTime() {
         return scheduledArrivalTime;
     }
-    public void setScheduledArrivalTime(String scheduledArrivalTime) {
+    void setScheduledArrivalTime(String scheduledArrivalTime) {
         this.scheduledArrivalTime = scheduledArrivalTime;
     }
-    public String getActualArrivalTime() {
+    String getActualArrivalTime() {
         return actualArrivalTime;
     }
-    public void setActualArrivalTime(String actualArrivalTime) {
+    void setActualArrivalTime(String actualArrivalTime) {
         this.actualArrivalTime = actualArrivalTime;
     }
-    public int getFlightCancelled() {
+    int getFlightCancelled() {
         return flightCancelled;
     }
-    public void setFlightCancelled(int flightCancelled) {
+    void setFlightCancelled(int flightCancelled) {
         this.flightCancelled = flightCancelled;
     }
-    public int getFlightDiverted() {
+    int getFlightDiverted() {
         return flightDiverted;
     }
-    public void setFlightDiverted(int flightDiverted) {
+    void setFlightDiverted(int flightDiverted) {
         this.flightDiverted = flightDiverted;
     }
-    public double getAirportDistanceInMiles() {
+    double getAirportDistanceInMiles() {
         return airportDistanceInMiles;
     }
-    public void setAirportDistanceInMiles(double airportDistanceInMiles) {
+    void setAirportDistanceInMiles(double airportDistanceInMiles) {
         this.airportDistanceInMiles = airportDistanceInMiles;
     }
     //Amanda de moraes, 18/3, 1:09

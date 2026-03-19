@@ -1,4 +1,5 @@
 //4PM, 17/03/26, Jesse Margarites
+//4PM, 19/03/26, Jesse Margarites fixed some errors
 class Airport{
     private String airportName;
     private int worldAreaCode;
@@ -34,10 +35,10 @@ class Airport{
         }
     }
     int getNumberOfFlightsLeaving(){
-        return flightsLeaving.size()+1;
+        return flightsLeaving.size();
     }
     int getNumberOfFlightsIncoming(){
-        return flightsIncoming.size()+1;
+        return flightsIncoming.size();
     }
     @Override
     public boolean equals(Object thisObject) {

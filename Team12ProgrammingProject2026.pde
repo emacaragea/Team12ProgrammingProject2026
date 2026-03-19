@@ -13,6 +13,7 @@ FlightMapScreen flightMap;
 //change maybe
 State CO;
 String stateName;
+Screen screen1;
 void settings(){
   size(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -27,13 +28,15 @@ void setup() {
   flightMap.setup();
 
 
-  PFont TITLE_FONT = createFont("Helvetica Bold", 24);
- PFont LABEL_FONT = createFont("Helvetica Bold", 16);
- PFont SMALL_FONT = createFont("Helvetica", 13);
+ // PFont TITLE_FONT = createFont("Helvetica Bold", 24);
+ // PFont LABEL_FONT = createFont("Helvetica Bold", 16);
+ //PFont SMALL_FONT = createFont("Helvetica", 13);
 
   stateName = convertStateCodeToStateName("CO");
   CO = new State(stateName);
   readFileByState("CO", CO);
+  screen1 = new Screen(3);
+  //screen1.setScreenType(3);
 }
 
 String convertStateCodeToStateName(String stateCode){
@@ -99,9 +102,24 @@ void readFileByState(String stateCode, State currentState){
       Flight newFlight = new Flight(flightDate, airlineCode, flightNumber, 
                         originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
                        scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
-      originAirport.addFlightsLeaving(newFlight);
-      destinationAirport.addFlightsIncoming(newFlight);
-      currentState.addAirport(originAirport); //might have to change depedning on which file is being read
+      //4PM, 19/03/26, Jesse Margarites, fixed method to not create duplicate airports
+      if(!currentState.getAirportList().contains(originAirport)){
+        currentState.addAirport(originAirport); //might have to change depedning on which file is being read
+        originAirport.addFlightsLeaving(newFlight);
+      }else{
+         boolean airportFound = false;
+         int counter =0;
+         while(counter<currentState.getNumberOfAirports() || !airportFound){
+           if(currentState.getAirportList().get(counter).getAirportName().equals(originCityName)){
+             airportFound = true;
+             currentState.getAirportList().get(counter).addFlightsLeaving(newFlight);
+           }
+           
+           counter++;
+         }
+      }
+      
+      //destinationAirport.addFlightsIncoming(newFlight); //wont work
       line = reader.readLine();
 
     }
@@ -111,12 +129,12 @@ void readFileByState(String stateCode, State currentState){
   }
 }
 
-String nextToken(Scanner sc) {
-    String token = sc.next().trim();
+String nextToken(Scanner thisScanner) {
+    String token = thisScanner.next().trim();
     
     if (token.startsWith("\"")) {
         while (!token.endsWith("\"")) {
-            token += "," + sc.next();
+            token += "," + thisScanner.next();
         }
         token = token.replace("\"", "").trim();
     }
@@ -129,7 +147,7 @@ void draw() {
 
   //flightMap.draw();
 
-  Screen screen1 = new Screen(3);
+
   screen1.drawStateScreen("CO");
   
   

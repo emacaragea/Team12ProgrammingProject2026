@@ -11,6 +11,7 @@ class State{
     Charts charts;
     private float chartWidth; //Set these values
     private float chartHeight;
+    private boolean setGraphValues;
 
 
 
@@ -18,6 +19,13 @@ class State{
     State(String stateName){
         this.stateName = stateName;
         this.listOfAirports = new ArrayList<Airport>(); //Since every state has an airport
+        //4PM, 19/03/26, Jesse Margarites updated and fixed 
+        charts = new Charts();
+        setGraphValues =false;
+    }
+    //4PM, 19/03/26, Jesse Margarites updated and fixed 
+    void setGraphValues(boolean setGraphValues){
+        this.setGraphValues = setGraphValues;
     }
     void setStateName(String stateName){
         this.stateName = stateName;
@@ -49,13 +57,19 @@ class State{
         //NO AIRPORT IS NULL
         return null;
     }
+    int getNumberOfAirports(){
+        return listOfAirports.size();
+    }
     
     ArrayList<Airport> getAirportList(){
         return listOfAirports;
     }
 
-    void setBarGraphValues(){
+    void setBarGraphValues(Charts thisBarGraph){
         //12:00 PM, 18/03/2026, Niko write set bar graph values
+        //4PM, 19/03/26, Jesse Margarites updated and fixed 
+        if(!this.setGraphValues){
+            println("test");
         graphTitle = "Flight per airport " + stateName;
         int barLabelsLength = listOfAirports.size();
         barLabels = new String[barLabelsLength];
@@ -66,10 +80,13 @@ class State{
             barColors[i] = color(54, 110, 190);
             barValues[i] = listOfAirports.get(i).getNumberOfFlightsLeaving();
         }
+        thisBarGraph.addBarChart(graphTitle, barLabels, barValues, 50, 200, 300, 200, barColors, true);
+        setGraphValues(true);
+    }
+
     }
 
     void stateDraw(String stateName){
-        charts = new Charts();
         PFont TITLE_FONT = createFont("Helvetica Bold", 24);
         PFont LABEL_FONT = createFont("Helvetica Bold", 16);
         PFont SMALL_FONT = createFont("Helvetica", 13);
@@ -78,17 +95,15 @@ class State{
         int textYCoordinate = 20;
         textFont(TITLE_FONT);
         text(stateName, textXCoordinate, textYCoordinate);
-        this.setBarGraphValues();
         textFont(LABEL_FONT);
         textYCoordinate+=40;
         text("Airports: ", textXCoordinate, textYCoordinate);
         for (int counter=0; counter<listOfAirports.size(); counter++){
             textYCoordinate+=20;
-            text((counter+1)+": "+ listOfAirports.get(counter).getAirportName(), textXCoordinate, textYCoordinate);
+            text((counter+1)+": "+ listOfAirports.get(counter).getAirportName() + " " + listOfAirports.get(counter).getNumberOfFlightsLeaving(), textXCoordinate, textYCoordinate);
 
         }
-        charts.addBarChart(graphTitle, barLabels, barValues, 50, 200, 300, 200, barColors, true);
-        charts.chartsDraw();
+
         
 
     }

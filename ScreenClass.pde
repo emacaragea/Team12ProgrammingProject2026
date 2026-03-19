@@ -35,8 +35,13 @@ class Screen{
     String searchText ="";
     String selectedStateCode = "";
 
+    //3PM, 19/03/26, Jesse Margarites
+    Charts thisChart;
+
     Screen(int type){
         screenType = type;
+        //3PM, 19/03/26, Jesse Margarites
+        thisChart = new Charts();
     }
 
     void setScreenType(int type){
@@ -172,13 +177,21 @@ class Screen{
     }
 
     void drawStateScreen(String code){
-        //2PM, 18/03/26, Jesse Margarites
+        //4PM, 18/03/26, Jesse Margarites
+        if(stateList.isEmpty()){ //dont think this will work for more states
+
         String stateName = convertStateCodeToStateName(code);
         State thisState = new State(stateName);
         stateList.add(thisState);
         currentStateIndex = stateList.size()-1;
         readFileByState(code, thisState);
         thisState.stateDraw(stateName);
+      //  if(!filledValues){
+        thisState.setBarGraphValues(thisChart);
+     //       setFilledValues(true);
+        }
+        
+        thisChart.chartsDraw();
     }
 
     void drawFlightScreen(){
