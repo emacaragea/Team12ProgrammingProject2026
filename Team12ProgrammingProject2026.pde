@@ -17,7 +17,7 @@ String stateName;
 
 void setup() {
   
-  size(1400, 800);
+  size(SCREEN_WIDTH, SCREEN_HEIGHT);
   //Map setup 
   flightMap = new FlightMapScreen();
   flightMap.setup();

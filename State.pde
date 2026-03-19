@@ -9,6 +9,9 @@ class State{
     private int[] barValues;
     private color[] barColors;
     Charts charts;
+    private float chartWidth; //Set these values
+    private float chartHeight;
+
 
 
 
