@@ -25,6 +25,16 @@ class Screen{
     final int HOME_BUTTON_SIZE = 20;
     final color BACKGROUND_COLOR = (0);
 
+    //amanda de moraes, 19/3/26, 10AM, added search bar
+    final int SEARCHX= 150;
+    final int SEARCHY =6;
+    final int SEARCHW= 260;
+    final int SEARCHH=28;
+    
+    boolean searchActive = false;
+    String searchText ="";
+    String selectedStateCode = "";
+
     Screen(int type){
         screenType = type;
     }
@@ -83,6 +93,74 @@ class Screen{
 
         line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
             FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);
+    }
+
+
+     //amanda de moraes, 19/3, search bar methods
+     void drawSearchBar(){
+       boolean hover = mouseX>= SEARCHX && mouseX <= SEARCHX + SEARCHW
+       && mouseY >= SEARCHY && mouseY <= SEARCHY + SEARCHH;
+       
+       fill(searchActive ? color(120,190,245):color(70,90,110));
+       strokeWeight(1.5);
+       rect(SEARCHX, SEARCHY, SEARCHW, SEARCHH,8);
+       
+       textAlign(LEFT,CENTER);
+       textSize(13);
+       
+       if(searchText.length()==0 && !searchActive){
+         
+         fill(150,165,180);
+         text("Search state code:", SEARCHX +10, SEARCHY+SEARCHH/2);
+       }
+       else{
+         fill(240);
+         text(searchText, SEARCHX +10, SEARCHY+SEARCHH/2);
+       }
+     }
+     
+     void handleSearchClick(int mx, int my){
+       searchActive = (mx >= SEARCHX && mx <= SEARCHX + SEARCHW && my>= SEARCHY &&
+       my<+ SEARCHY + SEARCHH);
+     }
+     
+     void handleSearchKey(char key, int keyCode){
+        if(!searchActive) return;
+
+        // enter key = search
+        if(keyCode == ENTER || keyCode == RETURN){
+            runSearch();
+            return;
+        }
+
+        // backspace
+        if(keyCode == BACKSPACE){
+            if(searchText.length() > 0){
+                searchText = searchText.substring(0, searchText.length()-1);
+            }
+            return;
+        }
+
+        // ignore weird keys
+        if(keyCode == SHIFT || keyCode == CONTROL || keyCode == ALT){
+            return;
+        }
+
+        // only allow letters
+        if(Character.isLetter(key) && searchText.length() < 20){
+            searchText += Character.toUpperCase(key);
+        }
+    }
+
+      void runSearch(){
+        String cleaned = trim(searchText).toUpperCase();
+
+        // only switch if user entered a 2 letter state code
+        if(cleaned.length() == 2){
+            selectedStateCode = cleaned;
+            setScreenType(STATE_SCREEN);
+            searchActive = false;
+        }
     }
 
     void drawHomeScreen(){
