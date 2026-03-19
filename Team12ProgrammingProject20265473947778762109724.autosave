@@ -14,14 +14,18 @@ FlightMapScreen flightMap;
 State CO;
 String stateName;
 
-void settings() {
+void settings(){
   size(1400, 800);
 }
 
+
 void setup() {
-  //Map setup
+  
+
+  //Map setup 
   flightMap = new FlightMapScreen();
   flightMap.setup();
+
 
 
   PFont TITLE_FONT = createFont("Helvetica Bold", 24);
