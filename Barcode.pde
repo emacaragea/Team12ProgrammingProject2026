@@ -5,7 +5,7 @@ float scanX = 120;
 PFont font;
 
 void setup() {
-  size(520, 400);
+  //size(520, 400);
   font = createFont("Helvetica Bold", 16);
 }
 

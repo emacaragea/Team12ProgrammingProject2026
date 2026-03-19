@@ -13,9 +13,13 @@ FlightMapScreen flightMap;
 //change maybe
 State CO;
 String stateName;
-void setup() {
-  
+void settings(){
   size(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+}
+
+void setup() {
+
   //Map setup 
 
   //Map setup
