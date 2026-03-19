@@ -14,14 +14,10 @@ FlightMapScreen flightMap;
 State CO;
 String stateName;
 
-void settings(){
-  size(1400, 800);
-}
-
 
 void setup() {
   
-
+  size(1400, 800);
   //Map setup 
   flightMap = new FlightMapScreen();
   flightMap.setup();
