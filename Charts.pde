@@ -10,6 +10,9 @@
 // Orla Kealy, 10:30 AM 18/03/2026
 // Description: Added scatterplots to charts
 
+// Orla Kealy 21:00 PM 21/03/2026
+// Description: Enable mousePressed for bar charts - for sorting buttons
+
 class Charts
 {
     ArrayList<BarChart> barCharts;
@@ -58,7 +61,7 @@ class Charts
             
             if (filter != null)
             {
-              filter.draw();
+              filter.drawFilter();
               
               if (filter.changed)
               {
@@ -89,6 +92,11 @@ class Charts
         {
           filter.mousePressed();
         }
+      }
+      
+      for (BarChart chart : barCharts)
+      {
+        chart.handleMousePressed();
       }
     }
     
