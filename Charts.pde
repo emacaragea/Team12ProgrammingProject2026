@@ -80,7 +80,7 @@ class Charts
         
         for (ScatterPlot scatter : scatterPlots)
         {
-          scatter.display();
+          scatter.drawChart();
         }
     }
     
