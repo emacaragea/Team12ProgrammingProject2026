@@ -1,160 +1,218 @@
-//2PM, 18/03/26, Jesse Margarites
-//Used a faster method than loadBytes and loadStrings with the BufferedReader.
-//This makes it easier to read it line by line with a scanner
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-final  static int SCREEN_WIDTH = 1400;
-final  static int SCREEN_HEIGHT = 800;
 
-FlightMapScreen flightMap;
+final static int SCREEN_WIDTH  = 1400;
+final static int SCREEN_HEIGHT = 800;
 
-//change maybe
-State CO;
-String stateName;
-Screen screen1;
-void settings(){
+FlightMapScreen         flightMap;
+USMapScreen             usMap;
+Screen                  screen1;
+
+HashMap<String, String>  stateCodeToName;  
+HashMap<String, Integer> stateFlightCounts; 
+int    currentView       = 0;               
+String selectedStateCode = "CO";
+
+static final String[] ALL_STATE_CODES = {
+  "AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA",
+  "HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME",
+  "MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM",
+  "NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX",
+  "UT","VA","VT","WA","WI","WV","WY"
+};
+
+void settings() {
   size(SCREEN_WIDTH, SCREEN_HEIGHT);
-
 }
 
 void setup() {
+  // Build code name lookup once from CSV (used by countAllStateFlights + geoMap hover)
+  stateCodeToName = buildCodeToNameMap();
 
-  //Map setup 
+  // Lightweight pass over all state files  just counts origin + destination per state
+  stateFlightCounts = new HashMap<String, Integer>();
+  countAllStateFlights();
 
-  //Map setup
   flightMap = new FlightMapScreen();
   flightMap.setup();
 
-
- // PFont TITLE_FONT = createFont("Helvetica Bold", 24);
- // PFont LABEL_FONT = createFont("Helvetica Bold", 16);
- //PFont SMALL_FONT = createFont("Helvetica", 13);
-
-  stateName = convertStateCodeToStateName("CO");
-  CO = new State(stateName);
-  readFileByState("CO", CO);
+  usMap   = new USMapScreen(stateFlightCounts);
   screen1 = new Screen(3);
-  //screen1.setScreenType(3);
 }
 
-String convertStateCodeToStateName(String stateCode){
+// Reads StateNameAndCode.csv once and returns the full code-name map
+HashMap<String, String> buildCodeToNameMap() {
+  HashMap<String, String> result = new HashMap<String, String>();
+  try {
+    BufferedReader reader = new BufferedReader(new FileReader(sketchPath("data/StateNameAndCode.csv")));
+    reader.readLine(); // skip header
+    String line = reader.readLine();
+    while (line != null) {
+      Scanner scan = new Scanner(line).useDelimiter(",");
+      if (scan.hasNext()) {
+        String code = scan.next().trim();
+        if (scan.hasNext()) {
+          result.put(code, scan.next().trim());
+        }
+      }
+      scan.close();
+      line = reader.readLine();
+    }
+    reader.close();
+  } catch (Exception e) {
+    println("buildCodeToNameMap: " + e);
+  }
+  return result;
+}
+
+// Reads only fields 5 (origin state) and 9 (dest state) from every state file
+// so the map can be coloured without loading full Flight objects into memory
+void countAllStateFlights() {
+  String path = "data/flights/origin_states/";
+  for (String code : ALL_STATE_CODES) {
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path + code + ".csv")));
+      reader.readLine(); // skip header
+      String line = reader.readLine();
+      while (line != null) {
+        Scanner scan = new Scanner(line).useDelimiter(",");
+        String[] fields = new String[10];
+        for (int i = 0; i < 10; i++) {
+          fields[i] = scan.hasNext() ? nextToken(scan) : "";
+        }
+        scan.close();
+        addCount(fields[5]); // ORIGIN_STATE_ABR
+        addCount(fields[9]); // DEST_STATE_ABR
+        line = reader.readLine();
+      }
+      reader.close();
+    } catch (Exception e) {
+      // file missing for this state- skip 
+    }
+  }
+}
+
+void addCount(String stateCode) {
+  String name = stateCodeToName.get(stateCode);
+  if (name != null) {
+    int prev = stateFlightCounts.containsKey(name) ? stateFlightCounts.get(name) : 0;
+    stateFlightCounts.put(name, prev + 1);
+  }
+}
+
+
+
+String convertStateCodeToStateName(String stateCode) {
   String filePath = "data/StateNameAndCode.csv";
   BufferedReader reader;
   try {
-    reader = new BufferedReader(new FileReader(sketchPath(filePath)));  //using sketchPath to correctly find this file from any machine
+    reader = new BufferedReader(new FileReader(sketchPath(filePath)));
     String currentLine = reader.readLine();
     while (currentLine != null) {
       currentLine = reader.readLine();
-      Scanner lineScanner = new Scanner(currentLine).useDelimiter(","); 
+      Scanner lineScanner = new Scanner(currentLine).useDelimiter(",");
       String currentCode = lineScanner.next();
-      
-      if(currentCode.equals(stateCode)){
-        //println(lineScanner.next());
+      if (currentCode.equals(stateCode)) {
         return lineScanner.next();
       }
       lineScanner.close();
-      
     }
     reader.close();
-  } catch(Exception e) {
+  } catch (Exception e) {
     System.out.println(e);
     return "error";
   }
   return null;
 }
 
-void readFileByState(String stateCode, State currentState){
+void readFileByState(String stateCode, State currentState) {
   String filePath = "data/flights/origin_states/";
   String fileEnding = ".csv";
   BufferedReader reader;
   try {
-    reader = new BufferedReader(new FileReader(sketchPath(filePath+stateCode+fileEnding)));  //using sketchPath to correctly find this file from any machine
+    reader = new BufferedReader(new FileReader(sketchPath(filePath + stateCode + fileEnding)));
     String line = reader.readLine();
-    line = reader.readLine(); // skiping header
-   // println(line);
+    line = reader.readLine(); // skip header
     while (line != null) {
       Scanner lineScan = new Scanner(line).useDelimiter(",");
-      
-      String flightDate = nextToken(lineScan);
-      String airlineCode = nextToken(lineScan);
-      int flightNumber = lineScan.nextInt();
-      String originCityCode = nextToken(lineScan);
-      String originCityName = nextToken(lineScan);
-      String originStateCode = nextToken(lineScan);
-      int originWorldAreaCode = lineScan.nextInt();
-      String destinationCityCode = nextToken(lineScan);
-      String destinationCityName = nextToken(lineScan);
-      String destinationStateCode = nextToken(lineScan);
-      int destinationWorldAreaCode = lineScan.nextInt();
+      String flightDate             = nextToken(lineScan);
+      String airlineCode            = nextToken(lineScan);
+      int    flightNumber           = lineScan.nextInt();
+      String originCityCode         = nextToken(lineScan);
+      String originCityName         = nextToken(lineScan);
+      String originStateCode        = nextToken(lineScan);
+      int    originWorldAreaCode    = lineScan.nextInt();
+      String destinationCityCode    = nextToken(lineScan);
+      String destinationCityName    = nextToken(lineScan);
+      String destinationStateCode   = nextToken(lineScan);
+      int    destinationWorldAreaCode = lineScan.nextInt();
       String scheduledDepartureTime = nextToken(lineScan);
-      String actualDepartureTime = nextToken(lineScan);
-      String scheduledArrivalTime = nextToken(lineScan);
-      String actualArrivalTime = nextToken(lineScan);
-      int cancelled = lineScan.nextInt();
-      int diverted = lineScan.nextInt();
-      double airportDistance = lineScan.nextDouble();
+      String actualDepartureTime    = nextToken(lineScan);
+      String scheduledArrivalTime   = nextToken(lineScan);
+      String actualArrivalTime      = nextToken(lineScan);
+      int    cancelled              = lineScan.nextInt();
+      int    diverted               = lineScan.nextInt();
+      double airportDistance        = lineScan.nextDouble();
       lineScan.close();
 
-      Airport originAirport = new Airport(originCityName, originWorldAreaCode);
+      Airport originAirport      = new Airport(originCityName, originWorldAreaCode);
       Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode);
-      Flight newFlight = new Flight(flightDate, airlineCode, flightNumber, 
-                        originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
-                       scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
-      //4PM, 19/03/26, Jesse Margarites, fixed method to not create duplicate airports
-      if(!currentState.getAirportList().contains(originAirport)){
-        currentState.addAirport(originAirport); //might have to change depedning on which file is being read
-        originAirport.addFlightsLeaving(newFlight);
-      }else{
-         boolean airportFound = false;
-         int counter =0;
-         while(counter<currentState.getNumberOfAirports() || !airportFound){
-           if(currentState.getAirportList().get(counter).getAirportName().equals(originCityName)){
-             airportFound = true;
-             currentState.getAirportList().get(counter).addFlightsLeaving(newFlight);
-           }
-           
-           counter++;
-         }
-      }
-      
-      //destinationAirport.addFlightsIncoming(newFlight); //wont work
-      line = reader.readLine();
+      Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
+        originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
+        scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
 
+      if (!currentState.getAirportList().contains(originAirport)) {
+        currentState.addAirport(originAirport);
+        originAirport.addFlightsLeaving(newFlight);
+      } else {
+        boolean airportFound = false;
+        int counter = 0;
+        while (counter < currentState.getNumberOfAirports() || !airportFound) {
+          if (currentState.getAirportList().get(counter).getAirportName().equals(originCityName)) {
+            airportFound = true;
+            currentState.getAirportList().get(counter).addFlightsLeaving(newFlight);
+          }
+          counter++;
+        }
+      }
+      line = reader.readLine();
     }
     reader.close();
-  } catch(Exception e) {
+  } catch (Exception e) {
     println(e);
   }
 }
 
 String nextToken(Scanner thisScanner) {
-    String token = thisScanner.next().trim();
-    
-    if (token.startsWith("\"")) {
-        while (!token.endsWith("\"")) {
-            token += "," + thisScanner.next();
-        }
-        token = token.replace("\"", "").trim();
+  String token = thisScanner.next().trim();
+  if (token.startsWith("\"")) {
+    while (!token.endsWith("\"")) {
+      token += "," + thisScanner.next();
     }
-    
-    return token;
+    token = token.replace("\"", "").trim();
+  }
+  return token;
 }
 
 
 void draw() {
-
-  //flightMap.draw();
-
-
-  screen1.drawStateScreen("CO");
-  
-  
-  //flightMapDraw();
+  if (currentView == 0) {
+    usMap.draw();
+  } else {
+    screen1.drawStateScreen(selectedStateCode);
+  }
 }
 
-void mousePressed()               { flightMap.mousePressed(); }
+void mousePressed() {
+  if (currentView == 0) {
+    usMap.mousePressed();
+  } else if (mouseButton == RIGHT) {
+    currentView = 0;
+  }
+}
+
 void mouseDragged()               { flightMap.mouseDragged(); }
 void mouseReleased()              { flightMap.mouseReleased(); }
 void mouseWheel(MouseEvent event) { flightMap.mouseWheel(event); }
