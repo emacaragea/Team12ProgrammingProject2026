@@ -4,26 +4,30 @@
 //              Added a 'Select All' button
 //              Add animations
 
+// Orla Kealy 21:00 PM 21/03/2026
+// Description: Improved code clarity and added comments
+
 class chartMultiSelectFilter
 {
+    // Data
     String[] labels;
     int[] values;
     boolean[] selected;
 
     boolean changed = true;
 
+    // Layout
     float x, y;
+    float dropdownWidth = 180;
+    float dropdownHeight = 200;
     float itemHeight = 22;
-
+    float selectAllHeight = 25;
+    
+    // State
     boolean opened = false;
     String searchText = "";
 
-    float dropdownWidth = 180;
-    float dropdownHeight = 200;
-
-    float selectAllHeight = 25;
-
-    // Animation variables
+    // Animation 
     float triangleRotation = 0;
     float triangleTarget = 0;
 
@@ -32,11 +36,11 @@ class chartMultiSelectFilter
     float selectAllHoverAnim = 0;
 
     float[] labelHoverAnim;
-
+    float[] itemAnim;
+    
     float[] checkboxScale;
     float[] checkboxVelocity;
 
-    float[] itemAnim;
 
     chartMultiSelectFilter(String[] labels, int[] values, float x, float y)
     {
@@ -44,22 +48,24 @@ class chartMultiSelectFilter
         this.values = values;
         this.x = x;
         this.y = y;
+        
+        int labelsLength = labels.length;
 
-        selected = new boolean[labels.length];
-        labelHoverAnim = new float[labels.length];
+        selected = new boolean[labelsLength];
+        labelHoverAnim = new float[labelsLength];
+        checkboxScale = new float[labelsLength];
+        checkboxVelocity = new float[labelsLength];
+        itemAnim = new float[labelsLength];
 
-        checkboxScale = new float[labels.length];
-        checkboxVelocity = new float[labels.length];
-
-        itemAnim = new float[labels.length];
-
-        for (int i = 0; i < labels.length; i++)
+        for (int i = 0; i < labelsLength; i++)
         {
             selected[i] = true;
-            checkboxScale[i] = 1;
+            checkboxScale[i] = 1.0;
         }
     }
 
+    // getVisibleIndices
+    // Returns indices of labels that match the current search string
     ArrayList<Integer> getVisibleIndices()
     {
         ArrayList<Integer> visible = new ArrayList<Integer>();
@@ -75,7 +81,10 @@ class chartMultiSelectFilter
         return visible;
     }
 
-    void draw()
+    // drawFilter
+    // Called from Charts.chartsDraw()
+    // Main render method
+    void drawFilter()
     {
         textAlign(LEFT, CENTER);
         textSize(12);
@@ -125,7 +134,7 @@ class chartMultiSelectFilter
         fill(0);
         text("Filter", x + 5, y + 10);
 
-        // Triangle animation
+        // Triangle rotation
         float triX = x + dropdownWidth - 15;
         float triY = y + 10;
 
@@ -138,22 +147,18 @@ class chartMultiSelectFilter
         popMatrix();
 
         float animatedHeight = dropdownHeight * panelAnim;
-
-        if (animatedHeight < 2) return;
+        if (animatedHeight < 2) return;                    // exit if panel fully closed
 
         // Search box
-        if (animatedHeight > 0)
-        {
-            fill(255);
-            stroke(0);
-            rect(x, y + 20, dropdownWidth, 20);
+        fill(255);
+        stroke(0);
+        rect(x, y + 20, dropdownWidth, 20);
+        
+        int blink = (millis()/500)%2;
+        String displayText = "Search: " + searchText + (blink == 0 ? "|" : "");
 
-            int blink = (millis()/500)%2;
-            String displayText = "Search: " + searchText + (blink == 0 ? "|" : "");
-
-            fill(120);
-            text(displayText, x + 5, y + 30);
-        }
+        fill(120);
+        text(displayText, x + 5, y + 30);
 
         // Panel background
         fill(245);
@@ -162,7 +167,6 @@ class chartMultiSelectFilter
 
         ArrayList<Integer> visible = getVisibleIndices();
         int maxVisibleItems = int((dropdownHeight - selectAllHeight)/itemHeight);
-
         float selectAllY = y + 40;
 
         // 'Select All' button
@@ -195,6 +199,7 @@ class chartMultiSelectFilter
             textAlign(LEFT, CENTER);
         }
 
+        // Item rows
         for (int i = 0; i < min(visible.size(), maxVisibleItems); i++)
         {
             int index = visible.get(i);
@@ -220,9 +225,9 @@ class chartMultiSelectFilter
             }
 
             itemAnim[index] = lerp(itemAnim[index], targetAnim, 0.25);
-
             float offset = (1 - itemAnim[index]) * -8;
 
+            // Row hover highlight
             boolean hoveringItem =
                 mouseX > x && mouseX < x+dropdownWidth &&
                 mouseY > itemY && mouseY < itemY+itemHeight;
@@ -248,9 +253,8 @@ class chartMultiSelectFilter
 
             float stiffness = 0.35;
             float damping = 0.6;
-
+            
             float force = (targetScale - checkboxScale[index]) * stiffness;
-
             checkboxVelocity[index] += force;
             checkboxVelocity[index] *= damping;
 
@@ -271,6 +275,7 @@ class chartMultiSelectFilter
             stroke(0);
             rect(0, 0, 14, 14);
 
+            // Draw tick mark, when selected
             if (selected[index])
             {
                 line(-3,0,0,3);
@@ -280,6 +285,7 @@ class chartMultiSelectFilter
             popMatrix();
             rectMode(CORNER);
 
+            // Label
             float labelSize = lerp(12, 13.5, labelHoverAnim[index]);
             textSize(labelSize);
 
@@ -288,13 +294,18 @@ class chartMultiSelectFilter
         }
     }
 
+    // mousePressed
+    // Called by Charts.mousePressed()
+    // Handles header toggle, outside-click close, select all and individual item toggling
     void mousePressed()
     {
+        // Ignore clicks during animation
         if (panelAnim < 0.95 && opened)
         {
             return;
         }
 
+        // Click outside open panel to close
         if (opened &&
             !(mouseX > x && mouseX < x + dropdownWidth &&
             mouseY > y && mouseY < y + 40 + dropdownHeight))
@@ -303,6 +314,7 @@ class chartMultiSelectFilter
             return;
         }
 
+        // Click on header to toggle open / close
         if (mouseX > x && mouseX < x + dropdownWidth &&
             mouseY > y && mouseY < y + 20)
         {
@@ -320,6 +332,7 @@ class chartMultiSelectFilter
 
         float selectAllY = y + 40;
 
+        // Click on 'Select All' to re-select everything and redraw chart
         if (mouseX > x + 5 && mouseX < x + dropdownWidth - 5 &&
            mouseY > selectAllY && mouseY < selectAllY + selectAllHeight)
         {
@@ -332,6 +345,7 @@ class chartMultiSelectFilter
             return;
         }
 
+        // Click on an item row to toggle and redraw chart
         for(int i = 0; i < min(visible.size(), maxVisibleItems);i++)
         {
             int index = visible.get(i);
@@ -346,7 +360,11 @@ class chartMultiSelectFilter
             }
         }
     }
-
+    
+    
+    // keyPressed
+    // Called by Charts.keyPressed()
+    // Appends characters to search string and handles backspace - ignored when panel is closed
     void keyPressed(char key)
     {
         if (!opened) 
@@ -364,6 +382,8 @@ class chartMultiSelectFilter
         }
     }
 
+    // getFilteredLabels
+    // Returns labels whose selected flag is true
     String[] getFilteredLabels()
     {
         ArrayList<String> filtered = new ArrayList<String>();
@@ -377,6 +397,8 @@ class chartMultiSelectFilter
         return filtered.toArray(new String[0]);
     }
 
+    // getFilteredValues
+    // Returns values whose selected flag is true - same order as getFilteredLabels (aligned)
     int[] getFilteredValues()
     {
         ArrayList<Integer> filtered = new ArrayList<Integer>();
