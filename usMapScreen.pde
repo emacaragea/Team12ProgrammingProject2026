@@ -1,3 +1,4 @@
+//Ema Caragea, added US Interactive Map screen with choropleth and hover tooltip, 23/03/2026, 15:00
 import org.gicentre.geomap.*;
 
 class USMapScreen {
@@ -5,9 +6,7 @@ class USMapScreen {
   HashMap<String, Integer> counts;
   int mapMax;
 
-  final color LOW   = color(198, 219, 239);  // light blue  - fewest flights
-  final color HIGH  = color(8,   48,  107);  // dark navy   - most flights
-  final color HOVER = color(255, 200, 0);    // yellow highlight on hover
+  
 
   USMapScreen(HashMap<String, Integer> counts) {
     this.counts = counts;
