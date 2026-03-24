@@ -3,6 +3,8 @@
 final int MAX_AIRPORT_DISPLAY = 10;
 final private float CHART_WIDTH = 600;
 final private float CHART_HEIGHT = 200;
+final private int CHART_X_COORDINATE = SCREEN_WIDTH/3+70;
+final private int CHART_Y_COORDINATE = 520;
 class State {
   private String stateName;
   private ArrayList<Airport> listOfAirports;
@@ -89,7 +91,7 @@ class State {
         barColors[i] = color(54, 110, 190);
         barValues[i] = listOfAirports.get(i).getNumberOfFlightsLeaving();
       }
-      thisBarGraph.addBarChart(graphTitle, barLabels, barValues, SCREEN_WIDTH/3+70, 370, CHART_WIDTH, CHART_HEIGHT, barColors, true);
+      thisBarGraph.addBarChart(graphTitle, barLabels, barValues, CHART_X_COORDINATE, CHART_Y_COORDINATE, CHART_WIDTH, CHART_HEIGHT, barColors, true);
       setGraphValues(true);
     }
   }
