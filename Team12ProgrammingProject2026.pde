@@ -17,7 +17,7 @@ final static float SUBHEADINGS_SIZE = 30;
 final static float TEXT_SIZE = 14;
 
 FlightMapScreen         flightMap;
-//USMapScreen             usMap;
+USMapScreen             usMap;
 Screen                  screen1;
 
 HashMap<String, String>  stateCodeToName;
@@ -50,7 +50,7 @@ void setup() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
 
- // usMap   = new USMapScreen(stateFlightCounts);
+  usMap   = new USMapScreen(stateFlightCounts);
   screen1 = new Screen(3);
   stateName = convertStateCodeToStateName(selectedStateCode);
   thisState = new State(stateName);
@@ -219,7 +219,7 @@ String nextToken(Scanner thisScanner) {
 
 void draw() {
   if (currentView == 0) {
-   // usMap.draw();
+    usMap.draw();
   } else {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
     
@@ -228,14 +228,11 @@ void draw() {
 
 void mousePressed() {
   if (currentView == 0) {
-   // usMap.mousePressed();
+    usMap.mousePressed();
   } else if (mouseButton == RIGHT) {
     currentView = 0;
   } else {
-    //for state screen only
-    //330
 
-    //println(thisState.getPageNumber());
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
       && thisState.getPageNumber()==1) {
