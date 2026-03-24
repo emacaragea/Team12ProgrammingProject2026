@@ -53,7 +53,6 @@ class State {
   }
   Airport getAirport(String airportName) {
     //HAS TO BE EXACT NAME
-    //could create a method for if they are searching for an airport that is in a different state
     if (listOfAirports!=null) {
       int numberOfAiports = listOfAirports.size();
       int counter =0;
@@ -152,10 +151,20 @@ class State {
         fill(255, 255, 255);
       }
     }
-    //textFont(LABEL_FONT);
-    //textYCoordinate+=40;
-   // text("Graphs: ", textXCoordinate, textYCoordinate);
-   // fill(255, 255, 255);
+
   }
+  //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method
+    @Override
+    public boolean equals(Object thisObject) {
+      if (this == thisObject){
+        return true;
+      }
+      if (thisObject == null || !(thisObject instanceof Airport)) {
+        return false;
+      }
+      State stateObject = (State) thisObject;
+      return this.stateName.equals(stateObject.stateName);
+    }
+  
 }
 

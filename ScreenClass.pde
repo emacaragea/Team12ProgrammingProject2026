@@ -75,6 +75,7 @@ class Screen{
             break;
         }
     }
+    //Jesse Margarites, 4PM, 24/03
         void screenDraw(String code, State thisState, String stateName){
         fill(BACKGROUND_COLOR);
         drawHomeBar();
@@ -199,22 +200,17 @@ class Screen{
 
     void drawStateScreen(String code, State thisState, String stateName){
         //4PM, 18/03/26, Jesse Margarites
-        //println("drawStateScreen");
-        if(stateList.isEmpty()){ //dont think this will work for more states
-
-        //String stateName = convertStateCodeToStateName(code);
-        //State thisState = new State(stateName);
+        if(stateList.isEmpty() || !stateList.contains(thisState)){ //dont think this will work for more states
         stateList.add(thisState);
         currentStateIndex = stateList.size()-1;
         readFileByState(code, thisState);
-        
-      //  if(!filledValues){
         thisState.setBarGraphValues(thisChart);
-     //       setFilledValues(true);
         }
         thisState.stateDraw(stateName);
         thisChart.chartsDraw();
     }
+
+
 
     void drawFlightScreen(){
 

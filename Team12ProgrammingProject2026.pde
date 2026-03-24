@@ -22,8 +22,9 @@ Screen                  screen1;
 
 HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
-int    currentView       = 9;
-String selectedStateCode = "TX";
+int    currentView       = 0;
+//String selectedStateCode = "TX";
+String selectedStateCode;
 State thisState;
 String stateName;
 
@@ -52,8 +53,7 @@ void setup() {
 
   usMap   = new USMapScreen(stateFlightCounts);
   screen1 = new Screen(3);
-  stateName = convertStateCodeToStateName(selectedStateCode);
-  thisState = new State(stateName);
+
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -232,7 +232,7 @@ void mousePressed() {
   } else if (mouseButton == RIGHT) {
     currentView = 0;
   } else {
-
+    //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
       && thisState.getPageNumber()==1) {
