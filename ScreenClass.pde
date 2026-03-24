@@ -220,6 +220,13 @@ class Screen{
 
     }
 
+    void mousePressed() {
+        handleSearchClick(mouseX, mouseY);
+        goHome(mouseX, mouseY);
+        goBack(mouseX, mouseY);
+        goForward(mouseX, mouseY);
+    }
+
     void goHome(int mX, int mY){
         if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 
             mY > HOME_BUTTON_Y && mY < HOME_BUTTON_Y + HOME_BUTTON_SIZE){

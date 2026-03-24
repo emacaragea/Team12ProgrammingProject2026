@@ -19,6 +19,7 @@ final static float TEXT_SIZE = 14;
 FlightMapScreen         flightMap;
 USMapScreen             usMap;
 Screen                  screen1;
+HomeScreen homeScreen;
 
 HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
@@ -51,7 +52,8 @@ void setup() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
 
-  usMap   = new USMapScreen(stateFlightCounts);
+  usMap        = new USMapScreen(this, stateFlightCounts);
+  homeScreen   = new HomeScreen(usMap);
   screen1 = new Screen(3);
 
 }
@@ -216,22 +218,28 @@ String nextToken(Scanner thisScanner) {
   return token;
 }
 
-
+//Ema Caragea, added home screen when running the program, 24/03/2026, 21:00
 void draw() {
   if (currentView == 0) {
-    usMap.draw();
-  } else {
+    homeScreen.draw();
+  } else if (currentView == 1) {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
-    
+  } else if (currentView == 2) {
+    flightMap.draw();
   }
 }
 
 void mousePressed() {
   if (currentView == 0) {
-    usMap.mousePressed();
+    homeScreen.mousePressed();
   } else if (mouseButton == RIGHT) {
     currentView = 0;
   } else {
+    if (currentView == 1) {
+      screen1.mousePressed();
+    } else if (currentView == 2) {
+      flightMap.mousePressed();
+    } else{
     //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
@@ -244,6 +252,7 @@ void mousePressed() {
       thisState.setPageNumber(1);
         
     }
+  }
   }
 }
 
