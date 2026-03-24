@@ -8,7 +8,7 @@ final static int SCREEN_HEIGHT = 800;
 
 final int STATE_BACK_ARROW_X = SCREEN_WIDTH/4-20;
 final int STATE_BACK_ARROW_Y = 365;
-final int STATE_FORWARD_ARROW_X = BACK_ARROW_X + 70;
+final int STATE_FORWARD_ARROW_X = STATE_BACK_ARROW_X + 70;
 final int STATE_FORWARD_ARROW_Y = 365;
 final int ARROW_HEIGHT = 6;
 final int ARROW_LENGTH = 20;
