@@ -23,7 +23,7 @@ class Screen{
     final int HOME_BUTTON_X = 50;
     final int HOME_BUTTON_Y = 10;
     final int HOME_BUTTON_SIZE = 20;
-    final color BACKGROUND_COLOR = (0);
+    final color BACKGROUND_COLOR = color(20, 28, 38);
 
     //amanda de moraes, 19/3/26, 10AM, added search bar
     final int SEARCHX= 150;

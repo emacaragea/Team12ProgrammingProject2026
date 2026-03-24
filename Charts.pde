@@ -54,6 +54,7 @@ class Charts
 
     void chartsDraw()
     {
+
         for (int i = 0; i < barCharts.size(); i++)
         {
             BarChart bar = barCharts.get(i);

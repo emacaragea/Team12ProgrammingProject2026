@@ -6,21 +6,28 @@ import java.io.IOException;
 final static int SCREEN_WIDTH  = 1400;
 final static int SCREEN_HEIGHT = 800;
 
+final int STATE_BACK_ARROW_X = SCREEN_WIDTH/4-20;
+final int STATE_BACK_ARROW_Y = 365;
+final int STATE_FORWARD_ARROW_X = BACK_ARROW_X + 70;
+final int STATE_FORWARD_ARROW_Y = 365;
+final int ARROW_HEIGHT = 6;
+final int ARROW_LENGTH = 20;
+
 FlightMapScreen         flightMap;
-USMapScreen             usMap;
+//USMapScreen             usMap;
 Screen                  screen1;
 
-HashMap<String, String>  stateCodeToName;  
-HashMap<String, Integer> stateFlightCounts; 
-int    currentView       = 0;               
-String selectedStateCode = "CO";
+HashMap<String, String>  stateCodeToName;
+HashMap<String, Integer> stateFlightCounts;
+int    currentView       = 5;
+String selectedStateCode = "TX";
 
 static final String[] ALL_STATE_CODES = {
-  "AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA",
-  "HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME",
-  "MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM",
-  "NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX",
-  "UT","VA","VT","WA","WI","WV","WY"
+  "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
+  "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME",
+  "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM",
+  "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX",
+  "UT", "VA", "VT", "WA", "WI", "WV", "WY"
 };
 
 void settings() {
@@ -38,7 +45,7 @@ void setup() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
 
-  usMap   = new USMapScreen(stateFlightCounts);
+  // usMap   = new USMapScreen(stateFlightCounts);
   screen1 = new Screen(3);
 }
 
@@ -61,7 +68,8 @@ HashMap<String, String> buildCodeToNameMap() {
       line = reader.readLine();
     }
     reader.close();
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     println("buildCodeToNameMap: " + e);
   }
   return result;
@@ -88,8 +96,9 @@ void countAllStateFlights() {
         line = reader.readLine();
       }
       reader.close();
-    } catch (Exception e) {
-      // file missing for this state- skip 
+    }
+    catch (Exception e) {
+      // file missing for this state- skip
     }
   }
 }
@@ -120,13 +129,13 @@ String convertStateCodeToStateName(String stateCode) {
       lineScanner.close();
     }
     reader.close();
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     System.out.println(e);
     return "error";
   }
   return null;
 }
-
 void readFileByState(String stateCode, State currentState) {
   String filePath = "data/flights/origin_states/";
   String fileEnding = ".csv";
@@ -180,10 +189,14 @@ void readFileByState(String stateCode, State currentState) {
       line = reader.readLine();
     }
     reader.close();
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     println(e);
   }
 }
+
+
+
 
 String nextToken(Scanner thisScanner) {
   String token = thisScanner.next().trim();
@@ -199,7 +212,7 @@ String nextToken(Scanner thisScanner) {
 
 void draw() {
   if (currentView == 0) {
-    usMap.draw();
+    //usMap.draw();
   } else {
     screen1.drawStateScreen(selectedStateCode);
   }
@@ -207,12 +220,32 @@ void draw() {
 
 void mousePressed() {
   if (currentView == 0) {
-    usMap.mousePressed();
+    //usMap.mousePressed();
   } else if (mouseButton == RIGHT) {
     currentView = 0;
+  } else {
+    //for state screen only
+    //330
+
+    if (mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
+      && mouseY>= STATE_FORWARD_ARROW_Y && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT) {
+
+    } else if (mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
+      && mouseY>= STATE_BACK_ARROW_Y && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT) {
+        
+    }
+    println(mouseX);
+    println(mouseY);
   }
 }
 
-void mouseDragged()               { flightMap.mouseDragged(); }
-void mouseReleased()              { flightMap.mouseReleased(); }
-void mouseWheel(MouseEvent event) { flightMap.mouseWheel(event); }
+void mouseDragged() {
+  flightMap.mouseDragged();
+}
+void mouseReleased() {
+  flightMap.mouseReleased();
+}
+void mouseWheel(MouseEvent event) {
+  flightMap.mouseWheel(event);
+}
+
