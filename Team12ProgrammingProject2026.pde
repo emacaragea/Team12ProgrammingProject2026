@@ -7,11 +7,14 @@ final static int SCREEN_WIDTH  = 1400;
 final static int SCREEN_HEIGHT = 800;
 
 final int STATE_BACK_ARROW_X = SCREEN_WIDTH/4-20;
-final int STATE_BACK_ARROW_Y = 365;
+final int STATE_BACK_ARROW_Y = 595;
 final int STATE_FORWARD_ARROW_X = STATE_BACK_ARROW_X + 70;
-final int STATE_FORWARD_ARROW_Y = 365;
+final int STATE_FORWARD_ARROW_Y = 595;
 final int ARROW_HEIGHT = 6;
 final int ARROW_LENGTH = 20;
+final static float HEADINGS_SIZE = 40;
+final static float SUBHEADINGS_SIZE = 30;
+final static float TEXT_SIZE = 14;
 
 FlightMapScreen         flightMap;
 //USMapScreen             usMap;
@@ -21,6 +24,8 @@ HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
 int    currentView       = 5;
 String selectedStateCode = "TX";
+State thisState;
+String stateName;
 
 static final String[] ALL_STATE_CODES = {
   "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
@@ -47,6 +52,8 @@ void setup() {
 
   // usMap   = new USMapScreen(stateFlightCounts);
   screen1 = new Screen(3);
+  stateName = convertStateCodeToStateName(selectedStateCode);
+  thisState = new State(stateName);
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -214,7 +221,8 @@ void draw() {
   if (currentView == 0) {
     //usMap.draw();
   } else {
-    screen1.drawStateScreen(selectedStateCode);
+    screen1.drawStateScreen(selectedStateCode, thisState, stateName);
+    
   }
 }
 
@@ -227,15 +235,18 @@ void mousePressed() {
     //for state screen only
     //330
 
-    if (mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
-      && mouseY>= STATE_FORWARD_ARROW_Y && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT) {
+    //println(thisState.getPageNumber());
+    if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
+      && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
+      && thisState.getPageNumber()==1) {
+      thisState.setPageNumber(2);
 
-    } else if (mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
-      && mouseY>= STATE_BACK_ARROW_Y && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT) {
+    } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
+    && mouseY>= STATE_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT
+    && thisState.getPageNumber()==2) {
+      thisState.setPageNumber(1);
         
     }
-    println(mouseX);
-    println(mouseY);
   }
 }
 

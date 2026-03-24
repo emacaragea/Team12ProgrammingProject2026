@@ -284,6 +284,8 @@ class BarChart
   // Main render method
   void drawChart()
   {
+      //Jesse Margarites, 12PM, 24/03, Fixing aesthetics
+      pushStyle();
     if (values.length == 0)
     {
       return;
@@ -478,5 +480,6 @@ class BarChart
       textAlign(CENTER, CENTER);
       text(hoverLabel + ": " + hoverValue, mouseX + 40, mouseY - 15);
     }
+    popStyle();
   }
 }

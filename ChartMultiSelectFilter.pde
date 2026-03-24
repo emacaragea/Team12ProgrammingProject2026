@@ -86,6 +86,8 @@ class chartMultiSelectFilter
     // Main render method
     void drawFilter()
     {
+        //Jesse Margarites, 12PM, 24/03, Fixing aesthetics
+        pushStyle();
         textAlign(LEFT, CENTER);
         textSize(12);
 
@@ -292,6 +294,7 @@ class chartMultiSelectFilter
             fill(0);
             text(labels[index], x + 25, itemY + itemHeight / 2 + offset);
         }
+        popStyle();
     }
 
     // mousePressed

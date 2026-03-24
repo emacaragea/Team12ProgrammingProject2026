@@ -54,7 +54,7 @@ class Screen{
         return screenType;
     }
 
-    void screenDraw(String name){
+    void screenDraw(){
         fill(BACKGROUND_COLOR);
         drawHomeBar();
         switch(screenType){
@@ -65,7 +65,28 @@ class Screen{
             drawAirportScreen();
             break;
             case 3:
-            drawStateScreen(name);
+            //drawStateScreen(name);
+            break;
+            case 4:
+            drawFlightScreen();
+            break;
+            case 5:
+            drawLoadScreen();
+            break;
+        }
+    }
+        void screenDraw(String code, State thisState, String stateName){
+        fill(BACKGROUND_COLOR);
+        drawHomeBar();
+        switch(screenType){
+            case 1:
+            drawHomeScreen();
+            break;
+            case 2:
+            drawAirportScreen();
+            break;
+            case 3:
+            drawStateScreen(code, thisState, stateName);
             break;
             case 4:
             drawFlightScreen();
@@ -176,21 +197,22 @@ class Screen{
 
     }
 
-    void drawStateScreen(String code){
+    void drawStateScreen(String code, State thisState, String stateName){
         //4PM, 18/03/26, Jesse Margarites
+        //println("drawStateScreen");
         if(stateList.isEmpty()){ //dont think this will work for more states
 
-        String stateName = convertStateCodeToStateName(code);
-        State thisState = new State(stateName);
+        //String stateName = convertStateCodeToStateName(code);
+        //State thisState = new State(stateName);
         stateList.add(thisState);
         currentStateIndex = stateList.size()-1;
         readFileByState(code, thisState);
-        thisState.stateDraw(stateName);
+        
       //  if(!filledValues){
         thisState.setBarGraphValues(thisChart);
      //       setFilledValues(true);
         }
-        
+        thisState.stateDraw(stateName);
         thisChart.chartsDraw();
     }
 

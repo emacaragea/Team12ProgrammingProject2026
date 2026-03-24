@@ -1,6 +1,8 @@
 //4PM, 17/03/26, Jesse Margarites
 //cannot make fonts static
-
+final int MAX_AIRPORT_DISPLAY = 10;
+final private float CHART_WIDTH = 600;
+final private float CHART_HEIGHT = 200;
 class State {
   private String stateName;
   private ArrayList<Airport> listOfAirports;
@@ -9,8 +11,6 @@ class State {
   private int[] barValues;
   private color[] barColors;
   Charts charts;
-  private float chartWidth; //Set these values
-  private float chartHeight;
   private boolean setGraphValues;
   private int pageNumber;
 
@@ -42,6 +42,13 @@ class State {
       listOfAirports.add(airportX);
     }
   }
+  //Jesse Margarites, 11AM, 24/03, implementing pageNumber
+  int getPageNumber() {
+    return pageNumber;
+  }
+  void setPageNumber(int pageNumber) {
+    this.pageNumber = pageNumber;
+  }
   Airport getAirport(String airportName) {
     //HAS TO BE EXACT NAME
     //could create a method for if they are searching for an airport that is in a different state
@@ -72,7 +79,6 @@ class State {
     //12:00 PM, 18/03/2026, Niko write set bar graph values
     //4PM, 19/03/26, Jesse Margarites updated and fixed
     if (!this.setGraphValues) {
-      println("test");
       graphTitle = "Flight per airport " + stateName;
       int barLabelsLength = listOfAirports.size();
       barLabels = new String[barLabelsLength];
@@ -83,7 +89,7 @@ class State {
         barColors[i] = color(54, 110, 190);
         barValues[i] = listOfAirports.get(i).getNumberOfFlightsLeaving();
       }
-      thisBarGraph.addBarChart(graphTitle, barLabels, barValues, 63, SCREEN_HEIGHT-260, 300, 200, barColors, true);
+      thisBarGraph.addBarChart(graphTitle, barLabels, barValues, SCREEN_WIDTH/3+70, 370, CHART_WIDTH, CHART_HEIGHT, barColors, true);
       setGraphValues(true);
     }
   }
@@ -91,34 +97,28 @@ class State {
   void stateDraw(String stateName) {
     //10PM, 24/03, Jesse Margarites, improving draw aesthetics
     background(BACKGROUND_COLOR);
+    stroke(255);
+    strokeWeight(2);
+    noFill();
+    line(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, SCREEN_HEIGHT);
 
-    PFont TITLE_FONT = createFont("Helvetica Bold", 24);
-    PFont LABEL_FONT = createFont("Helvetica Bold", 16);
-    PFont SMALL_FONT = createFont("Helvetica", 13);
+    PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
+    PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
+    PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
     //example
     int textXCoordinate = 20;
     int textYCoordinate = 25;
+    fill(255, 255, 255);
     textFont(TITLE_FONT);
     text(stateName, textXCoordinate-10, textYCoordinate);
+    fill(255, 255, 255);
     textFont(LABEL_FONT);
     textYCoordinate+=40;
     text("Airports: ", textXCoordinate, textYCoordinate);
-    if (pageNumber==1) {
-      for (int counter=0; counter<15; counter++) {
-        textYCoordinate+=20;
-        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-      }
-    } else if (pageNumber==2) {
-      for (int counter=15; counter<listOfAirports.size(); counter++) {
-        textYCoordinate+=20;
-        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-      }
-    }
-    textFont(LABEL_FONT);
-    textYCoordinate+=40;
-    text("Graphs: ", textXCoordinate, textYCoordinate);
-
-        //niko charles
+    fill(255, 255, 255);
+      int maxCounter;
+      if (listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
+        maxCounter = MAX_AIRPORT_DISPLAY;
         stroke(255);
         strokeWeight(2);
         noFill();
@@ -130,10 +130,30 @@ class State {
 
         line(STATE_FORWARD_ARROW_X, STATE_FORWARD_ARROW_Y, STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y);
         line(STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y,
-            STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y - ARROW_HEIGHT);
+          STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y - ARROW_HEIGHT);
 
         line(STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y,
-            STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y + ARROW_HEIGHT);
+          STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y + ARROW_HEIGHT);
+      } else {
+        maxCounter = listOfAirports.size();
+      }
+    if(pageNumber==1){
+      for (int counter=0; counter<maxCounter; counter++) {
+        textYCoordinate+=35;
+        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
+        fill(255, 255, 255);
+      }
+    } else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
+      for (int counter=MAX_AIRPORT_DISPLAY; counter<listOfAirports.size(); counter++) {
+        textYCoordinate+=35;
+        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
+        fill(255, 255, 255);
+      }
+    }
+    //textFont(LABEL_FONT);
+    //textYCoordinate+=40;
+   // text("Graphs: ", textXCoordinate, textYCoordinate);
+   // fill(255, 255, 255);
   }
 }
 
