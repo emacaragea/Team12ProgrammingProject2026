@@ -14,12 +14,12 @@ final int ARROW_HEIGHT = 6;
 final int ARROW_LENGTH = 20;
 
 FlightMapScreen         flightMap;
-//USMapScreen             usMap;
+USMapScreen             usMap;
 Screen                  screen1;
 
 HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
-int    currentView       = 5;
+int    currentView       = 0;
 String selectedStateCode = "TX";
 
 static final String[] ALL_STATE_CODES = {
@@ -45,7 +45,7 @@ void setup() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
 
-  // usMap   = new USMapScreen(stateFlightCounts);
+  usMap   = new USMapScreen(stateFlightCounts);
   screen1 = new Screen(3);
 }
 
@@ -212,7 +212,7 @@ String nextToken(Scanner thisScanner) {
 
 void draw() {
   if (currentView == 0) {
-    //usMap.draw();
+    usMap.draw();
   } else {
     screen1.drawStateScreen(selectedStateCode);
   }
@@ -220,7 +220,7 @@ void draw() {
 
 void mousePressed() {
   if (currentView == 0) {
-    //usMap.mousePressed();
+    usMap.mousePressed();
   } else if (mouseButton == RIGHT) {
     currentView = 0;
   } else {
