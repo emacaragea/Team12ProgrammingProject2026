@@ -4,6 +4,7 @@
 
 // Orla Kealy, 21:00 PM 24/03/2026
 // Description: Added a legend with airport flight data
+//              Implemented resource path to state images - fallback if an error occurs
 
 class StateHeatMap {
   PImage stateImg;
@@ -32,10 +33,10 @@ class StateHeatMap {
   int hoveredIndex = -1;
   float[] currentSizes;
   
-  StateHeatMap(String stateCode, PImage stateImg)
+  StateHeatMap(String stateCode)
   {
     this.stateCode = stateCode;
-    this.stateImg = stateImg;
+    this.stateImg = loadStateImage(stateCode);
     
     float[] bounds = stateBoundingBox(stateCode);
     
@@ -46,6 +47,19 @@ class StateHeatMap {
       minLat = bounds[2];
       maxLon = bounds[3];
     }
+  }
+
+  PImage loadStateImage(String stateCode)
+  {
+    String path = "USStateOutlines/" + stateCode.toUpperCase() + ".jpg";
+    PImage img = loadImage(path);
+
+    if (img == null)
+    {
+        println("Error: Image not found.");
+    }
+
+    return img;
   }
   
   void drawStateHeatMap(float x, float y, String[] airports, int[] flightCounts) // e.g {"LAX", "SFO", "SAN"}
@@ -63,7 +77,21 @@ class StateHeatMap {
       }
     }
     
-    image(stateImg, x, y);
+    if (stateImg != null)
+    {
+        image(stateImg, x, y);
+    }
+    else
+    {
+        // Fallback
+        fill(180);
+        noStroke();
+        rect(x, y, 300, 200);
+
+        fill(0);
+        textAlign(CENTER, CENTER);
+        text("Image not found: " + stateCode, x + 150, y + 100);
+    }
     
     pushMatrix();
     translate(x, y);
