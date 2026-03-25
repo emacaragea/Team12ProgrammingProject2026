@@ -85,6 +85,50 @@ class Screen{
         }
     }
 
+    void screenDraw(Airport thisAirport, String airportName){
+        fill(BACKGROUND_COLOR);
+        drawHomeBar();
+        switch(screenType){
+            case 1:
+            drawHomeScreen();
+            break;
+            case 2:
+            drawAirportScreen(thisAirport, airportName);
+            break;
+            case 3:
+            //drawStateScreen();
+            break;
+            case 4:
+            drawFlightScreen();
+            break;
+            case 5:
+            drawLoadScreen();
+            break;
+        }
+    }
+
+    void screenDraw(){
+        fill(BACKGROUND_COLOR);
+        drawHomeBar();
+        switch(screenType){
+            case 1:
+            drawHomeScreen();
+            break;
+            case 2:
+            //drawAirportScreen();
+            break;
+            case 3:
+            //drawStateScreen();
+            break;
+            case 4:
+            drawFlightScreen();
+            break;
+            case 5:
+            drawLoadScreen();
+            break;
+        }
+    }
+
     void drawHomeBar(){
         fill(200);
         rect(0, 0, 1400, 40);
