@@ -9,8 +9,10 @@ class Screen{
     private String selectedAirportName;
     private ArrayList<Integer> screenHistory = new ArrayList<Integer>();
     private ArrayList<State> stateList = new ArrayList<State>();
+    private ArrayList<Airport> airportList = new ArrayList<Airport>();
     private int screenHistoryIndex = 0;
     private int currentStateIndex;
+    private int currentAirportIndex;
     final int HOME_SCREEN = 1;
     final int AIRPORT_SCREEN = 2;
     final int STATE_SCREEN = 3;
@@ -25,7 +27,7 @@ class Screen{
     final int HOME_BUTTON_X = 50;
     final int HOME_BUTTON_Y = 15;
     final int HOME_BUTTON_SIZE = 20;
-    final int HOME_BAR_HEIGHT = 50;
+    static final int HOME_BAR_HEIGHT = 50;
     final color HOME_BAR_COLOR = color(20, 30, 48);
     final color HOME_BAR_STROKE_COLOR = color(0, 120, 200);
     final color HOME_BAR_BACKGROUND_COLOR = color(20, 28, 38);
@@ -54,6 +56,7 @@ class Screen{
         screenHistoryIndex++;
         screenType = type;
     }
+    
 
     void setSelectedAirport(Airport airport){
         this.selectedAirport = airport;
@@ -155,12 +158,12 @@ class Screen{
         rect(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_SIZE, HOME_BUTTON_SIZE);
 
         //draw forward arrow
-        line(FORWARD_ARROW_X, FORWARD_ARROW_Y, FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y);
+        /*line(FORWARD_ARROW_X, FORWARD_ARROW_Y, FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y);
         line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
             FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y - ARROW_HEIGHT);
 
         line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
-            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);
+            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);*/
     }
 
 
@@ -235,8 +238,12 @@ class Screen{
 
     }
 
-    void drawAirportScreen(Airport thisAirport, String AirportName){
-
+    void drawAirportScreen(Airport thisAirport, String airportName){
+        airportList.add(thisAirport);
+        currentAirportIndex = airportList.size()-1;
+        thisAirport.setPieChartValues(thisChart);
+        thisAirport.airportDraw(airportName);
+        thisChart.chartsDraw();
     }
 
     void drawStateScreen(String code, State thisState, String stateName){

@@ -5,11 +5,21 @@ class Airport{
     private int worldAreaCode;
     private ArrayList<Flight> flightsLeaving;
     private ArrayList<Flight> flightsIncoming;
+    private String pieGraphTitle;
+    private String[] pieLabels = {"On-Time", "Delayed", "Cancelled"};
+    private float[] pieValues;
+    color[] pieColors = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
+    Charts charts;
+    private boolean setGraphValues;
+
+
     Airport(String airportName, int worldAreaCode){
-        this.airportName = airportName;
-        this.worldAreaCode = worldAreaCode;
-        this.flightsLeaving = new ArrayList<Flight>();
-        this.flightsIncoming = new ArrayList<Flight>();
+      this.airportName = airportName;
+      this.worldAreaCode = worldAreaCode;
+      this.flightsLeaving = new ArrayList<Flight>();
+      this.flightsIncoming = new ArrayList<Flight>();
+      charts = new Charts();
+      setGraphValues =false;
     }
 
     void setAirportName(String airportName){
@@ -24,6 +34,11 @@ class Airport{
     int getWorldAreaCode(){
         return worldAreaCode;
     }
+
+    void setGraphValues(boolean setGraphValues) {
+      this.setGraphValues = setGraphValues;
+    }
+
     void addFlightsLeaving(Flight flightX){
         if(!flightsLeaving.contains((flightX))){
             flightsLeaving.add(flightX); //CHECK WORKS
@@ -40,6 +55,57 @@ class Airport{
     int getNumberOfFlightsIncoming(){
         return flightsIncoming.size();
     }
+
+//Niko Charles 3:00 25/03/2026 write method
+    float[] getNumberOfFlightsCancelled(){
+      int cancelled = 0;
+      int delayed = 0;
+      int onTime = 0;
+      for(int i = 0; i < flightsLeaving.size(); i++){
+        if(flightsLeaving.get(i).getFlightCancelled() == 1){
+          cancelled++;
+        }
+        else if(flightsLeaving.get(i).getActualDepartureTime() == flightsLeaving.get(i).getScheduledDepartureTime()){
+          onTime++;
+        }
+        else{
+          delayed++;
+        }
+      }
+      float[] cancelledDelayedOnTime = {cancelled, delayed, onTime};
+      return cancelledDelayedOnTime;
+    }
+
+    void setPieChartValues(Charts thisPieChart) {
+      if (!this.setGraphValues) {
+        pieGraphTitle = "On-Time Flights";
+        pieValues = new float[3];
+        pieValues = getNumberOfFlightsCancelled();
+        thisPieChart.addPieChart(pieGraphTitle, pieLabels, pieValues, 200, 200, 200, pieColors);
+        setGraphValues(true);
+      }
+    }
+
+    void airportDraw(String airportName){
+      //Niko Charles 2:00 25/03/2026 create method
+      //Jesse Margarites background color and text
+      background(BACKGROUND_COLOR);
+      stroke(255);
+      strokeWeight(2);
+      noFill();
+      line(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, SCREEN_HEIGHT);
+
+      PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
+      PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
+      PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
+      
+      int textXCoordinate = 20;
+      int textYCoordinate = 25;
+      fill(255);
+      textFont(TITLE_FONT);
+      text(airportName, textXCoordinate-10, textYCoordinate);
+    }
+
     @Override
     public boolean equals(Object thisObject) {
       if (this == thisObject){
