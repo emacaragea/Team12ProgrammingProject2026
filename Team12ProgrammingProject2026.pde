@@ -129,6 +129,7 @@ String convertStateCodeToStateName(String stateCode) {
     String currentLine = reader.readLine();
     while (currentLine != null) {
       currentLine = reader.readLine();
+      println(currentLine);
       Scanner lineScanner = new Scanner(currentLine).useDelimiter(",");
       String currentCode = lineScanner.next();
       if (currentCode.equals(stateCode)) {

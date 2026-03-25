@@ -464,7 +464,7 @@ class BarChart
         pushMatrix();
         translate(labelX, y + h + 15);
         rotate(-PI/4);   // rotate slightly to avoid overlap
-        text(labels[j], 0, 0);
+        //text(labels[j], 0, 0);
         popMatrix();
       }
     }
