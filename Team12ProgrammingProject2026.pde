@@ -55,7 +55,6 @@ void setup() {
   usMap        = new USMapScreen(this, stateFlightCounts);
   homeScreen   = new HomeScreen(usMap);
   screen1 = new Screen(3);
-
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -232,31 +231,26 @@ void draw() {
 void mousePressed() {
   if (currentView == 0) {
     homeScreen.mousePressed();
-  } else if (mouseButton == RIGHT) {
-    currentView = 0;
-  } else {
-    if (currentView == 1) {
-      screen1.mousePressed();
-    } else if (currentView == 2) {
-      flightMap.mousePressed();
-    } else{
+    if (mouseButton==RIGHT) {
+      currentView=0;
+    }
+  } else if (currentView==1) {
     //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
-    
-
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
       && thisState.getPageNumber()==1) {
       thisState.setPageNumber(2);
-
     } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
-    && mouseY>= STATE_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT
-    && thisState.getPageNumber()==2) {
+      && mouseY>= STATE_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT
+      && thisState.getPageNumber()==2) {
       thisState.setPageNumber(1);
-        
     }
-  }
+    screen1.mousePressed();
+  } else if (currentView==2) {
+    flightMap.mousePressed();
   }
 }
+
 
 void mouseDragged() {
   flightMap.mouseDragged();
