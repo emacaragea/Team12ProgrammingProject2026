@@ -45,12 +45,13 @@ class State {
   }
 
   //Niko Charles, 10:00, 25/03/2026
-  void linkClick(float mx, float my) {
+  Airport linkClick(float mx, float my) {
     for (TextLinks ct : airportLinks) {
       if (ct.isMouseOver(mx, my)) {
-        // Navigate to another page
+        return ct.getTextLinkAirport();
       }
     }
+    return null;
   }
   //Jesse Margarites, 11AM, 24/03, implementing pageNumber
   int getPageNumber() {

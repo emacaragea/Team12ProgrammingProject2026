@@ -4,6 +4,7 @@ class TextLinks{
     float x, y, w, h;
     Airport airport;
 
+
   TextLinks(String label, float x, float y, float w, float h, Airport airport) {
     this.label = label;
     this.x = x;
@@ -15,5 +16,9 @@ class TextLinks{
 
   boolean isMouseOver(float mx, float my) {
     return mx >= x && mx <= x + w && my >= y - h && my <= y;
+  }
+
+  Airport getTextLinkAirport(){
+    return airport;
   }
 }

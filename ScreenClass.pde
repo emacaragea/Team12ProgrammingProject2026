@@ -5,6 +5,8 @@ import java.util.ArrayList;
 class Screen{
     private int screenType;
     private int lastScreenType;
+    private Airport selectedAirport;
+    private String selectedAirportName;
     private ArrayList<Integer> screenHistory = new ArrayList<Integer>();
     private ArrayList<State> stateList = new ArrayList<State>();
     private int screenHistoryIndex = 0;
@@ -48,6 +50,11 @@ class Screen{
         screenHistory.add(type);
         screenHistoryIndex++;
         screenType = type;
+    }
+
+    void setSelectedAirport(Airport airport){
+        this.selectedAirport = airport;
+        this.selectedAirportName = airport.getAirportName();
     }
 
     int getScreenType(){
@@ -205,6 +212,14 @@ class Screen{
         goHome(mouseX, mouseY);
         goBack(mouseX, mouseY);
         goForward(mouseX, mouseY);
+        if (screenType == STATE_SCREEN) {
+            State currentState = stateList.get(currentStateIndex);
+            Airport clickedAirport = currentState.linkClick(mouseX, mouseY);
+            if (clickedAirport != null) {
+                setSelectedAirport(clickedAirport);
+                setScreenType(AIRPORT_SCREEN);
+            }
+        }
     }
 
     void goHome(int mX, int mY){
