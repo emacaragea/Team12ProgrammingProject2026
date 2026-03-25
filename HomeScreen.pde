@@ -31,17 +31,29 @@ final int BUTTON_Y    = height - BUTTON_H - BUTTON_GAP;
     this.usMap  = usMap;
   }
 
-  void draw() {
-    background(10, 15, 25);
+  
 
-    // Map- occupies space between header and buttons
+
+  void draw() {
+    background(20, 28, 38);
+
+    // Draw US map in the middle region
     usMap.drawInRegion(0, MAP_Y, width, MAP_H);
 
-    // Bottom buttons
+    // Draw buttons and header on top
     drawButtons();
-
-    // Header drawn last so it sits on top
     header.draw();
+    drawBackgroundGlow();
+  }
+
+  void drawBackgroundGlow() {
+    noStroke();
+
+    fill(70, 110, 150, 18);
+    ellipse(width * 0.25, height * 0.3, 520, 520);
+
+    fill(70, 110, 150, 12);
+    ellipse(width * 0.75, height * 0.7, 600, 600);
   }
 
   void drawButtons() {
