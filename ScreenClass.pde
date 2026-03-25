@@ -17,15 +17,18 @@ class Screen{
     final int FLIGHT_SCREEN = 4;
     final int LOADING_SCREEN = 5;
     final int BACK_ARROW_X = 15;
-    final int BACK_ARROW_Y = 20;
+    final int BACK_ARROW_Y = 25;
     final int FORWARD_ARROW_X = 85;
-    final int FORWARD_ARROW_Y = 20;
+    final int FORWARD_ARROW_Y = 25;
     final int ARROW_HEIGHT = 6;
     final int ARROW_LENGTH = 20;
     final int HOME_BUTTON_X = 50;
-    final int HOME_BUTTON_Y = 10;
+    final int HOME_BUTTON_Y = 15;
     final int HOME_BUTTON_SIZE = 20;
-    final color BACKGROUND_COLOR = color(20, 28, 38);
+    final int HOME_BAR_HEIGHT = 50;
+    final color HOME_BAR_COLOR = color(20, 30, 48);
+    final color HOME_BAR_STROKE_COLOR = color(0, 120, 200);
+    final color HOME_BAR_BACKGROUND_COLOR = color(20, 28, 38);
 
     //amanda de moraes, 19/3/26, 10AM, added search bar
     final int SEARCHX= 150;
@@ -130,8 +133,16 @@ class Screen{
 
     void drawHomeBar(){
         fill(200);
-        rect(0, 0, 1400, 40);
+        //rect(0, 0, 1400, 40);
         //draw backArrow
+        //ema home bar background 
+        noStroke();
+        fill(HOME_BAR_COLOR);
+        rect(0, 0, width, HOME_BAR_HEIGHT);
+
+        stroke(HOME_BAR_STROKE_COLOR);
+        strokeWeight(1);
+        line(0, HOME_BAR_HEIGHT, width, HOME_BAR_HEIGHT);
         stroke(255);
         strokeWeight(2);
         noFill();
