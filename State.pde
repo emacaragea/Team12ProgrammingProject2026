@@ -5,9 +5,11 @@ final private float CHART_WIDTH = 600;
 final private float CHART_HEIGHT = 200;
 final private int CHART_X_COORDINATE = SCREEN_WIDTH/3+70;
 final private int CHART_Y_COORDINATE = 520;
+
 class State {
   private String stateName;
   private ArrayList<Airport> listOfAirports;
+  ArrayList<TextLinks> airportLinks = new ArrayList<TextLinks>();
   private String graphTitle;
   private String[] barLabels;
   private int[] barValues;
@@ -15,9 +17,6 @@ class State {
   Charts charts;
   private boolean setGraphValues;
   private int pageNumber;
-
-
-
 
 
 
@@ -42,6 +41,15 @@ class State {
   void addAirport(Airport airportX) {
     if (!listOfAirports.contains(airportX)) {
       listOfAirports.add(airportX);
+    }
+  }
+
+  //Niko Charles, 10:00, 25/03/2026
+  void linkClick(float mx, float my) {
+    for (TextLinks ct : airportLinks) {
+      if (ct.isMouseOver(mx, my)) {
+        // Navigate to another page
+      }
     }
   }
   //Jesse Margarites, 11AM, 24/03, implementing pageNumber
@@ -102,6 +110,7 @@ class State {
     strokeWeight(2);
     noFill();
     line(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, SCREEN_HEIGHT);
+    airportLinks.clear();
 
     PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
     PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
@@ -109,7 +118,7 @@ class State {
     //example
     int textXCoordinate = 20;
     int textYCoordinate = 25;
-    fill(255, 255, 255);
+    fill(255);
     textFont(TITLE_FONT);
     text(stateName, textXCoordinate-10, textYCoordinate);
     fill(255, 255, 255);
@@ -117,7 +126,7 @@ class State {
     textYCoordinate+=40;
     text("Airports: ", textXCoordinate, textYCoordinate);
     fill(255, 255, 255);
-      int maxCounter;
+    int maxCounter;
       if (listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
         maxCounter = MAX_AIRPORT_DISPLAY;
         stroke(255);
@@ -138,20 +147,50 @@ class State {
       } else {
         maxCounter = listOfAirports.size();
       }
+
+    //Niko Charles 10:00, 25/03/2026 Implemented clickable text links
     if(pageNumber==1){
       for (int counter=0; counter<maxCounter; counter++) {
-        textYCoordinate+=35;
+        /*textYCoordinate+=35;
         text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-        fill(255, 255, 255);
-      }
-    } else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
-      for (int counter=MAX_AIRPORT_DISPLAY; counter<listOfAirports.size(); counter++) {
-        textYCoordinate+=35;
-        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-        fill(255, 255, 255);
+        fill(255, 255, 255);*/
+        textYCoordinate += 35;
+        Airport airport = listOfAirports.get(counter);
+        String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
+        String label = (counter + 1) + ": " + name;
+        float w = textWidth(label);
+        float h = 20;
+        if (mouseX >= textXCoordinate && mouseX <= textXCoordinate + w &&
+          mouseY >= textYCoordinate - h && mouseY <= textYCoordinate) {
+          fill(200, 200, 255);
+        } else {
+          fill(255);
+        }
+        text(label, textXCoordinate, textYCoordinate);
+        airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
     }
-
+    else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
+      for (int counter=MAX_AIRPORT_DISPLAY; counter<listOfAirports.size(); counter++) {
+        /*textYCoordinate+=35;
+        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
+        fill(255, 255, 255);*/
+        textYCoordinate += 35;
+        Airport airport = listOfAirports.get(counter);
+        String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
+        String label = (counter + 1) + ": " + name;
+        float w = textWidth(label);
+        float h = 20;
+        if (mouseX >= textXCoordinate && mouseX <= textXCoordinate + w &&
+          mouseY >= textYCoordinate - h && mouseY <= textYCoordinate) {
+          fill(200, 200, 255);
+        } else {
+          fill(255);
+        }
+        text(label, textXCoordinate, textYCoordinate);
+        airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
+      }
+    }
   }
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method
     @Override

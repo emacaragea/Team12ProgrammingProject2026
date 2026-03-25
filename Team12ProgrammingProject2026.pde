@@ -23,7 +23,7 @@ HomeScreen homeScreen;
 
 HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
-int    currentView       = 0;
+int    currentView       = 1;
 //String selectedStateCode = "TX";
 String selectedStateCode;
 State thisState;
@@ -241,6 +241,8 @@ void mousePressed() {
       flightMap.mousePressed();
     } else{
     //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
+    thisState.linkClick(mouseX, mouseY);
+
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
       && thisState.getPageNumber()==1) {
