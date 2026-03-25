@@ -222,6 +222,7 @@ String nextToken(Scanner thisScanner) {
 void draw() {
   if (currentView == 0) {
     homeScreen.draw();
+    screen1.drawHomeBar();
   } else if (currentView == 1) {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
   } else if (currentView == 2) {
