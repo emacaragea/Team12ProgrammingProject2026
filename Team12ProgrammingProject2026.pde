@@ -24,6 +24,10 @@ HomeScreen homeScreen;
 HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
 int    currentView       = 0;
+<<<<<<< HEAD
+=======
+//String selectedStateCode = "TX";
+>>>>>>> d7101446d37b7e491be614c860d69fc10065eee4
 String selectedStateCode;
 State thisState;
 String stateName;

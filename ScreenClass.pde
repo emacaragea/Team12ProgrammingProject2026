@@ -62,8 +62,7 @@ class Screen{
     }
 
     //Jesse Margarites, 4PM, 24/03
-    //Niko Charles, 10:00, 25/03/2026
-        void screenDraw(String code, State thisState, String stateName, Airport thisAirport, String airportName){
+        void screenDraw(String code, State thisState, String stateName){
         fill(BACKGROUND_COLOR);
         drawHomeBar();
         switch(screenType){
@@ -71,8 +70,8 @@ class Screen{
             drawHomeScreen();
             break;
             case 2:
-            drawAirportScreen(thisAirport, airportName);
-            break;
+            //drawAirportScreen(thisAirport, airportName);
+            //break;
             case 3:
             drawStateScreen(code, thisState, stateName);
             break;
@@ -84,7 +83,7 @@ class Screen{
             break;
         }
     }
-
+    //Niko Charles, 10:00, 25/03/2026
     void screenDraw(Airport thisAirport, String airportName){
         fill(BACKGROUND_COLOR);
         drawHomeBar();
