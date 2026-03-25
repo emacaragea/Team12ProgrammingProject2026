@@ -92,9 +92,12 @@ class USMapScreen {
   String name = geoMap.getAttributeTable().findRow(str(id), 0).getString("Name");
   String code = nameToCode(name);
   if (code != null) {
-    selectedStateCode = code;
-    currentView = 1;
-    screen1 = new Screen(3);
+    //Jesse Margarites, 5PM, 24/03, updated this method so when each State is clicked on, go to its state screen
+     selectedStateCode = code;
+     stateName = convertStateCodeToStateName(selectedStateCode);
+     thisState = new State(stateName);
+     currentView = 1;
+      screen1 = new Screen(3); // reset so Screen loads the newly selected state
   }
 }
 
