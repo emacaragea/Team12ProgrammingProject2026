@@ -50,19 +50,19 @@ class USMapScreen {
 
   // Draw choropleth clipped to a sub-region of the screen
   void drawInRegion(float rx, float ry, float rw, float rh) {
-    // Main 48 states — centred, slightly bigger
+    // Main 48 states
 mainX = rx;
 mainY = ry;
 mainW = rw;
 mainH = rh * 0.90;
 
-// Alaska inset — top left corner, slightly smaller and more right
+// Alaska inset 
 akX = rx + rw * 0.02;
 akY = ry;
 akW = rw * 0.14;
 akH = rh * 0.25;
 
-// Hawaii inset — lower and more right
+// Hawaii inset 
 hiX = rx + rw * 0.16;
 hiY = ry + rh * 0.72;
 hiW = rw * 0.10;
@@ -162,7 +162,7 @@ hiH = rh * 0.20;
     return true;
   }
 
-  // Keep old mousePressed for when map is fullscreen
+  // mousePressed for when map is fullscreen
   void mousePressed() {
     mousePressedInRegion(0, 0, width, height);
   }
