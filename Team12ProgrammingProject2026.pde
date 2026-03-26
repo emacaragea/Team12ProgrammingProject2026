@@ -29,6 +29,8 @@ String selectedStateCode;
 State thisState;
 String stateName;
 
+boolean dataLoaded = false;
+
 static final String[] ALL_STATE_CODES = {
   "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
   "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME",
@@ -41,20 +43,39 @@ void settings() {
   size(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
+// void setup() {
+//   // Build code name lookup once from CSV (used by countAllStateFlights + geoMap hover)
+//   stateCodeToName = buildCodeToNameMap();
+
+//   // Lightweight pass over all state files  just counts origin + destination per state
+//   stateFlightCounts = new HashMap<String, Integer>();
+//   countAllStateFlights();
+
+//   flightMap = new FlightMapScreen();
+//   flightMap.setup();
+
+//   usMap        = new USMapScreen(this, stateFlightCounts);
+//   homeScreen   = new HomeScreen(usMap);
+//   screen1 = new Screen(3);
+// }
+
+
 void setup() {
-  // Build code name lookup once from CSV (used by countAllStateFlights + geoMap hover)
-  stateCodeToName = buildCodeToNameMap();
+  loading = new Loading();
+  loading.setup();
+  thread("loadData");
+}
 
-  // Lightweight pass over all state files  just counts origin + destination per state
-  stateFlightCounts = new HashMap<String, Integer>();
-  countAllStateFlights();
-
+void loadData() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
-
-  usMap        = new USMapScreen(this, stateFlightCounts);
-  homeScreen   = new HomeScreen(usMap);
   screen1 = new Screen(3);
+  stateCodeToName = buildCodeToNameMap();
+  stateFlightCounts = new HashMap<String, Integer>();
+  countAllStateFlights();
+  usMap      = new USMapScreen(this, stateFlightCounts);
+  homeScreen = new HomeScreen(usMap);
+  dataLoaded = true;
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -220,6 +241,13 @@ String nextToken(Scanner thisScanner) {
 
 //Ema Caragea, added home screen when running the program, 24/03/2026, 21:00
 void draw() {
+
+  //ema caragea, added loading screen while data is being loaded, 26/03/2026, 9:00
+  if(!dataLoaded){
+    loading.draw();
+    return;
+  }
+
   if (currentView == 0) {
     homeScreen.draw();
     screen1.drawHomeBar();
@@ -231,6 +259,11 @@ void draw() {
 }
 
 void mousePressed() {
+  if(!dataLoaded){
+    
+    return;
+  }
+
   if (currentView == 0) {
     homeScreen.mousePressed();
     if (mouseButton==RIGHT) {
