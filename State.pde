@@ -145,6 +145,7 @@ class State {
     text("Airports: ", textXCoordinate, textYCoordinate);
     fill(255, 255, 255);
     int maxCounter;
+    stateHeatMap.drawStateHeatMap(CHART_X_COORDINATE, 10, barLabels, barValues);
     if (listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
       maxCounter = MAX_AIRPORT_DISPLAY;
       stroke(255);
