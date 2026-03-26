@@ -262,6 +262,7 @@ class Screen{
                 setSelectedAirport(clickedAirport);
                 setScreenType(AIRPORT_SCREEN);
             }
+            thisChart.mousePressed();
         }
     }
 

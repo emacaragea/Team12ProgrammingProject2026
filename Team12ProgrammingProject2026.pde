@@ -129,7 +129,6 @@ String convertStateCodeToStateName(String stateCode) {
     String currentLine = reader.readLine();
     while (currentLine != null) {
       currentLine = reader.readLine();
-      println(currentLine);
       Scanner lineScanner = new Scanner(currentLine).useDelimiter(",");
       String currentCode = lineScanner.next();
       if (currentCode.equals(stateCode)) {
@@ -237,16 +236,7 @@ void mousePressed() {
       currentView=0;
     }
   } else if (currentView==1) {
-    //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
-    if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
-      && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
-      && thisState.getPageNumber()==1) {
-      thisState.setPageNumber(2);
-    } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
-      && mouseY>= STATE_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT
-      && thisState.getPageNumber()==2) {
-      thisState.setPageNumber(1);
-    }
+    thisState.stateMousePressed();
     screen1.mousePressed();
   } else if (currentView==2) {
     flightMap.mousePressed();

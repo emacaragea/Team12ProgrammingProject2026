@@ -77,6 +77,19 @@ class State {
     //NO AIRPORT IS NULL
     return null;
   }
+  void stateMousePressed() {
+    //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
+    if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
+      && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
+      && thisState.getPageNumber()==1) {
+      thisState.setPageNumber(2);
+    } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
+      && mouseY>= STATE_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT
+      && thisState.getPageNumber()==2) {
+      thisState.setPageNumber(1);
+    }
+
+  }
   int getNumberOfAirports() {
     return listOfAirports.size();
   }
@@ -128,33 +141,33 @@ class State {
     text("Airports: ", textXCoordinate, textYCoordinate);
     fill(255, 255, 255);
     int maxCounter;
-      if (listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
-        maxCounter = MAX_AIRPORT_DISPLAY;
-        stroke(255);
-        strokeWeight(2);
-        noFill();
+    if (listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
+      maxCounter = MAX_AIRPORT_DISPLAY;
+      stroke(255);
+      strokeWeight(2);
+      noFill();
 
-        line(STATE_BACK_ARROW_X, STATE_BACK_ARROW_Y, STATE_BACK_ARROW_X+ARROW_LENGTH, STATE_BACK_ARROW_Y);
+      line(STATE_BACK_ARROW_X, STATE_BACK_ARROW_Y, STATE_BACK_ARROW_X+ARROW_LENGTH, STATE_BACK_ARROW_Y);
 
-        line(STATE_BACK_ARROW_X, STATE_BACK_ARROW_Y, STATE_BACK_ARROW_X+ARROW_HEIGHT, STATE_BACK_ARROW_Y-ARROW_HEIGHT);
-        line(STATE_BACK_ARROW_X, STATE_BACK_ARROW_Y, STATE_BACK_ARROW_X+ARROW_HEIGHT, STATE_BACK_ARROW_Y+ARROW_HEIGHT);
+      line(STATE_BACK_ARROW_X, STATE_BACK_ARROW_Y, STATE_BACK_ARROW_X+ARROW_HEIGHT, STATE_BACK_ARROW_Y-ARROW_HEIGHT);
+      line(STATE_BACK_ARROW_X, STATE_BACK_ARROW_Y, STATE_BACK_ARROW_X+ARROW_HEIGHT, STATE_BACK_ARROW_Y+ARROW_HEIGHT);
 
-        line(STATE_FORWARD_ARROW_X, STATE_FORWARD_ARROW_Y, STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y);
-        line(STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y,
-          STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y - ARROW_HEIGHT);
+      line(STATE_FORWARD_ARROW_X, STATE_FORWARD_ARROW_Y, STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y);
+      line(STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y,
+        STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y - ARROW_HEIGHT);
 
-        line(STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y,
-          STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y + ARROW_HEIGHT);
-      } else {
-        maxCounter = listOfAirports.size();
-      }
+      line(STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y,
+        STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y + ARROW_HEIGHT);
+    } else {
+      maxCounter = listOfAirports.size();
+    }
 
     //Niko Charles 10:00, 25/03/2026 Implemented clickable text links
-    if(pageNumber==1){
+    if (pageNumber==1) {
       for (int counter=0; counter<maxCounter; counter++) {
         /*textYCoordinate+=35;
-        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-        fill(255, 255, 255);*/
+         text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
+         fill(255, 255, 255);*/
         textYCoordinate += 35;
         Airport airport = listOfAirports.get(counter);
         String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
@@ -170,12 +183,11 @@ class State {
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
-    }
-    else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
+    } else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
       for (int counter=MAX_AIRPORT_DISPLAY; counter<listOfAirports.size(); counter++) {
         /*textYCoordinate+=35;
-        text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-        fill(255, 255, 255);*/
+         text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
+         fill(255, 255, 255);*/
         textYCoordinate += 35;
         Airport airport = listOfAirports.get(counter);
         String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
@@ -194,17 +206,16 @@ class State {
     }
   }
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method
-    @Override
+  @Override
     public boolean equals(Object thisObject) {
-      if (this == thisObject){
-        return true;
-      }
-      if (thisObject == null || !(thisObject instanceof Airport)) {
-        return false;
-      }
-      State stateObject = (State) thisObject;
-      return this.stateName.equals(stateObject.stateName);
+    if (this == thisObject) {
+      return true;
     }
-  
+    if (thisObject == null || !(thisObject instanceof Airport)) {
+      return false;
+    }
+    State stateObject = (State) thisObject;
+    return this.stateName.equals(stateObject.stateName);
+  }
 }
 
