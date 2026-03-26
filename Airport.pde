@@ -8,7 +8,7 @@ class Airport{
     private String pieGraphTitle;
     private String[] pieLabels = {"On-Time", "Delayed", "Cancelled"};
     private float[] pieValues;
-    color[] pieColors = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
+    private color[] pieColors = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
     Charts charts;
     private boolean setGraphValues;
 
