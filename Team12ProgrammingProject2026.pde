@@ -24,6 +24,7 @@ HomeScreen homeScreen;
 HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
 int    currentView       = 0;
+int    lastView;
 //String selectedStateCode = "TX";
 String selectedStateCode;
 State thisState;
@@ -265,7 +266,9 @@ void mousePressed() {
     return;
   }
 
+  //Niko Charles, 9:00 26/03/2026 Added Home Button 
   if(screen1.goHome(mouseX, mouseY)){
+    lastView = currentView;
     currentView = 0;
   }
   if (currentView == 0) {
