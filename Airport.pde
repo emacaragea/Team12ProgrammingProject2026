@@ -11,6 +11,9 @@ class Airport{
     private color[] pieColors = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
     Charts charts;
     private boolean setGraphValues;
+    final private float PIE_CHART_DIAMETER = 200;
+    final private int PIE_CHART_X_COORDINATE = SCREEN_WIDTH/3+70;
+    final private int PIE_CHART_Y_COORDINATE = 400;
 
 
     Airport(String airportName, int worldAreaCode){
@@ -81,7 +84,7 @@ class Airport{
         pieGraphTitle = "On-Time Flights";
         pieValues = new float[3];
         pieValues = getNumberOfFlightsCancelled();
-        thisPieChart.addPieChart(pieGraphTitle, pieLabels, pieValues, 200, 200, 200, pieColors);
+        thisPieChart.addPieChart(pieGraphTitle, pieLabels, pieValues, PIE_CHART_X_COORDINATE, PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColors);
         setGraphValues(true);
       }
     }
@@ -93,14 +96,13 @@ class Airport{
       stroke(255);
       strokeWeight(2);
       noFill();
-      line(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, SCREEN_HEIGHT);
 
       PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
       PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
       PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
       
-      int textXCoordinate = 20;
-      int textYCoordinate = 25;
+      int textXCoordinate = 70;
+      int textYCoordinate = 70;
       fill(255);
       textFont(TITLE_FONT);
       text(airportName, textXCoordinate-10, textYCoordinate);
