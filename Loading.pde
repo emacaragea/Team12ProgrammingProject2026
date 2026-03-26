@@ -1,5 +1,6 @@
 // Amanda de Moraes  - march 15 16:27
 // Loading screen updated, scaled for 1400 x 800
+// Ema Caragea connected loading screen to main sketch, 26/03/2026 21:00  
 
 Loading loading;
 

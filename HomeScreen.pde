@@ -5,25 +5,24 @@ class HomeScreen {
   USMapScreen usMap;
 
   final int HEADER_H    = 90;
-final int BUTTON_H    = 70;
-final int BUTTON_GAP  = 20;
-final int BUTTON_W    = (width - BUTTON_GAP * 4) / 3;
+  final int BUTTON_H   = 45;   // was 70
+  final int BUTTON_GAP = 60;   // was 20
+  final int BUTTON_Y   = height - BUTTON_H - 30;
+  final int BUTTON_W   = (width - BUTTON_GAP * 6) / 2;  // more gap on sides
 
-final int MAP_H       = (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2) / 2;
-final int MAP_Y       = HEADER_H + (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2 - MAP_H) / 2; // vertically centre it
-final int BUTTON_Y    = height - BUTTON_H - BUTTON_GAP;
-  // Button hover state
-  boolean[] hovered = new boolean[3];
+  final float MAP_H       = (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2) ;
+  final float MAP_Y       = HEADER_H + (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2 - MAP_H) / 2; // vertically centre it
+    // Button hover state
+  boolean[] hovered = new boolean[2];
 
   final String[] BUTTON_LABELS = {
     "Flight Map",
-    "TBD",
     "TBD"
   };
 
-  final color BUTTON_DEFAULT  = color(25, 40, 65);
-  final color BUTTON_HOVER    = color(0, 100, 180);
-  final color BUTTON_STROKE   = color(0, 140, 220);
+  final color BUTTON_DEFAULT  = color(82, 156, 214);
+  final color BUTTON_HOVER    = color(92, 170, 230);
+  final color BUTTON_STROKE   = color(120, 190, 245);
   final color BUTTON_TEXT     = color(220, 235, 255);
 
   HomeScreen(USMapScreen usMap) {
@@ -32,47 +31,49 @@ final int BUTTON_Y    = height - BUTTON_H - BUTTON_GAP;
   }
 
   void draw() {
-    background(10, 15, 25);
+    background(20, 28, 38);
 
-    // Map- occupies space between header and buttons
+    // Draw US map in the middle region
     usMap.drawInRegion(0, MAP_Y, width, MAP_H);
 
-    // Bottom buttons
+    // Draw buttons and header on top
     drawButtons();
-
-    // Header drawn last so it sits on top
     header.draw();
+    // drawBackgroundGlow();
   }
+
+  //background glow effect, TBD if we want to keep it or replace with something else
+  // void drawBackgroundGlow() {
+  //   noStroke();
+
+  //   fill(70, 110, 150, 18);
+  //   ellipse(width * 0.25, height * 0.3, 520, 520);
+
+  //   fill(70, 110, 150, 12);
+  //   ellipse(width * 0.75, height * 0.7, 600, 600);
+  // }
+
 
   void drawButtons() {
-    for (int i = 0; i < 3; i++) {
-      float bx = BUTTON_GAP + i * (BUTTON_W + BUTTON_GAP);
+  for (int i = 0; i < 2; i++) {
+    float bx = BUTTON_GAP + i * (BUTTON_W + BUTTON_GAP);
+    boolean hov = mouseX >= bx && mouseX <= bx + BUTTON_W &&
+                  mouseY >= BUTTON_Y && mouseY <= BUTTON_Y + BUTTON_H;
 
-      hovered[i] = mouseX >= bx && mouseX <= bx + BUTTON_W &&
-                   mouseY >= BUTTON_Y && mouseY <= BUTTON_Y + BUTTON_H;
+    fill(hov ? color( 92, 170, 230) : color(82, 156, 214));
+    stroke(color(120, 190, 245));
+    strokeWeight(1.5);
+    rect(bx, BUTTON_Y, BUTTON_W, BUTTON_H, 12);
 
-      // Shadow
-      noStroke();
-      fill(0, 40);
-      rect(bx + 4, BUTTON_Y + 4, BUTTON_W, BUTTON_H, 10);
-
-      // Button body
-      fill(hovered[i] ? BUTTON_HOVER : BUTTON_DEFAULT);
-      stroke(BUTTON_STROKE);
-      strokeWeight(1.2);
-      rect(bx, BUTTON_Y, BUTTON_W, BUTTON_H, 10);
-
-      // Label
-      fill(BUTTON_TEXT);
-      noStroke();
-      textAlign(CENTER, CENTER);
-      textSize(15);
-      text(BUTTON_LABELS[i], bx + BUTTON_W / 2, BUTTON_Y + BUTTON_H / 2);
-    }
+    fill(240);
+    textAlign(CENTER, CENTER);
+    textSize(14);
+    text(BUTTON_LABELS[i], bx + BUTTON_W / 2, BUTTON_Y + BUTTON_H / 2);
   }
+}
 
   void mousePressed() {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
       float bx = BUTTON_GAP + i * (BUTTON_W + BUTTON_GAP);
       if (mouseX >= bx && mouseX <= bx + BUTTON_W &&
           mouseY >= BUTTON_Y && mouseY <= BUTTON_Y + BUTTON_H) {
@@ -91,6 +92,6 @@ final int BUTTON_Y    = height - BUTTON_H - BUTTON_GAP;
     if (index == 0) {
       currentView = 2; // FlightMapScreen
     }
-    // index 1 and 2 are TBD
+    // index 1 is TBD
   }
 }

@@ -1,7 +1,7 @@
 // Ema Caragea, added US Interactive Map screen with choropleth, 24/03/2026
 // Ema Caragea, fixed bugs with map  24/03/2026, 21:30
 
-//TBD find out why alabama has 0 flights
+//TBD find out why alabama has 0 flights - FIXED!! -by Jesse 25/03/2026
 import org.gicentre.geomap.*;
 
 class USMapScreen {
@@ -58,7 +58,7 @@ class USMapScreen {
     geoMap.draw(id);
   }
 
-  // Hover — unproject mouse into map space
+  // Hover- unproject mouse into map space
   float mapMouseX = (mouseX - offsetX) / s;
   float mapMouseY = (mouseY - offsetY) / s;
   int hovId = geoMap.getID(mapMouseX, mapMouseY);

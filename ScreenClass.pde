@@ -9,23 +9,28 @@ class Screen{
     private String selectedAirportName;
     private ArrayList<Integer> screenHistory = new ArrayList<Integer>();
     private ArrayList<State> stateList = new ArrayList<State>();
+    private ArrayList<Airport> airportList = new ArrayList<Airport>();
     private int screenHistoryIndex = 0;
     private int currentStateIndex;
+    private int currentAirportIndex;
     final int HOME_SCREEN = 1;
     final int AIRPORT_SCREEN = 2;
     final int STATE_SCREEN = 3;
     final int FLIGHT_SCREEN = 4;
     final int LOADING_SCREEN = 5;
     final int BACK_ARROW_X = 15;
-    final int BACK_ARROW_Y = 20;
+    final int BACK_ARROW_Y = 25;
     final int FORWARD_ARROW_X = 85;
-    final int FORWARD_ARROW_Y = 20;
+    final int FORWARD_ARROW_Y = 25;
     final int ARROW_HEIGHT = 6;
     final int ARROW_LENGTH = 20;
     final int HOME_BUTTON_X = 50;
-    final int HOME_BUTTON_Y = 10;
+    final int HOME_BUTTON_Y = 15;
     final int HOME_BUTTON_SIZE = 20;
-    final color BACKGROUND_COLOR = color(20, 28, 38);
+    static final int HOME_BAR_HEIGHT = 50;
+    final color HOME_BAR_COLOR = color(20, 30, 48);
+    final color HOME_BAR_STROKE_COLOR = color(0, 120, 200);
+    final color HOME_BAR_BACKGROUND_COLOR = color(20, 28, 38);
 
     //amanda de moraes, 19/3/26, 10AM, added search bar
     final int SEARCHX= 150;
@@ -51,6 +56,7 @@ class Screen{
         screenHistoryIndex++;
         screenType = type;
     }
+    
 
     void setSelectedAirport(Airport airport){
         this.selectedAirport = airport;
@@ -130,8 +136,16 @@ class Screen{
 
     void drawHomeBar(){
         fill(200);
-        rect(0, 0, 1400, 40);
+        //rect(0, 0, 1400, 40);
         //draw backArrow
+        //ema home bar background 
+        noStroke();
+        fill(HOME_BAR_COLOR);
+        rect(0, 0, width, HOME_BAR_HEIGHT);
+
+        stroke(HOME_BAR_STROKE_COLOR);
+        strokeWeight(1);
+        line(0, HOME_BAR_HEIGHT, width, HOME_BAR_HEIGHT);
         stroke(255);
         strokeWeight(2);
         noFill();
@@ -144,12 +158,12 @@ class Screen{
         rect(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_SIZE, HOME_BUTTON_SIZE);
 
         //draw forward arrow
-        line(FORWARD_ARROW_X, FORWARD_ARROW_Y, FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y);
+        /*line(FORWARD_ARROW_X, FORWARD_ARROW_Y, FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y);
         line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
             FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y - ARROW_HEIGHT);
 
         line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
-            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);
+            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);*/
     }
 
 
@@ -224,8 +238,12 @@ class Screen{
 
     }
 
-    void drawAirportScreen(Airport thisAirport, String AirportName){
-
+    void drawAirportScreen(Airport thisAirport, String airportName){
+        airportList.add(thisAirport);
+        currentAirportIndex = airportList.size()-1;
+        thisAirport.setPieChartValues(thisChart);
+        thisAirport.airportDraw(airportName);
+        thisChart.chartsDraw();
     }
 
     void drawStateScreen(String code, State thisState, String stateName){
@@ -241,10 +259,10 @@ class Screen{
     }
 
 
-
-    void drawFlightScreen(){
-
-    }
+   //amanda de moraes. calling methods for table
+   void drawFlightScreen(){
+    tableDraw();
+}
 
     void drawLoadScreen(){
 
@@ -264,13 +282,31 @@ class Screen{
             }
             thisChart.mousePressed();
         }
+    handleSearchClick(mouseX, mouseY);
+    goHome(mouseX, mouseY);
+    goBack(mouseX, mouseY);
+    goForward(mouseX, mouseY);
+
+    if (screenType == FLIGHT_SCREEN) {
+        tableMousePressed();
     }
 
-    void goHome(int mX, int mY){
+    if (screenType == STATE_SCREEN) {
+        State currentState = stateList.get(currentStateIndex);
+        Airport clickedAirport = currentState.linkClick(mouseX, mouseY);
+        if (clickedAirport != null) {
+            setSelectedAirport(clickedAirport);
+            setScreenType(AIRPORT_SCREEN);
+        }
+    }
+}
+
+    boolean goHome(int mX, int mY){
         if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 
             mY > HOME_BUTTON_Y && mY < HOME_BUTTON_Y + HOME_BUTTON_SIZE){
-                setScreenType(1);
+                return true;
         }
+        return false;
     }
 
     void goBack(int mX, int mY){

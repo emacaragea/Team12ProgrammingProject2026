@@ -7,9 +7,9 @@ final static int SCREEN_WIDTH  = 1400;
 final static int SCREEN_HEIGHT = 800;
 
 final int STATE_BACK_ARROW_X = SCREEN_WIDTH/4-20;
-final int STATE_BACK_ARROW_Y = 595;
+final int STATE_BACK_ARROW_Y = 650;
 final int STATE_FORWARD_ARROW_X = STATE_BACK_ARROW_X + 70;
-final int STATE_FORWARD_ARROW_Y = 595;
+final int STATE_FORWARD_ARROW_Y = 650;
 final int ARROW_HEIGHT = 6;
 final int ARROW_LENGTH = 20;
 final static float HEADINGS_SIZE = 40;
@@ -24,10 +24,13 @@ HomeScreen homeScreen;
 HashMap<String, String>  stateCodeToName;
 HashMap<String, Integer> stateFlightCounts;
 int    currentView       = 0;
+int    lastView;
 //String selectedStateCode = "TX";
 String selectedStateCode;
 State thisState;
 String stateName;
+
+boolean dataLoaded = false;
 
 static final String[] ALL_STATE_CODES = {
   "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
@@ -41,20 +44,39 @@ void settings() {
   size(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
+// void setup() {
+//   // Build code name lookup once from CSV (used by countAllStateFlights + geoMap hover)
+//   stateCodeToName = buildCodeToNameMap();
+
+//   // Lightweight pass over all state files  just counts origin + destination per state
+//   stateFlightCounts = new HashMap<String, Integer>();
+//   countAllStateFlights();
+
+//   flightMap = new FlightMapScreen();
+//   flightMap.setup();
+
+//   usMap        = new USMapScreen(this, stateFlightCounts);
+//   homeScreen   = new HomeScreen(usMap);
+//   screen1 = new Screen(3);
+// }
+
+
 void setup() {
-  // Build code name lookup once from CSV (used by countAllStateFlights + geoMap hover)
-  stateCodeToName = buildCodeToNameMap();
+  loading = new Loading();
+  loading.setup();
+  thread("loadData");
+}
 
-  // Lightweight pass over all state files  just counts origin + destination per state
-  stateFlightCounts = new HashMap<String, Integer>();
-  countAllStateFlights();
-
+void loadData() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
-
-  usMap        = new USMapScreen(this, stateFlightCounts);
-  homeScreen   = new HomeScreen(usMap);
   screen1 = new Screen(3);
+  stateCodeToName = buildCodeToNameMap();
+  stateFlightCounts = new HashMap<String, Integer>();
+  countAllStateFlights();
+  usMap      = new USMapScreen(this, stateFlightCounts);
+  homeScreen = new HomeScreen(usMap);
+  dataLoaded = true;
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -219,17 +241,35 @@ String nextToken(Scanner thisScanner) {
 
 //Ema Caragea, added home screen when running the program, 24/03/2026, 21:00
 void draw() {
+
+  //ema caragea, added loading screen while data is being loaded, 26/03/2026, 9:00
+  if(!dataLoaded){
+    loading.draw();
+    return;
+  }
+
   if (currentView == 0) {
     homeScreen.draw();
     screen1.drawHomeBar();
   } else if (currentView == 1) {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
+    screen1.drawHomeBar();
   } else if (currentView == 2) {
     flightMap.draw();
   }
 }
 
 void mousePressed() {
+  if(!dataLoaded){
+    
+    return;
+  }
+
+  //Niko Charles, 9:00 26/03/2026 Added Home Button 
+  if(screen1.goHome(mouseX, mouseY)){
+    lastView = currentView;
+    currentView = 0;
+  }
   if (currentView == 0) {
     homeScreen.mousePressed();
     if (mouseButton==RIGHT) {
