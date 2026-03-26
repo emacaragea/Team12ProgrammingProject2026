@@ -15,6 +15,7 @@ Loading loading;
 //  loading.draw();
 //}
 
+//Jesse Margarites, 11AM, 26/03, updated loading screen
 class Loading {
   PFont titleFont;
   PFont labelFont;
@@ -24,8 +25,8 @@ class Loading {
   int loadingDots = 0;
   int lastDotChange = 0;
 
-  String fromCode = "DUB";
-  String toCode = "JFK";
+  String fromCode = "LDS"; 
+  String toCode = "HMS";
 
   void setup() {
     titleFont = createFont("Helvetica Bold", 52);
@@ -58,7 +59,7 @@ class Loading {
     textAlign(CENTER, CENTER);
 
     textFont(titleFont);
-    text("Preparing Your Route", width / 2, 120);
+    text("Loading", width / 2, 120); //text was "Preparing Your Route"
 
     textFont(smallFont);
     fill(150, 165, 180);
@@ -86,8 +87,8 @@ class Loading {
 
     fill(140, 155, 170);
     textFont(smallFont);
-    text("Departure", cardX + 120, cardY + 148);
-    text("Arrival", cardX + cardW - 120, cardY + 148);
+    text("Loading Screen", cardX + 120, cardY + 148); //was departure
+    text("Home Screen", cardX + cardW - 120, cardY + 148); //was arrival
 
     float startX = cardX + 215;
     float endX   = cardX + cardW - 215;

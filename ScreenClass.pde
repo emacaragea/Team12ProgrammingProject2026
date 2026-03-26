@@ -268,7 +268,7 @@ class Screen{
     void drawLoadScreen(){
 
     }
-
+//Jesse Margarites, 11AM, 26/03, updated moused pressed
     void mousePressed() {
         handleSearchClick(mouseX, mouseY);
         goHome(mouseX, mouseY);
@@ -285,7 +285,7 @@ class Screen{
     }
 
     }
-    
+//Jesse Margarites, 11AM, 26/03, updated key pressed
     void keyPressed(char key){
         if(screenType==STATE_SCREEN){
             thisChart.keyPressed(key);

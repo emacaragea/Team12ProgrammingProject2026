@@ -134,6 +134,7 @@ class State {
 
   void stateDraw(String stateName) {
     //10PM, 24/03, Jesse Margarites, improving draw aesthetics
+    //Jesse Margarites, 11AM, 26/03, updated state draw
     background(BACKGROUND_COLOR);
     stroke(255);
     strokeWeight(2);
@@ -224,7 +225,8 @@ class State {
       }
     }
     fill(255, 255, 255);
-    text("Click on an Airport to see it's details", textXCoordinate, SCREEN_HEIGHT-20);
+    textSize(TEXT_SIZE+7);
+    text("Click on an airport to see it's details", textXCoordinate, SCREEN_HEIGHT-20);
     
   }
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method
