@@ -46,7 +46,7 @@ class State {
   }
 
   //Niko Charles, 10:00, 25/03/2026
-  Airport linkClick(float mx, float my) {
+  Airport linkClicked(float mx, float my) {
     for (TextLinks ct : airportLinks) {
       if (ct.isMouseOver(mx, my)) {
         return ct.getTextLinkAirport();
@@ -97,6 +97,16 @@ class State {
 
   ArrayList<Airport> getAirportList() {
     return listOfAirports;
+  }
+
+  void airportClicked(){
+    Airport clickedAirport = linkClicked(mouseX, mouseY);
+    if (clickedAirport != null) {
+      airportName = clickedAirport.getAirportName();
+      thisAirport = clickedAirport;
+      currentView = 3;
+      screen2 = new Screen(2);
+    }
   }
 
   void setBarGraphValues(Charts thisBarGraph) {
