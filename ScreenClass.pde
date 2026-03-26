@@ -63,6 +63,7 @@ class Screen{
         this.selectedAirportName = airport.getAirportName();
     }
 
+
     int getScreenType(){
         return screenType;
     }
@@ -269,24 +270,44 @@ class Screen{
     }
 
     void mousePressed() {
+        handleSearchClick(mouseX, mouseY);
+        goHome(mouseX, mouseY);
+        goBack(mouseX, mouseY);
+        goForward(mouseX, mouseY);
+        if (screenType == STATE_SCREEN) {
+            State currentState = stateList.get(currentStateIndex);
+            Airport clickedAirport = currentState.linkClick(mouseX, mouseY);
+            if (clickedAirport != null) {
+                setSelectedAirport(clickedAirport);
+                setScreenType(AIRPORT_SCREEN);
+            }
+            thisChart.mousePressed();
+        }
     handleSearchClick(mouseX, mouseY);
-    goHome(mouseX, mouseY);
     goBack(mouseX, mouseY);
-    goForward(mouseX, mouseY);
 
     if (screenType == FLIGHT_SCREEN) {
         tableMousePressed();
     }
 
-    if (screenType == STATE_SCREEN) {
+    /*if (screenType == STATE_SCREEN) {
         State currentState = stateList.get(currentStateIndex);
-        Airport clickedAirport = currentState.linkClick(mouseX, mouseY);
+        Airport clickedAirport = currentState.linkClicked(mouseX, mouseY);
         if (clickedAirport != null) {
+            airportName = clickedAirport.getAirportName()
+            thisAirport = 
+            currentView = 1;
+            screen1 = new Screen(3)
             setSelectedAirport(clickedAirport);
             setScreenType(AIRPORT_SCREEN);
         }
-    }
+    }*/
 }
+    void keyPressed(char key){
+        if(screenType==STATE_SCREEN){
+            thisChart.keyPressed(key);
+        }
+    }
 
     boolean goHome(int mX, int mY){
         if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 

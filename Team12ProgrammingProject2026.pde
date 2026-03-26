@@ -12,6 +12,10 @@ final int STATE_FORWARD_ARROW_X = STATE_BACK_ARROW_X + 70;
 final int STATE_FORWARD_ARROW_Y = 650;
 final int ARROW_HEIGHT = 6;
 final int ARROW_LENGTH = 20;
+final int CURRENT_VIEW_HOME = 0;
+final int CURRENT_VIEW_STATE = 1;
+final int CURREN_VIEW_FLIGHT_MAP = 2;
+final int CURRENT_VIEW_AIRPORT = 3;
 final static float HEADINGS_SIZE = 40;
 final static float SUBHEADINGS_SIZE = 30;
 final static float TEXT_SIZE = 14;
@@ -19,6 +23,7 @@ final static float TEXT_SIZE = 14;
 FlightMapScreen         flightMap;
 USMapScreen             usMap;
 Screen                  screen1;
+Screen                  screen2;
 HomeScreen homeScreen;
 
 HashMap<String, String>  stateCodeToName;
@@ -29,6 +34,8 @@ int    lastView;
 String selectedStateCode;
 State thisState;
 String stateName;
+String airportName;
+Airport thisAirport;
 
 boolean dataLoaded = false;
 
@@ -154,7 +161,6 @@ String convertStateCodeToStateName(String stateCode) {
     String currentLine = reader.readLine();
     while (currentLine != null) {
       currentLine = reader.readLine();
-      println(currentLine);
       Scanner lineScanner = new Scanner(currentLine).useDelimiter(",");
       String currentCode = lineScanner.next();
       if (currentCode.equals(stateCode)) {
@@ -261,6 +267,10 @@ void draw() {
   } else if (currentView == 2) {
     flightMap.draw();
   }
+  else if(currentView == 3){
+    screen2.drawAirportScreen(thisAirport, airportName);
+    screen2.drawHomeBar();
+  }
 }
 
 void mousePressed() {
@@ -272,9 +282,9 @@ void mousePressed() {
   //Niko Charles, 9:00 26/03/2026 Added Home Button 
   if(screen1.goHome(mouseX, mouseY)){
     lastView = currentView;
-    currentView = 0;
+    currentView = CURRENT_VIEW_HOME;
   }
-  if (currentView == 0) {
+  if (currentView == CURRENT_VIEW_HOME) {
     homeScreen.mousePressed();
     if (mouseButton==RIGHT) {
       currentView=0;
@@ -291,9 +301,16 @@ void mousePressed() {
       thisState.setPageNumber(1);
     }
     screen1.mousePressed();
-  } else if (currentView==2) {
+  } else if (currentView==CURREN_VIEW_FLIGHT_MAP) {
     flightMap.mousePressed();
   }
+}
+void keyPressed(char key){
+  if(currentView==1){
+    screen1.keyPressed(key);
+
+  }
+
 }
 
 

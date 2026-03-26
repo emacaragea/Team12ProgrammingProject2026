@@ -292,11 +292,12 @@ class BarChart
     }
     
     // Background 
-    fill(240);
+    fill(BACKGROUND_COLOR);
     stroke(200);
-    rect(x - 40, y - 40, w + 40, h + 80);
+    rect(x - 60, y - 70, w + 120, h + 100);
       
     // Grid lines
+    fill(169,169,169);
     stroke(220);
     for (int j = 0; j <= 5; j++)
     {
@@ -324,13 +325,16 @@ class BarChart
     // Draw title
     textSize(16);                     
     textAlign(CENTER);   
-    fill(0);                          // title colour             
+    fill(255, 255, 255);                          // title colour             
     text(title, x + w / 2, y - 10);   // draw title
       
     // Draw axes
-    stroke(0);
+   // stroke(0);
+
     line(x, y + h, x + w, y + h);     // X axis
+    fill(255, 255, 255); 
     line(x, y, x, y + h);             // Y axis
+    fill(255, 255, 255); 
       
     // Draw ticks
     textSize(12);
@@ -345,7 +349,7 @@ class BarChart
       float tickY = map(tickValue, 0, maxTick, y + h, y);
 
       line(x - 5, tickY, x, tickY);
-      fill(0);
+      fill(255, 255, 255);
       text(nfc(tickValue, 0), x - 10, tickY);
     }
       
@@ -449,7 +453,7 @@ class BarChart
     }
       
     // Draw labels
-    fill(0);
+    fill(255, 255, 255);
     textAlign(CENTER);
     textSize(11);
 
@@ -474,11 +478,12 @@ class BarChart
     {
       fill(255);
       stroke(0);
-      rect(mouseX, mouseY - 25, 80, 20, 4);
+      //rect(mouseX, mouseY - 25, 80, 20, 4);
+      rect(mouseX, mouseY - 25, 200, 20, 4);
         
       fill(0);
       textAlign(CENTER, CENTER);
-      text(hoverLabel + ": " + hoverValue, mouseX + 40, mouseY - 15);
+      text(hoverLabel + ": " + hoverValue, mouseX + 100, mouseY - 15);
     }
     popStyle();
   }

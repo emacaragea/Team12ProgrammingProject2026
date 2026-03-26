@@ -131,10 +131,10 @@ class chartMultiSelectFilter
         }
 
         stroke(0);
-        rect(x, y, dropdownWidth, 20);
+        rect(x + 40, y, dropdownWidth, 20);
 
         fill(0);
-        text("Filter", x + 5, y + 10);
+        text("Filter", x + 45, y + 10);
 
         // Triangle rotation
         float triX = x + dropdownWidth - 15;
@@ -145,7 +145,7 @@ class chartMultiSelectFilter
         rotate(triangleRotation);
         fill(0);
         noStroke();
-        triangle(-5, -4, 5, -4, 0, 4);
+        triangle(-5+40, -4, 5+40, -4, 0+40, 4);
         popMatrix();
 
         float animatedHeight = dropdownHeight * panelAnim;
@@ -154,18 +154,18 @@ class chartMultiSelectFilter
         // Search box
         fill(255);
         stroke(0);
-        rect(x, y + 20, dropdownWidth, 20);
+        rect(x+40, y + 20, dropdownWidth, 20);
         
         int blink = (millis()/500)%2;
         String displayText = "Search: " + searchText + (blink == 0 ? "|" : "");
 
         fill(120);
-        text(displayText, x + 5, y + 30);
+        text(displayText, x + 5+40, y + 30);
 
         // Panel background
         fill(245);
         stroke(0);
-        rect(x, y + 40, dropdownWidth, animatedHeight);
+        rect(x+40, y + 40, dropdownWidth, animatedHeight);
 
         ArrayList<Integer> visible = getVisibleIndices();
         int maxVisibleItems = int((dropdownHeight - selectAllHeight)/itemHeight);
@@ -189,7 +189,7 @@ class chartMultiSelectFilter
                 fill(230);
             }
 
-            rect(x + 5, selectAllY, dropdownWidth - 10, selectAllHeight);
+            rect(x + 5+40, selectAllY, dropdownWidth - 10, selectAllHeight);
 
             float size = lerp(12, 14, selectAllHoverAnim);
             textSize(size);
@@ -292,7 +292,7 @@ class chartMultiSelectFilter
             textSize(labelSize);
 
             fill(0);
-            text(labels[index], x + 25, itemY + itemHeight / 2 + offset);
+            text(labels[index], x + 25+40, itemY + itemHeight / 2 + offset);
         }
         popStyle();
     }
