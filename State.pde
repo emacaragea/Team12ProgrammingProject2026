@@ -144,6 +144,7 @@ class State {
     PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
     PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
     PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
+    //PFont AIPORT_NAMES_FONT = createFont("Trispace", SUBHEADINGS_SIZE);
     //example
     int textXCoordinate = 20;
     int textYCoordinate = 80;
@@ -181,6 +182,7 @@ class State {
     //Niko Charles 10:00, 25/03/2026 Implemented clickable text links
     if (pageNumber==1) {
       for (int counter=0; counter<maxCounter; counter++) {
+        textFont(LABEL_FONT);
         /*textYCoordinate+=35;
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
          fill(255, 255, 255);*/
@@ -201,6 +203,7 @@ class State {
       }
     } else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
       for (int counter=MAX_AIRPORT_DISPLAY; counter<listOfAirports.size(); counter++) {
+        textFont(LABEL_FONT);
         /*textYCoordinate+=35;
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
          fill(255, 255, 255);*/
