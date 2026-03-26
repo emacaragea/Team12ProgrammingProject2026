@@ -170,14 +170,16 @@ class StateHeatMap {
     rect(tx, ty, 5, 45, 6, 0, 0, 6);
         
     // Text
-    fill(255);
+    fill(255, 255, 255);
     textAlign(LEFT, TOP);
         
     // Airport 
+    fill(255, 255, 255);
     textSize(13);
     text(hoverAirport, tx + 10, ty + 6);
         
     // Flight count
+    fill(255, 255, 255);
     textSize(12);
     text("Flights: " + hoverCount, tx + 10, ty + 24);
   }
@@ -209,7 +211,7 @@ class StateHeatMap {
     rect(x, y, 20, h);
     
     // Labels
-    fill(0);
+    fill(255, 255, 255);
     textSize(12);
     textAlign(LEFT, CENTER);
     
@@ -226,9 +228,10 @@ class StateHeatMap {
       float textY = y + h - (i + 0.5f) * bandH;
       
       String label = labels[i] + " (" + (int)(t[i]) + "-" + (int)(t[i + 1]) + ")";
+      fill(255, 255, 255);
       text(label, x + 25, textY);
     }
-    
+    fill(255, 255, 255);
     text("Number of Flights", x, y - 10);
   }
   

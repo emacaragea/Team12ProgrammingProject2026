@@ -274,9 +274,9 @@ class Screen{
         goHome(mouseX, mouseY);
         goBack(mouseX, mouseY);
         goForward(mouseX, mouseY);
-        /*if (screenType == STATE_SCREEN) {
+        if (screenType == STATE_SCREEN) {
             thisChart.mousePressed();
-        }*/
+        }
     handleSearchClick(mouseX, mouseY);
     goBack(mouseX, mouseY);
 
