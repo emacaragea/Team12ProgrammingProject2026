@@ -220,6 +220,7 @@ class State {
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
     }
+    
   }
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method
   @Override
