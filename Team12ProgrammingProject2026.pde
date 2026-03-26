@@ -266,6 +266,7 @@ void draw() {
     screen1.drawHomeBar();
   } else if (currentView == 2) {
     flightMap.draw();
+    screen1.drawHomeBar();
   }
   else if(currentView == 3){
     screen2.drawAirportScreen(thisAirport, airportName);
