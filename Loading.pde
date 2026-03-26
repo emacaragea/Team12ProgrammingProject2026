@@ -28,11 +28,14 @@ class Loading {
   String fromCode = "LDS"; 
   String toCode = "HMS";
 
-  void setup() {
-    titleFont = createFont("Helvetica Bold", 52);
-    labelFont = createFont("Helvetica Bold", 32);
-    smallFont = createFont("Helvetica", 24);
-  }
+  PImage planeImg;
+
+void setup() {
+  titleFont = createFont("Helvetica Bold", 52);
+  labelFont = createFont("Helvetica Bold", 32);
+  smallFont = createFont("Helvetica", 24);
+  planeImg  = loadImage("LoadingScreenPlane.png");
+}
 
   void draw() {
     background(20, 28, 38);
@@ -41,7 +44,7 @@ class Loading {
     drawHeader();
     drawRouteCard();
     drawProgressText();
-    updateAnimation();
+    
   }
 
   void drawBackgroundGlow() {
@@ -59,13 +62,14 @@ class Loading {
     textAlign(CENTER, CENTER);
 
     textFont(titleFont);
-    text("Loading", width / 2, 120); //text was "Preparing Your Route"
+    text("Loading...", width / 2, 120); //text was "Preparing Your Route"
 
     textFont(smallFont);
     fill(150, 165, 180);
     text("Synchronising flight and airport data", width / 2, 178);
   }
 
+  //Ema Caragea, made the loading bar load proportionately to the time spent on the loading screen, 26/03/2026 17:00
   void drawRouteCard() {
     float cardX = 190;
     float cardY = 230;
@@ -108,7 +112,7 @@ class Loading {
     ellipse(startX, routeY, 18, 18);
     ellipse(endX,   routeY, 18, 18);
 
-    float planeX = lerp(startX, endX, progress);
+    float planeX = lerp(startX, endX, loadProgress);    
     stroke(82, 156, 214);
     strokeWeight(4.5);
     line(startX, routeY, planeX, routeY);
@@ -122,34 +126,21 @@ class Loading {
 
     noStroke();
     fill(55, 68, 82);
-    rect(barX, barY, barW, barH, 8);
-
+    rect(barX, barY, barW * loadProgress, barH, 8);
     fill(82, 156, 214);
     rect(barX, barY, barW * progress, barH, 8);
 
     fill(220, 228, 236);
     textAlign(RIGHT, CENTER);
     textFont(smallFont);
-    text(int(progress * 100) + "%", cardX + cardW - 44, cardY + 260);
+    text(int(loadProgress * 100) + "%", cardX + cardW - 44, cardY + 260);
   }
 
   void drawPlaneIcon(float x, float y) {
-    pushMatrix();
-    translate(x, y);
-
-    noStroke();
-    fill(245);
-
-    rect(-18, -6, 36, 12, 6);
-    triangle(18, -6, 30, 0, 18, 6);
-    triangle(-18, -6, -28, -18, -8, -6);
-
-    fill(225);
-    triangle(-4, 0, -18, 16, 10, 6);
-    triangle(-4, 0, -18, -16, 10, -6);
-
-    popMatrix();
-  }
+  imageMode(CENTER);
+  image(planeImg, x, y, 50, 50);
+  imageMode(CORNER);
+}
 
   void drawProgressText() {
     String dots = "";

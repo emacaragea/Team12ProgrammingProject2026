@@ -39,6 +39,7 @@ String airportName;
 Airport thisAirport;
 ArrayList<Integer> viewHistory = new ArrayList<Integer>();
 boolean dataLoaded = false;
+float loadProgress = 0;
 int viewHistIndex;
 
 static final String[] ALL_STATE_CODES = {
@@ -85,12 +86,37 @@ void loadData() {
   screen1 = new Screen(3);
   stateCodeToName = buildCodeToNameMap();
   stateFlightCounts = new HashMap<String, Integer>();
-  countAllStateFlights();
+
+  // Count flights per state and track progress
+  String path = "data/flights/origin_states/";
+  for (int i = 0; i < ALL_STATE_CODES.length; i++) {
+    String code = ALL_STATE_CODES[i];
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path + code + ".csv")));
+      reader.readLine();
+      String line = reader.readLine();
+      while (line != null) {
+        Scanner scan = new Scanner(line).useDelimiter(",");
+        String[] fields = new String[10];
+        for (int j = 0; j < 10; j++) {
+          fields[j] = scan.hasNext() ? nextToken(scan) : "";
+        }
+        scan.close();
+        addCount(fields[5]);
+        addCount(fields[9]);
+        line = reader.readLine();
+      }
+      reader.close();
+    } catch (Exception e) {}
+
+    loadProgress = (float)(i + 1) / ALL_STATE_CODES.length;
+  }
+
   usMap      = new USMapScreen(this, stateFlightCounts);
   homeScreen = new HomeScreen(usMap);
-  dataLoaded = true;
-  viewHistory.add(currentView);
   viewHistIndex = 0;
+  viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
+  dataLoaded = true;
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -164,6 +190,7 @@ String convertStateCodeToStateName(String stateCode) {
     String currentLine = reader.readLine();
     while (currentLine != null) {
       currentLine = reader.readLine();
+      if (currentLine == null) break;
       Scanner lineScanner = new Scanner(currentLine).useDelimiter(",");
       String currentCode = lineScanner.next();
       if (currentCode.equals(stateCode)) {
@@ -172,13 +199,13 @@ String convertStateCodeToStateName(String stateCode) {
       lineScanner.close();
     }
     reader.close();
-  }
-  catch (Exception e) {
+  } catch (Exception e) {
     System.out.println(e);
     return "error";
   }
   return null;
 }
+
 void readFileByState(String stateCode, State currentState) {
   String filePath = "data/flights/origin_states/";
   String fileEnding = ".csv";

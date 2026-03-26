@@ -56,7 +56,9 @@ class HomeScreen {
 
   void drawButtons() {
   for (int i = 0; i < 2; i++) {
-    float bx = BUTTON_GAP + i * (BUTTON_W + BUTTON_GAP);
+    float totalWidth = 2 * BUTTON_W + BUTTON_GAP;
+    float startX = (width - totalWidth) / 2;
+    float bx = startX + i * (BUTTON_W + BUTTON_GAP);
     boolean hov = mouseX >= bx && mouseX <= bx + BUTTON_W &&
                   mouseY >= BUTTON_Y && mouseY <= BUTTON_Y + BUTTON_H;
 
