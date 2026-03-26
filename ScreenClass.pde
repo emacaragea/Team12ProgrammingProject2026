@@ -300,6 +300,11 @@ class Screen{
         }
     }
 }
+    void keyPressed(char key){
+        if(screenType==STATE_SCREEN){
+            thisChart.keyPressed(key);
+        }
+    }
 
     boolean goHome(int mX, int mY){
         if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 
