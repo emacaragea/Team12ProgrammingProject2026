@@ -33,10 +33,10 @@ class StateHeatMap {
   int hoveredIndex = -1;
   float[] currentSizes;
   
-  StateHeatMap(String stateCode)
+  StateHeatMap(String stateCode, PImage stateImg)
   {
     this.stateCode = stateCode;
-    this.stateImg = loadStateImage(stateCode);
+    this.stateImg = stateImg;
     
     float[] bounds = stateBoundingBox(stateCode);
     
@@ -48,50 +48,27 @@ class StateHeatMap {
       maxLon = bounds[3];
     }
   }
-
-  PImage loadStateImage(String stateCode)
-  {
-    String path = "USStateOutlines/" + stateCode.toUpperCase() + ".jpg";
-    PImage img = loadImage(path);
-
-    if (img == null)
-    {
-        println("Error: Image not found.");
-    }
-
-    return img;
-  }
   
   void drawStateHeatMap(float x, float y, String[] airports, int[] flightCounts) // e.g {"LAX", "SFO", "SAN"}
   {
-    float[] thresholds = getPercentileThresholds(flightCounts);
-    int maxCount = getMaxCount(flightCounts);
+    // Error check - ensure map doesn't crash if array lengths differ
+    int safeLength = min(airports.length, flightCounts.length);
+    int[] safeCounts = subset(flightCounts, 0, safeLength);
+    
+    float[] thresholds = getPercentileThresholds(safeCounts);
+    int maxCount = getMaxCount(safeCounts);
     
     // Initialise animation array
-    if (currentSizes == null || currentSizes.length != flightCounts.length)
+    if (currentSizes == null || currentSizes.length != safeLength)
     {
-      currentSizes = new float[flightCounts.length];
+      currentSizes = new float[safeLength];
       for (int i = 0; i < currentSizes.length; i++)
       {
         currentSizes[i] = 0;
       }
     }
     
-    if (stateImg != null)
-    {
-        image(stateImg, x, y);
-    }
-    else
-    {
-        // Fallback
-        fill(180);
-        noStroke();
-        rect(x, y, 300, 200);
-
-        fill(0);
-        textAlign(CENTER, CENTER);
-        text("Image not found: " + stateCode, x + 150, y + 100);
-    }
+    image(stateImg, x, y);
     
     pushMatrix();
     translate(x, y);
@@ -109,8 +86,11 @@ class StateHeatMap {
     hoverAirport = null;
     hoverCount = 0;
     
+    // Error check - ensure map doesn't crash if array lengths differ
+    int safeLength = min(airports.length, counts.length);
+    
     // Detect hover
-    for (int i = 0; i < airports.length; i++)
+    for (int i = 0; i < safeLength; i++)
     {
       float[] latLon = airportLatLon(airports[i]);
       if (latLon == null) continue;
@@ -248,6 +228,8 @@ class StateHeatMap {
       String label = labels[i] + " (" + (int)(t[i]) + "-" + (int)(t[i + 1]) + ")";
       text(label, x + 25, textY);
     }
+    
+    text("Number of Flights", x, y - 10);
   }
   
   color getPercentileColor(int value, float[] t)
@@ -268,11 +250,11 @@ class StateHeatMap {
     }
     else if (value >= t[1])
     {
-      heatColor = color(0, 200, 0);      // green
+      heatColor = color(0, 200, 0);       // green
     }
     else
     {
-      heatColor = color(0, 0, 255);      // blue
+      heatColor = color(0, 0, 255);       // light blue
     }
     
     return heatColor;
@@ -310,7 +292,7 @@ class StateHeatMap {
       sorted[(int)(0.9f * (sorted.length - 1))],
       sorted[sorted.length - 1]
     };
-  }  
+  }
   
   
   
