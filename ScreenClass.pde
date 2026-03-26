@@ -288,11 +288,12 @@ class Screen{
     }
 }
 
-    void goHome(int mX, int mY){
+    boolean goHome(int mX, int mY){
         if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 
             mY > HOME_BUTTON_Y && mY < HOME_BUTTON_Y + HOME_BUTTON_SIZE){
-                setScreenType(1);
+                return true;
         }
+        return false;
     }
 
     void goBack(int mX, int mY){
