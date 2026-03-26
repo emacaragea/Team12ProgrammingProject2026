@@ -259,29 +259,34 @@ class Screen{
     }
 
 
-
-    void drawFlightScreen(){
-
-    }
+   //amanda de moraes. calling methods for table
+   void drawFlightScreen(){
+    tableDraw();
+}
 
     void drawLoadScreen(){
 
     }
 
     void mousePressed() {
-        handleSearchClick(mouseX, mouseY);
-        goHome(mouseX, mouseY);
-        goBack(mouseX, mouseY);
-        goForward(mouseX, mouseY);
-        if (screenType == STATE_SCREEN) {
-            State currentState = stateList.get(currentStateIndex);
-            Airport clickedAirport = currentState.linkClick(mouseX, mouseY);
-            if (clickedAirport != null) {
-                setSelectedAirport(clickedAirport);
-                setScreenType(AIRPORT_SCREEN);
-            }
+    handleSearchClick(mouseX, mouseY);
+    goHome(mouseX, mouseY);
+    goBack(mouseX, mouseY);
+    goForward(mouseX, mouseY);
+
+    if (screenType == FLIGHT_SCREEN) {
+        tableMousePressed();
+    }
+
+    if (screenType == STATE_SCREEN) {
+        State currentState = stateList.get(currentStateIndex);
+        Airport clickedAirport = currentState.linkClick(mouseX, mouseY);
+        if (clickedAirport != null) {
+            setSelectedAirport(clickedAirport);
+            setScreenType(AIRPORT_SCREEN);
         }
     }
+}
 
     void goHome(int mX, int mY){
         if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 
