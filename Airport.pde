@@ -101,7 +101,7 @@ class Airport{
       PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
       PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
       
-      int textXCoordinate = airportName.length()+160;
+      int textXCoordinate = 20;
       int textYCoordinate = 80;
       fill(255);
       textFont(TITLE_FONT);

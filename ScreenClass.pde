@@ -263,7 +263,9 @@ class Screen{
         currentAirportIndex = airportList.size()-1;
         thisAirport.setPieChartValues(thisChart);
         thisAirport.airportDraw(airportName);
+        pushStyle();
         thisChart.chartsDraw();
+        popStyle();
     }
 
     void drawStateScreen(String code, State thisState, String stateName){
