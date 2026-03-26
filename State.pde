@@ -118,7 +118,7 @@ class State {
     PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
     //example
     int textXCoordinate = 20;
-    int textYCoordinate = 25;
+    int textYCoordinate = 70;
     fill(255);
     textFont(TITLE_FONT);
     text(stateName, textXCoordinate-10, textYCoordinate);

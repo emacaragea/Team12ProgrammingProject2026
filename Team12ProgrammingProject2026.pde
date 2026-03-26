@@ -225,12 +225,16 @@ void draw() {
     screen1.drawHomeBar();
   } else if (currentView == 1) {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
+    screen1.drawHomeBar();
   } else if (currentView == 2) {
     flightMap.draw();
   }
 }
 
 void mousePressed() {
+  if(screen1.goHome(mouseX, mouseY)){
+    currentView = 0;
+  }
   if (currentView == 0) {
     homeScreen.mousePressed();
     if (mouseButton==RIGHT) {
