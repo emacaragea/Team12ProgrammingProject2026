@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 final static int SCREEN_WIDTH  = 1400;
 final static int SCREEN_HEIGHT = 800;
@@ -36,8 +37,7 @@ State thisState;
 String stateName;
 String airportName;
 Airport thisAirport;
-
-
+ArrayList<Integer> viewHistory = new ArrayList<Integer>();
 boolean dataLoaded = false;
 
 static final String[] ALL_STATE_CODES = {
