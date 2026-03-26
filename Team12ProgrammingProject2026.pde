@@ -7,9 +7,9 @@ final static int SCREEN_WIDTH  = 1400;
 final static int SCREEN_HEIGHT = 800;
 
 final int STATE_BACK_ARROW_X = SCREEN_WIDTH/4-20;
-final int STATE_BACK_ARROW_Y = 595;
+final int STATE_BACK_ARROW_Y = 650;
 final int STATE_FORWARD_ARROW_X = STATE_BACK_ARROW_X + 70;
-final int STATE_FORWARD_ARROW_Y = 595;
+final int STATE_FORWARD_ARROW_Y = 650;
 final int ARROW_HEIGHT = 6;
 final int ARROW_LENGTH = 20;
 final static float HEADINGS_SIZE = 40;
