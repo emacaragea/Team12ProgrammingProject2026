@@ -51,6 +51,8 @@ void settings() {
   size(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
+//old setup, replaced
+
 // void setup() {
 //   // Build code name lookup once from CSV (used by countAllStateFlights + geoMap hover)
 //   stateCodeToName = buildCodeToNameMap();
@@ -67,13 +69,14 @@ void settings() {
 //   screen1 = new Screen(3);
 // }
 
-
+//method that only loads the data, called in setup as a thread so loading screen can be displayed while data is being loaded
 void setup() {
   loading = new Loading();
   loading.setup();
   thread("loadData");
 }
 
+//new "setup" method
 void loadData() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
@@ -249,7 +252,7 @@ String nextToken(Scanner thisScanner) {
 //Ema Caragea, added home screen when running the program, 24/03/2026, 21:00
 void draw() {
 
-  //ema caragea, added loading screen while data is being loaded, 26/03/2026, 9:00
+  //Ema caragea, added loading screen while data is being loaded, 26/03/2026, 9:00
   if(!dataLoaded){
     loading.draw();
     return;
