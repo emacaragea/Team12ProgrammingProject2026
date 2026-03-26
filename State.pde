@@ -126,7 +126,7 @@ class State {
       }
       thisBarGraph.addBarChart(graphTitle, barLabels, barValues, CHART_X_COORDINATE, CHART_Y_COORDINATE, CHART_WIDTH, CHART_HEIGHT, barColors, true);
       PImage img = loadImage("data/USStateOutlines/"+stateName.trim()+".jpg");
-      img.resize(400, 0);
+      img.resize(400, SCREEN_HEIGHT/3+100);
       stateHeatMap = new StateHeatMap(stateName, img);
       setGraphValues(true);
     }
@@ -134,7 +134,7 @@ class State {
 
   void stateDraw(String stateName) {
     //10PM, 24/03, Jesse Margarites, improving draw aesthetics
-    //Jesse Margarites, 11AM, 26/03, updated state draw
+    //Jesse Margarites, 11AM, 26/03, updated state draw and fixed fonts
     background(BACKGROUND_COLOR);
     stroke(255);
     strokeWeight(2);
@@ -142,9 +142,9 @@ class State {
     line(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, SCREEN_HEIGHT);
     airportLinks.clear();
 
-    PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
-    PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
-    PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
+    PFont TITLE_FONT = createFont("Helvetica-Bold", HEADINGS_SIZE);
+    PFont LABEL_FONT = createFont("Helvetica-Bold", SUBHEADINGS_SIZE);
+    PFont SMALL_FONT = createFont("Helvetica-Light", TEXT_SIZE);
     //PFont AIPORT_NAMES_FONT = createFont("Trispace", SUBHEADINGS_SIZE);
     //example
     int textXCoordinate = 20;
@@ -183,7 +183,6 @@ class State {
     //Niko Charles 10:00, 25/03/2026 Implemented clickable text links
     if (pageNumber==1) {
       for (int counter=0; counter<maxCounter; counter++) {
-        textFont(LABEL_FONT);
         /*textYCoordinate+=35;
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
          fill(255, 255, 255);*/
@@ -199,6 +198,7 @@ class State {
         } else {
           fill(255);
         }
+        textFont(SMALL_FONT);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
@@ -220,12 +220,13 @@ class State {
         } else {
           fill(255);
         }
+        textFont(SMALL_FONT);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
     }
     fill(255, 255, 255);
-    textSize(TEXT_SIZE+7);
+    textFont(SMALL_FONT);
     text("Click on an airport to see it's details", textXCoordinate, SCREEN_HEIGHT-20);
     
   }

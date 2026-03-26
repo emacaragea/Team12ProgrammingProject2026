@@ -18,8 +18,8 @@ final int CURRENT_VIEW_STATE = 1;
 final int CURRENT_VIEW_FLIGHT_MAP = 2;
 final int CURRENT_VIEW_AIRPORT = 3;
 final static float HEADINGS_SIZE = 40;
-final static float SUBHEADINGS_SIZE = 30;
-final static float TEXT_SIZE = 14;
+final static float SUBHEADINGS_SIZE = 25;
+final static float TEXT_SIZE = 21;
 
 FlightMapScreen         flightMap;
 USMapScreen             usMap;
