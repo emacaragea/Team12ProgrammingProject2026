@@ -303,10 +303,11 @@ class StateHeatMap {
   float[] airportLatLon(String iata) {
     switch (iata.toUpperCase()) {
       // ── Alabama ──────────────────────────────────────────
-      case "BHM": return new float[]{ 33.5629f, -86.7535f };
-      case "HSV": return new float[]{ 34.6372f, -86.7751f };
-      case "MOB": return new float[]{ 30.6912f, -88.2428f };
-      case "MGM": return new float[]{ 32.3006f, -86.3940f };
+      case "Birmingham, AL": return new float[]{ 33.5629f, -86.7535f };
+      case "Huntsville, AL": return new float[]{ 34.6372f, -86.7751f };
+      case "Mobile, AL": return new float[]{ 30.6912f, -88.2428f };
+      case "Montgomery, AL": return new float[]{ 32.3006f, -86.3940f };
+      case "Dothan, AL": return new float[]{ 31.3006f, -87.3940f };
   
       // ── Alaska ───────────────────────────────────────────
       case "ANC": return new float[]{ 61.1741f, -149.9961f };
@@ -675,7 +676,7 @@ class StateHeatMap {
   float[] stateBoundingBox(String st) {
     // Format: { maxLat, minLon, minLat, maxLon }
     switch (st.toUpperCase()) {
-      case "AL": return new float[]{ 35.008f, -88.473f, 30.144f, -84.889f };
+      case "Alabama": return new float[]{ 35.008f, -88.473f, 30.144f, -84.889f };
       case "AK": return new float[]{ 71.538f, -168.000f, 54.775f, -130.000f };
       case "AZ": return new float[]{ 37.004f, -114.818f, 31.332f, -109.045f };
       case "AR": return new float[]{ 36.500f, -94.618f, 33.004f, -89.644f };
