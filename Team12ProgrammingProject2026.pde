@@ -307,7 +307,8 @@ void mousePressed() {
     flightMap.mousePressed();
   }
 }
-void keyPressed(char key){
+//Jesse Margarites and Orla Kealy 10AM, fixed filter search bar
+void keyPressed(){
   if(currentView==CURRENT_VIEW_STATE){
     screen1.keyPressed(key);
   }
