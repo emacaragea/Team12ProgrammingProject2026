@@ -124,7 +124,7 @@ class State {
         barValues[i] = listOfAirports.get(i).getNumberOfFlightsLeaving();
       }
       thisBarGraph.addBarChart(graphTitle, barLabels, barValues, CHART_X_COORDINATE, CHART_Y_COORDINATE, CHART_WIDTH, CHART_HEIGHT, barColors, true);
-      PImage img = loadImage(stateName+".jpg");
+      PImage img = loadImage("data/USStateOutlines/"+stateName.trim()+".jpg");
       img.resize(400, 0);
       stateHeatMap = new StateHeatMap(stateName, img);
       setGraphValues(true);
