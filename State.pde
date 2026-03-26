@@ -220,6 +220,8 @@ class State {
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
     }
+    fill(255, 255, 255);
+    text("Click on an Airport to see it's details", textXCoordinate, SCREEN_HEIGHT-20);
     
   }
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method

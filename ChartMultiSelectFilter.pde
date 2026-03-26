@@ -237,7 +237,7 @@ class chartMultiSelectFilter
             if (hoveringItem)
             {
                 fill(220);
-                rect(x, itemY + offset, dropdownWidth, itemHeight);
+                rect(x+40, itemY + offset, dropdownWidth, itemHeight);
             }
 
             labelHoverAnim[index] = lerp(labelHoverAnim[index], hoveringItem ? 1 : 0, 0.2);
@@ -275,13 +275,13 @@ class chartMultiSelectFilter
 
             fill(255);
             stroke(0);
-            rect(0, 0, 14, 14);
+            rect(0+40, 0, 14, 14);
 
             // Draw tick mark, when selected
             if (selected[index])
             {
-                line(-3,0,0,3);
-                line(0,3,5,-4);
+                line(-3+40,0,0+40,3);
+                line(0+40,3,5+40,-4);
             }
 
             popMatrix();
