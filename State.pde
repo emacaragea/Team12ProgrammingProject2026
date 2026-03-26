@@ -104,6 +104,7 @@ class State {
     if (clickedAirport != null) {
       airportName = clickedAirport.getAirportName();
       thisAirport = clickedAirport;
+      lastView = currentView;
       currentView = 3;
       screen2 = new Screen(2);
     }
