@@ -308,7 +308,7 @@ void mousePressed() {
   }
 }
 void keyPressed(char key){
-  if(currentView==1){
+  if(currentView==CURRENT_VIEW_STATE){
     screen1.keyPressed(key);
   }
 
