@@ -14,7 +14,7 @@ final int ARROW_HEIGHT = 6;
 final int ARROW_LENGTH = 20;
 final int CURRENT_VIEW_HOME = 0;
 final int CURRENT_VIEW_STATE = 1;
-final int CURREN_VIEW_FLIGHT_MAP = 2;
+final int CURRENT_VIEW_FLIGHT_MAP = 2;
 final int CURRENT_VIEW_AIRPORT = 3;
 final static float HEADINGS_SIZE = 40;
 final static float SUBHEADINGS_SIZE = 30;
@@ -36,6 +36,7 @@ State thisState;
 String stateName;
 String airportName;
 Airport thisAirport;
+
 
 boolean dataLoaded = false;
 
@@ -150,7 +151,6 @@ void addCount(String stateCode) {
     stateFlightCounts.put(name, prev + 1);
   }
 }
-
 
 
 String convertStateCodeToStateName(String stateCode) {
@@ -289,7 +289,7 @@ void mousePressed() {
     if (mouseButton==RIGHT) {
       currentView=0;
     }
-  } else if (currentView==1) {
+  } else if (currentView==CURRENT_VIEW_STATE) {
     //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
@@ -300,8 +300,9 @@ void mousePressed() {
       && thisState.getPageNumber()==2) {
       thisState.setPageNumber(1);
     }
+    thisState.airportClicked();
     screen1.mousePressed();
-  } else if (currentView==CURREN_VIEW_FLIGHT_MAP) {
+  } else if (currentView==CURRENT_VIEW_FLIGHT_MAP) {
     flightMap.mousePressed();
   }
 }
