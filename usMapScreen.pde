@@ -96,8 +96,10 @@ class USMapScreen {
      selectedStateCode = code;
      stateName = convertStateCodeToStateName(selectedStateCode);
      thisState = new State(stateName);
-     currentView = 1;
-      screen1 = new Screen(3); // reset so Screen loads the newly selected state
+     currentView = CURRENT_VIEW_STATE;
+     viewHistIndex++;
+     viewHistory.add(viewHistIndex, currentView);
+    screen1 = new Screen(3); // reset so Screen loads the newly selected state
   }
 }
 

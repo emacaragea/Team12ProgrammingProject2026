@@ -91,6 +91,8 @@ class HomeScreen {
   void handleButtonPress(int index) {
     if (index == 0) {
       currentView = 2; // FlightMapScreen
+      viewHistIndex++;
+      viewHistory.add(viewHistIndex, currentView);
     }
     // index 1 is TBD
   }

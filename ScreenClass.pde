@@ -25,8 +25,9 @@ class Screen{
     final int ARROW_HEIGHT = 6;
     final int ARROW_LENGTH = 20;
     final int HOME_BUTTON_X = 50;
-    final int HOME_BUTTON_Y = 15;
-    final int HOME_BUTTON_SIZE = 20;
+    final int HOME_BUTTON_Y = 23;
+    final int HOME_BUTTON_SIZE = 13;
+    final int HOME_BUTTON_HEIGHT = 11;
     static final int HOME_BAR_HEIGHT = 50;
     final color HOME_BAR_COLOR = color(20, 30, 48);
     final color HOME_BAR_STROKE_COLOR = color(0, 120, 200);
@@ -151,12 +152,30 @@ class Screen{
         strokeWeight(2);
         noFill();
 
+
+        //drawBackArrow
+        if (mouseX >= BACK_ARROW_X && mouseX <= BACK_ARROW_X + ARROW_LENGTH &&
+          mouseY >= BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= BACK_ARROW_Y + ARROW_HEIGHT) {
+          stroke(200, 200, 255);
+        } else {
+          stroke(255);
+        }
         line(BACK_ARROW_X, BACK_ARROW_Y, BACK_ARROW_X+ARROW_LENGTH, BACK_ARROW_Y);
 
         line(BACK_ARROW_X, BACK_ARROW_Y, BACK_ARROW_X+ARROW_HEIGHT, BACK_ARROW_Y-ARROW_HEIGHT);
         line(BACK_ARROW_X, BACK_ARROW_Y, BACK_ARROW_X+ARROW_HEIGHT, BACK_ARROW_Y+ARROW_HEIGHT);
+        
         //drawHomeButton
-        rect(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_SIZE, HOME_BUTTON_SIZE);
+        if (mouseX >= HOME_BUTTON_X-1 && mouseX <= HOME_BUTTON_X + HOME_BUTTON_SIZE+1 &&
+          mouseY >= HOME_BUTTON_Y - HOME_BUTTON_SIZE/2 && mouseY <= HOME_BUTTON_Y + HOME_BUTTON_HEIGHT) {
+          stroke(200, 200, 255);
+        } else {
+          stroke(255);
+        }
+        rect(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_SIZE, HOME_BUTTON_HEIGHT);
+        line(HOME_BUTTON_X-2, HOME_BUTTON_Y, HOME_BUTTON_SIZE/2 + HOME_BUTTON_X, HOME_BUTTON_Y - HOME_BUTTON_SIZE/2);
+        line(HOME_BUTTON_X + HOME_BUTTON_SIZE+2, HOME_BUTTON_Y, HOME_BUTTON_X + HOME_BUTTON_SIZE/2, 
+            HOME_BUTTON_Y - HOME_BUTTON_SIZE/2);
 
         //draw forward arrow
         /*line(FORWARD_ARROW_X, FORWARD_ARROW_Y, FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y);
@@ -271,18 +290,15 @@ class Screen{
 //Jesse Margarites, 11AM, 26/03, updated moused pressed
     void mousePressed() {
         handleSearchClick(mouseX, mouseY);
-        goHome(mouseX, mouseY);
-        goBack(mouseX, mouseY);
-        goForward(mouseX, mouseY);
+        //goHome(mouseX, mouseY);
         if (screenType == STATE_SCREEN) {
             thisChart.mousePressed();
         }
-    handleSearchClick(mouseX, mouseY);
-    goBack(mouseX, mouseY);
+        handleSearchClick(mouseX, mouseY);
 
-    if (screenType == FLIGHT_SCREEN) {
-        tableMousePressed();
-    }
+        if (screenType == FLIGHT_SCREEN) {
+            tableMousePressed();
+        }
 
     }
 //Jesse Margarites, 11AM, 26/03, updated key pressed
@@ -293,19 +309,21 @@ class Screen{
     }
 
     boolean goHome(int mX, int mY){
-        if(mX > HOME_BUTTON_X && mX < HOME_BUTTON_X + HOME_BUTTON_SIZE && 
-            mY > HOME_BUTTON_Y && mY < HOME_BUTTON_Y + HOME_BUTTON_SIZE){
+        if(mouseX >= HOME_BUTTON_X-1 && mouseX <= HOME_BUTTON_X + HOME_BUTTON_SIZE+1 &&
+          mouseY >= HOME_BUTTON_Y - HOME_BUTTON_SIZE/2 && mouseY <= HOME_BUTTON_Y + HOME_BUTTON_HEIGHT){
                 return true;
         }
         return false;
     }
 
-    void goBack(int mX, int mY){
-        if(mX > BACK_ARROW_X && mX < BACK_ARROW_X + ARROW_LENGTH && 
-            mY > BACK_ARROW_Y && mY < BACK_ARROW_Y + ARROW_HEIGHT){
-                screenHistoryIndex--;
-                setScreenType(screenHistory.get(screenHistoryIndex));
+    boolean goBack(int mX, int mY){
+        if(viewHistIndex != 0){
+            if(mouseX >= BACK_ARROW_X && mouseX <= BACK_ARROW_X + ARROW_LENGTH &&
+                mouseY >= BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= BACK_ARROW_Y + ARROW_HEIGHT){
+                return true;
+            }
         }
+        return false;
     }
 
     void goForward(int mX, int mY){

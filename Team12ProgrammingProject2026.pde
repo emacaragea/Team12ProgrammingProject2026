@@ -39,6 +39,7 @@ String airportName;
 Airport thisAirport;
 ArrayList<Integer> viewHistory = new ArrayList<Integer>();
 boolean dataLoaded = false;
+int viewHistIndex;
 
 static final String[] ALL_STATE_CODES = {
   "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
@@ -88,6 +89,8 @@ void loadData() {
   usMap      = new USMapScreen(this, stateFlightCounts);
   homeScreen = new HomeScreen(usMap);
   dataLoaded = true;
+  viewHistory.add(currentView);
+  viewHistIndex = 0;
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -257,20 +260,19 @@ void draw() {
     loading.draw();
     return;
   }
-
-  if (currentView == 0) {
+  if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_HOME) {
     homeScreen.draw();
     screen1.drawHomeBar();
-  } else if (currentView == 1) {
+  } else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_STATE) {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
     screen1.drawHomeBar();
-  } else if (currentView == 2) {
+  } else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_FLIGHT_MAP) {
     flightMap.draw();
     screen1.drawHomeBar();
   }
-  else if(currentView == 3){
+  else if(viewHistory.get(viewHistIndex) == CURRENT_VIEW_AIRPORT){
     screen2.drawAirportScreen(thisAirport, airportName);
-    screen2.drawHomeBar();
+    screen1.drawHomeBar();
   }
 }
 
@@ -282,15 +284,21 @@ void mousePressed() {
 
   //Niko Charles, 9:00 26/03/2026 Added Home Button 
   if(screen1.goHome(mouseX, mouseY)){
-    lastView = currentView;
     currentView = CURRENT_VIEW_HOME;
+    viewHistIndex++;
+    viewHistory.add(viewHistIndex, currentView);
   }
-  if (currentView == CURRENT_VIEW_HOME) {
+  if(screen1.goBack(mouseX, mouseY)){
+    viewHistIndex--;
+  }
+  if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_HOME) {
     homeScreen.mousePressed();
     if (mouseButton==RIGHT) {
-      currentView=0;
+      currentView=CURRENT_VIEW_HOME;
+      viewHistIndex++;
+      viewHistory.add(viewHistIndex, currentView);
     }
-  } else if (currentView==CURRENT_VIEW_STATE) {
+  } else if (viewHistory.get(viewHistIndex)==CURRENT_VIEW_STATE) {
     //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
@@ -303,13 +311,13 @@ void mousePressed() {
     }
     thisState.airportClicked();
     screen1.mousePressed();
-  } else if (currentView==CURRENT_VIEW_FLIGHT_MAP) {
+  } else if (viewHistory.get(viewHistIndex)==CURRENT_VIEW_FLIGHT_MAP) {
     flightMap.mousePressed();
   }
 }
 //Jesse Margarites and Orla Kealy 10AM, fixed filter search bar
 void keyPressed(){
-  if(currentView==CURRENT_VIEW_STATE){
+  if(viewHistory.get(viewHistIndex)==CURRENT_VIEW_STATE){
     screen1.keyPressed(key);
   }
 
