@@ -6,7 +6,7 @@ class Airport{
     private ArrayList<Flight> flightsLeaving;
     private ArrayList<Flight> flightsIncoming;
     private String pieGraphTitle;
-    private String[] pieLabels = {"On-Time", "Delayed", "Cancelled"};
+    private String[] pieLabels;
     private float[] pieValues;
     private color[] pieColors = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
     Charts charts;
@@ -60,30 +60,129 @@ class Airport{
     }
 
 //Niko Charles 3:00 25/03/2026 write method
-    float[] getNumberOfFlightsCancelled(){
-      int cancelled = 0;
-      int delayed = 0;
-      int onTime = 0;
+    String[] getPieChartLabels(){
+      float cancelled = 0;
+      float delayed = 0;
+      float onTime = 0;
+      String actualDepartTimeString;
+      String scheduledDepartTimeString;
+      int actualDepartTime;
+      int scheduledDepartTime;
+      ArrayList<String> flightsCancelledLabels = new ArrayList<String>();
       for(int i = 0; i < flightsLeaving.size(); i++){
+        actualDepartTimeString = flightsLeaving.get(i).getActualDepartureTime();
+        scheduledDepartTimeString = flightsLeaving.get(i).getScheduledDepartureTime();
+        if(actualDepartTimeString != null && scheduledDepartTimeString != null && !actualDepartTimeString.trim().isEmpty()
+            && !scheduledDepartTimeString.trim().isEmpty()){
+          actualDepartTime = Integer.valueOf(actualDepartTimeString.trim());
+          scheduledDepartTime = Integer.valueOf(scheduledDepartTimeString.trim());
+        }
+        else{
+          actualDepartTime = 0;
+          scheduledDepartTime = 0;
+        }
         if(flightsLeaving.get(i).getFlightCancelled() == 1){
           cancelled++;
         }
-        else if(flightsLeaving.get(i).getActualDepartureTime() == flightsLeaving.get(i).getScheduledDepartureTime()){
-          onTime++;
-        }
-        else{
+        else if(actualDepartTime > scheduledDepartTime){
           delayed++;
         }
+        else{
+          onTime++;
+        }
       }
-      float[] cancelledDelayedOnTime = {cancelled, delayed, onTime};
+      if(cancelled == 0){
+        if(delayed == 0){
+          flightsCancelledLabels.add("On-Time");
+        }
+        flightsCancelledLabels.add("Delayed");
+        flightsCancelledLabels.add("On-Time");
+      }
+      else if(delayed == 0){
+        flightsCancelledLabels.add("Cancelled");
+        flightsCancelledLabels.add("On-Time");
+      }
+      else if(onTime == 0){
+        flightsCancelledLabels.add("Cancelled");
+        flightsCancelledLabels.add("Delayed");
+      }
+      else{
+        flightsCancelledLabels.add("Cancelled");
+        flightsCancelledLabels.add("Delayed");
+        flightsCancelledLabels.add("On-Time");
+      }
+      String[] cancelledDelayedOnTime = new String[flightsCancelledLabels.size()];
+      for(int i = 0; i < flightsCancelledLabels.size(); i++){
+        cancelledDelayedOnTime[i] = flightsCancelledLabels.get(i);
+      }
+      return cancelledDelayedOnTime;
+    }
+    //Niko Charles 9:00 27/03/2026 write method
+    float[] getNumberOfFlightsCancelled(){
+      float cancelled = 0;
+      float delayed = 0;
+      float onTime = 0;
+      String actualDepartTimeString;
+      String scheduledDepartTimeString;
+      int actualDepartTime;
+      int scheduledDepartTime;
+      ArrayList<Float> flightsCancelledData = new ArrayList<Float>();
+      for(int i = 0; i < flightsLeaving.size(); i++){
+        actualDepartTimeString = flightsLeaving.get(i).getActualDepartureTime();
+        scheduledDepartTimeString = flightsLeaving.get(i).getScheduledDepartureTime();
+        if(actualDepartTimeString != null && scheduledDepartTimeString != null && !actualDepartTimeString.trim().isEmpty()
+            && !scheduledDepartTimeString.trim().isEmpty()){
+          actualDepartTime = Integer.valueOf(actualDepartTimeString.trim());
+          scheduledDepartTime = Integer.valueOf(scheduledDepartTimeString.trim());
+        }
+        else{
+          actualDepartTime = 0;
+          scheduledDepartTime = 0;
+        }
+        if(flightsLeaving.get(i).getFlightCancelled() == 1){
+          cancelled++;
+        }
+        else if(actualDepartTime > scheduledDepartTime){
+          delayed++;
+        }
+        else{
+          onTime++;
+        }
+      }
+      if(cancelled == 0){
+        if(delayed == 0){
+          flightsCancelledData.add(onTime);
+        }
+        flightsCancelledData.add(delayed);
+        flightsCancelledData.add(onTime);
+      }
+      else if(delayed == 0){
+        flightsCancelledData.add(cancelled);
+        flightsCancelledData.add(onTime);
+      }
+      else if(onTime == 0){
+        flightsCancelledData.add(cancelled);
+        flightsCancelledData.add(delayed);
+      }
+      else{
+        flightsCancelledData.add(cancelled);
+        flightsCancelledData.add(delayed);
+        flightsCancelledData.add(onTime);
+      }
+      float[] cancelledDelayedOnTime = new float[flightsCancelledData.size()];
+      for(int i = 0; i < flightsCancelledData.size(); i++){
+        cancelledDelayedOnTime[i] = flightsCancelledData.get(i);
+      }
       return cancelledDelayedOnTime;
     }
 
+    //Niko Charles 9:00 27/03/2026 write method
     void setPieChartValues(Charts thisPieChart) {
       if (!this.setGraphValues) {
+        if(getNumberOfFlightsCancelled() != null){}
         pieGraphTitle = "On-Time Flights";
-        pieValues = new float[3];
         pieValues = getNumberOfFlightsCancelled();
+        pieLabels = getPieChartLabels();
         thisPieChart.addPieChart(pieGraphTitle, pieLabels, pieValues, PIE_CHART_X_COORDINATE, PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColors);
         setGraphValues(true);
       }
