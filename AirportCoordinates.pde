@@ -7,6 +7,7 @@ class AirportCoordinates {
 
   String  code;
   String  city;
+  String  stateCode;
   float   lat, lon;
   float   x, y;
   boolean hovered;
@@ -14,10 +15,11 @@ class AirportCoordinates {
   float   currentSize;
 
   AirportCoordinates(FlightMapScreen screen, String code, String city,
-                     float lat, float lon, int rank) {
+                     float lat, float lon, int rank, String stateCode) {
     this.screen      = screen;
     this.code        = code;
     this.city        = city;
+    this.stateCode   = stateCode;
     this.lat         = lat;
     this.lon         = lon;
     this.x           = screen.lonToX(lon);

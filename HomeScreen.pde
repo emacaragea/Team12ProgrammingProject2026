@@ -8,7 +8,7 @@ class HomeScreen {
 
     final int BUTTON_H   = 45;
 final int BUTTON_GAP = 60;
-final int BUTTON_Y   = height - BUTTON_H - 80;  // higher up
+final int BUTTON_Y   = height - BUTTON_H - 40;
 final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
 
 
@@ -78,7 +78,9 @@ final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
 
   void mousePressed() {
     for (int i = 0; i < 2; i++) {
-      float bx = BUTTON_GAP + i * (BUTTON_W + BUTTON_GAP);
+      float totalWidth = 2 * BUTTON_W + BUTTON_GAP;
+      float startX = (width - totalWidth) / 2;
+      float bx = startX + i * (BUTTON_W + BUTTON_GAP);
       if (mouseX >= bx && mouseX <= bx + BUTTON_W &&
           mouseY >= BUTTON_Y && mouseY <= BUTTON_Y + BUTTON_H) {
         handleButtonPress(i);

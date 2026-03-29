@@ -27,8 +27,9 @@ Screen                  screen1;
 Screen                  screen2;
 HomeScreen homeScreen;
 
-HashMap<String, String>  stateCodeToName;
-HashMap<String, Integer> stateFlightCounts;
+HashMap<String, String>   stateCodeToName;
+HashMap<String, Integer>  stateFlightCounts;
+HashMap<String, Airport>  airportsByCode = new HashMap<String, Airport>();
 int    currentView       = 0;
 int    lastView;
 //String selectedStateCode = "TX";
@@ -84,6 +85,7 @@ void loadData() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
   screen1 = new Screen(3);
+  screen2 = new Screen(2);
   stateCodeToName = buildCodeToNameMap();
   stateFlightCounts = new HashMap<String, Integer>();
 
@@ -267,6 +269,62 @@ void readFileByState(String stateCode, State currentState) {
 
 
 
+
+void loadMapAirport(AirportCoordinates ac) {
+  if (!airportsByCode.containsKey(ac.code)) {
+    Airport airport = new Airport(ac.city, 0);
+    String path = "data/flights/origin_states/" + ac.stateCode + ".csv";
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path)));
+      reader.readLine(); // skip header
+      String line = reader.readLine();
+      while (line != null) {
+        Scanner lineScan = new Scanner(line).useDelimiter(",");
+        try {
+          String flightDate             = nextToken(lineScan);
+          String airlineCode            = nextToken(lineScan);
+          int    flightNumber           = lineScan.nextInt();
+          String originCityCode         = nextToken(lineScan);
+          String originCityName         = nextToken(lineScan);
+          String originStateCode        = nextToken(lineScan);
+          int    originWorldAreaCode    = lineScan.nextInt();
+          String destinationCityCode    = nextToken(lineScan);
+          String destinationCityName    = nextToken(lineScan);
+          String destinationStateCode   = nextToken(lineScan);
+          int    destinationWorldAreaCode = lineScan.nextInt();
+          String scheduledDepartureTime = nextToken(lineScan);
+          String actualDepartureTime    = nextToken(lineScan);
+          String scheduledArrivalTime   = nextToken(lineScan);
+          String actualArrivalTime      = nextToken(lineScan);
+          int    cancelled              = lineScan.nextInt();
+          int    diverted               = lineScan.nextInt();
+          double airportDistance        = lineScan.nextDouble();
+
+          if (originCityCode.equals(ac.code)) {
+            Airport destAirport = new Airport(destinationCityName, destinationWorldAreaCode);
+            Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
+              airport, destAirport, scheduledDepartureTime, actualDepartureTime,
+              scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
+            airport.addFlightsLeaving(newFlight);
+          }
+        } catch (Exception e) {}
+        lineScan.close();
+        line = reader.readLine();
+      }
+      reader.close();
+    } catch (Exception e) {
+      println("loadMapAirport: " + e);
+    }
+    airportsByCode.put(ac.code, airport);
+  }
+
+  thisAirport  = airportsByCode.get(ac.code);
+  airportName  = ac.city;
+  screen2      = new Screen(2);
+  currentView  = CURRENT_VIEW_AIRPORT;
+  viewHistIndex++;
+  viewHistory.add(viewHistIndex, currentView);
+}
 
 String nextToken(Scanner thisScanner) {
   String token = thisScanner.next().trim();

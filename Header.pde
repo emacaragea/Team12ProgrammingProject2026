@@ -2,7 +2,7 @@
 
 class Header {
   final int HEIGHT = 45;
-  final color BAR_COLOR = color(20, 30, 48);
+  final color BAR_COLOR = color(82, 156, 214);
   final color STROKE_COLOR = color(0, 120, 200);
 
   void draw() {

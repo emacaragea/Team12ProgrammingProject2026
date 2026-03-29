@@ -29,7 +29,7 @@ class Screen{
     final int HOME_BUTTON_SIZE = 13;
     final int HOME_BUTTON_HEIGHT = 11;
     static final int HOME_BAR_HEIGHT = 50;
-    final color HOME_BAR_COLOR = color(20, 30, 48);
+    final color HOME_BAR_COLOR = color(82, 156, 214);
     final color HOME_BAR_STROKE_COLOR = color(0, 120, 200);
     final color HOME_BAR_BACKGROUND_COLOR = color(20, 28, 38);
 

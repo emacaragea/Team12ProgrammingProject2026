@@ -52,6 +52,7 @@ class FlightMapScreen {
         drawArcs();
         drawAirports();
       mapView.end();
+      drawLegend();
     } else if (currentScreen == 1) {
       routePage.draw();
     } else if (currentScreen == 2) {
@@ -59,6 +60,42 @@ class FlightMapScreen {
     }
   }
 
+
+  void drawLegend() {
+    int x        = 20;
+    int y        = height - 190;
+    int iconSize = 38;
+    int rowH     = 46;
+
+    fill(0, 10, 30, 190);
+    noStroke();
+    rect(x - 12, y - 12, 220, 192, 10);
+
+    textFont(fontBold);
+    textSize(22);
+    textAlign(LEFT, TOP);
+    fill(220);
+    text("Flight Status", x, y);
+
+    imageMode(CENTER);
+    textFont(fontRegular);
+    textSize(16);
+
+    image(planeOnTime,    x + iconSize / 2, y + rowH      + iconSize / 2, iconSize, iconSize);
+    fill(0, 210, 100);
+    text("On Time",   x + iconSize + 10, y + rowH      + 10);
+
+    image(planeDelayed,   x + iconSize / 2, y + rowH * 2  + iconSize / 2, iconSize, iconSize);
+    fill(255, 200, 0);
+    text("Delayed",   x + iconSize + 10, y + rowH * 2  + 10);
+
+    image(planeCancelled, x + iconSize / 2, y + rowH * 3  + iconSize / 2, iconSize, iconSize);
+    fill(255, 60, 60);
+    text("Cancelled", x + iconSize + 10, y + rowH * 3  + 10);
+
+    imageMode(CORNER);
+    textAlign(LEFT, BASELINE);
+  }
 
   void drawMap() {
     image(usMap, 0, 0, width, height);
@@ -69,21 +106,21 @@ class FlightMapScreen {
 
   void initAirports() {
     airports = new AirportCoordinates[] {
-      new AirportCoordinates(this, "ATL", "Atlanta",        31.64,  -81.43,  1),
-      new AirportCoordinates(this, "DFW", "Dallas",         30.90,  -94.04,  2),
-      new AirportCoordinates(this, "DEN", "Denver",         37.86, -101.67,  3),
-      new AirportCoordinates(this, "ORD", "Chicago",        39.97,  -84.90,  4),
-      new AirportCoordinates(this, "LAX", "Los Angeles",    31.94, -115.41,  5),
-      new AirportCoordinates(this, "CLT", "Charlotte",      33.21,  -77.94,  6),
-      new AirportCoordinates(this, "MCO", "Orlando",        26.43,  -78.31,  7),
-      new AirportCoordinates(this, "LAS", "Las Vegas",      34.08, -112.15,  8),
-      new AirportCoordinates(this, "PHX", "Phoenix",        31.43, -109.01,  9),
-      new AirportCoordinates(this, "MIA", "Miami",          23.79,  -77.29, 10),
-      new AirportCoordinates(this, "SEA", "Seattle",        45.45, -119.31, 11),
-      new AirportCoordinates(this, "IAH", "Houston",        27.99,  -92.34, 12),
-      new AirportCoordinates(this, "JFK", "New York",       38.64,  -70.78, 13),
-      new AirportCoordinates(this, "SFO", "San Francisco",  34.62, -119.38, 14),
-      new AirportCoordinates(this, "BOS", "Boston",         40.37,  -68.00, 15)
+      new AirportCoordinates(this, "ATL", "Atlanta",        31.64,  -81.43,  1, "GA"),
+      new AirportCoordinates(this, "DFW", "Dallas",         30.90,  -94.04,  2, "TX"),
+      new AirportCoordinates(this, "DEN", "Denver",         37.86, -101.67,  3, "CO"),
+      new AirportCoordinates(this, "ORD", "Chicago",        39.97,  -84.90,  4, "IL"),
+      new AirportCoordinates(this, "LAX", "Los Angeles",    31.94, -115.41,  5, "CA"),
+      new AirportCoordinates(this, "CLT", "Charlotte",      33.21,  -77.94,  6, "NC"),
+      new AirportCoordinates(this, "MCO", "Orlando",        26.43,  -78.31,  7, "FL"),
+      new AirportCoordinates(this, "LAS", "Las Vegas",      34.08, -112.15,  8, "NV"),
+      new AirportCoordinates(this, "PHX", "Phoenix",        31.43, -109.01,  9, "AZ"),
+      new AirportCoordinates(this, "MIA", "Miami",          23.79,  -77.29, 10, "FL"),
+      new AirportCoordinates(this, "SEA", "Seattle",        45.45, -119.31, 11, "WA"),
+      new AirportCoordinates(this, "IAH", "Houston",        27.99,  -92.34, 12, "TX"),
+      new AirportCoordinates(this, "JFK", "New York",       38.64,  -70.78, 13, "NY"),
+      new AirportCoordinates(this, "SFO", "San Francisco",  34.62, -119.38, 14, "CA"),
+      new AirportCoordinates(this, "BOS", "Boston",         40.37,  -68.00, 15, "MA")
     };
   }
 
@@ -123,8 +160,7 @@ class FlightMapScreen {
     if (currentScreen == 0) {
       for (int i = 0; i < airports.length; i++) {
         if (airports[i].isClicked()) {
-          selectedAirport = airports[i];
-          currentScreen   = 2;
+          loadMapAirport(airports[i]);
           return;
         }
       }

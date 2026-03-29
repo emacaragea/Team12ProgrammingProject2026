@@ -34,11 +34,11 @@ class USMapScreen {
     geoMap48 = new GeoMap(0, 0, width, height, sketch);
     geoMap48.readFile("usContinental48");
 
-    // Alaska inset — bottom left
+    // Alaska inset
     geoMapAK = new GeoMap(0, 0, width, height, sketch);
     geoMapAK.readFile("alaska");
 
-    // Hawaii inset — right of Alaska
+    // Hawaii inset
     geoMapHI = new GeoMap(0, 0, width, height, sketch);
     geoMapHI.readFile("hawaii");
   }
@@ -50,21 +50,24 @@ class USMapScreen {
 
   // Draw choropleth clipped to a sub-region of the screen
   void drawInRegion(float rx, float ry, float rw, float rh) {
+    float yShift    = rh * 0.12;  // shift everything down
+    float mainXShift = 12;        // shift continent a few pixels right
+
     // Main 48 states
-mainX = rx;
-mainY = ry;
+mainX = rx + mainXShift;
+mainY = ry + yShift;
 mainW = rw;
 mainH = rh * 0.90;
 
-// Alaska inset 
+// Alaska inset
 akX = rx + rw * 0.02;
-akY = ry;
+akY = ry + yShift;
 akW = rw * 0.14;
 akH = rh * 0.25;
 
-// Hawaii inset 
+// Hawaii inset
 hiX = rx + rw * 0.16;
-hiY = ry + rh * 0.72;
+hiY = ry + rh * 0.72 + yShift;
 hiW = rw * 0.10;
 hiH = rh * 0.20;
     drawMap(geoMap48, mainX, mainY, mainW, mainH);
@@ -121,9 +124,11 @@ hiH = rh * 0.20;
 
   void mousePressedInRegion(float rx, float ry, float rw, float rh) {
     // Recalculate regions (must match drawInRegion exactly)
-    mainX = rx;              mainY = ry;              mainW = rw;        mainH = rh * 0.90;
-    akX   = rx + rw * 0.02; akY   = ry;              akW   = rw * 0.14; akH   = rh * 0.25;
-    hiX   = rx + rw * 0.16; hiY   = ry + rh * 0.72; hiW   = rw * 0.10; hiH   = rh * 0.20;
+    float yShift    = rh * 0.12;
+    float mainXShift = 12;
+    mainX = rx + mainXShift; mainY = ry + yShift;              mainW = rw;        mainH = rh * 0.90;
+    akX   = rx + rw * 0.02; akY   = ry + yShift;              akW   = rw * 0.14; akH   = rh * 0.25;
+    hiX   = rx + rw * 0.16; hiY   = ry + rh * 0.72 + yShift; hiW   = rw * 0.10; hiH   = rh * 0.20;
 
     // Try insets first (they're drawn on top), then the main map
     if (!tryClick(geoMapAK, akX, akY, akW, akH)) {
@@ -191,7 +196,8 @@ hiH = rh * 0.20;
   }
 
   void drawLegend(float rx, float ry, float rw, float rh) {
-    int lx = (int)(rx + rw) - (int)(rw / 5) - 12;    int lw = (int) rw / 5;
+    int lx = (int)(rx + rw) - (int)(rw / 5) - 80;
+    int lw = (int) rw / 5;
     int lh = 14;
     int ly = (int) (ry + rh) - 44;
     noStroke();
