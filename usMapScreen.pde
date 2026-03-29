@@ -120,47 +120,52 @@ hiH = rh * 0.20;
   }
 
   void mousePressedInRegion(float rx, float ry, float rw, float rh) {
-    // Recalculate regions (same as drawInRegion)
-    mainX = rx + rw * 0.18;  mainY = ry;           mainW = rw * 0.82; mainH = rh * 0.85;
-    akX   = rx;               akY   = ry + rh*0.60; akW   = rw * 0.22; akH   = rh * 0.38;
-    hiX   = rx + rw * 0.22;  hiY   = ry + rh*0.75; hiW   = rw * 0.12; hiH   = rh * 0.22;
+    // Recalculate regions (must match drawInRegion exactly)
+    mainX = rx;              mainY = ry;              mainW = rw;        mainH = rh * 0.90;
+    akX   = rx + rw * 0.02; akY   = ry;              akW   = rw * 0.14; akH   = rh * 0.25;
+    hiX   = rx + rw * 0.16; hiY   = ry + rh * 0.72; hiW   = rw * 0.10; hiH   = rh * 0.20;
 
-    // Try clicking each map in order, stop at first hit
-    if (!tryClick(geoMap48, mainX, mainY, mainW, mainH)) {
-      if (!tryClick(geoMapAK, akX, akY, akW, akH)) {
-        tryClick(geoMapHI, hiX, hiY, hiW, hiH);
+    // Try insets first (they're drawn on top), then the main map
+    if (!tryClick(geoMapAK, akX, akY, akW, akH)) {
+      if (!tryClick(geoMapHI, hiX, hiY, hiW, hiH)) {
+        tryClick(geoMap48, mainX, mainY, mainW, mainH);
       }
     }
   }
 
   // Checks if mouse click hits a state in the given map/region, navigates if so
   boolean tryClick(GeoMap geoMap, float rx, float ry, float rw, float rh) {
-    float scaleX  = rw / width;
-    float scaleY  = rh / height;
-    float s       = min(scaleX, scaleY);
-    float offsetX = rx + (rw - width  * s) / 2;
-    float offsetY = ry + (rh - height * s) / 2;
+  float scaleX  = rw / width;
+  float scaleY  = rh / height;
+  float s       = min(scaleX, scaleY);
+  float offsetX = rx + (rw - width  * s) / 2;
+  float offsetY = ry + (rh - height * s) / 2;
 
-    float mapMouseX = (mouseX - offsetX) / s;
-    float mapMouseY = (mouseY - offsetY) / s;
-
-    int id = geoMap.getID(mapMouseX, mapMouseY);
-    if (id == -1) return false;
-
-    String name = geoMap.getAttributeTable().findRow(str(id), 0).getString("name");
-    String code = nameToCode(name);
-    if (code != null) {
-      // Jesse Margarites, 5PM, 24/03, updated this method so when each State is clicked on, go to its state screen
-      selectedStateCode = code;
-      stateName = convertStateCodeToStateName(selectedStateCode);
-      thisState = new State(stateName);
-      currentView = CURRENT_VIEW_STATE;
-      viewHistIndex++;
-      viewHistory.add(viewHistIndex, currentView);
-      screen1 = new Screen(3); // reset so Screen loads the newly selected state
-    }
-    return true;
+  // Check mouse is actually within this inset region first
+  if (mouseX < rx || mouseX > rx + rw || mouseY < ry || mouseY > ry + rh) {
+    return false;
   }
+
+  float mapMouseX = (mouseX - offsetX) / s;
+  float mapMouseY = (mouseY - offsetY) / s;
+
+  int id = geoMap.getID(mapMouseX, mapMouseY);
+  if (id == -1) return false;
+
+  String name = geoMap.getAttributeTable().findRow(str(id), 0).getString("name");
+  String code = nameToCode(name);
+  if (code != null) {
+    // Jesse Margarites, 5PM, 24/03, updated this method so when each State is clicked on, go to its state screen
+    selectedStateCode = code;
+    stateName = convertStateCodeToStateName(selectedStateCode);
+    thisState = new State(stateName);
+    currentView = CURRENT_VIEW_STATE;
+    viewHistIndex++;
+    viewHistory.add(viewHistIndex, currentView);
+    screen1 = new Screen(3);
+  }
+  return true;
+}
 
   // mousePressed for when map is fullscreen
   void mousePressed() {

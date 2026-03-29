@@ -5,10 +5,12 @@ class HomeScreen {
   USMapScreen usMap;
 
   final int HEADER_H    = 90;
-  final int BUTTON_H   = 45;   // was 70
-  final int BUTTON_GAP = 60;   // was 20
-  final int BUTTON_Y   = height - BUTTON_H - 30;
-  final int BUTTON_W   = (width - BUTTON_GAP * 6) / 2;  // more gap on sides
+
+    final int BUTTON_H   = 45;
+final int BUTTON_GAP = 60;
+final int BUTTON_Y   = height - BUTTON_H - 80;  // higher up
+final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
+
 
   final float MAP_H       = (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2) ;
   final float MAP_Y       = HEADER_H + (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2 - MAP_H) / 2; // vertically centre it
@@ -58,7 +60,7 @@ class HomeScreen {
   for (int i = 0; i < 2; i++) {
     float totalWidth = 2 * BUTTON_W + BUTTON_GAP;
     float startX = (width - totalWidth) / 2;
-    float bx = startX + i * (BUTTON_W + BUTTON_GAP);
+  float bx = startX + i * (BUTTON_W + BUTTON_GAP);
     boolean hov = mouseX >= bx && mouseX <= bx + BUTTON_W &&
                   mouseY >= BUTTON_Y && mouseY <= BUTTON_Y + BUTTON_H;
 
