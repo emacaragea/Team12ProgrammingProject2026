@@ -90,7 +90,7 @@ class PieChart
     fill(255);
     textAlign(CENTER);
     textSize(16);
-    text(title, x, y - diameter / 2 - 10);
+    text(title, x, y - diameter + 40);
       
     float total = 0;
     for (int i = 0; i < values.length; i++)

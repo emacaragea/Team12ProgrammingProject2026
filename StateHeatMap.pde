@@ -345,7 +345,7 @@ class StateHeatMap {
       float textY = y + h - (i + 0.5f) * bandHeight;
       
       String label = labels[i] + " (" + (int)(thresholds[i]) + "-" + (int)(thresholds[i + 1]) + ")";
-      fill(0);
+      fill(255, 255, 255);
       text(label, x + 25, textY);
     }
     fill(255, 255, 255);
