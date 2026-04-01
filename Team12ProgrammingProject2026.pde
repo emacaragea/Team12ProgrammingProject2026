@@ -23,17 +23,18 @@ final static float HEADINGS_SIZE = 40;
 final static float SUBHEADINGS_SIZE = 25;
 final static float TEXT_SIZE = 21;
 
-FlightMapScreen         flightMap;
-USMapScreen             usMap;
-Screen                  screen1;
-Screen                  screen2;
+FlightMapScreen flightMap;
+USMapScreen usMap;
+Screen screen1;
+Screen screen2;
 HomeScreen homeScreen;
 
 HashMap<String, String>   stateCodeToName;
 HashMap<String, Integer>  stateFlightCounts;
 HashMap<String, Airport>  airportsByCode = new HashMap<String, Airport>();
-int    currentView       = 0;
+int    currentView = 0;
 int    lastView;
+
 //String selectedStateCode = "TX";
 String selectedStateCode;
 State thisState;
@@ -127,10 +128,6 @@ void loadData() {
   viewHistIndex = 0;
   viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
   dataLoaded = true;
-
-  
-
-
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -159,7 +156,7 @@ HashMap<String, String> buildCodeToNameMap() {
   return result;
 }
 
-// Reads only fields 5 (origin state) and 9 (dest state) from every state file
+// Reads only fields 5 (origin state) and 9 (dest state) from every state file,
 // so the map can be coloured without loading full Flight objects into memory
 void countAllStateFlights() {
   String path = "data/flights/origin_states/";
@@ -182,7 +179,7 @@ void countAllStateFlights() {
       reader.close();
     }
     catch (Exception e) {
-      // file missing for this state- skip
+      // if aa file is missing or malformed, just skip it and move on to the next one
     }
   }
 }
