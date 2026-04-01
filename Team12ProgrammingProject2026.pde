@@ -82,7 +82,7 @@ void setup() {
   loading.setup();
   thread("loadData");
 
-  tableSetup();
+  tableSetup(); //?
 }
 
 //new "setup" method
@@ -307,8 +307,8 @@ void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) 
       double airportDistance        = lineScan.nextDouble();
       lineScan.close();
 
-      Airport destinationAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
-      Airport originAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
+      Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
+      Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
       Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
         originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
         scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
