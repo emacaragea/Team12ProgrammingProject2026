@@ -1,6 +1,8 @@
 // Amanda de Moraes  - march 15 16:27
 // Loading screen updated, scaled for 1400 x 800
-// Ema Caragea connected loading screen to main sketch, 26/03/2026 21:00  
+// Ema Caragea connected loading screen to main sketch, 26/03/2026 21:00 
+//Ema Caragea, made the loading bar load proportionately to the time spent on the loading screen, 26/03/2026 17:00
+
 
 Loading loading;
 
@@ -40,11 +42,12 @@ void setup() {
   void draw() {
     background(20, 28, 38);
 
+    updateAnimation();
     drawBackgroundGlow();
     drawHeader();
     drawRouteCard();
     drawProgressText();
-    
+
   }
 
   void drawBackgroundGlow() {
@@ -62,14 +65,15 @@ void setup() {
     textAlign(CENTER, CENTER);
 
     textFont(titleFont);
-    text("Loading...", width / 2, 120); //text was "Preparing Your Route"
+    String headerDots = "";
+    for (int i = 0; i < loadingDots; i++) headerDots += ".";
+    text("Loading" + headerDots, width / 2, 120); //text was "Preparing Your Route"
 
     textFont(smallFont);
     fill(150, 165, 180);
     text("Synchronising flight and airport data", width / 2, 178);
   }
 
-  //Ema Caragea, made the loading bar load proportionately to the time spent on the loading screen, 26/03/2026 17:00
   void drawRouteCard() {
     float cardX = 190;
     float cardY = 230;
@@ -126,9 +130,9 @@ void setup() {
 
     noStroke();
     fill(55, 68, 82);
-    rect(barX, barY, barW * loadProgress, barH, 8);
+    rect(barX, barY, barW, barH, 8);
     fill(82, 156, 214);
-    rect(barX, barY, barW * progress, barH, 8);
+    rect(barX, barY, barW * loadProgress, barH, 8);
 
     fill(220, 228, 236);
     textAlign(RIGHT, CENTER);
@@ -143,20 +147,16 @@ void setup() {
 }
 
   void drawProgressText() {
-    String dots = "";
-    for (int i = 0; i < loadingDots; i++) {
-      dots += ".";
-    }
-
     fill(180, 190, 200);
     textAlign(CENTER, CENTER);
     textFont(smallFont);
-    text("Finalising journey details" + dots, width / 2, 620);
+    text("Finalising journey details...", width / 2, 620);
 
     fill(120, 135, 150);
     text("Please wait a moment", width / 2, 662);
   }
 
+  //Ema Caragea, made the loading bar load proportionately to the time spent on the loading screen + Loading animation, 1/04/2026 15:15
   void updateAnimation() {
     progress += 0.0035;
 
@@ -164,7 +164,7 @@ void setup() {
       progress = 0;
     }
 
-    if (millis() - lastDotChange > 450) {
+    if (millis() - lastDotChange > 500) {
       loadingDots++;
       if (loadingDots > 3) {
         loadingDots = 0;
