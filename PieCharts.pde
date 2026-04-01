@@ -82,12 +82,12 @@ class PieChart
     }
     
     // Background
-    fill(240);
+    fill(20, 28, 38);
     stroke(200);
     rect(x - diameter / 2 - 50, y - diameter / 2 - 40, diameter + 90, diameter + 80);
       
     // Title
-    fill(0);
+    fill(255);
     textAlign(CENTER);
     textSize(16);
     text(title, x, y - diameter / 2 - 10);
@@ -161,7 +161,7 @@ class PieChart
 
       // Draw slice
       fill(sliceColor);
-      stroke(255);
+      stroke(20, 28, 38);
       arc(x + offsetX, y + offsetY,
           diameter, diameter,
           startAngle, endAngle, PIE);
@@ -172,7 +172,7 @@ class PieChart
         float labelX = x + offsetX + cos(midAngle) * diameter * 0.65;
         float labelY = y + offsetY + sin(midAngle) * diameter * 0.65;
 
-        fill(0);
+        fill(255);
         textSize(12);
         textAlign(CENTER, CENTER);
         text(labels[i], labelX, labelY);
