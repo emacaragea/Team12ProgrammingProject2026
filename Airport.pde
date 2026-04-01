@@ -150,10 +150,8 @@ class Airport{
       int actualArrivalTime;
       int scheduledArrivalTime;
       ArrayList<String> flightsCancelledLabels = new ArrayList<String>();
-      System.out.println(flightsIncoming.size());
       for(int i = 0; i < flightsIncoming.size(); i++){
         actualArrivalTimeString = flightsIncoming.get(i).getActualArrivalTime();
-        System.out.println(actualArrivalTimeString);
         scheduledArrivalTimeString = flightsIncoming.get(i).getScheduledArrivalTime();
         if(actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
             && !scheduledArrivalTimeString.trim().isEmpty()){
