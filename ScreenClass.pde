@@ -186,6 +186,11 @@ class Screen{
           stroke(255);
         }
         rect(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_SIZE, HOME_BUTTON_HEIGHT);
+        pushStyle();
+        strokeWeight(3);
+        stroke(HOME_BAR_COLOR);
+        line(HOME_BUTTON_X, HOME_BUTTON_Y, HOME_BUTTON_X + HOME_BUTTON_SIZE, HOME_BUTTON_Y);
+        popStyle();
         line(HOME_BUTTON_X-2, HOME_BUTTON_Y, HOME_BUTTON_SIZE/2 + HOME_BUTTON_X, HOME_BUTTON_Y - HOME_BUTTON_SIZE/2);
         line(HOME_BUTTON_X + HOME_BUTTON_SIZE+2, HOME_BUTTON_Y, HOME_BUTTON_X + HOME_BUTTON_SIZE/2, 
             HOME_BUTTON_Y - HOME_BUTTON_SIZE/2);
