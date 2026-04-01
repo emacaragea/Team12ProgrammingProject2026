@@ -481,6 +481,7 @@ void keyPressed(){
 
 
 void mouseDragged() {
+  if (!dataLoaded) return;
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseDragged();
 } else {
@@ -488,6 +489,7 @@ void mouseDragged() {
 }
 }
 void mouseReleased() {
+  if (!dataLoaded) return;
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseReleased();
 } else {
@@ -495,6 +497,7 @@ void mouseReleased() {
 }
 }
 void mouseWheel(MouseEvent event) {
+ if (!dataLoaded) return;
  if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseWheel(event);
 }
