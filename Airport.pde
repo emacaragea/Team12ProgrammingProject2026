@@ -14,7 +14,8 @@ class Airport{
     private float[] pieValuesDepartures;
     private String[] pieLabelsArrivals;
     private float[] pieValuesArrivals;
-    private color[] pieColors = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
+    private color[] pieColorsDepartures;
+    private color[] pieColorsArrivals = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
     Charts charts;
     private boolean setGraphValues;
     final private float PIE_CHART_DIAMETER = 200;
@@ -216,6 +217,40 @@ class Airport{
       return cancelledDelayedOnTime;
     }
 
+//Niko Charles 17:00 01/04/2026 write method
+    color[] getPieChartColorsArrivals(){
+      color[] pieColorsArrivalsArr = new color[this.pieLabelsArrivals.length];
+      for(int i = 0; i < pieColorsArrivalsArr.length; i++){
+        if(pieLabelsArrivals[i].equals("Cancelled")){
+          pieColorsArrivalsArr[i] = CANCELLED_COLOR;
+        }
+        else if(pieLabelsArrivals[i].equals("Delayed")){
+          pieColorsArrivalsArr[i] = DIVERTED_COLOR;
+        }
+        else{
+          pieColorsArrivalsArr[i] = ON_TIME_COLOR;
+        }
+      }
+      return pieColorsArrivalsArr;
+    }
+
+//Niko Charles 17:00 01/04/2026 write method
+    color[] getPieChartColorsDepartures(){
+      color[] pieColorsDeparturesArr = new color[this.pieLabelsDepartures.length];
+      for(int i = 0; i < pieColorsDeparturesArr.length; i++){
+        if(pieLabelsDepartures[i].equals("Cancelled")){
+          pieColorsDeparturesArr[i] = CANCELLED_COLOR;
+        }
+        else if(pieLabelsDepartures[i].equals("Delayed")){
+          pieColorsDeparturesArr[i] = DIVERTED_COLOR;
+        }
+        else{
+          pieColorsDeparturesArr[i] = ON_TIME_COLOR;
+        }
+      }
+      return pieColorsDeparturesArr;
+    }
+
     //Niko Charles 9:00 27/03/2026 write method
     float[] getNumberOfFlightsCancelledArrivals(){
       float cancelled = 0;
@@ -341,11 +376,13 @@ class Airport{
         pieGraphTitleDepartures = "Departures";
         pieValuesDepartures = getNumberOfFlightsCancelledDepartures();
         pieLabelsDepartures = getPieChartLabelsDepartures();
-        thisPieChart.addPieChart(pieGraphTitleDepartures, pieLabelsDepartures, pieValuesDepartures, DEPARTURES_PIE_CHART_X_COORDINATE, DEPARTURES_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColors);
+        pieColorsDepartures = getPieChartColorsDepartures();
+        thisPieChart.addPieChart(pieGraphTitleDepartures, pieLabelsDepartures, pieValuesDepartures, DEPARTURES_PIE_CHART_X_COORDINATE, DEPARTURES_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsDepartures);
         pieGraphTitleArrivals = "Arrivals";
         pieValuesArrivals = getNumberOfFlightsCancelledArrivals();
         pieLabelsArrivals = getPieChartLabelsArrivals();
-        thisPieChart.addPieChart(pieGraphTitleArrivals, pieLabelsArrivals, pieValuesArrivals, ARRIVALS_PIE_CHART_X_COORDINATE, ARRIVALS_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColors);
+        pieColorsArrivals = getPieChartColorsArrivals();
+        thisPieChart.addPieChart(pieGraphTitleArrivals, pieLabelsArrivals, pieValuesArrivals, ARRIVALS_PIE_CHART_X_COORDINATE, ARRIVALS_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsArrivals);
         
 
         setGraphValues(true);
@@ -419,7 +456,14 @@ class Airport{
 
       //stroke(255, 255, 255);
       //rect(1200, textYCoordinate, 200, 50);
-      drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE"); //idk what scroll Y is
+
+      //Niko Charles & Jessie Margarites 16:00 01/04/2026 implement table status buttons
+      if(tableStatus == TABLE_STATUS_ARRIVALS){
+        drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "RETURN"); //idk what scroll Y is
+      }
+      else{
+        drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE");
+      }
       drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
     }
 

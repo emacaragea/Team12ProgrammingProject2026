@@ -408,6 +408,18 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   text("Distance", colDist, y - 20);
   text("Status", colStatus, y - 20);
 
+  if(type.equals(("DEPARTURE"))){
+      pushStyle();
+        fill(230);
+        text("Destination", colOriginOrDest, y - 20);
+      popStyle();
+
+    }else if(type.equals(("RETURN"))){
+      pushStyle();
+        text("Origin", colOriginOrDest, y - 20);
+      popStyle();
+    }
+
   if (flights.size() == 0) {
     fill(180);
     textFont(bodyFont);
@@ -458,30 +470,31 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     //Jesse Margarites, 3PM, 01/04, implemented status for airport
     String currentStatus = "On time";
     if(f.getFlightCancelled()==1){
+      pushStyle();
       currentStatus = "Cancelled";
       noStroke();
       fill(CANCELLED_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
+      popStyle();
     }else if(f.getFlightDiverted()==1){
+      pushStyle();
       currentStatus="Diverted";
       noStroke();
       fill(DIVERTED_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
+      popStyle();
     }else{
+      pushStyle();
       noStroke();
       fill(ON_TIME_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
+      popStyle();
 
     }
     text(currentStatus, colStatus, cy);
     if(type.equals(("DEPARTURE"))){
-        fill(230);
-        text("Destination", colOriginOrDest, y - 20);
-        fill(245);
         text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);    // text(destName, colDest, cy);
-
-    }else if(type.equals(("ARRIVAL"))){
-        text("Origin", colOriginOrDest, y - 20);
+    }else if(type.equals(("RETURN"))){
         text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //text(originName, colOrigin, cy);
     }
 
