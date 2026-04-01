@@ -2,6 +2,7 @@
 //niko 10:30 AM 12/03/26 write screenDraw and drawHomeBar
 //niko 12:00 PM 18/03/26 code home bar button functions
 import java.util.ArrayList;
+static final int HOME_BAR_HEIGHT = 50;
 class Screen{
     private int screenType;
     private int lastScreenType;
@@ -28,7 +29,7 @@ class Screen{
     final int HOME_BUTTON_Y = 23;
     final int HOME_BUTTON_SIZE = 13;
     final int HOME_BUTTON_HEIGHT = 11;
-    static final int HOME_BAR_HEIGHT = 50;
+
     final color HOME_BAR_COLOR = color(82, 156, 214);
     final color HOME_BAR_STROKE_COLOR = color(0, 120, 200);
     final color HOME_BAR_BACKGROUND_COLOR = color(20, 28, 38);

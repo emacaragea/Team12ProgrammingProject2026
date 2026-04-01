@@ -12,8 +12,9 @@ class Airport{
     Charts charts;
     private boolean setGraphValues;
     final private float PIE_CHART_DIAMETER = 200;
-    final private int PIE_CHART_X_COORDINATE = SCREEN_WIDTH/3+70;
+    final private int PIE_CHART_X_COORDINATE = 1220; //SCREEN_WIDTH/3+70;
     final private int PIE_CHART_Y_COORDINATE = 400;
+    final private int SCREEN_DIVIDER_X_COORDINATE =1020;
 
 
     Airport(String airportName, int worldAreaCode){
@@ -205,6 +206,26 @@ class Airport{
       fill(255);
       textFont(TITLE_FONT);
       text(airportName, textXCoordinate, textYCoordinate);
+
+      //Jesse Margarites, 11PM, 31/03, adding flight table for depature and arrivals to airport screen
+      stroke(255);
+      strokeWeight(2);
+      noFill();
+      line(SCREEN_DIVIDER_X_COORDINATE, 0, SCREEN_DIVIDER_X_COORDINATE, SCREEN_HEIGHT);
+      fill(255, 255, 255);
+      textFont(LABEL_FONT);
+      text("Depatures", SCREEN_DIVIDER_X_COORDINATE-350, textYCoordinate); //1000
+      fill(255, 255, 255);
+      textFont(LABEL_FONT);
+      text("Arrivals", SCREEN_DIVIDER_X_COORDINATE-140, textYCoordinate); //1200
+
+      //stroke(255, 255, 255);
+      //rect(950, textYCoordinate, 200, 50);
+
+      //stroke(255, 255, 255);
+      //rect(1200, textYCoordinate, 200, 50);
+
+      drawFilteredFlightTable(flightsLeaving, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE"); //idk what scroll Y is
     }
 
     @Override

@@ -78,6 +78,8 @@ void setup() {
   loading = new Loading();
   loading.setup();
   thread("loadData");
+
+  tableSetup();
 }
 
 //new "setup" method
