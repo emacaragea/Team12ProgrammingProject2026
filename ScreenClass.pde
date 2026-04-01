@@ -39,6 +39,8 @@ class Screen{
     final int SEARCHY =12;
     final int SEARCHW= 260;
     final int SEARCHH=28;
+
+    private boolean setArrivalAirports;
     
     boolean searchActive = false;
     String searchText ="";
@@ -54,6 +56,7 @@ class Screen{
         screenType = type;
         //3PM, 19/03/26, Jesse Margarites
         thisChart = new Charts();
+        setArrivalAirports = false;
         
     }
 
@@ -67,6 +70,7 @@ class Screen{
     void setSelectedAirport(Airport airport){
         this.selectedAirport = airport;
         this.selectedAirportName = airport.getAirportName();
+
     }
 
 
@@ -142,7 +146,6 @@ class Screen{
     }
 
     void drawHomeBar(){
-        pushStyle();
         fill(200);
         //rect(0, 0, 1400, 40);
         //draw backArrow
@@ -157,7 +160,6 @@ class Screen{
         stroke(255);
         strokeWeight(2);
         noFill();
-        popStyle();
 
 
         //drawBackArrow
@@ -322,7 +324,11 @@ void handleSearchKey(char key, int keyCode) {
     }
 
     void drawAirportScreen(Airport thisAirport, String airportName){
-        readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
+        if(!setArrivalAirports){
+            readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
+            setArrivalAirports = true;
+
+        }
         airportList.add(thisAirport);
         currentAirportIndex = airportList.size()-1;
         thisAirport.setPieChartValues(thisChart);

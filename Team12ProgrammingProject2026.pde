@@ -279,6 +279,7 @@ void readFileByState(String stateCode, State currentState) {
   }
 }
 
+//Niko Charles & Jesse Margarites, 2PM, 01/03, implemented new read in method
 void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) {
   String filePath = "data/flights/dest_airports/";
   String fileEnding = ".csv";
