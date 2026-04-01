@@ -148,6 +148,7 @@ void tableMouseWheel(MouseEvent event) {
   float amt = event.getCount() * scrollSpeed;
 
   if (tableState == TABLE_FLIGHT_SELECT) {
+    println("corrent state");
     if (overRect(goTableX, goTableY, goTableW, goTableH)) {
       goScrollY -= amt;
       goScrollY = constrain(goScrollY, -goMaxScroll, 0);
@@ -373,13 +374,104 @@ void drawFlightTable(ArrayList<Flight> flights, float x, float y, float w, float
     textSize(12);
     text(f.getAirlineCode(), colCarrier, cy);
     text(f.getAirlineCode() + " " + f.getFlightNumber(), colFlight, cy);
-    text(originName, colOrigin, cy);
+    text(originName, colOrigin, cy);  
     text(destName, colDest, cy);
+    text(round((float)f.getAirportDistanceInMiles()) + " mi", colDist, cy);
+  }
+  
+
+  drawScrollbar(x + w - 8, y, h, totalContentHeight, maxScroll, scrollY);
+}
+
+//Jesse Margarites, 11PM, 31/03, created a filtered flight table 
+// draws one flight table
+void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float w, float h, float scrollY, String type) {
+  pushStyle();
+  tableState=TABLE_FLIGHT_SELECT;
+  float rowH = 34;
+  float pad = 12;
+  float startX = x + pad;
+  float usable = w - 40;
+
+  float colCarrier = startX;
+  float colFlight = startX + usable * 0.18;
+  float colOriginOrDest = startX + usable * 0.36;
+  float colDist = startX + usable * 0.56;
+  //float colDist = startX + usable * 0.76;
+
+  fill(230);
+  textFont(smallFont);
+  textAlign(LEFT, CENTER);
+  textSize(12);
+  text("Carrier", colCarrier, y - 20);
+  text("Flight", colFlight, y - 20);
+  text("Distance", colDist, y - 20);
+
+  if (flights.size() == 0) {
+    fill(180);
+    textFont(bodyFont);
+    textAlign(CENTER, CENTER);
+    textSize(16);
+    text("No flights found", x + w / 2, y + h / 2);
+    return;
+  }
+
+  float totalContentHeight = flights.size() * rowH;
+  float maxScroll = max(0, totalContentHeight - h);
+
+  if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
+  if (type.equals("RETURN")) backMaxScroll = maxScroll;
+
+  for (int i = 0; i < flights.size(); i++) {
+    Flight f = flights.get(i);
+    float rowTop = y + scrollY + i * rowH;
+    float cy = rowTop + rowH / 2;
+
+    if (rowTop + rowH < y || rowTop > y + h) continue;
+
+    boolean selected =
+      (type.equals("DEPARTURE") && selectedGoFlight == f) ||
+      (type.equals("RETURN") && selectedBackFlight == f);
+
+    fill(selected ? color(82, 156, 214) : (i % 2 == 0 ? color(33, 42, 54) : color(26, 34, 44)));
+    noStroke();
+    rect(x, rowTop, w - 14, rowH - 2, 8);
+
+    String originName = "";
+    String destName = "";
+
+    if (originNameByFlight.containsKey(f)) {
+      originName = originNameByFlight.get(f);
+    }
+
+    if (destNameByFlight.containsKey(f)) {
+      destName = destNameByFlight.get(f);
+    }
+
+    fill(245); //was 245
+    textFont(smallFont);
+    textAlign(LEFT, CENTER);
+    textSize(12);
+    text(f.getAirlineCode(), colCarrier, cy);
+    text(f.getAirlineCode() + " " + f.getFlightNumber(), colFlight, cy);
+    if(type.equals(("DEPARTURE"))){
+        fill(230);
+        text("Destination", colOriginOrDest, y - 20);
+        fill(245);
+        text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);    // text(destName, colDest, cy);
+
+    }else if(type.equals(("ARRIVAL"))){
+        text("Origin", colOriginOrDest, y - 20);
+        text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //text(originName, colOrigin, cy);
+    }
+
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDist, cy);
   }
 
   drawScrollbar(x + w - 8, y, h, totalContentHeight, maxScroll, scrollY);
+  popStyle();
 }
+
 
 
 // draws the popup calendar

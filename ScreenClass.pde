@@ -2,6 +2,7 @@
 //niko 10:30 AM 12/03/26 write screenDraw and drawHomeBar
 //niko 12:00 PM 18/03/26 code home bar button functions
 import java.util.ArrayList;
+static final int HOME_BAR_HEIGHT = 50;
 class Screen{
     private int screenType;
     private int lastScreenType;
@@ -28,7 +29,7 @@ class Screen{
     final int HOME_BUTTON_Y = 23;
     final int HOME_BUTTON_SIZE = 13;
     final int HOME_BUTTON_HEIGHT = 11;
-    static final int HOME_BAR_HEIGHT = 50;
+
     final color HOME_BAR_COLOR = color(82, 156, 214);
     final color HOME_BAR_STROKE_COLOR = color(0, 120, 200);
     final color HOME_BAR_BACKGROUND_COLOR = color(20, 28, 38);
@@ -53,6 +54,7 @@ class Screen{
         screenType = type;
         //3PM, 19/03/26, Jesse Margarites
         thisChart = new Charts();
+        
     }
 
     void setScreenType(int type){
@@ -318,6 +320,7 @@ void handleSearchKey(char key, int keyCode) {
     }
 
     void drawAirportScreen(Airport thisAirport, String airportName){
+        readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
         airportList.add(thisAirport);
         currentAirportIndex = airportList.size()-1;
         thisAirport.setPieChartValues(thisChart);
@@ -363,6 +366,14 @@ void handleSearchKey(char key, int keyCode) {
         }
 
     }
+//Jesse Margarites, 1PM, 01/04, implmenting scroll bar
+    void mouseWheel(MouseEvent event){
+        if(screenType==AIRPORT_SCREEN){
+            tableMouseWheel(event);
+        }
+        
+    }
+        
 //Jesse Margarites, 11AM, 26/03, updated key pressed
     void keyPressed(char key, int keyCode){
         handleSearchKey(key,keyCode);

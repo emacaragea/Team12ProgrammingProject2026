@@ -62,24 +62,26 @@ class FlightMapScreen {
 
 
   void drawLegend() {
-    int x        = 20;
+    int x        = 32;
     int y        = height - 190;
     int iconSize = 38;
     int rowH     = 46;
 
-    fill(0, 10, 30, 190);
+    fill(30, 36, 52, 230);
+    stroke(70, 80, 110, 180);
+    strokeWeight(1.5);
+    rect(x - 12, y - 12, 210, 198, 14);
     noStroke();
-    rect(x - 12, y - 12, 220, 192, 10);
 
     textFont(fontBold);
-    textSize(22);
+    textSize(18);
     textAlign(LEFT, TOP);
     fill(220);
     text("Flight Status", x, y);
 
     imageMode(CENTER);
     textFont(fontRegular);
-    textSize(16);
+    textSize(13);
 
     image(planeOnTime,    x + iconSize / 2, y + rowH      + iconSize / 2, iconSize, iconSize);
     fill(0, 210, 100);
