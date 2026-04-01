@@ -381,13 +381,16 @@ void handleSearchKey(char key, int keyCode) {
         }
 
     }
+/*
 //Jesse Margarites, 1PM, 01/04, implmenting scroll bar
     void mouseWheel(MouseEvent event){
+        
         if(screenType==AIRPORT_SCREEN){
             tableMouseWheel(event);
         }
         
     }
+*/
         
 //Jesse Margarites, 11AM, 26/03, updated key pressed
     void keyPressed(char key, int keyCode){

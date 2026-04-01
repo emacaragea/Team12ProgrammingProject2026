@@ -419,7 +419,6 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
   float totalContentHeight = flights.size() * rowH;
   float maxScroll = max(0, totalContentHeight - h);
-  println("max scroll: " +maxScroll);
 
   if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
   if (type.equals("RETURN")) backMaxScroll = maxScroll;
@@ -462,16 +461,16 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       currentStatus = "Cancelled";
       noStroke();
       fill(CANCELLED_COLOR);
-      circle(colStatus-20, cy, rowH/2);
+      circle(colStatus-20, cy, rowH/2-5);
     }else if(f.getFlightDiverted()==1){
       currentStatus="Diverted";
       noStroke();
       fill(DIVERTED_COLOR);
-      circle(colStatus-20, cy, rowH/2);
+      circle(colStatus-20, cy, rowH/2-5);
     }else{
       noStroke();
       fill(ON_TIME_COLOR);
-      circle(colStatus-20, cy, rowH/2);
+      circle(colStatus-20, cy, rowH/2-5);
 
     }
     text(currentStatus, colStatus, cy);

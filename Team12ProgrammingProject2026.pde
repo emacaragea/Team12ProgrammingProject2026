@@ -505,7 +505,9 @@ else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
 else {
   flightMap.mouseWheel(event);
 }
+  /*
   //Jesse Margarites, 1PM, 01/04, implmenting scroll bar for airport screen
   screen2.mouseWheel(event);
+  */
 }
 
