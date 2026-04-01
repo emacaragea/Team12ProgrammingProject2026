@@ -146,7 +146,6 @@ class Screen{
     }
 
     void drawHomeBar(){
-        pushStyle();
         fill(200);
         //rect(0, 0, 1400, 40);
         //draw backArrow
@@ -161,7 +160,6 @@ class Screen{
         stroke(255);
         strokeWeight(2);
         noFill();
-        popStyle();
 
 
         //drawBackArrow
