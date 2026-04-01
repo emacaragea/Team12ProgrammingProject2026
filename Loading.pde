@@ -151,7 +151,7 @@ void setup() {
     fill(180, 190, 200);
     textAlign(CENTER, CENTER);
     textFont(smallFont);
-    text("Finalising journey details" + dots, width / 2, 620);
+    text("Finalising journey details..." + dots, width / 2, 620);
 
     fill(120, 135, 150);
     text("Please wait a moment", width / 2, 662);
