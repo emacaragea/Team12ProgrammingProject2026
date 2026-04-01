@@ -1,10 +1,14 @@
 //Ema Caragea, created a rough draft of Home Screen with header, map and buttons, 24/03/2026 20:00
-
+//Ema Caragea, added UI elements and connected General Table and Flight Map screens to buttons, 1/04/2026, 14:00
 class HomeScreen {
   Header   header;
   USMapScreen usMap;
 
+  PFont titleFont;
+  PFont subtitleFont;
+
   final int HEADER_H    = 90;
+  final int TITLE_H     = 70;
 
     final int BUTTON_H   = 45;
 final int BUTTON_GAP = 60;
@@ -12,14 +16,14 @@ final int BUTTON_Y   = height - BUTTON_H - 40;
 final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
 
 
-  final float MAP_H       = (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2) ;
-  final float MAP_Y       = HEADER_H + (height - HEADER_H - BUTTON_H - BUTTON_GAP * 2 - MAP_H) / 2; // vertically centre it
+  final float MAP_H       = (height - HEADER_H - TITLE_H - BUTTON_H - BUTTON_GAP * 2) ;
+  final float MAP_Y       = HEADER_H + TITLE_H + (height - HEADER_H - TITLE_H - BUTTON_H - BUTTON_GAP * 2 - MAP_H) / 2;
     // Button hover state
   boolean[] hovered = new boolean[2];
 
   final String[] BUTTON_LABELS = {
-    "Flight Map",
-    "TBD"
+    "Satelite View",
+    "Flights Table"
   };
 
   final color BUTTON_DEFAULT  = color(82, 156, 214);
@@ -30,6 +34,8 @@ final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
   HomeScreen(USMapScreen usMap) {
     this.header = new Header();
     this.usMap  = usMap;
+    titleFont    = createFont("Helvetica Bold", 38);
+    subtitleFont = createFont("Helvetica", 18);
   }
 
   void draw() {
@@ -38,10 +44,22 @@ final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
     // Draw US map in the middle region
     usMap.drawInRegion(0, MAP_Y, width, MAP_H);
 
-    // Draw buttons and header on top
+    // Draw buttons, title and header on top
     drawButtons();
+    drawTitle();
     header.draw();
     // drawBackgroundGlow();
+  }
+
+  void drawTitle() {
+    textAlign(CENTER, CENTER);
+    textFont(titleFont);
+    fill(235, 240, 245);
+    text("US Flight Activity by State", width / 2, HEADER_H + TITLE_H * 0.38);
+
+    textFont(subtitleFont);
+    fill(150, 165, 180);
+    text("Click any state to explore its flight activity", width / 2, HEADER_H + TITLE_H * 0.88);
   }
 
   //background glow effect, TBD if we want to keep it or replace with something else
@@ -96,10 +114,13 @@ final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
 
   void handleButtonPress(int index) {
     if (index == 0) {
-      currentView = 2; // FlightMapScreen
+      currentView = CURRENT_VIEW_FLIGHT_MAP;
+      viewHistIndex++;
+      viewHistory.add(viewHistIndex, currentView);
+    } else if (index == 1) {
+      currentView = CURRENT_VIEW_GENERAL_TABLE;
       viewHistIndex++;
       viewHistory.add(viewHistIndex, currentView);
     }
-    // index 1 is TBD
   }
 }
