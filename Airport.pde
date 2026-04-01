@@ -22,7 +22,23 @@ class Airport{
     final private int DEPARTURES_PIE_CHART_Y_COORDINATE = 275;
     final private int ARRIVALS_PIE_CHART_X_COORDINATE = 1220; //SCREEN_WIDTH/3+70;
     final private int ARRIVALS_PIE_CHART_Y_COORDINATE = 625;
-
+    final private String TEXT_LINK_DEPARTURE_LABEL = "Departure";
+    final private String TEXT_LINK_ARRIVAL_LABEL = "Arrival";
+    final private float TEXT_LINK_Y_COORDINATE = 80;
+    final private float TEXT_LINK_DEPARTURE_X_COORD = SCREEN_DIVIDER_X_COORDINATE-350;
+    final private float TEXT_LINK_ARRIVAL_X_COORD = SCREEN_DIVIDER_X_COORDINATE-140;
+    final private float TEXT_LINK_H = 25;
+    final private float TEXT_LINK_DEPARTURE_W = textWidth(TEXT_LINK_DEPARTURE_LABEL);
+    final private float TEXT_LINK_ARRIVAL_W = textWidth(TEXT_LINK_ARRIVAL_LABEL);
+    private boolean tableStatus = false;
+    private final boolean TABLE_STATUS_ARRIVALS = true;
+    private final boolean TABLE_STATUS_DEPARTURES = false;
+    
+    private TextLinks textLinkDepartures = new TextLinks(TEXT_LINK_DEPARTURE_LABEL, TEXT_LINK_DEPARTURE_X_COORD, 
+      TEXT_LINK_Y_COORDINATE, TEXT_LINK_H);
+    private TextLinks textLinkArrivals = new TextLinks(TEXT_LINK_ARRIVAL_LABEL, TEXT_LINK_ARRIVAL_X_COORD, 
+      TEXT_LINK_Y_COORDINATE, TEXT_LINK_H);
+  
 
       Airport(String airportName, int worldAreaCode){
       this.airportName = airportName;
@@ -335,6 +351,17 @@ class Airport{
         setGraphValues(true);
       }
     }
+//Niko Charles 15:00 01/04/2026 Write method
+    void airportMouseClicked(int mx, int my) {
+      if(mouseX >= TEXT_LINK_ARRIVAL_X_COORD && mouseX <= TEXT_LINK_ARRIVAL_X_COORD + TEXT_LINK_H &&
+        mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_ARRIVAL_W){
+          tableStatus = TABLE_STATUS_ARRIVALS;
+      }
+      if(mouseX >= TEXT_LINK_DEPARTURE_X_COORD && mouseX <= TEXT_LINK_DEPARTURE_X_COORD + TEXT_LINK_H && 
+        mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_DEPARTURE_W){
+          tableStatus = TABLE_STATUS_DEPARTURES;
+      }
+    }
 
     void airportDraw(String airportName){
       //Niko Charles 2:00 25/03/2026 create method
@@ -360,11 +387,32 @@ class Airport{
       noFill();
       line(SCREEN_DIVIDER_X_COORDINATE, 0, SCREEN_DIVIDER_X_COORDINATE, SCREEN_HEIGHT);
       fill(255, 255, 255);
+      pushStyle();
       textFont(LABEL_FONT);
-      text("Depatures", SCREEN_DIVIDER_X_COORDINATE-350, textYCoordinate); //1000
-      fill(255, 255, 255);
-      textFont(LABEL_FONT);
-      text("Arrivals", SCREEN_DIVIDER_X_COORDINATE-140, textYCoordinate); //1200
+      //Niko Charles 15:00 01/04/2026 make arrival and departure buttons for table
+      if(tableStatus == TABLE_STATUS_ARRIVALS){
+        fill(200, 200, 255);
+      }
+      else if(mouseX >= TEXT_LINK_ARRIVAL_X_COORD && mouseX <= TEXT_LINK_ARRIVAL_X_COORD + TEXT_LINK_H &&
+          mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_ARRIVAL_W){
+            fill(200, 200, 255);
+      }
+      else{
+          fill(255);
+      }
+      text(TEXT_LINK_ARRIVAL_LABEL, TEXT_LINK_ARRIVAL_X_COORD, TEXT_LINK_Y_COORDINATE);
+      if(tableStatus == TABLE_STATUS_DEPARTURES){
+        fill(200, 200, 255);
+      }
+      else if(mouseX >= TEXT_LINK_DEPARTURE_X_COORD && mouseX <= TEXT_LINK_DEPARTURE_X_COORD + TEXT_LINK_H && 
+        mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_DEPARTURE_W){
+            fill(200, 200, 255);
+      }
+      else{
+          fill(255);
+      }
+      text(TEXT_LINK_DEPARTURE_LABEL, TEXT_LINK_DEPARTURE_X_COORD, TEXT_LINK_Y_COORDINATE);
+      popStyle();
 
       //stroke(255, 255, 255);
       //rect(950, textYCoordinate, 200, 50);
@@ -372,7 +420,7 @@ class Airport{
       //stroke(255, 255, 255);
       //rect(1200, textYCoordinate, 200, 50);
       drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE"); //idk what scroll Y is
-      //drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
+      drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
     }
 
     @Override

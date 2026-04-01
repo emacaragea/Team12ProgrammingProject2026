@@ -465,6 +465,9 @@ void mousePressed() {
   } else if (viewHistory.get(viewHistIndex)==CURRENT_VIEW_FLIGHT_MAP) {
     flightMap.mousePressed();
   }
+  else if(viewHistory.get(viewHistIndex)==CURRENT_VIEW_AIRPORT){
+    thisAirport.airportMouseClicked(mouseX, mouseY);
+  }
   else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMousePressed();
 }
