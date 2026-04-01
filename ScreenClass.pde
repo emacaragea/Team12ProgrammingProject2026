@@ -356,8 +356,19 @@ void handleSearchKey(char key, int keyCode) {
         stateList.add(thisState);
         currentStateIndex = stateList.size()-1;
         readFileByState(code, thisState);
-        thisState.setBarGraphValues(thisChart);
         }
+
+        // Orla Kealy, 21:00 PM, 01/04/2026
+        // Description: Sets data for state heat map
+        if (thisState.stateHeatMap == null)
+        {
+            PImage img = loadImage("data/USStateOutlines/" + stateName.trim() + ".jpg"); 
+            img.resize(400, SCREEN_HEIGHT/3+100); 
+            thisState.stateHeatMap = new StateHeatMap(code, img); 
+            thisState.setBarGraphValues(thisChart);
+        }
+        thisState.setHeatMapValues();
+
         thisState.stateDraw(stateName);
         thisChart.chartsDraw();
         airportList = thisState.getAirportList();

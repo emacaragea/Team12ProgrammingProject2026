@@ -19,6 +19,8 @@ class State {
   private int pageNumber;
   private StateHeatMap stateHeatMap;
 
+  private String[] heatmapAirports;
+  private int[] heatmapCounts;
 
 
   State(String stateName) {
@@ -126,10 +128,25 @@ class State {
         barValues[i] = listOfAirports.get(i).getNumberOfFlightsLeaving();
       }
       thisBarGraph.addBarChart(graphTitle, barLabels, barValues, CHART_X_COORDINATE, CHART_Y_COORDINATE, CHART_WIDTH, CHART_HEIGHT, barColors, true);
-      PImage img = loadImage("data/USStateOutlines/"+stateName.trim()+".jpg");
-      img.resize(400, SCREEN_HEIGHT/3+100);
-      stateHeatMap = new StateHeatMap(stateName, img);
       setGraphValues(true);
+    }
+  }
+
+  void setHeatMapValues()
+  {
+    // Orla Kealy, 21:00 PM, 01/04/2026
+    // Description: Set array values for heat map
+    int size = listOfAirports.size();
+
+    heatmapAirports = new String[size];
+    heatmapCounts = new int[size];
+
+    for (int i = 0; i < size; i++)
+    {
+      Airport a = listOfAirports.get(i);
+
+      heatmapAirports[i] = a.getAirportName();
+      heatmapCounts[i] = a.getNumberOfFlightsLeaving();
     }
   }
 
@@ -159,7 +176,14 @@ class State {
     text("Airports: ", textXCoordinate, textYCoordinate);
     fill(255, 255, 255);
     int maxCounter;
-    stateHeatMap.drawStateHeatMap(CHART_X_COORDINATE, 70, barLabels, barValues);
+    
+    // Orla Kealy, 21:00 PM, 01/04/2026
+    // Description: Draws state heat map
+    if (heatmapAirports != null && heatmapCounts != null)
+    {
+      stateHeatMap.drawStateHeatMap(CHART_X_COORDINATE, 70, heatmapAirports, heatmapCounts);
+    }
+
     if (listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
       maxCounter = MAX_AIRPORT_DISPLAY;
       stroke(255);

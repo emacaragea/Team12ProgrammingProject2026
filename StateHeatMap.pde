@@ -10,6 +10,9 @@
 // Description: Updated dot visuals - implemented radar-like dots
 //              Added an intro animation when map is first initialised
 
+// Orla Kealy, 21:00PM 01/04/2026
+// Description: Update coordinate data
+
 class StateHeatMap {
   PImage stateImg;
   String stateCode;
@@ -280,6 +283,8 @@ class StateHeatMap {
     {
       return;
     }
+
+    pushStyle();
     
     // Position
     float boxX = min(mouseX + 10, width - HOVER_BOX_WIDTH);
@@ -307,6 +312,8 @@ class StateHeatMap {
     fill(255, 255, 255);
     textSize(12);
     text("Flights: " + hoverCount, boxX + 10, boxY + 24);
+
+    popStyle();
   }
   
   // drawLegend
@@ -420,11 +427,11 @@ class StateHeatMap {
   float[] airportLatLon(String iata) {
     switch (iata.toUpperCase()) {
       // ── Alabama ──────────────────────────────────────────
-      case "Birmingham, AL": return new float[]{ 33.5629f, -86.7535f };
-      case "Huntsville, AL": return new float[]{ 34.6372f, -86.7751f };
-      case "Mobile, AL": return new float[]{ 30.6912f, -88.2428f };
-      case "Montgomery, AL": return new float[]{ 32.3006f, -86.3940f };
-      case "Dothan, AL": return new float[]{ 31.3006f, -87.3940f }; // change coordinates
+      case "BIRMINGHAM, AL": return new float[]{ 33.5629f, -86.7535f };
+      case "HUNTSVILLE, AL": return new float[]{ 34.6372f, -86.7751f };
+      case "MOBILE, AL": return new float[]{ 30.6912f, -88.2428f };
+      case "MONTGOMERY, AL": return new float[]{ 32.3006f, -86.3940f };
+      case "DOTHAN, AL": return new float[]{ 31.3006f, -87.3940f }; // change coordinates
   
       // ── Alaska ───────────────────────────────────────────
       case "ANC": return new float[]{ 61.1741f, -149.9961f };
@@ -566,10 +573,10 @@ class StateHeatMap {
       case "LCH": return new float[]{ 30.1261f, -93.2233f };
   
       // ── Maine ────────────────────────────────────────────
-      case "BGR": return new float[]{ 44.8074f, -68.8281f };
-      case "PWM": return new float[]{ 43.6462f, -70.3093f };
+      case "BANGOR, ME": return new float[]{ 44.8074f, -68.8281f };
+      case "PORTLAND, ME": return new float[]{ 43.6462f, -70.3093f };
       case "RKD": return new float[]{ 44.0601f, -69.0992f };
-      case "PQI": return new float[]{ 46.6890f, -68.0448f };
+      case "PRESQUE ISLE/HOULTON, ME": return new float[]{ 46.6890f, -68.0448f };
   
       // ── Maryland ─────────────────────────────────────────
       case "BWI": return new float[]{ 39.1754f, -76.6683f };
@@ -793,7 +800,7 @@ class StateHeatMap {
   float[] stateBoundingBox(String st) {
     // Format: { maxLat, minLon, minLat, maxLon }
     switch (st.toUpperCase()) {
-      case "Alabama": return new float[]{ 35.008f, -88.473f, 30.144f, -84.889f };
+      case "AL": return new float[]{ 35.008f, -88.473f, 30.144f, -84.889f };
       case "Alaska": return new float[]{ 71.538f, -168.000f, 54.775f, -130.000f };
       case "Arizona": return new float[]{ 37.004f, -114.818f, 31.332f, -109.045f };
       case "Arkansas": return new float[]{ 36.500f, -94.618f, 33.004f, -89.644f };
@@ -811,7 +818,7 @@ class StateHeatMap {
       case "Kansas": return new float[]{ 40.003f, -102.052f, 36.993f, -94.588f };
       case "Kentucky": return new float[]{ 39.148f, -89.572f, 36.497f, -81.965f };
       case "Lousiana": return new float[]{ 33.019f, -94.043f, 28.928f, -88.817f };
-      case "Maine": return new float[]{ 47.460f, -71.084f, 43.059f, -66.950f };
+      case "ME": return new float[]{ 47.460f, -71.084f, 43.059f, -66.950f };
       case "Maryland": return new float[]{ 39.723f, -79.488f, 37.912f, -74.986f };
       case "Massachusetts": return new float[]{ 42.887f, -73.508f, 41.187f, -69.928f };
       case "Michigan": return new float[]{ 48.306f, -90.418f, 41.696f, -82.122f };
