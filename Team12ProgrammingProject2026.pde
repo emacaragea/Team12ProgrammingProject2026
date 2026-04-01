@@ -111,6 +111,11 @@ void loadData() {
         scan.close();
         addCount(fields[5]);
         addCount(fields[9]);
+
+        Airport a = new Airport(fields[4], Integer.parseInt(fields[6]));
+         if (!screen1.airportList.contains(a)) {
+          screen1.airportList.add(a);  //amanda
+}
         line = reader.readLine();
       }
       reader.close();
@@ -384,6 +389,8 @@ void mousePressed() {
     return;
   }
 
+  screen1.mousePressed();
+
   //Niko Charles, 9:00 26/03/2026 Added Home Button 
   //Niko Charles, 13:30 26/03/2026 Added Back Button
   if(screen1.goHome(mouseX, mouseY)){
@@ -413,23 +420,19 @@ void mousePressed() {
       thisState.setPageNumber(1);
     }
     thisState.airportClicked();
-    screen1.mousePressed();
   } else if (viewHistory.get(viewHistIndex)==CURRENT_VIEW_FLIGHT_MAP) {
     flightMap.mousePressed();
   }
   else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
-  fullTableMousePressed();
-}
-else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
-  tableMousePressed();
-}
+    fullTableMousePressed();
+  }
+  else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
+    tableMousePressed();
+  }
 }
 //Jesse Margarites and Orla Kealy 10AM, fixed filter search bar
 void keyPressed(){
-  if(viewHistory.get(viewHistIndex)==CURRENT_VIEW_STATE){
-    screen1.keyPressed(key);
-  }
-
+  screen1.keyPressed(key, keyCode);
 }
 
 
