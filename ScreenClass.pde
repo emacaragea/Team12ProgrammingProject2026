@@ -363,7 +363,8 @@ void handleSearchKey(char key, int keyCode) {
         if (thisState.stateHeatMap == null)
         {
             PImage img = loadImage("data/USStateOutlines/" + stateName.trim() + ".jpg"); 
-            img.resize(400, SCREEN_HEIGHT/3+100); 
+            float maxHeight = SCREEN_HEIGHT / 3 + 100;
+            img.resize(0, (int) maxHeight); 
             thisState.stateHeatMap = new StateHeatMap(code, img); 
             thisState.setBarGraphValues(thisChart);
         }
