@@ -18,12 +18,6 @@ class StateHeatMap {
   String stateCode;
   float minLon, maxLon, minLat, maxLat;
   
-  // Image bounds
-  final float IMG_LEFT = 50;
-  final float IMG_TOP = 10;
-  final float IMG_RIGHT = 375;
-  final float IMG_BOTTOM = 367;
-  
   // Dot visuals
   final float BASE_RADIUS = 6;
   final float MAX_RADIUS_SCALE = 18;
@@ -140,6 +134,11 @@ class StateHeatMap {
     {
       float[] latLon = airportLatLon(airports[i]);
       if (latLon == null) continue;  // Skip invalid locations
+
+      float IMG_LEFT = 0;
+      float IMG_TOP = 0;
+      float IMG_RIGHT = stateImg.width;
+      float IMG_BOTTOM = stateImg.height;
 
       // Convert geographic coordinates to screen space
       float pixelX = map(latLon[1], minLon, maxLon, IMG_LEFT, IMG_RIGHT);
