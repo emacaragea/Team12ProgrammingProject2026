@@ -51,6 +51,7 @@ class Screen{
         screenType = type;
         //3PM, 19/03/26, Jesse Margarites
         thisChart = new Charts();
+        
     }
 
     void setScreenType(int type){
@@ -260,6 +261,7 @@ class Screen{
     }
 
     void drawAirportScreen(Airport thisAirport, String airportName){
+        readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
         airportList.add(thisAirport);
         currentAirportIndex = airportList.size()-1;
         thisAirport.setPieChartValues(thisChart);
@@ -304,6 +306,14 @@ class Screen{
         }
 
     }
+//Jesse Margarites, 1PM, 01/04, implmenting scroll bar
+    void mouseWheel(MouseEvent event){
+        if(screenType==AIRPORT_SCREEN){
+            tableMouseWheel(event);
+        }
+        
+    }
+        
 //Jesse Margarites, 11AM, 26/03, updated key pressed
     void keyPressed(char key){
         if(screenType==STATE_SCREEN){

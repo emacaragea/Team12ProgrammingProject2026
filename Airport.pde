@@ -3,6 +3,7 @@
 class Airport{
     private String airportName;
     private int worldAreaCode;
+    private String originCityCode;
     private ArrayList<Flight> flightsLeaving;
     private ArrayList<Flight> flightsIncoming;
     private String pieGraphTitle;
@@ -17,14 +18,28 @@ class Airport{
     final private int SCREEN_DIVIDER_X_COORDINATE =1020;
 
 
-
-    Airport(String airportName, int worldAreaCode){
+      Airport(String airportName, int worldAreaCode){
       this.airportName = airportName;
       this.worldAreaCode = worldAreaCode;
       this.flightsLeaving = new ArrayList<Flight>();
       this.flightsIncoming = new ArrayList<Flight>();
+      this.originCityCode = originCityCode;
       charts = new Charts();
       setGraphValues =false;
+    }
+
+    Airport(String airportName, int worldAreaCode, String originCityCode){
+      this.airportName = airportName;
+      this.worldAreaCode = worldAreaCode;
+      this.flightsLeaving = new ArrayList<Flight>();
+      this.flightsIncoming = new ArrayList<Flight>();
+      this.originCityCode = originCityCode;
+      charts = new Charts();
+      setGraphValues =false;
+    }
+
+    String getOriginCityCode(){
+      return originCityCode;
     }
 
     void setAirportName(String airportName){
@@ -225,8 +240,8 @@ class Airport{
 
       //stroke(255, 255, 255);
       //rect(1200, textYCoordinate, 200, 50);
-
-      drawFilteredFlightTable(flightsLeaving, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE"); //idk what scroll Y is
+      drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE"); //idk what scroll Y is
+      drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
     }
 
     @Override

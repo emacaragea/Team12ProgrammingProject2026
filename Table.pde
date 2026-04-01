@@ -148,6 +148,7 @@ void tableMouseWheel(MouseEvent event) {
   float amt = event.getCount() * scrollSpeed;
 
   if (tableState == TABLE_FLIGHT_SELECT) {
+    println("corrent state");
     if (overRect(goTableX, goTableY, goTableW, goTableH)) {
       goScrollY -= amt;
       goScrollY = constrain(goScrollY, -goMaxScroll, 0);
@@ -385,6 +386,8 @@ void drawFlightTable(ArrayList<Flight> flights, float x, float y, float w, float
 //Jesse Margarites, 11PM, 31/03, created a filtered flight table 
 // draws one flight table
 void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float w, float h, float scrollY, String type) {
+  pushStyle();
+  tableState=TABLE_FLIGHT_SELECT;
   float rowH = 34;
   float pad = 12;
   float startX = x + pad;
@@ -402,7 +405,6 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   textSize(12);
   text("Carrier", colCarrier, y - 20);
   text("Flight", colFlight, y - 20);
-
   text("Distance", colDist, y - 20);
 
   if (flights.size() == 0) {
@@ -446,17 +448,19 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       destName = destNameByFlight.get(f);
     }
 
-    fill(245);
+    fill(245); //was 245
     textFont(smallFont);
     textAlign(LEFT, CENTER);
     textSize(12);
     text(f.getAirlineCode(), colCarrier, cy);
     text(f.getAirlineCode() + " " + f.getFlightNumber(), colFlight, cy);
     if(type.equals(("DEPARTURE"))){
+        fill(230);
         text("Destination", colOriginOrDest, y - 20);
+        fill(245);
         text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);    // text(destName, colDest, cy);
 
-    }else{
+    }else if(type.equals(("ARRIVAL"))){
         text("Origin", colOriginOrDest, y - 20);
         text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //text(originName, colOrigin, cy);
     }
@@ -465,6 +469,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   }
 
   drawScrollbar(x + w - 8, y, h, totalContentHeight, maxScroll, scrollY);
+  popStyle();
 }
 
 

@@ -249,8 +249,8 @@ void readFileByState(String stateCode, State currentState) {
       double airportDistance        = lineScan.nextDouble();
       lineScan.close();
 
-      Airport originAirport      = new Airport(originCityName, originWorldAreaCode);
-      Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode);
+      Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
+      Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
       Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
         originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
         scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
@@ -269,6 +269,52 @@ void readFileByState(String stateCode, State currentState) {
           counter++;
         }
       }
+      line = reader.readLine();
+    }
+    reader.close();
+  }
+  catch (Exception e) {
+    println(e);
+  }
+}
+
+void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) {
+  String filePath = "data/flights/dest_airports/";
+  String fileEnding = ".csv";
+  BufferedReader reader;
+  try {
+    reader = new BufferedReader(new FileReader(sketchPath(filePath + worldAreaCode + fileEnding)));
+    String line = reader.readLine();
+    line = reader.readLine(); // skip header
+    while (line != null) {
+      Scanner lineScan = new Scanner(line).useDelimiter(",");
+      String flightDate             = nextToken(lineScan);
+      String airlineCode            = nextToken(lineScan);
+      int    flightNumber           = lineScan.nextInt();
+      String originCityCode         = nextToken(lineScan);
+      String originCityName         = nextToken(lineScan);
+      String originStateCode        = nextToken(lineScan);
+      int    originWorldAreaCode    = lineScan.nextInt();
+      String destinationCityCode    = nextToken(lineScan);
+      String destinationCityName    = nextToken(lineScan);
+      String destinationStateCode   = nextToken(lineScan);
+      int    destinationWorldAreaCode = lineScan.nextInt();
+      String scheduledDepartureTime = nextToken(lineScan);
+      String actualDepartureTime    = nextToken(lineScan);
+      String scheduledArrivalTime   = nextToken(lineScan);
+      String actualArrivalTime      = nextToken(lineScan);
+      int    cancelled              = lineScan.nextInt();
+      int    diverted               = lineScan.nextInt();
+      double airportDistance        = lineScan.nextDouble();
+      lineScan.close();
+
+      Airport destinationAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
+      Airport originAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
+      Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
+        originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
+        scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
+
+      currentAirport.addFlightsIncoming(newFlight);
       line = reader.readLine();
     }
     reader.close();
@@ -312,7 +358,7 @@ void loadMapAirport(AirportCoordinates ac) {
           double airportDistance        = lineScan.nextDouble();
 
           if (originCityCode.equals(ac.code)) {
-            Airport destAirport = new Airport(destinationCityName, destinationWorldAreaCode);
+            Airport destAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
             Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
               airport, destAirport, scheduledDepartureTime, actualDepartureTime,
               scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
@@ -424,7 +470,9 @@ void mousePressed() {
 }
 else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
   tableMousePressed();
-}
+} else if(viewHistory.get(viewHistIndex)==CURRENT_VIEW_AIRPORT){
+  tableMousePressed();
+  }
 }
 //Jesse Margarites and Orla Kealy 10AM, fixed filter search bar
 void keyPressed(){
@@ -459,5 +507,7 @@ else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
 else {
   flightMap.mouseWheel(event);
 }
+  //Jesse Margarites, 1PM, 01/04, implmenting scroll bar for airport screen
+  screen2.mouseWheel(event);
 }
 
