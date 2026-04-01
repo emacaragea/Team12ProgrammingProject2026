@@ -113,11 +113,7 @@ void loadData() {
         scan.close();
         addCount(fields[5]);
         addCount(fields[9]);
-
-        Airport a = new Airport(fields[4], Integer.parseInt(fields[6]));
-         if (!screen1.airportList.contains(a)) {
-          screen1.airportList.add(a);  //amanda
-}
+      
         line = reader.readLine();
       }
       reader.close();
