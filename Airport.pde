@@ -389,7 +389,7 @@ class Airport {
 
     }
     //Jesse Margarites, 9PM, 01/04 made interactive forward and back buttons for the Airport screen
-    if (tableType<maxTableType&&mouseX>=AIRPORT_FORWARD_ARROW_X && mouseX<= AIRPORT_FORWARD_ARROW_X+ARROW_LENGTH
+    if (tableType<maxTableType-1&&mouseX>=AIRPORT_FORWARD_ARROW_X && mouseX<= AIRPORT_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= AIRPORT_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= AIRPORT_FORWARD_ARROW_Y+ARROW_HEIGHT) {
       tableType++;
 
@@ -416,8 +416,9 @@ class Airport {
     int textXCoordinate = 20;
     int textYCoordinate = 80;
     fill(255);
+    textAlign(LEFT, CENTER);
     textFont(TITLE_FONT);
-    text(airportName, textXCoordinate, textYCoordinate);
+    text(airportName, 12, textYCoordinate);
 
     //Jesse Margarites, 11PM, 31/03, adding flight table for depature and arrivals to airport screen
     stroke(255);

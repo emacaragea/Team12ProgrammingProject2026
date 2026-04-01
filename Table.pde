@@ -399,24 +399,31 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colDist = startX + usable * 0.56;
   float colStatus = startX + usable * 0.76;
 
+  fill(180);
+  textFont(titleFont);
+  textAlign(LEFT, CENTER);
+  textSize(18);
+  text("Page " + (tableType+1), startX, y - 40);
+
+
 
   fill(230);
   textFont(smallFont);
   textAlign(LEFT, CENTER);
   textSize(16); //was 13
-  text("Carrier", colCarrier, y - 20);
-  text("Flight", colFlight, y - 20);
-  text("Distance", colDist, y - 20);
-  text("Status", colStatus, y - 20);
+  text("Carrier", colCarrier, y - 5); //y-5, y-20
+  text("Flight", colFlight, y - 5);
+  text("Distance", colDist, y - 5);
+  text("Status", colStatus, y - 5);
 
   if (type.equals(("DEPARTURE"))) {
     pushStyle();
     fill(230);
-    text("Destination", colOriginOrDest, y - 20);
+    text("Destination", colOriginOrDest, y - 5);
     popStyle();
   } else if (type.equals(("RETURN"))) {
     pushStyle();
-    text("Origin", colOriginOrDest, y - 20);
+    text("Origin", colOriginOrDest, y - 5);
     popStyle();
   }
 
@@ -434,15 +441,15 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
   /*
 
-  if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
-  if (type.equals("RETURN")) backMaxScroll = maxScroll;
-  */
-  
+   if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
+   if (type.equals("RETURN")) backMaxScroll = maxScroll;
+   */
+
 
   //Jesse Margarites, 11PM, 01/04, implemented arrows to cycle through flights within flitered flight table
   int i= tableType*15;
   int maxI = i + 14;
-  if(flights.size()-1<maxI){
+  if (flights.size()-1<maxI) {
     maxI = flights.size()-1;
   }
   int rowCounter=0;
@@ -457,9 +464,9 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
     /*
     boolean selected =
-      (type.equals("DEPARTURE") && selectedGoFlight == f) ||
-      (type.equals("RETURN") && selectedBackFlight == f);
-      */
+     (type.equals("DEPARTURE") && selectedGoFlight == f) ||
+     (type.equals("RETURN") && selectedBackFlight == f);
+     */
 
     fill((rowCounter % 2 == 0 ? color(33, 42, 54) : color(26, 34, 44)));
     noStroke();
@@ -467,16 +474,16 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
     /*
     String originName = "";
-    String destName = "";
-
-    if (originNameByFlight.containsKey(f)) {
-      originName = originNameByFlight.get(f);
-    }
-
-    if (destNameByFlight.containsKey(f)) {
-      destName = destNameByFlight.get(f);
-    }
-      */
+     String destName = "";
+     
+     if (originNameByFlight.containsKey(f)) {
+     originName = originNameByFlight.get(f);
+     }
+     
+     if (destNameByFlight.containsKey(f)) {
+     destName = destNameByFlight.get(f);
+     }
+     */
 
 
     fill(245); //was 245
@@ -1173,3 +1180,4 @@ int dateToNumber(String d) {
   if (p.length != 3) return 0;
   return parseSafeInt(p[2]) * 10000 + parseSafeInt(p[0]) * 100 + parseSafeInt(p[1]);
 }
+
