@@ -35,8 +35,8 @@ class Screen{
     final color HOME_BAR_BACKGROUND_COLOR = color(20, 28, 38);
 
     //amanda de moraes, 19/3/26, 10AM, added search bar
-    final int SEARCHX= 150;
-    final int SEARCHY =6;
+    final int SEARCHX= 1070;
+    final int SEARCHY =12;
     final int SEARCHW= 260;
     final int SEARCHH=28;
 
@@ -44,7 +44,10 @@ class Screen{
     
     boolean searchActive = false;
     String searchText ="";
-    String selectedStateCode = "";
+    ArrayList<Airport> filteredAirports = new ArrayList<Airport>();
+    final int SUGGESTION_HEIGHT = 30;
+    final int MAX_SUGGESTIONS = 5;
+    
 
     //3PM, 19/03/26, Jesse Margarites
     Charts thisChart;
@@ -143,6 +146,7 @@ class Screen{
     }
 
     void drawHomeBar(){
+        pushStyle();
         fill(200);
         //rect(0, 0, 1400, 40);
         //draw backArrow
@@ -157,6 +161,7 @@ class Screen{
         stroke(255);
         strokeWeight(2);
         noFill();
+        popStyle();
 
 
         //drawBackArrow
@@ -190,75 +195,131 @@ class Screen{
 
         line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
             FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);*/
+
+            drawSearchBar();
     }
 
 
      //amanda de moraes, 19/3, search bar methods
      void drawSearchBar(){
-       boolean hover = mouseX>= SEARCHX && mouseX <= SEARCHX + SEARCHW
-       && mouseY >= SEARCHY && mouseY <= SEARCHY + SEARCHH;
-       
-       fill(searchActive ? color(120,190,245):color(70,90,110));
-       strokeWeight(1.5);
-       rect(SEARCHX, SEARCHY, SEARCHW, SEARCHH,8);
-       
-       textAlign(LEFT,CENTER);
-       textSize(13);
-       
-       if(searchText.length()==0 && !searchActive){
-         
-         fill(150,165,180);
-         text("Search state code:", SEARCHX +10, SEARCHY+SEARCHH/2);
-       }
-       else{
-         fill(240);
-         text(searchText, SEARCHX +10, SEARCHY+SEARCHH/2);
-       }
-     }
-     
-     void handleSearchClick(int mx, int my){
-       searchActive = (mx >= SEARCHX && mx <= SEARCHX + SEARCHW && my>= SEARCHY &&
-       my<+ SEARCHY + SEARCHH);
-     }
-     
-     void handleSearchKey(char key, int keyCode){
-        if(!searchActive) return;
+          boolean hover = mouseX >= SEARCHX && mouseX <= SEARCHX + SEARCHW &&
+                    mouseY >= SEARCHY && mouseY <= SEARCHY + SEARCHH;
 
-        // enter key = search
-        if(keyCode == ENTER || keyCode == RETURN){
-            runSearch();
-            return;
-        }
+    if (searchActive) fill(120, 190, 245);
+    else if (hover) fill(90, 110, 130);
+    else fill(70, 90, 110);
 
-        // backspace
-        if(keyCode == BACKSPACE){
-            if(searchText.length() > 0){
-                searchText = searchText.substring(0, searchText.length()-1);
-            }
-            return;
-        }
+    stroke(255);
+    strokeWeight(1.5);
+    rect(SEARCHX, SEARCHY, SEARCHW, SEARCHH, 8);
 
-        // ignore weird keys
-        if(keyCode == SHIFT || keyCode == CONTROL || keyCode == ALT){
-            return;
-        }
+    textAlign(LEFT, CENTER);
+    textSize(13);
 
-        // only allow letters
-        if(Character.isLetter(key) && searchText.length() < 20){
-            searchText += Character.toUpperCase(key);
-        }
+    if (searchText.length() == 0 && !searchActive) {
+        fill(150);
+        text("Search airport...", SEARCHX + 10, SEARCHY + SEARCHH / 2);
+    } else {
+        fill(10);
+        text(searchText, SEARCHX + 10, SEARCHY + SEARCHH / 2);
     }
 
-      void runSearch(){
-        String cleaned = trim(searchText).toUpperCase();
+    // draw suggestions
+    if (!searchActive || filteredAirports.size() == 0) return;
 
-        // only switch if user entered a 2 letter state code
-        if(cleaned.length() == 2){
-            selectedStateCode = cleaned;
-            setScreenType(STATE_SCREEN);
+    for (int i = 0; i < filteredAirports.size() && i < MAX_SUGGESTIONS; i++) {
+        int boxY = SEARCHY + SEARCHH + (i * SUGGESTION_HEIGHT);
+
+        boolean hov = mouseX >= SEARCHX && mouseX <= SEARCHX + SEARCHW &&
+                      mouseY >= boxY && mouseY <= boxY + SUGGESTION_HEIGHT;
+
+        fill(hov ? color(90,110,130) : color(50,65,82));
+        stroke(255);
+        rect(SEARCHX, boxY, SEARCHW, SUGGESTION_HEIGHT);
+
+        fill(240);
+        textAlign(LEFT, CENTER);
+        text(filteredAirports.get(i).getAirportName(),
+             SEARCHX + 10, boxY + SUGGESTION_HEIGHT / 2);
+    }
+       
+    }
+
+    void updateSearchSuggestions() {
+    filteredAirports.clear();
+
+    String input = searchText.toLowerCase().trim();
+    if (input.equals("")) return;
+
+    for (Airport a : airportList) {
+        if (a.getAirportName().toLowerCase().startsWith(input)) {
+            filteredAirports.add(a);
+        }
+        if (filteredAirports.size() >= MAX_SUGGESTIONS) break;
+    }
+}
+
+ void handleSearchClick(int mx, int my) {
+
+    // click search bar
+    if (mx >= SEARCHX && mx <= SEARCHX + SEARCHW &&
+        my >= SEARCHY && my <= SEARCHY + SEARCHH) {
+        searchActive = true;
+        return;
+    }
+
+    // click suggestions
+    for (int i = 0; i < filteredAirports.size() && i < MAX_SUGGESTIONS; i++) {
+        int boxY = SEARCHY + SEARCHH + (i * SUGGESTION_HEIGHT);
+
+        if (mx >= SEARCHX && mx <= SEARCHX + SEARCHW &&
+            my >= boxY && my <= boxY + SUGGESTION_HEIGHT) {
+
+            Airport chosen = filteredAirports.get(i);
+            searchText = chosen.getAirportName();
+
+            setSelectedAirport(chosen);
+            setScreenType(AIRPORT_SCREEN);
+
             searchActive = false;
+            filteredAirports.clear();
+            return;
         }
     }
+
+    searchActive = false;
+}
+
+
+// handle key input
+void handleSearchKey(char key, int keyCode) {
+    if (!searchActive) return;
+
+    if (keyCode == BACKSPACE) {
+        if (searchText.length() > 0) {
+            searchText = searchText.substring(0, searchText.length() - 1);
+            updateSearchSuggestions();
+        }
+        return;
+    }
+
+    if (keyCode == ENTER || keyCode == RETURN) {
+        if (filteredAirports.size() > 0) {
+            Airport chosen = filteredAirports.get(0);
+            searchText = chosen.getAirportName();
+            setSelectedAirport(chosen);
+            setScreenType(AIRPORT_SCREEN);
+            searchActive = false;
+            filteredAirports.clear();
+        }
+        return;
+    }
+
+    if (Character.isLetterOrDigit(key) || key == ' ')  {
+        searchText += key;
+        updateSearchSuggestions();
+    }
+}
 
     void drawHomeScreen(){
 
@@ -289,6 +350,7 @@ class Screen{
         }
         thisState.stateDraw(stateName);
         thisChart.chartsDraw();
+        airportList = thisState.getAirportList();
     }
 
 
@@ -307,7 +369,7 @@ class Screen{
         if (screenType == STATE_SCREEN) {
             thisChart.mousePressed();
         }
-        handleSearchClick(mouseX, mouseY);
+        
 
         if (screenType == FLIGHT_SCREEN) {
             tableMousePressed();
@@ -323,7 +385,9 @@ class Screen{
     }
         
 //Jesse Margarites, 11AM, 26/03, updated key pressed
-    void keyPressed(char key){
+    void keyPressed(char key, int keyCode){
+        handleSearchKey(key,keyCode);
+
         if(screenType==STATE_SCREEN){
             thisChart.keyPressed(key);
         }
