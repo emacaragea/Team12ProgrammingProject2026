@@ -130,27 +130,29 @@ class Airport{
       float cancelled = 0;
       float delayed = 0;
       float onTime = 0;
-      String actualDepartTimeString;
-      String scheduledDepartTimeString;
-      int actualDepartTime;
-      int scheduledDepartTime;
+      String actualArrivalTimeString;
+      String scheduledArrivalTimeString;
+      int actualArrivalTime;
+      int scheduledArrivalTime;
       ArrayList<String> flightsCancelledLabels = new ArrayList<String>();
+      System.out.println(flightsIncoming.size());
       for(int i = 0; i < flightsIncoming.size(); i++){
-        actualDepartTimeString = flightsIncoming.get(i).getActualDepartureTime();
-        scheduledDepartTimeString = flightsIncoming.get(i).getScheduledDepartureTime();
-        if(actualDepartTimeString != null && scheduledDepartTimeString != null && !actualDepartTimeString.trim().isEmpty()
-            && !scheduledDepartTimeString.trim().isEmpty()){
-          actualDepartTime = Integer.valueOf(actualDepartTimeString.trim());
-          scheduledDepartTime = Integer.valueOf(scheduledDepartTimeString.trim());
+        actualArrivalTimeString = flightsIncoming.get(i).getActualArrivalTime();
+        System.out.println(actualArrivalTimeString);
+        scheduledArrivalTimeString = flightsIncoming.get(i).getScheduledArrivalTime();
+        if(actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
+            && !scheduledArrivalTimeString.trim().isEmpty()){
+          actualArrivalTime = Integer.valueOf(actualArrivalTimeString.trim());
+          scheduledArrivalTime = Integer.valueOf(scheduledArrivalTimeString.trim());
         }
         else{
-          actualDepartTime = 0;
-          scheduledDepartTime = 0;
+          actualArrivalTime = 0;
+          scheduledArrivalTime = 0;
         }
         if(flightsIncoming.get(i).getFlightCancelled() == 1){
           cancelled++;
         }
-        else if(actualDepartTime > scheduledDepartTime){
+        else if(actualArrivalTime > scheduledArrivalTime){
           delayed++;
         }
         else{
@@ -189,27 +191,27 @@ class Airport{
       float cancelled = 0;
       float delayed = 0;
       float onTime = 0;
-      String actualDepartTimeString;
-      String scheduledDepartTimeString;
-      int actualDepartTime;
-      int scheduledDepartTime;
+      String actualArrivalTimeString;
+      String scheduledArrivalTimeString;
+      int actualArrivalTime;
+      int scheduledArrivalTime;
       ArrayList<Float> flightsCancelledData = new ArrayList<Float>();
       for(int i = 0; i < flightsIncoming.size(); i++){
-        actualDepartTimeString = flightsIncoming.get(i).getActualDepartureTime();
-        scheduledDepartTimeString = flightsIncoming.get(i).getScheduledDepartureTime();
-        if(actualDepartTimeString != null && scheduledDepartTimeString != null && !actualDepartTimeString.trim().isEmpty()
-            && !scheduledDepartTimeString.trim().isEmpty()){
-          actualDepartTime = Integer.valueOf(actualDepartTimeString.trim());
-          scheduledDepartTime = Integer.valueOf(scheduledDepartTimeString.trim());
+        actualArrivalTimeString = flightsIncoming.get(i).getActualArrivalTime();
+        scheduledArrivalTimeString = flightsIncoming.get(i).getScheduledArrivalTime();
+        if(actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
+            && !scheduledArrivalTimeString.trim().isEmpty()){
+          actualArrivalTime = Integer.valueOf(actualArrivalTimeString.trim());
+          scheduledArrivalTime = Integer.valueOf(scheduledArrivalTimeString.trim());
         }
         else{
-          actualDepartTime = 0;
-          scheduledDepartTime = 0;
+          actualArrivalTime = 0;
+          scheduledArrivalTime = 0;
         }
         if(flightsIncoming.get(i).getFlightCancelled() == 1){
           cancelled++;
         }
-        else if(actualDepartTime > scheduledDepartTime){
+        else if(actualArrivalTime > scheduledArrivalTime){
           delayed++;
         }
         else{
@@ -303,6 +305,7 @@ class Airport{
     }
 
     //Niko Charles 9:00 27/03/2026 write method
+    //Niko Charles 13:00 01/04/2026 add Arrivals graph
     void setPieChartValues(Charts thisPieChart) {
       if (!this.setGraphValues) {
         pieGraphTitleDepartures = "Departures";
