@@ -6,19 +6,26 @@
 // Description: Added a legend with airport flight data
 //              Implemented resource path to state images - fallback if an error occurs
 
+// Orla Kealy, 10:00 AM 30/03/2026
+// Description: Updated dot visuals - implemented radar-like dots
+//              Added an intro animation when map is first initialised
+
 class StateHeatMap {
   PImage stateImg;
   String stateCode;
   float minLon, maxLon, minLat, maxLat;
   
+  // Image bounds
   final float IMG_LEFT = 50;
   final float IMG_TOP = 10;
   final float IMG_RIGHT = 375;
   final float IMG_BOTTOM = 367;
   
+  // Dot visuals
   final float BASE_RADIUS = 6;
   final float MAX_RADIUS_SCALE = 18;
-  final float GLOW_ALPHA = 60;
+
+  // Tooltip layout
   final float HOVER_BOX_WIDTH = 130;
   final float HOVER_BOX_HEIGHT = 45;
   
@@ -28,10 +35,15 @@ class StateHeatMap {
   color hoverColor;
   float hoverX = 0;
   float hoverY = 0;
+  int hoveredIndex = -1;
   
   // Animation variables
-  int hoveredIndex = -1;
   float[] currentSizes;
+  float[] hoverScales;   
+  float[] coreSizes;     
+  boolean introPlaying = true;
+  int introStartTime;
+  float[] introProgress;
   
   StateHeatMap(String stateCode, PImage stateImg)
   {
@@ -49,76 +61,146 @@ class StateHeatMap {
     }
   }
   
+  // drawStateHeatMap
+  // Renders the state heat map - prepares data, sets animations and drawing
   void drawStateHeatMap(float x, float y, String[] airports, int[] flightCounts) // e.g {"LAX", "SFO", "SAN"}
   {
     // Error check - ensure map doesn't crash if array lengths differ
     int safeLength = min(airports.length, flightCounts.length);
     int[] safeCounts = subset(flightCounts, 0, safeLength);
     
+    // Compute thresholds for colour scaling
     float[] thresholds = getPercentileThresholds(safeCounts);
     int maxCount = getMaxCount(safeCounts);
     
     // Initialise animation array
-    if (currentSizes == null || currentSizes.length != safeLength)
-    {
-      currentSizes = new float[safeLength];
-      for (int i = 0; i < currentSizes.length; i++)
-      {
-        currentSizes[i] = 0;
-      }
-    }
+    initialiseAnimation(safeLength);
     
+    // Draw base map
     image(stateImg, x, y);
     
+    // Draw animated dots relative to map position
     pushMatrix();
     translate(x, y);
     drawDots(airports, flightCounts, thresholds, maxCount, x, y);
-    
     popMatrix();
     
+    // Draw legend and tooltip
     drawLegend(x + stateImg.width + 20, y + 20, 120, thresholds);
     drawTooltip();
   }
   
+  // initialiseAnimation
+  // Resets animation arrays when dataset size changes, restarts intro animation
+  void initialiseAnimation(int safeLength)
+  {
+    // Initialise animation array
+    if (currentSizes == null || currentSizes.length != safeLength)
+    {
+      currentSizes = new float[safeLength];
+      hoverScales = new float[safeLength];
+      coreSizes = new float[safeLength];
+      introProgress = new float[safeLength];
+      
+      // Restart intro animation
+      introStartTime = millis();
+      introPlaying = true;
+      
+      // Reset all animation values
+      for (int i = 0; i < currentSizes.length; i++)
+      {
+        currentSizes[i] = 0;
+        hoverScales[i] = 1.0;
+        coreSizes[i] = 1.0;
+        introProgress[i] = 0;
+      }
+    }
+  }
+  
+  // drawDots
+  // Handles rendering - position mapping, intro animation, hover interaction
   void drawDots(String[] airports, int[] counts, float[] thresholds, int maxCount, float x, float y)
   { 
+    // Reset hover state
     hoveredIndex = -1;
     hoverAirport = null;
     hoverCount = 0;
     
     // Error check - ensure map doesn't crash if array lengths differ
     int safeLength = min(airports.length, counts.length);
+
+    // Tracks intro animation completion
+    boolean allDotsFinishedAnimating = true;
     
     // Detect hover
     for (int i = 0; i < safeLength; i++)
     {
       float[] latLon = airportLatLon(airports[i]);
-      if (latLon == null) continue;
+      if (latLon == null) continue;  // Skip invalid locations
 
-      float px = map(latLon[1], minLon, maxLon, IMG_LEFT, IMG_RIGHT);
-      float py = map(latLon[0], maxLat, minLat, IMG_TOP, IMG_BOTTOM);
+      // Convert geographic coordinates to screen space
+      float pixelX = map(latLon[1], minLon, maxLon, IMG_LEFT, IMG_RIGHT);
+      float pixelY = map(latLon[0], maxLat, minLat, IMG_TOP, IMG_BOTTOM);
 
       color dotColor = getPercentileColor(counts[i], thresholds);
       
-      // Size scaling
-      float baseSize = counts[i] / (float) maxCount;    
-      float radius = BASE_RADIUS + MAX_RADIUS_SCALE * pow(baseSize, 0.7f);
+      float targetSize = counts[i] / (float) maxCount;
       
+      // Intro animation
+      float delayPerDot = i * 80;
+      float animationDuration = 600;
+
+      float elapsed = millis() - introStartTime - delayPerDot;
+      float progress = constrain(elapsed / animationDuration, 0, 1);
+      
+      introProgress[i] = progress;
+
+      // Track if animation is ongoing
+      if (progress < 1)
+      {
+        allDotsFinishedAnimating = false;
+      }
+
+      // Apply overshoot easing
+      float overshoot = 1.4;
+      float easedScale = 1 + (overshoot - 1) * sin(progress * PI);
+      
+      if (introPlaying)
+      {
+        currentSizes[i] = targetSize * easedScale;
+      }
+      else
+      {
+        currentSizes[i] = lerp(currentSizes[i], targetSize, 0.08f);
+      }
+         
+      float radius = BASE_RADIUS + MAX_RADIUS_SCALE * pow(currentSizes[i], 0.7f);
+      
+
       // Hover detection 
-      if (dist(mouseX - x, mouseY - y, px, py) < radius)
+      if (dist(mouseX - x, mouseY - y, pixelX, pixelY) < radius)
       {
         hoveredIndex = i;
         hoverAirport = airports[i];
         hoverCount = counts[i];
         hoverColor = dotColor;
       }
-      
-      // Smooth animation
-      float targetSize = baseSize * (i == hoveredIndex ? 1.25f : 1.0f);
-      currentSizes[i] = lerp(currentSizes[i], targetSize, 0.15f);
-      
-      // Draw blob
-      drawBlob(px, py, dotColor, currentSizes[i]);
+
+      // Smooth hover scale — lerps to 1.35 when hovered, back to 1.0 otherwise
+      float targetHover = (i == hoveredIndex) ? 1.35f : 1.0f;
+      hoverScales[i] = lerp(hoverScales[i], targetHover, 0.10f);
+
+      // Smooth core grow
+      float targetCore = (i == hoveredIndex) ? 1.5f : 1.0f;
+      coreSizes[i] = lerp(coreSizes[i], targetCore, 0.10f);
+
+      drawRadar(pixelX, pixelY, dotColor, currentSizes[i], hoverScales[i], coreSizes[i], introProgress[i]);
+    }
+
+    // End intro animation once all dots are finished
+    if (introPlaying && allDotsFinishedAnimating)
+    {
+      introPlaying = false;
     }
     
     // Store tooltip position
@@ -129,26 +211,69 @@ class StateHeatMap {
     }
   }
 
-  void drawBlob(float cx, float cy, color baseColor, float size)
+  // drawRadar
+  // Renders a single airport marker using radar-style visual
+  void drawRadar(float centerX, float centerY, color baseColor, float size, float hoverScale, float coreScale, float introFade)
   {
-    int steps = 20;
-    float maxR = BASE_RADIUS + MAX_RADIUS_SCALE * pow(size, 0.7f);
-    
-    // Boost glow, when hovered
-    float glowBoost = (size > 0.1) ? 1.0 : 1.0;
+    float baseRadius = BASE_RADIUS + MAX_RADIUS_SCALE * pow(size, 0.7f);
 
-    for (int i = steps; i >= 0; i--)
+    // Determine number of rings 
+    int numRings;
+    if (size < 0.2f)
     {
-      float frac  = (float) i / steps;
-      float r     = maxR * frac;
-      float alpha = GLOW_ALPHA * frac * glowBoost;
-
-      fill(red(baseColor), green(baseColor), blue(baseColor), alpha);
-      noStroke();
-      ellipse(cx, cy, r * 2, r * 2);
+      numRings = 1;
+    }  
+    else if (size < 0.45f) 
+    {
+      numRings = 2;
     }
+    else if (size < 0.75f) 
+    {
+      numRings = 3;
+    }
+    else 
+    {
+      numRings = 4;
+    }              
+
+    // Ring spread
+    float spread = baseRadius * (0.6 + 0.7 * size) * hoverScale;
+
+    // Core radius
+    float coreRadius = BASE_RADIUS * (0.9 + size * 0.6f) * coreScale;
+    
+    // Fade in during intro
+    float alphaMultiplier = introPlaying ? introFade : 1.0;
+
+    // Draw rings
+    for (int ringIndex = 1; ringIndex <= numRings; ringIndex++)
+    {
+      float ringPosition = ringIndex / (float) numRings;
+
+      float ringRadius = coreRadius + spread * pow(ringPosition, 1.3f);
+      float ringAlpha = lerp(120, 15, ringPosition) * alphaMultiplier;
+      float strokeWidth = lerp(5.5f, 2.5f, ringPosition);
+
+      strokeWeight(strokeWidth);
+      stroke(red(baseColor), green(baseColor), blue(baseColor), ringAlpha);
+      noFill();
+      ellipse(centerX, centerY, ringRadius * 2, ringRadius * 2);
+    }
+
+    // Reset stroke
+    noStroke();
+
+    // Core
+    fill(red(baseColor), green(baseColor), blue(baseColor), 230 * alphaMultiplier);
+    ellipse(centerX, centerY, coreRadius * 2, coreRadius * 2);
+
+    // Subtle highlight
+    fill(255, 255, 255, 70 * alphaMultiplier);
+    ellipse(centerX, centerY, coreRadius * 0.6f, coreRadius * 0.6f);
   }
   
+  // drawTooltip
+  // Displays information about currently hovered airport
   void drawTooltip()
   {
     if (hoverAirport == null)
@@ -157,17 +282,17 @@ class StateHeatMap {
     }
     
     // Position
-    float tx = min(mouseX + 10, width - HOVER_BOX_WIDTH);
-    float ty = min(mouseY + 10, height - HOVER_BOX_HEIGHT);
+    float boxX = min(mouseX + 10, width - HOVER_BOX_WIDTH);
+    float boxY = min(mouseY + 10, height - HOVER_BOX_HEIGHT);
         
     // Background
     fill(0, 180);
     noStroke();
-    rect(tx, ty, HOVER_BOX_WIDTH, HOVER_BOX_HEIGHT, 6);
+    rect(boxX, boxY, HOVER_BOX_WIDTH, HOVER_BOX_HEIGHT, 6);
         
     // Accent bar
     fill(hoverColor);
-    rect(tx, ty, 5, 45, 6, 0, 0, 6);
+    rect(boxX, boxY, 5, 45, 6, 0, 0, 6);
         
     // Text
     fill(255, 255, 255);
@@ -176,33 +301,31 @@ class StateHeatMap {
     // Airport 
     fill(255, 255, 255);
     textSize(13);
-    text(hoverAirport, tx + 10, ty + 6);
+    text(hoverAirport, boxX + 10, boxY + 6);
         
     // Flight count
     fill(255, 255, 255);
     textSize(12);
-    text("Flights: " + hoverCount, tx + 10, ty + 24);
+    text("Flights: " + hoverCount, boxX + 10, boxY + 24);
   }
   
-  void drawLegend(float x, float y, float h, float[] t)
+  // drawLegend
+  // Renders vertical colour legend showing percentile bands and value ranges
+  void drawLegend(float x, float y, float h, float[] thresholds)
   {
-    int bands = 5;
-    float bandH = h / bands;
+    strokeWeight(1);
     
-    color[] colors = {
-      color(0, 0, 255),
-      color(0, 200, 0),
-      color(255, 220, 0),
-      color(255, 140, 0),
-      color(255, 0, 0)
-    };
+    int bandCount = 5;
+    float bandHeight = h / bandCount;
+    
+    color[] colors = {color(0, 0, 255), color(0, 200, 0), color(255, 220, 0), color(255, 140, 0), color(255, 0, 0)};
     
     // Draw bands
-    for (int i = 0; i < bands; i++)
+    for (int i = 0; i < bandCount; i++)
     {
       fill(colors[i]);
       noStroke();
-      rect(x, y + h - (i + 1) * bandH, 20, bandH);
+      rect(x, y + h - (i + 1) * bandHeight, 20, bandHeight);
     }
     
     // Border
@@ -215,20 +338,14 @@ class StateHeatMap {
     textSize(12);
     textAlign(LEFT, CENTER);
     
-    String[] labels = {
-      "0-30%",
-      "30-50%",
-      "50-70%",
-      "70-90%",
-      "90-100%"
-    };
+    String[] labels = {"0-30%", "30-50%", "50-70%", "70-90%", "90-100%"};
     
-    for (int i = 0; i < bands; i++)
+    for (int i = 0; i < bandCount; i++)
     {
-      float textY = y + h - (i + 0.5f) * bandH;
+      float textY = y + h - (i + 0.5f) * bandHeight;
       
-      String label = labels[i] + " (" + (int)(t[i]) + "-" + (int)(t[i + 1]) + ")";
-      fill(255, 255, 255);
+      String label = labels[i] + " (" + (int)(thresholds[i]) + "-" + (int)(thresholds[i + 1]) + ")";
+      fill(0);
       text(label, x + 25, textY);
     }
     fill(255, 255, 255);
