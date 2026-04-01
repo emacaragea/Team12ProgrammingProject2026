@@ -3,6 +3,10 @@
 //niko 12:00 PM 18/03/26 code home bar button functions
 import java.util.ArrayList;
 static final int HOME_BAR_HEIGHT = 50;
+ final color ON_TIME_COLOR = color(129, 199, 132);
+ final color DIVERTED_COLOR = color(255, 183, 77);
+ final color CANCELLED_COLOR = color(239, 83, 80);
+
 class Screen{
     private int screenType;
     private int lastScreenType;
@@ -328,6 +332,9 @@ void handleSearchKey(char key, int keyCode) {
     void drawAirportScreen(Airport thisAirport, String airportName){
         if(!setArrivalAirports){
             readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
+            //ONLY FOR FLIGHTS INCOMING!!!!!!!!!
+            //float totalContentHeight = thisAirport.getNumberOfFlightsIncoming() * 34; //??
+            //drawScrollbar(SCREEN_DIVIDER_X_COORDINATE-20, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, totalContentHeight, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, 0); //currentScroll
             setArrivalAirports = true;
 
         }

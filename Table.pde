@@ -385,9 +385,9 @@ void drawFlightTable(ArrayList<Flight> flights, float x, float y, float w, float
 //Jesse Margarites, 11PM, 31/03, created a filtered flight table 
 // draws one flight table
 void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float w, float h, float scrollY, String type) {
-  pushStyle();
+  //pushStyle();
   tableState=TABLE_FLIGHT_SELECT;
-  float rowH = 34;
+  float rowH = 40; //was 34
   float pad = 12;
   float startX = x + pad;
   float usable = w - 40;
@@ -396,15 +396,17 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colFlight = startX + usable * 0.18;
   float colOriginOrDest = startX + usable * 0.36;
   float colDist = startX + usable * 0.56;
-  //float colDist = startX + usable * 0.76;
+  float colStatus = startX + usable * 0.76;
+
 
   fill(230);
   textFont(smallFont);
   textAlign(LEFT, CENTER);
-  textSize(12);
+  textSize(16); //was 13
   text("Carrier", colCarrier, y - 20);
   text("Flight", colFlight, y - 20);
   text("Distance", colDist, y - 20);
+  text("Status", colStatus, y - 20);
 
   if (flights.size() == 0) {
     fill(180);
@@ -417,6 +419,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
   float totalContentHeight = flights.size() * rowH;
   float maxScroll = max(0, totalContentHeight - h);
+  println("max scroll: " +maxScroll);
 
   if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
   if (type.equals("RETURN")) backMaxScroll = maxScroll;
@@ -450,9 +453,28 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     fill(245); //was 245
     textFont(smallFont);
     textAlign(LEFT, CENTER);
-    textSize(12);
+    textSize(14);//was 12
     text(f.getAirlineCode(), colCarrier, cy);
     text(f.getAirlineCode() + " " + f.getFlightNumber(), colFlight, cy);
+    //Jesse Margarites, 3PM, 01/04, implemented status for airport
+    String currentStatus = "On time";
+    if(f.getFlightCancelled()==1){
+      currentStatus = "Cancelled";
+      noStroke();
+      fill(CANCELLED_COLOR);
+      circle(colStatus-20, cy, rowH/2);
+    }else if(f.getFlightDiverted()==1){
+      currentStatus="Diverted";
+      noStroke();
+      fill(DIVERTED_COLOR);
+      circle(colStatus-20, cy, rowH/2);
+    }else{
+      noStroke();
+      fill(ON_TIME_COLOR);
+      circle(colStatus-20, cy, rowH/2);
+
+    }
+    text(currentStatus, colStatus, cy);
     if(type.equals(("DEPARTURE"))){
         fill(230);
         text("Destination", colOriginOrDest, y - 20);
@@ -467,8 +489,9 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDist, cy);
   }
 
-  drawScrollbar(x + w - 8, y, h, totalContentHeight, maxScroll, scrollY);
-  popStyle();
+  //  drawScrollbar(0, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, 0); //currentScroll
+  drawScrollbar(SCREEN_DIVIDER_X_COORDINATE-20, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, totalContentHeight, maxScroll, scrollY); //currentScroll
+  //popStyle();
 }
 
 

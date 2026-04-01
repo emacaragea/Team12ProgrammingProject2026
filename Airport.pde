@@ -1,5 +1,7 @@
 //4PM, 17/03/26, Jesse Margarites
 //4PM, 19/03/26, Jesse Margarites fixed some errors
+  final public int SCREEN_DIVIDER_X_COORDINATE =1020;
+
 class Airport{
     private String airportName;
     private int worldAreaCode;
@@ -20,7 +22,6 @@ class Airport{
     final private int DEPARTURES_PIE_CHART_Y_COORDINATE = 275;
     final private int ARRIVALS_PIE_CHART_X_COORDINATE = 1220; //SCREEN_WIDTH/3+70;
     final private int ARRIVALS_PIE_CHART_Y_COORDINATE = 625;
-    final private int SCREEN_DIVIDER_X_COORDINATE =1020;
 
 
       Airport(String airportName, int worldAreaCode){
@@ -371,7 +372,7 @@ class Airport{
       //stroke(255, 255, 255);
       //rect(1200, textYCoordinate, 200, 50);
       drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE"); //idk what scroll Y is
-      drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
+      //drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
     }
 
     @Override
