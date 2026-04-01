@@ -12,8 +12,8 @@ class Airport{
     Charts charts;
     private boolean setGraphValues;
     final private float PIE_CHART_DIAMETER = 200;
-    final private int PIE_CHART_X_COORDINATE = SCREEN_WIDTH/3+70;
-    final private int PIE_CHART_Y_COORDINATE = 400;
+    final private int PIE_CHART_X_COORDINATE = 300;
+    final private int PIE_CHART_Y_COORDINATE = 300;
 
 
     Airport(String airportName, int worldAreaCode){
