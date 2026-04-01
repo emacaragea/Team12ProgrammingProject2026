@@ -148,7 +148,6 @@ void tableMouseWheel(MouseEvent event) {
   float amt = event.getCount() * scrollSpeed;
 
   if (tableState == TABLE_FLIGHT_SELECT) {
-    println("corrent state");
     if (overRect(goTableX, goTableY, goTableW, goTableH)) {
       goScrollY -= amt;
       goScrollY = constrain(goScrollY, -goMaxScroll, 0);
