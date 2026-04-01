@@ -17,6 +17,8 @@ final int CURRENT_VIEW_HOME = 0;
 final int CURRENT_VIEW_STATE = 1;
 final int CURRENT_VIEW_FLIGHT_MAP = 2;
 final int CURRENT_VIEW_AIRPORT = 3;
+final int CURRENT_VIEW_GENERAL_TABLE = 4;
+final int CURRENT_VIEW_BOOK_FLIGHT = 5;   //amanda working here
 final static float HEADINGS_SIZE = 40;
 final static float SUBHEADINGS_SIZE = 25;
 final static float TEXT_SIZE = 21;
@@ -91,6 +93,9 @@ void loadData() {
   stateCodeToName = buildCodeToNameMap();
   stateFlightCounts = new HashMap<String, Integer>();
 
+  fullTableSetup();
+  tableSetup();
+
   // Count flights per state and track progress
   String path = "data/flights/origin_states/";
   for (int i = 0; i < ALL_STATE_CODES.length; i++) {
@@ -121,6 +126,10 @@ void loadData() {
   viewHistIndex = 0;
   viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
   dataLoaded = true;
+
+  
+
+
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -361,6 +370,14 @@ void draw() {
     screen2.drawAirportScreen(thisAirport, airportName);
     screen1.drawHomeBar();
   }
+  else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
+  fullTableDraw();
+  screen1.drawHomeBar();
+}
+else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
+  tableDraw();
+  screen1.drawHomeBar();
+}
 }
 
 void mousePressed() {
@@ -402,6 +419,12 @@ void mousePressed() {
   } else if (viewHistory.get(viewHistIndex)==CURRENT_VIEW_FLIGHT_MAP) {
     flightMap.mousePressed();
   }
+  else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
+  fullTableMousePressed();
+}
+else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
+  tableMousePressed();
+}
 }
 //Jesse Margarites and Orla Kealy 10AM, fixed filter search bar
 void keyPressed(){
@@ -413,12 +436,28 @@ void keyPressed(){
 
 
 void mouseDragged() {
+  if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
+  fullTableMouseDragged();
+} else {
   flightMap.mouseDragged();
 }
+}
 void mouseReleased() {
+  if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
+  fullTableMouseReleased();
+} else {
   flightMap.mouseReleased();
 }
+}
 void mouseWheel(MouseEvent event) {
+ if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
+  fullTableMouseWheel(event);
+}
+else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
+  tableMouseWheel(event);
+}
+else {
   flightMap.mouseWheel(event);
+}
 }
 

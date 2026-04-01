@@ -282,9 +282,9 @@ class Screen{
     }
 
 
-   //amanda de moraes. calling methods for table
+   
    void drawFlightScreen(){
-    tableDraw();
+    
 }
 
     void drawLoadScreen(){

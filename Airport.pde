@@ -17,6 +17,7 @@ class Airport{
     final private int SCREEN_DIVIDER_X_COORDINATE =1020;
 
 
+
     Airport(String airportName, int worldAreaCode){
       this.airportName = airportName;
       this.worldAreaCode = worldAreaCode;
