@@ -214,7 +214,7 @@ class Screen{
         fill(150);
         text("Search airport...", SEARCHX + 10, SEARCHY + SEARCHH / 2);
     } else {
-        fill(240);
+        fill(10);
         text(searchText, SEARCHX + 10, SEARCHY + SEARCHH / 2);
     }
 
