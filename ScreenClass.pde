@@ -4,7 +4,7 @@
 import java.util.ArrayList;
 static final int HOME_BAR_HEIGHT = 50;
  final color ON_TIME_COLOR = color(129, 199, 132);
- final color DIVERTED_COLOR = color(255, 183, 77);
+ final color DELAYED_COLOR = color(255, 183, 77);
  final color CANCELLED_COLOR = color(239, 83, 80);
 
 class Screen{

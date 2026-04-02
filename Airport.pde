@@ -226,7 +226,7 @@ class Airport {
       if (pieLabelsArrivals[i].equals("Cancelled")) {
         pieColorsArrivalsArr[i] = CANCELLED_COLOR;
       } else if (pieLabelsArrivals[i].equals("Delayed")) {
-        pieColorsArrivalsArr[i] = DIVERTED_COLOR;
+        pieColorsArrivalsArr[i] = DELAYED_COLOR;
       } else {
         pieColorsArrivalsArr[i] = ON_TIME_COLOR;
       }
@@ -241,7 +241,7 @@ class Airport {
       if (pieLabelsDepartures[i].equals("Cancelled")) {
         pieColorsDeparturesArr[i] = CANCELLED_COLOR;
       } else if (pieLabelsDepartures[i].equals("Delayed")) {
-        pieColorsDeparturesArr[i] = DIVERTED_COLOR;
+        pieColorsDeparturesArr[i] = DELAYED_COLOR;
       } else {
         pieColorsDeparturesArr[i] = ON_TIME_COLOR;
       }
