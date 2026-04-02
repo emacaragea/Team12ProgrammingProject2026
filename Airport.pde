@@ -17,7 +17,6 @@ class Airport {
   private color[] pieColorsDepartures;
   private color[] pieColorsArrivals = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
   Charts charts;
-  private boolean setGraphValues;
   final private float PIE_CHART_DIAMETER = 200;
   final private int DEPARTURES_PIE_CHART_X_COORDINATE = 1220; //SCREEN_WIDTH/3+70;
   final private int DEPARTURES_PIE_CHART_Y_COORDINATE = 275;
@@ -58,7 +57,6 @@ class Airport {
     this.flightsIncoming = new ArrayList<Flight>();
     this.originCityCode = originCityCode;
     charts = new Charts();
-    setGraphValues =false;
 
   }
 
@@ -69,7 +67,6 @@ class Airport {
     this.flightsIncoming = new ArrayList<Flight>();
     this.originCityCode = originCityCode;
     charts = new Charts();
-    setGraphValues =false;
     tableType=0;
 
 
@@ -90,10 +87,6 @@ class Airport {
   }
   int getWorldAreaCode() {
     return worldAreaCode;
-  }
-
-  void setGraphValues(boolean setGraphValues) {
-    this.setGraphValues = setGraphValues;
   }
 
   void addFlightsLeaving(Flight flightX) {
@@ -358,21 +351,16 @@ class Airport {
   //Niko Charles 9:00 27/03/2026 write method
   //Niko Charles 13:00 01/04/2026 add Arrivals graph
   void setPieChartValues(Charts thisPieChart) {
-    if (!this.setGraphValues) {
-      pieGraphTitleDepartures = "Departures";
-      pieValuesDepartures = getNumberOfFlightsCancelledDepartures();
-      pieLabelsDepartures = getPieChartLabelsDepartures();
-      pieColorsDepartures = getPieChartColorsDepartures();
-      thisPieChart.addPieChart(pieGraphTitleDepartures, pieLabelsDepartures, pieValuesDepartures, DEPARTURES_PIE_CHART_X_COORDINATE, DEPARTURES_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsDepartures);
-      pieGraphTitleArrivals = "Arrivals";
-      pieValuesArrivals = getNumberOfFlightsCancelledArrivals();
-      pieLabelsArrivals = getPieChartLabelsArrivals();
-      pieColorsArrivals = getPieChartColorsArrivals();
-      thisPieChart.addPieChart(pieGraphTitleArrivals, pieLabelsArrivals, pieValuesArrivals, ARRIVALS_PIE_CHART_X_COORDINATE, ARRIVALS_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsArrivals);
-
-
-      setGraphValues(true);
-    }
+    pieGraphTitleDepartures = "Departures";
+    pieValuesDepartures = getNumberOfFlightsCancelledDepartures();
+    pieLabelsDepartures = getPieChartLabelsDepartures();
+    pieColorsDepartures = getPieChartColorsDepartures();
+    thisPieChart.addPieChart(pieGraphTitleDepartures, pieLabelsDepartures, pieValuesDepartures, DEPARTURES_PIE_CHART_X_COORDINATE, DEPARTURES_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsDepartures);
+    pieGraphTitleArrivals = "Arrivals";
+    pieValuesArrivals = getNumberOfFlightsCancelledArrivals();
+    pieLabelsArrivals = getPieChartLabelsArrivals();
+    pieColorsArrivals = getPieChartColorsArrivals();
+    thisPieChart.addPieChart(pieGraphTitleArrivals, pieLabelsArrivals, pieValuesArrivals, ARRIVALS_PIE_CHART_X_COORDINATE, ARRIVALS_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsArrivals);
   }
   //Niko Charles 15:00 01/04/2026 Write method
   void airportMouseClicked(int mx, int my) {
