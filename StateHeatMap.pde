@@ -518,54 +518,65 @@ class StateHeatMap {
       // Sanford
   
       // ── Georgia ──────────────────────────────────────────
-      case "ATL": return new float[]{ 33.6407f, -84.4277f };
-      case "SAV": return new float[]{ 32.1276f, -81.2021f };
-      case "AGS": return new float[]{ 33.3699f, -81.9645f };
-      case "CSG": return new float[]{ 32.5163f, -84.9389f };
-      case "ABY": return new float[]{ 31.5355f, -84.1945f };
-      case "VLD": return new float[]{ 30.7825f, -83.2767f };
+      case "ATLANTA, GA": return new float[]{ 33.6407f, -84.4277f };
+      case "SAVANNAH, GA": return new float[]{ 32.1276f, -81.2021f };
+      case "AUGUSTA, GA": return new float[]{ 33.3699f, -81.9645f };
+      case "COLUMBUS, GA": return new float[]{ 32.5163f, -84.9389f };
+      case "ALBANY, GA": return new float[]{ 31.5355f, -84.1945f };
+      case "VALDOSTA, GA": return new float[]{ 30.7825f, -83.2767f };
       case "MCN": return new float[]{ 32.6928f, -83.6492f };
+      // Brunswick
   
       // ── Hawaii ───────────────────────────────────────────
-      case "HNL": return new float[]{ 21.3187f, -157.9225f };
-      case "OGG": return new float[]{ 20.8986f, -156.4305f };
-      case "KOA": return new float[]{ 19.7388f, -156.0456f };
-      case "LIH": return new float[]{ 21.9760f, -159.3389f };
-      case "ITO": return new float[]{ 19.7205f, -155.0485f };
+      case "HONOLULU, HI": return new float[]{ 21.3187f, -157.9225f };
+      case "KAHULUI, HI": return new float[]{ 20.8986f, -156.4305f };
+      case "KONA, HI": return new float[]{ 19.7388f, -156.0456f };
+      case "LIHUE, HI": return new float[]{ 21.9760f, -159.3389f };
+      case "HILO, HI": return new float[]{ 19.7205f, -155.0485f };
   
       // ── Idaho ────────────────────────────────────────────
-      case "BOI": return new float[]{ 43.5644f, -116.2228f };
-      case "SUN": return new float[]{ 43.5044f, -114.2963f };
-      case "TWF": return new float[]{ 42.4818f, -114.4877f };
-      case "PIH": return new float[]{ 42.9098f, -112.5959f };
-      case "IDA": return new float[]{ 43.5146f, -112.0707f };
+      case "BOISE, ID": return new float[]{ 43.5644f, -116.2228f };
+      case "SUN VALLEY/HAILEY/KETCHUM, ID": return new float[]{ 43.5044f, -114.2963f };
+      case "TWIN FALLS, ID": return new float[]{ 42.4818f, -114.4877f };
+      case "POCATELLO, ID": return new float[]{ 42.9098f, -112.5959f };
+      case "IDAHO FALLS, ID": return new float[]{ 43.5146f, -112.0707f };
+      // lewiston
   
       // ── Illinois ─────────────────────────────────────────
-      case "ORD": return new float[]{ 41.9742f, -87.9073f };
+      case "CHICAGO, IL": return new float[]{ 41.9742f, -87.9073f };
       case "MDW": return new float[]{ 41.7868f, -87.7522f };
-      case "MLI": return new float[]{ 41.4485f, -90.5075f };
-      case "BMI": return new float[]{ 40.4771f, -88.9159f };
-      case "PIA": return new float[]{ 40.6642f, -89.6933f };
-      case "CMI": return new float[]{ 40.0399f, -88.2781f };
-      case "SPI": return new float[]{ 39.8441f, -89.6779f };
-      case "RFD": return new float[]{ 42.1954f, -89.0972f };
+      case "MOLINE, IL": return new float[]{ 41.4485f, -90.5075f };
+      case "BLOOMINGTON/NORMAL, IL": return new float[]{ 40.4771f, -88.9159f };
+      case "PEORIA, IL": return new float[]{ 40.6642f, -89.6933f };
+      case "CHAMPAIGN/URBANA, IL": return new float[]{ 40.0399f, -88.2781f };
+      case "SPRINGFIELD, IL": return new float[]{ 39.8441f, -89.6779f };
+      case "ROCKFORD, IL": return new float[]{ 42.1954f, -89.0972f };
+      // Belleville
+      // Decatur
   
       // ── Indiana ──────────────────────────────────────────
-      case "IND": return new float[]{ 39.7173f, -86.2944f };
-      case "SBN": return new float[]{ 41.7087f, -86.3173f };
-      case "FWA": return new float[]{ 40.9785f, -85.1951f };
-      case "EVV": return new float[]{ 38.0369f, -87.5324f };
+      case "INDIANAPOLIS, IN": return new float[]{ 39.7173f, -86.2944f };
+      case "SOUTH BEND, IN": return new float[]{ 41.7087f, -86.3173f };
+      case "FORT WAYNE, IN": return new float[]{ 40.9785f, -85.1951f };
+      case "EVANSVILLE, IN": return new float[]{ 38.0369f, -87.5324f };
   
       // ── Iowa ─────────────────────────────────────────────
-      case "DSM": return new float[]{ 41.5340f, -93.6631f };
-      case "CID": return new float[]{ 41.8847f, -91.7108f };
-      case "SUX": return new float[]{ 42.4026f, -96.3844f };
-      case "DBQ": return new float[]{ 42.4020f, -90.7095f };
+      case "DES MOINES, IA": return new float[]{ 41.5340f, -93.6631f };
+      case "CEDAR RAPIDS/IOWA CITY, IA": return new float[]{ 41.8847f, -91.7108f };
+      case "SIOUX CITY, IA": return new float[]{ 42.4026f, -96.3844f };
+      case "DUBUQUE, IA": return new float[]{ 42.4020f, -90.7095f };
+      // Waterloo
+      // Fort dodge
+      // Mason city
   
       // ── Kansas ───────────────────────────────────────────
-      case "ICT": return new float[]{ 37.6499f, -97.4331f };
-      case "MHK": return new float[]{ 39.1410f, -96.6708f };
-      case "TOP": return new float[]{ 39.0687f, -95.6632f };
+      case "WICHITA, KS": return new float[]{ 37.6499f, -97.4331f };
+      case "MANHATTAN/FT. RILEY, KS": return new float[]{ 39.1410f, -96.6708f };
+      case "GARDEN CITY, KS": return new float[]{ 39.0687f, -95.6632f }; // change coordinates
+      // Dodge city
+      // Salina
+      // Hays
+      // Liberal
   
       // ── Kentucky ─────────────────────────────────────────
       case "SDF": return new float[]{ 38.1744f, -85.7360f };
@@ -830,13 +841,13 @@ class StateHeatMap {
       case "CT": return new float[]{ 42.050f, -73.728f, 40.950f, -71.787f };
       case "DE": return new float[]{ 39.839f, -75.789f, 38.451f, -75.047f };
       case "FL": return new float[]{ 31.001f, -87.635f, 24.396f, -80.031f };
-      case "Georgia": return new float[]{ 35.001f, -85.605f, 30.356f, -80.840f };
-      case "Hawaii": return new float[]{ 22.236f, -160.247f, 18.910f, -154.807f };
-      case "Idaho": return new float[]{ 49.001f, -117.243f, 41.988f, -111.044f };
-      case "Illinois": return new float[]{ 42.508f, -91.513f, 36.970f, -87.020f };
-      case "Indiana": return new float[]{ 41.761f, -88.098f, 37.772f, -84.785f };
-      case "Iowa": return new float[]{ 43.501f, -96.639f, 40.376f, -90.140f };
-      case "Kansas": return new float[]{ 40.003f, -102.052f, 36.993f, -94.588f };
+      case "GA": return new float[]{ 35.001f, -85.605f, 30.356f, -80.840f };
+      case "HI": return new float[]{ 22.236f, -160.247f, 18.910f, -154.807f };
+      case "ID": return new float[]{ 49.001f, -117.243f, 41.988f, -111.044f };
+      case "IL": return new float[]{ 42.508f, -91.513f, 36.970f, -87.020f };
+      case "IN": return new float[]{ 41.761f, -88.098f, 37.772f, -84.785f };
+      case "IA": return new float[]{ 43.501f, -96.639f, 40.376f, -90.140f };
+      case "KS": return new float[]{ 40.003f, -102.052f, 36.993f, -94.588f };
       case "Kentucky": return new float[]{ 39.148f, -89.572f, 36.497f, -81.965f };
       case "Lousiana": return new float[]{ 33.019f, -94.043f, 28.928f, -88.817f };
       case "ME": return new float[]{ 47.460f, -71.084f, 43.059f, -66.950f };
