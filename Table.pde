@@ -997,7 +997,7 @@ Flight getClickedFlight(ArrayList<Flight> flights, float x, float y, float w, fl
 
 // loads flight data from csv
 void loadFlightData() {
-  String[] lines = loadStrings("allFlights.csv");
+  String[] lines = loadStrings("flights_full.csv");
 
   if (lines == null || lines.length == 0) {
     println("ERROR");
