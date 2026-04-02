@@ -42,6 +42,8 @@ String airportName;
 Airport thisAirport;
 ArrayList<Integer> viewHistory = new ArrayList<Integer>();
 boolean dataLoaded = false;
+boolean fullTableReady = false;
+boolean tableReady = false;
 float loadProgress = 0;
 int viewHistIndex;
 
@@ -81,7 +83,7 @@ void setup() {
   loading.setup();
   thread("loadData");
 
-  tableSetup();
+  //tableSetup();
 }
 
 //new "setup" method
@@ -94,8 +96,8 @@ void loadData() {
   stateFlightCounts = new HashMap<String, Integer>();
   
 
-  fullTableSetup();
-  tableSetup();
+  // fullTableSetup() and tableSetup() are called lazily in draw() to avoid
+  // blocking the loading screen (loadStrings/loadTable on a background thread stalls draw)
 
   // Count flights per state and track progress
   String path = "data/flights/origin_states/";
@@ -103,18 +105,32 @@ void loadData() {
     String code = ALL_STATE_CODES[i];
 
     //amanda de moraes 9:42, added file reader for airports
-
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path + code + ".csv")));
+      reader.readLine();
+      String line = reader.readLine();
+      while (line != null) {
+        Scanner scan = new Scanner(line).useDelimiter(",");
+        String[] fields = new String[10];
+        for (int j = 0; j < 10; j++) {
+          fields[j] = scan.hasNext() ? nextToken(scan) : "";
+        }
+        scan.close();
+        addCount(fields[5]);
+        addCount(fields[9]);
+        line = reader.readLine();
+      }
+      reader.close();
+    } catch (Exception e) {}
 
     loadProgress = (float)(i + 1) / ALL_STATE_CODES.length;
   }
 
-  usMap      = new USMapScreen(this, stateFlightCounts);
-  homeScreen = new HomeScreen(usMap);
-  viewHistIndex = 0;
-  viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
+  // usMap and homeScreen are constructed on the main thread in draw()
+  // to avoid a blue flash from GeoMap interacting with the renderer in a background thread
 
   try {
-    BufferedReader airportReader = new BufferedReader(new FileReader(sketchPath("airports.csv")));
+    BufferedReader airportReader = new BufferedReader(new FileReader(sketchPath("data/airports.csv")));
     airportReader.readLine();
     String airportLine = airportReader.readLine();
     while (airportLine != null) {
@@ -129,11 +145,7 @@ void loadData() {
     println("airports.csv error: " + e);
   }
 
-
   dataLoaded = true;
-
-  
-
 
 }
 
@@ -408,6 +420,14 @@ void draw() {
     loading.draw();
     return;
   }
+  // Build GeoMap-dependent objects on the main thread to avoid blue flash from background-thread rendering
+  if (homeScreen == null) {
+    usMap      = new USMapScreen(this, stateFlightCounts);
+    homeScreen = new HomeScreen(usMap);
+    viewHistIndex = 0;
+    viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
+    return;
+  }
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_HOME) {
     homeScreen.draw();
     screen1.drawHomeBar();
@@ -423,10 +443,12 @@ void draw() {
     screen1.drawHomeBar();
   }
   else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
+  if (!fullTableReady) { fullTableSetup(); fullTableReady = true; }
   fullTableDraw();
   screen1.drawHomeBar();
 }
 else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
+  if (!tableReady) { tableSetup(); tableReady = true; }
   tableDraw();
   screen1.drawHomeBar();
 }
@@ -488,6 +510,7 @@ void keyPressed(){
 
 
 void mouseDragged() {
+  if (!dataLoaded) return;
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseDragged();
 } else {

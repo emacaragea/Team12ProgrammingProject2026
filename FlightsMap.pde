@@ -185,6 +185,7 @@ class FlightMapScreen {
       new AirportCoordinates(this, "PHX", "Phoenix",        31.43, -109.01,  9, "AZ"),
       new AirportCoordinates(this, "MIA", "Miami",          23.79,  -77.29, 10, "FL"),
       new AirportCoordinates(this, "SEA", "Seattle",        45.45, -119.31, 11, "WA"),
+      
       new AirportCoordinates(this, "IAH", "Houston",        27.99,  -92.34, 12, "TX"),
       new AirportCoordinates(this, "JFK", "New York",       37.64,  -70.78, 13, "NY"),
       new AirportCoordinates(this, "SFO", "San Francisco",  34.62, -119.38, 14, "CA"),
@@ -215,6 +216,7 @@ class FlightMapScreen {
     new FlightArc(this, "ATL", "MCO", "onTime"),
     new FlightArc(this, "PDX", "SEA", "onTime"),
 
+
     // top 10 delayed routes
     new FlightArc(this, "EWR", "MCO", "delayed"),
     new FlightArc(this, "BOS", "JFK", "delayed"),
@@ -238,6 +240,7 @@ class FlightMapScreen {
     new FlightArc(this, "MIA", "LGA", "cancelled"),
     new FlightArc(this, "BOS", "MIA", "cancelled"),
     new FlightArc(this, "DFW", "ORD", "cancelled")
+    
   };
 }
 
