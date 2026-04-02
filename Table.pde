@@ -502,11 +502,12 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       fill(CANCELLED_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
+      //CHANGE HERE
     } else if (f.getFlightDiverted()==1) {
       pushStyle();
       currentStatus="Delayed";
       noStroke();
-      fill(DIVERTED_COLOR);
+      fill(DELAYED_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
     } else {
