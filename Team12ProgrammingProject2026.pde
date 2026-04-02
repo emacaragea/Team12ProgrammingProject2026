@@ -23,18 +23,17 @@ final static float HEADINGS_SIZE = 40;
 final static float SUBHEADINGS_SIZE = 25;
 final static float TEXT_SIZE = 21;
 
-FlightMapScreen flightMap;
-USMapScreen usMap;
-Screen screen1;
-Screen screen2;
+FlightMapScreen         flightMap;
+USMapScreen             usMap;
+Screen                  screen1;
+Screen                  screen2;
 HomeScreen homeScreen;
 
 HashMap<String, String>   stateCodeToName;
 HashMap<String, Integer>  stateFlightCounts;
 HashMap<String, Airport>  airportsByCode = new HashMap<String, Airport>();
-int    currentView = 0;
+int    currentView       = 0;
 int    lastView;
-
 //String selectedStateCode = "TX";
 String selectedStateCode;
 State thisState;
@@ -82,7 +81,7 @@ void setup() {
   loading.setup();
   thread("loadData");
 
-  tableSetup(); //?
+  tableSetup();
 }
 
 //new "setup" method
@@ -93,6 +92,7 @@ void loadData() {
   screen2 = new Screen(2);
   stateCodeToName = buildCodeToNameMap();
   stateFlightCounts = new HashMap<String, Integer>();
+  
 
   fullTableSetup();
   tableSetup();
@@ -114,6 +114,8 @@ void loadData() {
         scan.close();
         addCount(fields[5]);
         addCount(fields[9]);
+        
+
       
         line = reader.readLine();
       }
@@ -128,6 +130,10 @@ void loadData() {
   viewHistIndex = 0;
   viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
   dataLoaded = true;
+
+  
+
+
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -156,7 +162,7 @@ HashMap<String, String> buildCodeToNameMap() {
   return result;
 }
 
-// Reads only fields 5 (origin state) and 9 (dest state) from every state file,
+// Reads only fields 5 (origin state) and 9 (dest state) from every state file
 // so the map can be coloured without loading full Flight objects into memory
 void countAllStateFlights() {
   String path = "data/flights/origin_states/";
@@ -179,7 +185,7 @@ void countAllStateFlights() {
       reader.close();
     }
     catch (Exception e) {
-      // if aa file is missing or malformed, just skip it and move on to the next one
+      // file missing for this state- skip
     }
   }
 }
@@ -276,7 +282,6 @@ void readFileByState(String stateCode, State currentState) {
   }
 }
 
-//Niko Charles & Jesse Margarites, 2PM, 01/03, implemented new read in method
 void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) {
   String filePath = "data/flights/dest_airports/";
   String fileEnding = ".csv";
@@ -307,8 +312,8 @@ void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) 
       double airportDistance        = lineScan.nextDouble();
       lineScan.close();
 
-      Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
-      Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
+      Airport destinationAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
+      Airport originAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
       Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
         originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
         scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
@@ -465,9 +470,6 @@ void mousePressed() {
   } else if (viewHistory.get(viewHistIndex)==CURRENT_VIEW_FLIGHT_MAP) {
     flightMap.mousePressed();
   }
-  else if(viewHistory.get(viewHistIndex)==CURRENT_VIEW_AIRPORT){
-    thisAirport.airportMouseClicked(mouseX, mouseY);
-  }
   else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMousePressed();
 }
@@ -482,7 +484,6 @@ void keyPressed(){
 
 
 void mouseDragged() {
-  if (!dataLoaded) return;
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseDragged();
 } else {
@@ -490,7 +491,6 @@ void mouseDragged() {
 }
 }
 void mouseReleased() {
-  if (!dataLoaded) return;
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseReleased();
 } else {
@@ -498,7 +498,6 @@ void mouseReleased() {
 }
 }
 void mouseWheel(MouseEvent event) {
- if (!dataLoaded) return;
  if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseWheel(event);
 }
@@ -508,9 +507,7 @@ else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
 else {
   flightMap.mouseWheel(event);
 }
-  /*
   //Jesse Margarites, 1PM, 01/04, implmenting scroll bar for airport screen
-  screen2.mouseWheel(event);
-  */
+  
 }
 
