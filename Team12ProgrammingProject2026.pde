@@ -103,26 +103,7 @@ void loadData() {
     String code = ALL_STATE_CODES[i];
 
     //amanda de moraes 9:42, added file reader for airports
-    try {
-      BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path + code + ".csv")));
-      reader.readLine();
-      String line = reader.readLine();
-      while (line != null) {
-        Scanner scan = new Scanner(line).useDelimiter(",");
-        String[] fields = new String[10];
-        for (int j = 0; j < 10; j++) {
-          fields[j] = scan.hasNext() ? nextToken(scan) : "";
-        }
-        scan.close();
-        addCount(fields[5]);
-        addCount(fields[9]);
-        
 
-      
-        line = reader.readLine();
-      }
-      reader.close();
-    } catch (Exception e) {}
 
     loadProgress = (float)(i + 1) / ALL_STATE_CODES.length;
   }
@@ -133,7 +114,7 @@ void loadData() {
   viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
 
   try {
-    BufferedReader airportReader = new BufferedReader(new FileReader(sketchPath("data/airports.csv")));
+    BufferedReader airportReader = new BufferedReader(new FileReader(sketchPath("airports.csv")));
     airportReader.readLine();
     String airportLine = airportReader.readLine();
     while (airportLine != null) {
