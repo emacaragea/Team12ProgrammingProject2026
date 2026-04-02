@@ -1,6 +1,6 @@
 //Amanda de Moraes, 25/03. Added code for the flights table
 // TABLE NOTE:
-// in main- call tableSetup() in setup() 
+// in main- call tableSetup() in setup()
 // in ScreenClass - drawFlightScreen() must call tableDraw(), and mousePressed() must call tableMousePressed() when on the flight screen
 // also add mouseWheel() in main to call tableMouseWheel() for scrolling
 import processing.event.MouseEvent;
@@ -373,19 +373,20 @@ void drawFlightTable(ArrayList<Flight> flights, float x, float y, float w, float
     textSize(12);
     text(f.getAirlineCode(), colCarrier, cy);
     text(f.getAirlineCode() + " " + f.getFlightNumber(), colFlight, cy);
-    text(originName, colOrigin, cy);  
+    text(originName, colOrigin, cy);
     text(destName, colDest, cy);
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDist, cy);
   }
-  
+
 
   drawScrollbar(x + w - 8, y, h, totalContentHeight, maxScroll, scrollY);
 }
 
-//Jesse Margarites, 11PM, 31/03, created a filtered flight table 
+//Jesse Margarites, 11PM, 31/03, created a filtered flight table
 // draws one flight table
-void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float w, float h, float scrollY, String type) {
+void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float w, float h, float scrollY, String type, int tableType) {
   //pushStyle();
+
   tableState=TABLE_FLIGHT_SELECT;
   float rowH = 40; //was 34
   float pad = 12;
@@ -398,27 +399,33 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colDist = startX + usable * 0.56;
   float colStatus = startX + usable * 0.76;
 
+  fill(180);
+  textFont(titleFont);
+  textAlign(LEFT, CENTER);
+  textSize(18);
+  text("Page " + (tableType+1), startX, y - 40);
+
+
 
   fill(230);
   textFont(smallFont);
   textAlign(LEFT, CENTER);
   textSize(16); //was 13
-  text("Carrier", colCarrier, y - 20);
-  text("Flight", colFlight, y - 20);
-  text("Distance", colDist, y - 20);
-  text("Status", colStatus, y - 20);
+  text("Carrier", colCarrier, y - 5); //y-5, y-20
+  text("Flight", colFlight, y - 5);
+  text("Distance", colDist, y - 5);
+  text("Status", colStatus, y - 5);
 
-  if(type.equals(("DEPARTURE"))){
-      pushStyle();
-        fill(230);
-        text("Destination", colOriginOrDest, y - 20);
-      popStyle();
-
-    }else if(type.equals(("RETURN"))){
-      pushStyle();
-        text("Origin", colOriginOrDest, y - 20);
-      popStyle();
-    }
+  if (type.equals(("DEPARTURE"))) {
+    pushStyle();
+    fill(230);
+    text("Destination", colOriginOrDest, y - 5);
+    popStyle();
+  } else if (type.equals(("RETURN"))) {
+    pushStyle();
+    text("Origin", colOriginOrDest, y - 5);
+    popStyle();
+  }
 
   if (flights.size() == 0) {
     fill(180);
@@ -432,34 +439,52 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float totalContentHeight = flights.size() * rowH;
   float maxScroll = max(0, totalContentHeight - h);
 
-  if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
-  if (type.equals("RETURN")) backMaxScroll = maxScroll;
+  /*
 
-  for (int i = 0; i < flights.size(); i++) {
+   if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
+   if (type.equals("RETURN")) backMaxScroll = maxScroll;
+   */
+
+
+  //Jesse Margarites, 11PM, 01/04, implemented arrows to cycle through flights within flitered flight table
+  int i= tableType*15;
+  int maxI = i + 14;
+  if (flights.size()-1<maxI) {
+    maxI = flights.size()-1;
+  }
+  int rowCounter=0;
+
+  while ( i < maxI) {//why must i redeclare i
     Flight f = flights.get(i);
-    float rowTop = y + scrollY + i * rowH;
+
+    float rowTop = y + scrollY + rowCounter * rowH;
     float cy = rowTop + rowH / 2;
 
     if (rowTop + rowH < y || rowTop > y + h) continue;
 
+    /*
     boolean selected =
-      (type.equals("DEPARTURE") && selectedGoFlight == f) ||
-      (type.equals("RETURN") && selectedBackFlight == f);
+     (type.equals("DEPARTURE") && selectedGoFlight == f) ||
+     (type.equals("RETURN") && selectedBackFlight == f);
+     */
 
-    fill(selected ? color(82, 156, 214) : (i % 2 == 0 ? color(33, 42, 54) : color(26, 34, 44)));
+    fill((rowCounter % 2 == 0 ? color(33, 42, 54) : color(26, 34, 44)));
     noStroke();
     rect(x, rowTop, w - 14, rowH - 2, 8);
 
+    /*
     String originName = "";
-    String destName = "";
+     String destName = "";
+     
+     if (originNameByFlight.containsKey(f)) {
+     originName = originNameByFlight.get(f);
+     }
+     
+     if (destNameByFlight.containsKey(f)) {
+     destName = destNameByFlight.get(f);
+     }
+     */
 
-    if (originNameByFlight.containsKey(f)) {
-      originName = originNameByFlight.get(f);
-    }
-
-    if (destNameByFlight.containsKey(f)) {
-      destName = destNameByFlight.get(f);
-    }
 
     fill(245); //was 245
     textFont(smallFont);
@@ -467,42 +492,76 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     textSize(14);//was 12
     text(f.getAirlineCode(), colCarrier, cy);
     text(f.getAirlineCode() + " " + f.getFlightNumber(), colFlight, cy);
+
     //Jesse Margarites, 3PM, 01/04, implemented status for airport
     String currentStatus = "On time";
-    if(f.getFlightCancelled()==1){
+    //Niko Charles 9:00 02/04/2026 edit method to calculate delays
+    //format scheduled arrival and departure time
+    String actualArrivalTimeString;
+    String scheduledArrivalTimeString;
+    int actualArrivalTime;
+    int scheduledArrivalTime;
+    actualArrivalTimeString = f.getActualArrivalTime();
+    scheduledArrivalTimeString = f.getScheduledArrivalTime();
+    if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
+      && !scheduledArrivalTimeString.trim().isEmpty()) {
+        actualArrivalTime = Integer.valueOf(actualArrivalTimeString.trim());
+        scheduledArrivalTime = Integer.valueOf(scheduledArrivalTimeString.trim());
+    }else {
+      actualArrivalTime = 0;
+      scheduledArrivalTime = 0;
+    }
+    String actualDepartTimeString;
+    String scheduledDepartTimeString;
+    int actualDepartTime;
+    int scheduledDepartTime;
+    actualDepartTimeString = f.getActualDepartureTime();
+    scheduledDepartTimeString = f.getScheduledDepartureTime();
+    if (actualDepartTimeString != null && scheduledDepartTimeString != null && !actualDepartTimeString.trim().isEmpty()
+      && !scheduledDepartTimeString.trim().isEmpty()) {
+        actualDepartTime = Integer.valueOf(actualDepartTimeString.trim());
+        scheduledDepartTime = Integer.valueOf(scheduledDepartTimeString.trim());
+    } else {
+      actualDepartTime = 0;
+      scheduledDepartTime = 0;
+    }
+
+    if (f.getFlightCancelled()==1) {
       pushStyle();
       currentStatus = "Cancelled";
       noStroke();
       fill(CANCELLED_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
-    }else if(f.getFlightDiverted()==1){
+      //CHANGE HERE
+    } else if ((type.equals("RETURN") && actualArrivalTime > scheduledArrivalTime) || ((type.equals(("DEPARTURE")) && actualDepartTime > scheduledDepartTime))) {
       pushStyle();
-      currentStatus="Diverted";
+      currentStatus="Delayed";
       noStroke();
-      fill(DIVERTED_COLOR);
+      fill(DELAYED_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
-    }else{
+    } else {
       pushStyle();
       noStroke();
       fill(ON_TIME_COLOR);
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
-
     }
     text(currentStatus, colStatus, cy);
-    if(type.equals(("DEPARTURE"))){
-        text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);    // text(destName, colDest, cy);
-    }else if(type.equals(("RETURN"))){
-        text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //text(originName, colOrigin, cy);
+    if (type.equals(("DEPARTURE"))) {
+      text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);    // text(destName, colDest, cy);
+    } else if (type.equals(("RETURN"))) {
+      text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //getOriginAirport is not working
     }
 
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDist, cy);
+    rowCounter++;
+    i++;
   }
 
   //  drawScrollbar(0, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, 0); //currentScroll
-  drawScrollbar(SCREEN_DIVIDER_X_COORDINATE-20, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, totalContentHeight, maxScroll, scrollY); //currentScroll
+  //drawScrollbar(SCREEN_DIVIDER_X_COORDINATE-20, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, totalContentHeight, maxScroll, scrollY); //currentScroll
   //popStyle();
 }
 
@@ -938,7 +997,7 @@ Flight getClickedFlight(ArrayList<Flight> flights, float x, float y, float w, fl
 
 // loads flight data from csv
 void loadFlightData() {
-  String[] lines = loadStrings("allFlights.csv");
+  String[] lines = loadStrings("flights_full.csv");
 
   if (lines == null || lines.length == 0) {
     println("ERROR");
@@ -980,7 +1039,7 @@ void loadFlightData() {
       parseSafeInt(cols[15]),
       parseSafeInt(cols[16]),
       parseSafeInt(cols[17])
-    );
+      );
 
     allFlights.add(f);
     uniqueDates.add(cleanDate);
@@ -1068,13 +1127,15 @@ void sortByFlightNum() {
     public int compare(Flight a, Flight b) {
       return a.getFlightNumber() - b.getFlightNumber();
     }
-  });
+  }
+  );
 
   Collections.sort(backFlights, new Comparator<Flight>() {
     public int compare(Flight a, Flight b) {
       return a.getFlightNumber() - b.getFlightNumber();
     }
-  });
+  }
+  );
 
   currentSort = SORT_FLIGHT_NO;
 }
@@ -1086,13 +1147,15 @@ void sortByDistance() {
     public int compare(Flight a, Flight b) {
       return round((float)a.getAirportDistanceInMiles()) - round((float)b.getAirportDistanceInMiles());
     }
-  });
+  }
+  );
 
   Collections.sort(backFlights, new Comparator<Flight>() {
     public int compare(Flight a, Flight b) {
       return round((float)a.getAirportDistanceInMiles()) - round((float)b.getAirportDistanceInMiles());
     }
-  });
+  }
+  );
 
   currentSort = SORT_DISTANCE;
 }
@@ -1128,7 +1191,8 @@ int parseSafeInt(String value) {
 
   try {
     return round(Float.parseFloat(value));
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     return 0;
   }
 }
@@ -1148,3 +1212,4 @@ int dateToNumber(String d) {
   if (p.length != 3) return 0;
   return parseSafeInt(p[2]) * 10000 + parseSafeInt(p[0]) * 100 + parseSafeInt(p[1]);
 }
+

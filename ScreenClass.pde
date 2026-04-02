@@ -4,7 +4,7 @@
 import java.util.ArrayList;
 static final int HOME_BAR_HEIGHT = 50;
  final color ON_TIME_COLOR = color(129, 199, 132);
- final color DIVERTED_COLOR = color(255, 183, 77);
+ final color DELAYED_COLOR = color(255, 183, 77);
  final color CANCELLED_COLOR = color(239, 83, 80);
 
 class Screen{
@@ -356,8 +356,20 @@ void handleSearchKey(char key, int keyCode) {
         stateList.add(thisState);
         currentStateIndex = stateList.size()-1;
         readFileByState(code, thisState);
-        thisState.setBarGraphValues(thisChart);
         }
+
+        // Orla Kealy, 21:00 PM, 01/04/2026
+        // Description: Sets data for state heat map
+        if (thisState.stateHeatMap == null)
+        {
+            PImage img = loadImage("data/USStateOutlines/" + stateName.trim() + ".jpg"); 
+            float maxHeight = SCREEN_HEIGHT / 3 + 100;
+            img.resize(0, (int) maxHeight); 
+            thisState.stateHeatMap = new StateHeatMap(code, img); 
+            thisState.setBarGraphValues(thisChart);
+        }
+        thisState.setHeatMapValues();
+
         thisState.stateDraw(stateName);
         thisChart.chartsDraw();
         airportList = thisState.getAirportList();
