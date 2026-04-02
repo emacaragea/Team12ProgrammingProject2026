@@ -302,6 +302,7 @@ void readFileByState(String stateCode, State currentState) {
   }
 }
 
+//Niko Charles & Jesse Margarites, 2PM, 01/03, implemented new read in method
 void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) {
   String filePath = "data/flights/dest_airports/";
   String fileEnding = ".csv";
@@ -452,7 +453,6 @@ else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
 
 void mousePressed() {
   if(!dataLoaded){
-    
     return;
   }
 
@@ -514,6 +514,7 @@ void mouseDragged() {
 }
 }
 void mouseReleased() {
+  if (!dataLoaded) return;
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseReleased();
 } else {
@@ -521,6 +522,7 @@ void mouseReleased() {
 }
 }
 void mouseWheel(MouseEvent event) {
+  if (!dataLoaded) return;
  if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
   fullTableMouseWheel(event);
 }
