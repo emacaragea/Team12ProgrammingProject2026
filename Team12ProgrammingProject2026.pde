@@ -88,7 +88,7 @@ void setup() {
 void loadData() {
   flightMap = new FlightMapScreen();
   flightMap.setup();
-  screen1 = new Screen(3);
+  screen1 = new Screen(3); 
   screen2 = new Screen(2);
   stateCodeToName = buildCodeToNameMap();
   stateFlightCounts = new HashMap<String, Integer>();
@@ -101,6 +101,8 @@ void loadData() {
   String path = "data/flights/origin_states/";
   for (int i = 0; i < ALL_STATE_CODES.length; i++) {
     String code = ALL_STATE_CODES[i];
+
+    //amanda de moraes 9:42, added file reader for airports
     try {
       BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path + code + ".csv")));
       reader.readLine();
@@ -129,6 +131,24 @@ void loadData() {
   homeScreen = new HomeScreen(usMap);
   viewHistIndex = 0;
   viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
+
+  try {
+    BufferedReader airportReader = new BufferedReader(new FileReader(sketchPath("data/airports.csv")));
+    airportReader.readLine();
+    String airportLine = airportReader.readLine();
+    while (airportLine != null) {
+      String name = airportLine.trim();
+      if (!name.equals("")) {
+        screen1.airportList.add(new Airport(name, 0));
+      }
+      airportLine = airportReader.readLine();
+    }
+    airportReader.close();
+  } catch (Exception e) {
+    println("airports.csv error: " + e);
+  }
+
+
   dataLoaded = true;
 
   
