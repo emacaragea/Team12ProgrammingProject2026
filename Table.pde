@@ -399,8 +399,12 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colDist = startX + usable * 0.56;
   float colStatus = startX + usable * 0.76;
 
+  PFont TITLE_FONT = createFont("Helvetica-Bold", HEADINGS_SIZE);
+  PFont LABEL_FONT = createFont("Helvetica-Bold", SUBHEADINGS_SIZE);
+  PFont SMALL_FONT = createFont("Helvetica-Light", TEXT_SIZE);
+
   fill(180);
-  textFont(titleFont);
+  textFont(TITLE_FONT);
   textAlign(LEFT, CENTER);
   textSize(18);
   text("Page " + (tableType+1), startX, y - 40);
@@ -408,7 +412,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
 
   fill(230);
-  textFont(smallFont);
+  textFont(SMALL_FONT);
   textAlign(LEFT, CENTER);
   textSize(16); //was 13
   text("Carrier", colCarrier, y - 5); //y-5, y-20
@@ -429,7 +433,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
   if (flights.size() == 0) {
     fill(180);
-    textFont(bodyFont);
+    textFont(LABEL_FONT);
     textAlign(CENTER, CENTER);
     textSize(16);
     text("No flights found", x + w / 2, y + h / 2);
@@ -487,7 +491,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
 
     fill(245); //was 245
-    textFont(smallFont);
+    textFont(SMALL_FONT);
     textAlign(LEFT, CENTER);
     textSize(14);//was 12
     text(f.getAirlineCode(), colCarrier, cy);
