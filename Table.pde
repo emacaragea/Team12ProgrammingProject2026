@@ -495,6 +495,37 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
     //Jesse Margarites, 3PM, 01/04, implemented status for airport
     String currentStatus = "On time";
+    //Niko Charles 9:00 02/04/2026 edit method to calculate delays
+    //format scheduled arrival and departure time
+    String actualArrivalTimeString;
+    String scheduledArrivalTimeString;
+    int actualArrivalTime;
+    int scheduledArrivalTime;
+    actualArrivalTimeString = f.getActualArrivalTime();
+    scheduledArrivalTimeString = f.getScheduledArrivalTime();
+    if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
+      && !scheduledArrivalTimeString.trim().isEmpty()) {
+        actualArrivalTime = Integer.valueOf(actualArrivalTimeString.trim());
+        scheduledArrivalTime = Integer.valueOf(scheduledArrivalTimeString.trim());
+    }else {
+      actualArrivalTime = 0;
+      scheduledArrivalTime = 0;
+    }
+    String actualDepartTimeString;
+    String scheduledDepartTimeString;
+    int actualDepartTime;
+    int scheduledDepartTime;
+    actualDepartTimeString = f.getActualDepartureTime();
+    scheduledDepartTimeString = f.getScheduledDepartureTime();
+    if (actualDepartTimeString != null && scheduledDepartTimeString != null && !actualDepartTimeString.trim().isEmpty()
+      && !scheduledDepartTimeString.trim().isEmpty()) {
+        actualDepartTime = Integer.valueOf(actualDepartTimeString.trim());
+        scheduledDepartTime = Integer.valueOf(scheduledDepartTimeString.trim());
+    } else {
+      actualDepartTime = 0;
+      scheduledDepartTime = 0;
+    }
+
     if (f.getFlightCancelled()==1) {
       pushStyle();
       currentStatus = "Cancelled";
@@ -503,7 +534,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
       //CHANGE HERE
-    } else if (f.getFlightDiverted()==1) {
+    } else if ((actualArrivalTime > scheduledArrivalTime) || (actualDepartTime > scheduledDepartTime)) {
       pushStyle();
       currentStatus="Delayed";
       noStroke();
