@@ -721,26 +721,36 @@ class StateHeatMap {
       case "TRI": return new float[]{ 36.4752f, -82.4074f };
   
       // ── Texas ────────────────────────────────────────────
-      case "DFW": return new float[]{ 32.8998f, -97.0403f };
+      case "DALLAS/FORT WORTH, TX": return new float[]{ 32.8998f, -97.0403f };
       case "IAH": return new float[]{ 29.9902f, -95.3368f };
-      case "HOU": return new float[]{ 29.6454f, -95.2789f };
+      case "HOUSTON, TX": return new float[]{ 29.6454f, -95.2789f };
       case "DAL": return new float[]{ 32.8471f, -96.8518f };
-      case "AUS": return new float[]{ 30.1975f, -97.6664f };
-      case "SAT": return new float[]{ 29.5337f, -98.4698f };
-      case "ELP": return new float[]{ 31.8072f, -106.3779f };
-      case "LBB": return new float[]{ 33.6636f, -101.8228f };
-      case "AMA": return new float[]{ 35.2194f, -101.7059f };
-      case "MAF": return new float[]{ 31.9425f, -102.2019f };
-      case "CRP": return new float[]{ 27.7704f, -97.5012f };
+      case "AUSTIN, TX": return new float[]{ 30.1975f, -97.6664f };
+      case "SAN ANTONIO, TX": return new float[]{ 29.5337f, -98.4698f };
+      case "EL PASO, TX": return new float[]{ 31.8072f, -106.3779f };
+      case "LUBBOCK, TX": return new float[]{ 33.6636f, -101.8228f };
+      case "AMARILLO, TX": return new float[]{ 35.2194f, -101.7059f };
+      case "MIDLAND/ODESSA, TX": return new float[]{ 31.9425f, -102.2019f };
+      case "CORPUS CHRISTI, TX": return new float[]{ 27.7704f, -97.5012f };
       case "ABI": return new float[]{ 32.4113f, -99.6819f };
-      case "HRL": return new float[]{ 26.2285f, -97.6544f };
-      case "MFE": return new float[]{ 26.1758f, -98.2386f };
-      case "LRD": return new float[]{ 27.5438f, -99.4616f };
-      case "BRO": return new float[]{ 25.9068f, -97.4259f };
+      case "HARLINGEN/SAN BENITO, TX": return new float[]{ 26.2285f, -97.6544f };
+      case "MISSION/MCALLEN/EDINBURG, TX": return new float[]{ 26.1758f, -98.2386f };
+      case "LAREDO, TX": return new float[]{ 27.5438f, -99.4616f };
+      case "BROWNSVILLE, TX": return new float[]{ 25.9068f, -97.4259f };
       case "TXK": return new float[]{ 33.4539f, -93.9910f };
-      case "GGG": return new float[]{ 32.3840f, -94.7115f };
-      case "SJT": return new float[]{ 31.3577f, -100.4963f };
-      case "ACT": return new float[]{ 31.6113f, -97.2305f };
+      case "LONGVIEW, TX": return new float[]{ 32.3840f, -94.7115f };
+      case "SAN ANGELO, TX": return new float[]{ 31.3577f, -100.4963f };
+      case "WACO, TX": return new float[]{ 31.6113f, -97.2305f };
+      // GRK - Killeen
+      // ABI - Abilene
+      // TYR - Tyler Pounds
+      // CLL - College Station
+      // SPS - Wichita Falls
+      // BPT - Beaumont/Port Arthur
+      // DRT - Del Rio
+      // VCT - Victoria
+
+
   
       // ── Utah ─────────────────────────────────────────────
       case "SLC": return new float[]{ 40.7884f, -111.9778f };
@@ -841,7 +851,7 @@ class StateHeatMap {
       case "South Carolina": return new float[]{ 35.215f, -83.354f, 32.034f, -78.542f };
       case "South Dakota": return new float[]{ 45.945f, -104.058f, 42.480f, -96.436f };
       case "Tennessee": return new float[]{ 36.678f, -90.311f, 34.983f, -81.647f };
-      case "Texas": return new float[]{ 36.500f, -106.646f, 25.837f, -93.508f };
+      case "TX": return new float[]{ 36.500f, -106.646f, 25.837f, -93.508f };
       case "Utah": return new float[]{ 42.001f, -114.053f, 36.998f, -109.041f };
       case "Vermont": return new float[]{ 45.017f, -73.438f, 42.727f, -71.465f };
       case "Virginia": return new float[]{ 39.466f, -83.676f, 36.540f, -75.242f };
