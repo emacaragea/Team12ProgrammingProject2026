@@ -175,7 +175,7 @@ class PieChart
         fill(255);
         textSize(12);
         textAlign(CENTER, CENTER);
-        text(labels[i], labelX, labelY);
+        //text(labels[i], labelX, labelY);
       }
 
       startAngle = endAngle;
