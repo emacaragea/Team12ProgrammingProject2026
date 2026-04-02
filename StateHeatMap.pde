@@ -579,20 +579,20 @@ class StateHeatMap {
       // Liberal
   
       // ── Kentucky ─────────────────────────────────────────
-      case "SDF": return new float[]{ 38.1744f, -85.7360f };
-      case "CVG": return new float[]{ 39.0488f, -84.6678f };
-      case "LEX": return new float[]{ 38.0365f, -84.6059f };
-      case "OWB": return new float[]{ 37.7401f, -87.1668f };
-      case "PAH": return new float[]{ 37.0607f, -88.7739f };
+      case "LOUISVILLE, KY": return new float[]{ 38.1744f, -85.7360f };
+      case "CINCINNATI, KY": return new float[]{ 39.0488f, -84.6678f }; // change coordinates
+      case "LEXINGTON, KY": return new float[]{ 38.0365f, -84.6059f };
+      case "OWENSBORO, KY": return new float[]{ 37.7401f, -87.1668f };
+      case "PADUCAH, KY": return new float[]{ 37.0607f, -88.7739f };
   
       // ── Louisiana ────────────────────────────────────────
-      case "MSY": return new float[]{ 29.9934f, -90.2580f };
-      case "BTR": return new float[]{ 30.5332f, -91.1496f };
-      case "SHV": return new float[]{ 32.4466f, -93.8256f };
-      case "LFT": return new float[]{ 30.2053f, -91.9877f };
-      case "MLU": return new float[]{ 32.5109f, -92.0377f };
-      case "AEX": return new float[]{ 31.3274f, -92.5498f };
-      case "LCH": return new float[]{ 30.1261f, -93.2233f };
+      case "NEW ORLEANS, LA": return new float[]{ 29.9934f, -90.2580f };
+      case "BATON ROUGE, LA": return new float[]{ 30.5332f, -91.1496f };
+      case "SHREVEPORT, LA": return new float[]{ 32.4466f, -93.8256f };
+      case "LAFAYETTE, LA": return new float[]{ 30.2053f, -91.9877f };
+      case "MONROE, LA": return new float[]{ 32.5109f, -92.0377f };
+      case "ALEXANDRIA, LA": return new float[]{ 31.3274f, -92.5498f };
+      case "LAKE CHARLES, LA": return new float[]{ 30.1261f, -93.2233f };
   
       // ── Maine ────────────────────────────────────────────
       case "BANGOR, ME": return new float[]{ 44.8074f, -68.8281f };
@@ -601,9 +601,9 @@ class StateHeatMap {
       case "PRESQUE ISLE/HOULTON, ME": return new float[]{ 46.6890f, -68.0448f };
   
       // ── Maryland ─────────────────────────────────────────
-      case "BWI": return new float[]{ 39.1754f, -76.6683f };
-      case "HGR": return new float[]{ 39.7079f, -77.7295f };
-      case "SBY": return new float[]{ 38.3405f, -75.5103f };
+      case "BALTIMORE, MD": return new float[]{ 39.1754f, -76.6683f };
+      case "HAGERSTOWN, MD": return new float[]{ 39.7079f, -77.7295f };
+      case "SALISBURY, MD": return new float[]{ 38.3405f, -75.5103f };
   
       // ── Massachusetts ────────────────────────────────────
       case "BOS": return new float[]{ 42.3656f, -71.0096f };
@@ -848,10 +848,10 @@ class StateHeatMap {
       case "IN": return new float[]{ 41.761f, -88.098f, 37.772f, -84.785f };
       case "IA": return new float[]{ 43.501f, -96.639f, 40.376f, -90.140f };
       case "KS": return new float[]{ 40.003f, -102.052f, 36.993f, -94.588f };
-      case "Kentucky": return new float[]{ 39.148f, -89.572f, 36.497f, -81.965f };
-      case "Lousiana": return new float[]{ 33.019f, -94.043f, 28.928f, -88.817f };
+      case "KY": return new float[]{ 39.148f, -89.572f, 36.497f, -81.965f };
+      case "LA": return new float[]{ 33.019f, -94.043f, 28.928f, -88.817f };
       case "ME": return new float[]{ 47.460f, -71.084f, 43.059f, -66.950f };
-      case "Maryland": return new float[]{ 39.723f, -79.488f, 37.912f, -74.986f };
+      case "MD": return new float[]{ 39.723f, -79.488f, 37.912f, -74.986f };
       case "Massachusetts": return new float[]{ 42.887f, -73.508f, 41.187f, -69.928f };
       case "Michigan": return new float[]{ 48.306f, -90.418f, 41.696f, -82.122f };
       case "Minnesota": return new float[]{ 49.385f, -97.239f, 43.499f, -89.491f };
