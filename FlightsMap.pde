@@ -3,6 +3,8 @@
 // Ema Caragea, added animated flight arcs with airplane icons, 14/3/2026, 15:30
 
 // Ema Caragea, refactored into class for multi-screen program, 18/03/2026
+//Ema Caragea, added actual routes to the map, 01/04/2026, 19:00
+//Ema Caragea, added ux/ui elements like pop up list of flights, 2/04/2026, 10:00
 
 class FlightMapScreen {
   PImage usMap;
@@ -14,6 +16,7 @@ class FlightMapScreen {
   PImage planeCancelled;
 
   int currentScreen                  = 0;   // 0 = map, 1 = route, 2 = airport
+  boolean showRoutesPanel            = false;
   FlightArc          selectedArc     = null;
   AirportCoordinates selectedAirport = null;
 
@@ -53,6 +56,8 @@ class FlightMapScreen {
         drawAirports();
       mapView.end();
       drawLegend();
+      drawRoutesPanelButton();
+      if (showRoutesPanel) drawRoutesPanel();
     } else if (currentScreen == 1) {
       routePage.draw();
     } else if (currentScreen == 2) {
@@ -63,14 +68,14 @@ class FlightMapScreen {
 
   void drawLegend() {
     int x        = 32;
-    int y        = height - 190;
+    int y        = height - 206;
     int iconSize = 38;
     int rowH     = 46;
 
     fill(30, 36, 52, 230);
     stroke(70, 80, 110, 180);
     strokeWeight(1.5);
-    rect(x - 12, y - 12, 210, 198, 14);
+    rect(x - 12, y - 12, 250, 198, 14);
     noStroke();
 
     textFont(fontBold);
@@ -78,6 +83,11 @@ class FlightMapScreen {
     textAlign(LEFT, TOP);
     fill(220);
     text("Flight Status", x, y);
+
+    textFont(fontRegular);
+    textSize(13);
+    fill(160, 170, 200, 200);
+    text("Click any airport or route to explore", x, y + 22);
 
     imageMode(CENTER);
     textFont(fontRegular);
@@ -96,6 +106,62 @@ class FlightMapScreen {
     text("Cancelled", x + iconSize + 10, y + rowH * 3  + 10);
 
     imageMode(CORNER);
+    textAlign(LEFT, BASELINE);
+  }
+
+  void drawRoutesPanel() {
+    String[][] sections = {
+      {"Top 10 most on-time routes",
+       "LGA → ORD", "BOS → DCA", "LAX → SFO", "JFK → LAX", "LAS → LAX",
+       "LAX → PHX", "ATL → LGA", "BOS → LGA", "ATL → MCO", "PDX → SEA"},
+      {"Top 10 most delayed routes",
+       "EWR → MCO", "BOS → JFK", "JFK → MIA", "DEN → SLC", "DEN → ORD",
+       "ATL → DFW", "IAH → LAX", "SEA → SFO", "MIA → ORD", "DFW → LAX"},
+      {"Top 10 most cancelled routes",
+       "DCA → EWR", "CLT → LGA", "BOS → ORD", "DCA → ORD", "DCA → LGA",
+       "ATL → EWR", "JFK → ORD", "MIA → LGA", "BOS → MIA", "DFW → ORD"}
+    };
+    color[] sectionColors = {color(0, 210, 100), color(255, 200, 0), color(255, 60, 60)};
+
+    int panelW   = 230;
+    int titleH   = 18;
+    int routeH   = 14;
+    int gapH     = 10;
+    int padX     = 14;
+    int padY     = 14;
+    int sectionH = titleH + 10 * routeH;
+    int panelH   = padY + 3 * sectionH + 2 * gapH + padY;
+
+    int px = width - panelW - 20;
+    int py = height - panelH - 70;  // 40 button + 10 gap + 20 margin
+
+    fill(30, 36, 52, 230);
+    stroke(70, 80, 110, 180);
+    strokeWeight(1.5);
+    rect(px, py, panelW, panelH, 14);
+    noStroke();
+
+    int cx = px + padX;
+    int cy = py + padY;
+
+    for (int s = 0; s < 3; s++) {
+      textFont(fontBold);
+      textSize(13);
+      textAlign(LEFT, TOP);
+      fill(sectionColors[s]);
+      text(sections[s][0], cx, cy);
+      cy += titleH;
+
+      textFont(fontRegular);
+      textSize(11);
+      fill(190, 195, 215);
+      for (int r = 1; r <= 10; r++) {
+        text(r + ". " + sections[s][r], cx + 4, cy);
+        cy += routeH;
+      }
+      cy += gapH;
+    }
+
     textAlign(LEFT, BASELINE);
   }
 
@@ -120,9 +186,14 @@ class FlightMapScreen {
       new AirportCoordinates(this, "MIA", "Miami",          23.79,  -77.29, 10, "FL"),
       new AirportCoordinates(this, "SEA", "Seattle",        45.45, -119.31, 11, "WA"),
       new AirportCoordinates(this, "IAH", "Houston",        27.99,  -92.34, 12, "TX"),
-      new AirportCoordinates(this, "JFK", "New York",       38.64,  -70.78, 13, "NY"),
+      new AirportCoordinates(this, "JFK", "New York",       37.64,  -70.78, 13, "NY"),
       new AirportCoordinates(this, "SFO", "San Francisco",  34.62, -119.38, 14, "CA"),
-      new AirportCoordinates(this, "BOS", "Boston",         40.37,  -68.00, 15, "MA")
+      new AirportCoordinates(this, "BOS", "Boston",         40.37,  -68.00, 15, "MA"),
+      new AirportCoordinates(this, "LGA", "New York LaGuardia", 38.20,  -70.78, 16, "NY"),
+      new AirportCoordinates(this, "DCA", "Washington DC",  36.85,  -74.20, 17, "DC"),
+      new AirportCoordinates(this, "EWR", "Newark",         37.80,  -71.50, 18, "NJ"),
+      new AirportCoordinates(this, "PDX", "Portland",       43.58, -119.80, 19, "OR"),
+      new AirportCoordinates(this, "SLC", "Salt Lake City", 37.20, -108.60, 20, "UT")
     };
   }
 
@@ -131,14 +202,44 @@ class FlightMapScreen {
   }
 
   void initArcs() {
-    arcs = new FlightArc[] {
-      new FlightArc(this, "LAX", "JFK",  "onTime"),
-      new FlightArc(this, "ATL", "ORD",  "delayed"),
-      new FlightArc(this, "SFO", "DFW",  "cancelled"),
-      new FlightArc(this, "SEA", "MIA",  "onTime"),
-      new FlightArc(this, "BOS", "LAX",  "delayed")
-    };
-  }
+  arcs = new FlightArc[] {
+    // top 10 on time routes
+    new FlightArc(this,"LGA", "ORD", "onTime"),
+    new FlightArc(this, "BOS", "DCA", "onTime"),
+    new FlightArc(this, "LAX", "SFO", "onTime"),
+    new FlightArc(this, "JFK", "LAX", "onTime"),
+    new FlightArc(this, "LAS", "LAX", "onTime"),
+    new FlightArc(this, "LAX", "PHX", "onTime"),
+    new FlightArc(this, "ATL", "LGA", "onTime"),
+    new FlightArc(this, "BOS", "LGA", "onTime"),
+    new FlightArc(this, "ATL", "MCO", "onTime"),
+    new FlightArc(this, "PDX", "SEA", "onTime"),
+
+    // top 10 delayed routes
+    new FlightArc(this, "EWR", "MCO", "delayed"),
+    new FlightArc(this, "BOS", "JFK", "delayed"),
+    new FlightArc(this, "JFK", "MIA", "delayed"),
+    new FlightArc(this, "DEN", "SLC", "delayed"),
+    new FlightArc(this, "DEN", "ORD", "delayed"),
+    new FlightArc(this, "ATL", "DFW", "delayed"),
+    new FlightArc(this, "IAH", "LAX", "delayed"),
+    new FlightArc(this, "SEA", "SFO", "delayed"),
+    new FlightArc(this, "MIA", "ORD", "delayed"),
+    new FlightArc(this, "DFW", "LAX", "delayed"),
+
+    // top 10 cancelled routes
+    new FlightArc(this, "DCA", "EWR", "cancelled"),
+    new FlightArc(this, "CLT", "LGA", "cancelled"),
+    new FlightArc(this, "BOS", "ORD", "cancelled"),
+    new FlightArc(this, "DCA", "ORD", "cancelled"),
+    new FlightArc(this, "DCA", "LGA", "cancelled"),
+    new FlightArc(this, "ATL", "EWR", "cancelled"),
+    new FlightArc(this, "JFK", "ORD", "cancelled"),
+    new FlightArc(this, "MIA", "LGA", "cancelled"),
+    new FlightArc(this, "BOS", "MIA", "cancelled"),
+    new FlightArc(this, "DFW", "ORD", "cancelled")
+  };
+}
 
   void drawArcs() {
     for (int i = 0; i < arcs.length; i++) arcs[i].draw();
@@ -152,6 +253,32 @@ class FlightMapScreen {
   }
 
 
+  boolean isRoutesPanelButtonHovered() {
+    int bw = 170, bh = 40;
+    int bx = width - bw - 20;
+    int by = height - bh - 20;
+    return mouseX >= bx && mouseX <= bx + bw && mouseY >= by && mouseY <= by + bh;
+  }
+
+  void drawRoutesPanelButton() {
+    int bw = 170, bh = 40;
+    int bx = width - bw - 20;
+    int by = height - bh - 20;
+
+    fill(30, 36, 52, 230);
+    stroke(70, 80, 110, 180);
+    strokeWeight(1.5);
+    rect(bx, by, bw, bh, 10);
+    noStroke();
+
+    textFont(fontBold);
+    textSize(13);
+    textAlign(CENTER, CENTER);
+    fill(220);
+    text("Top Routes " + (showRoutesPanel ? "\u25b2" : "\u25bc"), bx + bw / 2, by + bh / 2);
+    textAlign(LEFT, BASELINE);
+  }
+
   void mousePressed() {
     if (currentScreen == 1 || currentScreen == 2) {
       if (mouseX > 20 && mouseX < 120 && mouseY > 20 && mouseY < 55) {
@@ -160,6 +287,10 @@ class FlightMapScreen {
       return;
     }
     if (currentScreen == 0) {
+      if (isRoutesPanelButtonHovered()) {
+        showRoutesPanel = !showRoutesPanel;
+        return;
+      }
       for (int i = 0; i < airports.length; i++) {
         if (airports[i].isClicked()) {
           loadMapAirport(airports[i]);
@@ -173,6 +304,7 @@ class FlightMapScreen {
           return;
         }
       }
+      showRoutesPanel = false;
       mapView.startDrag();
     }
   }
