@@ -534,7 +534,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
       //CHANGE HERE
-    } else if ((actualArrivalTime > scheduledArrivalTime) || (actualDepartTime > scheduledDepartTime)) {
+    } else if ((type.equals("RETURN") && actualArrivalTime > scheduledArrivalTime) || ((type.equals(("DEPARTURE")) && actualDepartTime > scheduledDepartTime))) {
       pushStyle();
       currentStatus="Delayed";
       noStroke();
