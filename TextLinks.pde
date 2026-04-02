@@ -24,7 +24,7 @@ class TextLinks{
   }
 
   boolean isMouseOver(float mx, float my) {
-    return mx >= x && mx <= x + w && my >= y - h && my <= y;
+    return mx >= x && mx <= x + w && my >= y - h && my <= y + h/2;
   }
 
   Airport getTextLinkAirport(){

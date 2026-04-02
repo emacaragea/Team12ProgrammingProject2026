@@ -212,13 +212,15 @@ class State {
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
          fill(255, 255, 255);*/
         textYCoordinate += 35;
+
         Airport airport = listOfAirports.get(counter);
         String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
         String label = (counter + 1) + ": " + name;
+        textFont(SMALL_FONT);
         float w = textWidth(label);
         float h = 20;
         if (mouseX >= textXCoordinate && mouseX <= textXCoordinate + w &&
-          mouseY >= textYCoordinate - h && mouseY <= textYCoordinate) {
+          mouseY >= textYCoordinate - h && mouseY <= textYCoordinate + h/2) {
           fill(200, 200, 255);
         } else {
           fill(255);
