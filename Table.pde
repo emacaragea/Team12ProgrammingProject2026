@@ -397,7 +397,8 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colFlight = startX + usable * 0.18;
   float colOriginOrDest = startX + usable * 0.36;
   float colDist = startX + usable * 0.56;
-  float colStatus = startX + usable * 0.76;
+  float colStatus = startX + usable * 0.71; //??
+  float colDiverted = startX + usable * 0.86; //??
 
   fill(180);
   textFont(titleFont);
@@ -415,6 +416,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   text("Flight", colFlight, y - 5);
   text("Distance", colDist, y - 5);
   text("Status", colStatus, y - 5);
+  text("Diverted", colDiverted, y - 5);
 
   if (type.equals(("DEPARTURE"))) {
     pushStyle();
@@ -453,7 +455,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     maxI = flights.size()-1;
   }
   int rowCounter=0;
-
+  float checkbox_width = rowH/2;
   while ( i < maxI) {//why must i redeclare i
     Flight f = flights.get(i);
 
@@ -524,7 +526,35 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //getOriginAirport is not working
     }
 
+
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDist, cy);
+    pushStyle();
+    noFill();
+    stroke(255, 255, 255);
+    strokeWeight(1.5);
+    float checkbox_x_coordinate = colDiverted+17;
+    float checkbox_y_coordinate = cy-13;
+
+    rect(checkbox_x_coordinate, checkbox_y_coordinate, checkbox_width, checkbox_width);
+    if(f.getFlightDiverted()==1){
+      line(checkbox_x_coordinate+4, checkbox_y_coordinate+4, checkbox_x_coordinate+ checkbox_width/2-2, 
+        checkbox_y_coordinate+ checkbox_width-2);
+      line(checkbox_x_coordinate+ checkbox_width/2 -2, checkbox_y_coordinate+ checkbox_width-2, 
+        checkbox_x_coordinate+ checkbox_width-2, checkbox_y_coordinate+1);
+
+    }else{
+      pushStyle();
+      stroke(255, 255, 255);
+      strokeWeight(1);
+      line(checkbox_x_coordinate+2, checkbox_y_coordinate+2, checkbox_x_coordinate+ checkbox_width-2, 
+        checkbox_y_coordinate+ checkbox_width-2);
+
+      line(checkbox_x_coordinate+ checkbox_width-2, checkbox_y_coordinate+2, 
+        checkbox_x_coordinate+2, checkbox_y_coordinate+ checkbox_width-2);
+
+    }
+    popStyle();
+
     rowCounter++;
     i++;
   }

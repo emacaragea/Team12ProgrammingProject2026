@@ -231,7 +231,7 @@ void fullTableCalculateLayout() {
 
 // data
 void fullTableLoadFlightData() {
-  Table table = loadTable("allFlights.csv", "header");
+  Table table = loadTable("flights_full.csv", "header");
 
   if (table == null) {
     println("Could not load allFlights.csv");

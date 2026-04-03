@@ -82,7 +82,7 @@ void setup() {
   loading.setup();
   thread("loadData");
 
-  tableSetup(); //?
+  //tableSetup(); //?
 }
 
 //new "setup" method

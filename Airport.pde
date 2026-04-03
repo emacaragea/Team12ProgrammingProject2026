@@ -37,9 +37,9 @@ class Airport {
   //Jesse Margarites, 11PM, 01/04, implemented arrows to cycle through flights
   private int tableType;
   final private int AIRPORT_BACK_ARROW_X = SCREEN_DIVIDER_X_COORDINATE-150;
-  final private int AIRPORT_BACK_ARROW_Y = (int)HOME_BAR_HEIGHT+80+(int)HEADINGS_SIZE-20;
+  final private int AIRPORT_BACK_ARROW_Y = (int)HOME_BAR_HEIGHT+80+(int)HEADINGS_SIZE-40; 
   final private int AIRPORT_FORWARD_ARROW_X = AIRPORT_BACK_ARROW_X + 70;
-  final private int AIRPORT_FORWARD_ARROW_Y = (int)HOME_BAR_HEIGHT+80+(int)HEADINGS_SIZE-20;
+  final private int AIRPORT_FORWARD_ARROW_Y = (int)HOME_BAR_HEIGHT+80+(int)HEADINGS_SIZE-40;
   private long maxTableType;
   final private int NUMBER_OF_FLIGHT_ROWS = 15;
 
