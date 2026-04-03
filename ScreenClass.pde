@@ -18,6 +18,7 @@ class Screen{
     private int screenHistoryIndex = 0;
     private int currentStateIndex;
     private int currentAirportIndex;
+    private Airport lastAirport = null;
     final int HOME_SCREEN = 1;
     final int AIRPORT_SCREEN = 2;
     final int STATE_SCREEN = 3;
@@ -341,9 +342,16 @@ void handleSearchKey(char key, int keyCode) {
             setArrivalAirports = true;
 
         }
+        
         airportList.add(thisAirport);
         currentAirportIndex = airportList.size()-1;
-        thisAirport.setPieChartValues(thisChart);
+        //Niko Charles 14:00 02/04/2026 fix pie charts set and draw 
+        if (thisAirport != lastAirport) {
+            thisChart.clearCharts();
+            thisAirport.setPieChartValues(thisChart);
+            lastAirport = thisAirport;
+        }
+        //thisAirport.setPieChartValues(thisChart);
         thisAirport.airportDraw(airportName);
         pushStyle();
         thisChart.chartsDraw();

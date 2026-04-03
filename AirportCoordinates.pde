@@ -29,7 +29,9 @@ class AirportCoordinates {
   }
 
   void draw() {
-    hovered = dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), x, y) < 15;
+    boolean tight = code.equals("JFK") || code.equals("LGA") || code.equals("EWR");
+    float hoverRadius = tight ? currentSize / 2 : 15;
+    hovered = dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), x, y) < hoverRadius;
 
     float targetSize = hovered ? dotSize * 1.5 : dotSize;
     currentSize += (targetSize - currentSize) * 0.15;
@@ -48,7 +50,9 @@ class AirportCoordinates {
   }
 
   boolean isClicked() {
-    return dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), x, y) < 15;
+    boolean tight = code.equals("JFK") || code.equals("LGA") || code.equals("EWR");
+    float clickRadius = tight ? dotSize / 2 : 15;
+    return dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), x, y) < clickRadius;
   }
 
   void drawCodeLabel() {
@@ -56,20 +60,36 @@ class AirportCoordinates {
     noStroke();
     textFont(screen.fontBold);
     textSize(11);
-    textAlign(CENTER, TOP);
-    text(code, x, y + currentSize / 2 + 4);
+    if (code.equals("EWR")) {
+      textAlign(RIGHT, CENTER);
+      text(code, x - currentSize / 2 - 4, y);
+    } else if (code.equals("LGA")) {
+      textAlign(LEFT, CENTER);
+      text(code, x + currentSize / 2 + 4, y);
+    } else {
+      textAlign(CENTER, TOP);
+      text(code, x, y + currentSize / 2 + 4);
+    }
     textFont(screen.fontRegular);
   }
 
   void drawHoverLabel() {
-    String label  = code + "  " + city;
-    float  labelX = x + currentSize / 2 + 8;
-    float  labelY = y - 8;
+    String label = code + "  " + city;
 
     textFont(screen.fontBold);
     textSize(13);
     float boxW = textWidth(label) + 14;
     float boxH = 20;
+
+    float labelX, labelY;
+    if (code.equals("JFK")) {
+      // draw above the dot so it doesn't overlap LGA
+      labelX = x - boxW / 2;
+      labelY = y - currentSize / 2 - boxH - 6;
+    } else {
+      labelX = x + currentSize / 2 + 8;
+      labelY = y - 8;
+    }
 
     fill(0, 0, 0, 80);
     noStroke();

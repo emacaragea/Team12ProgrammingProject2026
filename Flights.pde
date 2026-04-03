@@ -27,13 +27,13 @@ class Flights {
 
     textSize(18);
     if (screen.selectedArc.status.equals("onTime")) {
-      fill(0, 200, 100);
+      fill(129, 199, 132);
       text("Status: On Time", width / 2, 150);
     } else if (screen.selectedArc.status.equals("delayed")) {
-      fill(255, 200, 0);
+      fill(255, 183, 77);
       text("Status: Delayed", width / 2, 150);
     } else {
-      fill(255, 60, 60);
+      fill(239, 83, 80);
       text("Status: Cancelled", width / 2, 150);
     }
 

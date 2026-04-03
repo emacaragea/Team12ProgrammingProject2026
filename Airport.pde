@@ -17,20 +17,19 @@ class Airport {
   private color[] pieColorsDepartures;
   private color[] pieColorsArrivals = {color(54, 110, 190), color(70, 130, 210), color(90, 150, 230)};
   Charts charts;
-  private boolean setGraphValues;
   final private float PIE_CHART_DIAMETER = 200;
   final private int DEPARTURES_PIE_CHART_X_COORDINATE = 1220; //SCREEN_WIDTH/3+70;
   final private int DEPARTURES_PIE_CHART_Y_COORDINATE = 275;
   final private int ARRIVALS_PIE_CHART_X_COORDINATE = 1220; //SCREEN_WIDTH/3+70;
   final private int ARRIVALS_PIE_CHART_Y_COORDINATE = 625;
-  final private String TEXT_LINK_DEPARTURE_LABEL = "Departure";
-  final private String TEXT_LINK_ARRIVAL_LABEL = "Arrival";
+  final private String TEXT_LINK_DEPARTURE_LABEL = "Departures";
+  final private String TEXT_LINK_ARRIVAL_LABEL = "Arrivals";
   final private float TEXT_LINK_Y_COORDINATE = 80;
   final private float TEXT_LINK_DEPARTURE_X_COORD = SCREEN_DIVIDER_X_COORDINATE-350;
   final private float TEXT_LINK_ARRIVAL_X_COORD = SCREEN_DIVIDER_X_COORDINATE-140;
   final private float TEXT_LINK_H = 25;
-  final private float TEXT_LINK_DEPARTURE_W = textWidth(TEXT_LINK_DEPARTURE_LABEL);
-  final private float TEXT_LINK_ARRIVAL_W = textWidth(TEXT_LINK_ARRIVAL_LABEL);
+  private float TEXT_LINK_DEPARTURE_W;
+  private float TEXT_LINK_ARRIVAL_W;
   private boolean tableStatus = false;
   private final boolean TABLE_STATUS_ARRIVALS = true;
   private final boolean TABLE_STATUS_DEPARTURES = false;
@@ -58,7 +57,6 @@ class Airport {
     this.flightsIncoming = new ArrayList<Flight>();
     this.originCityCode = originCityCode;
     charts = new Charts();
-    setGraphValues =false;
 
   }
 
@@ -69,7 +67,6 @@ class Airport {
     this.flightsIncoming = new ArrayList<Flight>();
     this.originCityCode = originCityCode;
     charts = new Charts();
-    setGraphValues =false;
     tableType=0;
 
 
@@ -90,10 +87,6 @@ class Airport {
   }
   int getWorldAreaCode() {
     return worldAreaCode;
-  }
-
-  void setGraphValues(boolean setGraphValues) {
-    this.setGraphValues = setGraphValues;
   }
 
   void addFlightsLeaving(Flight flightX) {
@@ -358,32 +351,27 @@ class Airport {
   //Niko Charles 9:00 27/03/2026 write method
   //Niko Charles 13:00 01/04/2026 add Arrivals graph
   void setPieChartValues(Charts thisPieChart) {
-    if (!this.setGraphValues) {
-      pieGraphTitleDepartures = "Departures";
-      pieValuesDepartures = getNumberOfFlightsCancelledDepartures();
-      pieLabelsDepartures = getPieChartLabelsDepartures();
-      pieColorsDepartures = getPieChartColorsDepartures();
-      thisPieChart.addPieChart(pieGraphTitleDepartures, pieLabelsDepartures, pieValuesDepartures, DEPARTURES_PIE_CHART_X_COORDINATE, DEPARTURES_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsDepartures);
-      pieGraphTitleArrivals = "Arrivals";
-      pieValuesArrivals = getNumberOfFlightsCancelledArrivals();
-      pieLabelsArrivals = getPieChartLabelsArrivals();
-      pieColorsArrivals = getPieChartColorsArrivals();
-      thisPieChart.addPieChart(pieGraphTitleArrivals, pieLabelsArrivals, pieValuesArrivals, ARRIVALS_PIE_CHART_X_COORDINATE, ARRIVALS_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsArrivals);
-
-
-      setGraphValues(true);
-    }
+    pieGraphTitleDepartures = "Departures";
+    pieValuesDepartures = getNumberOfFlightsCancelledDepartures();
+    pieLabelsDepartures = getPieChartLabelsDepartures();
+    pieColorsDepartures = getPieChartColorsDepartures();
+    thisPieChart.addPieChart(pieGraphTitleDepartures, pieLabelsDepartures, pieValuesDepartures, DEPARTURES_PIE_CHART_X_COORDINATE, DEPARTURES_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsDepartures);
+    pieGraphTitleArrivals = "Arrivals";
+    pieValuesArrivals = getNumberOfFlightsCancelledArrivals();
+    pieLabelsArrivals = getPieChartLabelsArrivals();
+    pieColorsArrivals = getPieChartColorsArrivals();
+    thisPieChart.addPieChart(pieGraphTitleArrivals, pieLabelsArrivals, pieValuesArrivals, ARRIVALS_PIE_CHART_X_COORDINATE, ARRIVALS_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsArrivals);
   }
   //Niko Charles 15:00 01/04/2026 Write method
   void airportMouseClicked(int mx, int my) {
-    if (mouseX >= TEXT_LINK_ARRIVAL_X_COORD && mouseX <= TEXT_LINK_ARRIVAL_X_COORD + TEXT_LINK_H &&
-      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_ARRIVAL_W) {
+    if (mouseX >= TEXT_LINK_ARRIVAL_X_COORD && mouseX <= TEXT_LINK_ARRIVAL_X_COORD + TEXT_LINK_ARRIVAL_W &&
+      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_H) {
       tableStatus = TABLE_STATUS_ARRIVALS;
       tableType=0;
 
     }
-    if (mouseX >= TEXT_LINK_DEPARTURE_X_COORD && mouseX <= TEXT_LINK_DEPARTURE_X_COORD + TEXT_LINK_H &&
-      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_DEPARTURE_W) {
+    if (mouseX >= TEXT_LINK_DEPARTURE_X_COORD && mouseX <= TEXT_LINK_DEPARTURE_X_COORD + TEXT_LINK_DEPARTURE_W &&
+      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_H) {
       tableStatus = TABLE_STATUS_DEPARTURES;
       tableType=0;
 
@@ -428,11 +416,13 @@ class Airport {
     fill(255, 255, 255);
     pushStyle();
     textFont(LABEL_FONT);
+    TEXT_LINK_DEPARTURE_W = textWidth(TEXT_LINK_DEPARTURE_LABEL);
+    TEXT_LINK_ARRIVAL_W = textWidth(TEXT_LINK_ARRIVAL_LABEL);
     //Niko Charles 15:00 01/04/2026 make arrival and departure buttons for table
     if (tableStatus == TABLE_STATUS_ARRIVALS) {
       fill(200, 200, 255);
-    } else if (mouseX >= TEXT_LINK_ARRIVAL_X_COORD && mouseX <= TEXT_LINK_ARRIVAL_X_COORD + TEXT_LINK_H &&
-      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_ARRIVAL_W) {
+    } else if (mouseX >= TEXT_LINK_ARRIVAL_X_COORD && mouseX <= TEXT_LINK_ARRIVAL_X_COORD +TEXT_LINK_ARRIVAL_W &&
+      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_H) {
       fill(200, 200, 255);
     } else {
       fill(255);
@@ -440,8 +430,8 @@ class Airport {
     text(TEXT_LINK_ARRIVAL_LABEL, TEXT_LINK_ARRIVAL_X_COORD, TEXT_LINK_Y_COORDINATE);
     if (tableStatus == TABLE_STATUS_DEPARTURES) {
       fill(200, 200, 255);
-    } else if (mouseX >= TEXT_LINK_DEPARTURE_X_COORD && mouseX <= TEXT_LINK_DEPARTURE_X_COORD + TEXT_LINK_H &&
-      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_DEPARTURE_W) {
+    } else if (mouseX >= TEXT_LINK_DEPARTURE_X_COORD && mouseX <= TEXT_LINK_DEPARTURE_X_COORD + TEXT_LINK_DEPARTURE_W &&
+      mouseY >= TEXT_LINK_Y_COORDINATE - TEXT_LINK_H && mouseY <= TEXT_LINK_Y_COORDINATE + TEXT_LINK_H) {
       fill(200, 200, 255);
     } else {
       fill(255);

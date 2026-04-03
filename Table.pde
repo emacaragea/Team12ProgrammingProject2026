@@ -400,8 +400,12 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colStatus = startX + usable * 0.71; //??
   float colDiverted = startX + usable * 0.86; //??
 
+  PFont TITLE_FONT = createFont("Helvetica-Bold", HEADINGS_SIZE);
+  PFont LABEL_FONT = createFont("Helvetica-Bold", SUBHEADINGS_SIZE);
+  PFont SMALL_FONT = createFont("Helvetica-Light", TEXT_SIZE);
+
   fill(180);
-  textFont(titleFont);
+  textFont(TITLE_FONT);
   textAlign(LEFT, CENTER);
   textSize(18);
   text("Page " + (tableType+1), startX, y - 40);
@@ -409,7 +413,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
 
   fill(230);
-  textFont(smallFont);
+  textFont(SMALL_FONT);
   textAlign(LEFT, CENTER);
   textSize(16); //was 13
   text("Carrier", colCarrier, y - 5); //y-5, y-20
@@ -431,7 +435,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
   if (flights.size() == 0) {
     fill(180);
-    textFont(bodyFont);
+    textFont(LABEL_FONT);
     textAlign(CENTER, CENTER);
     textSize(16);
     text("No flights found", x + w / 2, y + h / 2);
@@ -489,7 +493,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
 
     fill(245); //was 245
-    textFont(smallFont);
+    textFont(SMALL_FONT);
     textAlign(LEFT, CENTER);
     textSize(14);//was 12
     text(f.getAirlineCode(), colCarrier, cy);
@@ -497,6 +501,37 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
     //Jesse Margarites, 3PM, 01/04, implemented status for airport
     String currentStatus = "On time";
+    //Niko Charles 9:00 02/04/2026 edit method to calculate delays
+    //format scheduled arrival and departure time
+    String actualArrivalTimeString;
+    String scheduledArrivalTimeString;
+    int actualArrivalTime;
+    int scheduledArrivalTime;
+    actualArrivalTimeString = f.getActualArrivalTime();
+    scheduledArrivalTimeString = f.getScheduledArrivalTime();
+    if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
+      && !scheduledArrivalTimeString.trim().isEmpty()) {
+        actualArrivalTime = Integer.valueOf(actualArrivalTimeString.trim());
+        scheduledArrivalTime = Integer.valueOf(scheduledArrivalTimeString.trim());
+    }else {
+      actualArrivalTime = 0;
+      scheduledArrivalTime = 0;
+    }
+    String actualDepartTimeString;
+    String scheduledDepartTimeString;
+    int actualDepartTime;
+    int scheduledDepartTime;
+    actualDepartTimeString = f.getActualDepartureTime();
+    scheduledDepartTimeString = f.getScheduledDepartureTime();
+    if (actualDepartTimeString != null && scheduledDepartTimeString != null && !actualDepartTimeString.trim().isEmpty()
+      && !scheduledDepartTimeString.trim().isEmpty()) {
+        actualDepartTime = Integer.valueOf(actualDepartTimeString.trim());
+        scheduledDepartTime = Integer.valueOf(scheduledDepartTimeString.trim());
+    } else {
+      actualDepartTime = 0;
+      scheduledDepartTime = 0;
+    }
+
     if (f.getFlightCancelled()==1) {
       pushStyle();
       currentStatus = "Cancelled";
@@ -505,7 +540,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       circle(colStatus-20, cy, rowH/2-5);
       popStyle();
       //CHANGE HERE
-    } else if (f.getFlightDiverted()==1) {
+    } else if ((type.equals("RETURN") && actualArrivalTime > scheduledArrivalTime) || ((type.equals(("DEPARTURE")) && actualDepartTime > scheduledDepartTime))) {
       pushStyle();
       currentStatus="Delayed";
       noStroke();
@@ -996,7 +1031,7 @@ Flight getClickedFlight(ArrayList<Flight> flights, float x, float y, float w, fl
 
 // loads flight data from csv
 void loadFlightData() {
-  String[] lines = loadStrings("allFlights.csv");
+  String[] lines = loadStrings("flights_full.csv");
 
   if (lines == null || lines.length == 0) {
     println("ERROR");

@@ -62,7 +62,7 @@ class FlightArc {
       float sample = i / 20.0;
       float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
       float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
-      if (dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), sx, sy) < 20) {
+      if (dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), sx, sy) < 10) {
         hovered = true;
       }
     }
@@ -83,7 +83,7 @@ class FlightArc {
       float sample = i / 20.0;
       float sx = bezierPoint(origin.x, cx1, cx2, destination.x, sample);
       float sy = bezierPoint(origin.y, cy1, cy2, destination.y, sample);
-      if (dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), sx, sy) < 20) {
+      if (dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), sx, sy) < 10) {
         return true;
       }
     }
@@ -93,9 +93,9 @@ class FlightArc {
   void drawArcLine() {
     noFill();
     strokeWeight(currentWeight);
-    if      (status.equals("onTime"))  stroke(0,   210, 100, currentAlpha);
-    else if (status.equals("delayed")) stroke(255, 200, 0,   currentAlpha);
-    else                               stroke(255, 60,  60,  currentAlpha);
+    if      (status.equals("onTime"))  stroke(129, 199, 132, currentAlpha);
+    else if (status.equals("delayed")) stroke(255, 183, 77,   currentAlpha);
+    else                               stroke(239, 83, 80,  currentAlpha);
     bezier(origin.x, origin.y, cx1, cy1, cx2, cy2, destination.x, destination.y);
   }
 
