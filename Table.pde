@@ -425,10 +425,12 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   if (type.equals(("DEPARTURE"))) {
     pushStyle();
     fill(230);
+    textAlign(LEFT, CENTER);
     text("Destination", colOriginOrDest, y - 5);
     popStyle();
   } else if (type.equals(("RETURN"))) {
     pushStyle();
+    textAlign(LEFT, CENTER);
     text("Origin", colOriginOrDest, y - 5);
     popStyle();
   }
@@ -532,12 +534,15 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       scheduledDepartTime = 0;
     }
 
+    //Jesse Margarites, 7PM, 04/04, updated status bubbles
     if (f.getFlightCancelled()==1) {
       pushStyle();
       currentStatus = "Cancelled";
       noStroke();
       fill(CANCELLED_COLOR);
-      circle(colStatus-20, cy, rowH/2-5);
+      //circle(colStatus-20, cy, rowH/2-5);
+      noStroke();
+      rect(colStatus, cy-11, 90, 22, 11);
       popStyle();
       //CHANGE HERE
     } else if ((type.equals("RETURN") && actualArrivalTime > scheduledArrivalTime) || ((type.equals(("DEPARTURE")) && actualDepartTime > scheduledDepartTime))) {
@@ -545,17 +550,24 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       currentStatus="Delayed";
       noStroke();
       fill(DELAYED_COLOR);
-      circle(colStatus-20, cy, rowH/2-5);
+            rect(colStatus, cy-11, 90, 22, 11);
+      //circle(colStatus-20, cy, rowH/2-5);
       popStyle();
     } else {
       pushStyle();
       noStroke();
       fill(ON_TIME_COLOR);
-      circle(colStatus-20, cy, rowH/2-5);
+            rect(colStatus, cy-11, 90, 22, 11);
+
+      //circle(colStatus-20, cy, rowH/2-5);
       popStyle();
     }
-    text(currentStatus, colStatus, cy);
+    textAlign(CENTER, CENTER);
+    text(currentStatus, colStatus+45, cy);
+
+    textAlign(LEFT, CENTER);
     if (type.equals(("DEPARTURE"))) {
+      
       text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);    // text(destName, colDest, cy);
     } else if (type.equals(("RETURN"))) {
       text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //getOriginAirport is not working
