@@ -41,11 +41,17 @@ String stateName;
 String airportName;
 Airport thisAirport;
 ArrayList<Integer> viewHistory = new ArrayList<Integer>();
-boolean dataLoaded = false;
-boolean fullTableReady = false;
+//Jesse Margarits, 04/04, Trying to fix loading screen bug by implementing volatile variables
+volatile boolean dataLoaded = false;
+volatile boolean initialiseFlightLoading = false;
+volatile boolean fullTableReady = false;
 boolean tableReady = false;
-float loadProgress = 0;
+volatile float loadProgress = 0;
 int viewHistIndex;
+
+Table fullTable=null;
+
+
 
 static final String[] ALL_STATE_CODES = {
   "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
@@ -79,9 +85,12 @@ void settings() {
 
 //method that only loads the data, called in setup as a thread so loading screen can be displayed while data is being loaded
 void setup() {
-  loading = new Loading();
-  loading.setup();
+        frameRate(30); // add this
+
+  loading = new Loading("HMS", "Home Screen");
+  loading.loadingSetup();
   thread("loadData");
+
 
   //tableSetup();
 }
@@ -326,8 +335,8 @@ void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) 
       double airportDistance        = lineScan.nextDouble();
       lineScan.close();
 
-      Airport destinationAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
-      Airport originAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
+      Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
+      Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
       Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
         originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
         scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
@@ -417,7 +426,7 @@ void draw() {
 
   //Ema caragea, added loading screen while data is being loaded, 26/03/2026, 9:00
   if(!dataLoaded){
-    loading.draw();
+    loading.loadingDraw();
     return;
   }
   // Build GeoMap-dependent objects on the main thread to avoid blue flash from background-thread rendering
@@ -443,9 +452,33 @@ void draw() {
     screen1.drawHomeBar();
   }
   else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_GENERAL_TABLE) {
-  if (!fullTableReady) { fullTableSetup(); fullTableReady = true; }
-  fullTableDraw();
-  screen1.drawHomeBar();
+    //Jesse Margarits, 04/04, Implementing loading screen for general table
+
+    if(!initialiseFlightLoading){
+      loadProgress=0;
+      flightTableLoading = new Loading("FTS", "Flight Table Screen");
+      flightTableLoading.loadingSetup();
+      initialiseFlightLoading = true;
+
+    }
+    
+    if(!generalTableValuesLoaded){
+      //loading.setToCode("FTS");
+      //loading.setToFullString("Flight Table Screen");
+      if (!fullTableReady) { 
+        fullTable = loadTable("flights_full.csv", "header");
+        fullTableSetup(fullTable);
+        fullTableReady = true; 
+      }
+      flightTableLoading.loadingDraw();
+
+
+      //return;
+    }else{
+      fullTableDraw();
+      screen1.drawHomeBar();
+    }
+
 }
 else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
   if (!tableReady) { tableSetup(); tableReady = true; }

@@ -562,30 +562,32 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     }
 
 
+    //Jesse Margarits, 04/04, Fixing aesthetics of airport screen
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDist, cy);
     pushStyle();
     noFill();
     stroke(255, 255, 255);
-    strokeWeight(1.5);
+    strokeWeight(1.2);
     float checkbox_x_coordinate = colDiverted+17;
     float checkbox_y_coordinate = cy-13;
 
-    rect(checkbox_x_coordinate, checkbox_y_coordinate, checkbox_width, checkbox_width);
+    //rect(checkbox_x_coordinate, checkbox_y_coordinate, checkbox_width, checkbox_width);
     if(f.getFlightDiverted()==1){
-      line(checkbox_x_coordinate+4, checkbox_y_coordinate+4, checkbox_x_coordinate+ checkbox_width/2-2, 
-        checkbox_y_coordinate+ checkbox_width-2);
-      line(checkbox_x_coordinate+ checkbox_width/2 -2, checkbox_y_coordinate+ checkbox_width-2, 
-        checkbox_x_coordinate+ checkbox_width-2, checkbox_y_coordinate+1);
+      strokeWeight(1.2);
+      line(checkbox_x_coordinate+4, checkbox_y_coordinate+9, checkbox_x_coordinate+ checkbox_width/2-3, 
+        checkbox_y_coordinate+ checkbox_width-5);
+      line(checkbox_x_coordinate+ checkbox_width/2-3 , checkbox_y_coordinate+ checkbox_width-5, 
+        checkbox_x_coordinate+ checkbox_width-3, checkbox_y_coordinate+3);
 
     }else{
       pushStyle();
       stroke(255, 255, 255);
-      strokeWeight(1);
-      line(checkbox_x_coordinate+2, checkbox_y_coordinate+2, checkbox_x_coordinate+ checkbox_width-2, 
-        checkbox_y_coordinate+ checkbox_width-2);
-
-      line(checkbox_x_coordinate+ checkbox_width-2, checkbox_y_coordinate+2, 
-        checkbox_x_coordinate+2, checkbox_y_coordinate+ checkbox_width-2);
+      strokeWeight(1.2);
+      line(checkbox_x_coordinate+4, checkbox_y_coordinate+4, checkbox_x_coordinate+ checkbox_width-4, 
+        checkbox_y_coordinate+ checkbox_width-4);
+      
+      line(checkbox_x_coordinate+ checkbox_width-4, checkbox_y_coordinate+4, 
+        checkbox_x_coordinate+4, checkbox_y_coordinate+ checkbox_width-4);
 
     }
     popStyle();

@@ -45,7 +45,6 @@ class Screen{
     final int SEARCHW= 260;
     final int SEARCHH=28;
 
-    private boolean setArrivalAirports;
     
     boolean searchActive = false;
     String searchText ="";
@@ -61,7 +60,6 @@ class Screen{
         screenType = type;
         //3PM, 19/03/26, Jesse Margarites
         thisChart = new Charts();
-        setArrivalAirports = false;
         
     }
 
@@ -151,6 +149,7 @@ class Screen{
     }
 
     void drawHomeBar(){
+        pushStyle();
         fill(200);
         //rect(0, 0, 1400, 40);
         //draw backArrow
@@ -205,6 +204,8 @@ class Screen{
             FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);*/
 
             drawSearchBar();
+        popStyle();
+
     }
 
 
@@ -333,13 +334,14 @@ void handleSearchKey(char key, int keyCode) {
 
     }
 
+    //Jesse Margarits, 04/04, Fixing airport screen bug
     void drawAirportScreen(Airport thisAirport, String airportName){
-        if(!setArrivalAirports){
+        if(!thisAirport.getSetArrivalAirports()){
             readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
             //ONLY FOR FLIGHTS INCOMING!!!!!!!!!
             //float totalContentHeight = thisAirport.getNumberOfFlightsIncoming() * 34; //??
             //drawScrollbar(SCREEN_DIVIDER_X_COORDINATE-20, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, totalContentHeight, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, 0); //currentScroll
-            setArrivalAirports = true;
+            thisAirport.setSetArrivalAirports(true);
 
         }
         

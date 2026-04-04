@@ -39,6 +39,7 @@ final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
   }
 
   void draw() {
+    pushStyle();
     background(20, 28, 38);
 
     // Draw US map in the middle region
@@ -49,6 +50,7 @@ final int BUTTON_W   = (width - BUTTON_GAP * 6) / 3;  // narrower
     drawTitle();
     header.draw();
     // drawBackgroundGlow();
+    popStyle();
   }
 
   void drawTitle() {

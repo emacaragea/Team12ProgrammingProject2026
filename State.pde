@@ -1,6 +1,6 @@
 //4PM, 17/03/26, Jesse Margarites
 //cannot make fonts static
-final int MAX_AIRPORT_DISPLAY = 10;
+final int MAX_AIRPORT_DISPLAY = 13;
 final private float CHART_WIDTH = 600;
 final private float CHART_HEIGHT = 200;
 final private int CHART_X_COORDINATE = SCREEN_WIDTH/3+70;
@@ -21,6 +21,10 @@ class State {
 
   private String[] heatmapAirports;
   private int[] heatmapCounts;
+
+  PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
+  PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
+  PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
 
 
   State(String stateName) {
@@ -159,19 +163,23 @@ class State {
     noFill();
     line(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, SCREEN_HEIGHT);
     airportLinks.clear();
+    //Jesse Margarits, 04/04, Fixing aesthetics of state screen
 
-    PFont TITLE_FONT = createFont("Helvetica-Bold", HEADINGS_SIZE);
-    PFont LABEL_FONT = createFont("Helvetica-Bold", SUBHEADINGS_SIZE);
-    PFont SMALL_FONT = createFont("Helvetica-Light", TEXT_SIZE);
+
     //PFont AIPORT_NAMES_FONT = createFont("Trispace", SUBHEADINGS_SIZE);
     //example
     int textXCoordinate = 20;
     int textYCoordinate = 80;
     fill(255);
+    textAlign(LEFT,CENTER);
     textFont(TITLE_FONT);
-    text(stateName, textXCoordinate-10, textYCoordinate);
+    text(stateName, textXCoordinate-16, textYCoordinate); //was textXcord-10
+
+
     fill(255, 255, 255);
-    textFont(LABEL_FONT);
+    textFont(TITLE_FONT);
+    textAlign(LEFT, CENTER);
+    textSize(18);
     textYCoordinate+=40;
     text("Airports: ", textXCoordinate, textYCoordinate);
     fill(255, 255, 255);
@@ -211,7 +219,7 @@ class State {
         /*textYCoordinate+=35;
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
          fill(255, 255, 255);*/
-        textYCoordinate += 35;
+        textYCoordinate += 45;
 
         Airport airport = listOfAirports.get(counter);
         String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
@@ -225,17 +233,18 @@ class State {
         } else {
           fill(255);
         }
+        textSize(18);
         textFont(SMALL_FONT);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
     } else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
       for (int counter=MAX_AIRPORT_DISPLAY; counter<listOfAirports.size(); counter++) {
-        textFont(LABEL_FONT);
+        textFont(SMALL_FONT);
         /*textYCoordinate+=35;
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
          fill(255, 255, 255);*/
-        textYCoordinate += 35;
+        textYCoordinate += 45;
         Airport airport = listOfAirports.get(counter);
         String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
         String label = (counter + 1) + ": " + name;

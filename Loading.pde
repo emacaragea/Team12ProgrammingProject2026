@@ -5,6 +5,7 @@
 
 
 Loading loading;
+Loading flightTableLoading;
 
 //void setup() {
 //  size(1400, 800);
@@ -17,7 +18,9 @@ Loading loading;
 //  loading.draw();
 //}
 
-//Jesse Margarites, 11AM, 26/03, updated loading screen
+//Jesse Margarites, 11AM, 26/03, updated loading screen by
+//  1: Making it useable for different screens 
+//  2: pushing and poping styles
 class Loading {
   PFont titleFont;
   PFont labelFont;
@@ -27,30 +30,63 @@ class Loading {
   int loadingDots = 0;
   int lastDotChange = 0;
 
-  String fromCode = "LDS"; 
-  String toCode = "HMS";
+  float snapshotProgress =0;
+
+  private final String FROM_CODE = "LDS"; 
+  private final String FROM_FULL_STRING = "Loading Screen";
+  private String toCode;
+  private String toFullString;
 
   PImage planeImg;
+//Jesse Margarites, 7PM, 03/04, implmenting features to make loading screen reuseable 
+  Loading(String toCode, String toFullString){
+    this.toCode = toCode;
+    this.toFullString = toFullString;
+  }
 
-void setup() {
+  void setToCode(String toCode){
+    this.toCode=toCode;
+  }
+  void setToFullString(String toFullString){
+    this.toFullString = toFullString;
+  }
+
+void loadingSetup() {
   titleFont = createFont("Helvetica Bold", 52);
   labelFont = createFont("Helvetica Bold", 32);
   smallFont = createFont("Helvetica", 24);
   planeImg  = loadImage("LoadingScreenPlane.png");
 }
 
-  void draw() {
-    background(20, 28, 38);
+  void loadingDraw() {
 
-    updateAnimation();
-    drawBackgroundGlow();
+
+    pushStyle();
+
+    snapshotProgress=loadProgress;
+ 
+        background(20, 28, 38);
+    fill(20, 28, 38); 
+        noStroke();
+    //if(toCode.equals("HMS")){
+      updateAnimation();
+      drawBackgroundGlow();
+
+    //}
+ 
+
     drawHeader();
     drawRouteCard();
     drawProgressText();
+    popStyle();
+    
+    //fill(20, 28, 38);  
+    //noStroke();
 
   }
 
   void drawBackgroundGlow() {
+    pushStyle();
     noStroke();
 
     fill(70, 110, 150, 18);
@@ -58,9 +94,14 @@ void setup() {
 
     fill(70, 110, 150, 12);
     ellipse(width * 0.75, height * 0.7, 600, 600);
+    popStyle();
   }
 
   void drawHeader() {
+    pushStyle();
+        background(20, 28, 38);
+    //fill(20, 28, 38);  // reseting to fill to background color first
+    noStroke();
     fill(235, 240, 245);
     textAlign(CENTER, CENTER);
 
@@ -72,9 +113,11 @@ void setup() {
     textFont(smallFont);
     fill(150, 165, 180);
     text("Synchronising flight and airport data", width / 2, 178);
+    popStyle();
   }
 
   void drawRouteCard() {
+    pushStyle();
     float cardX = 190;
     float cardY = 230;
     float cardW = 1020;
@@ -90,13 +133,13 @@ void setup() {
     fill(240, 244, 248);
     textAlign(CENTER, CENTER);
     textFont(labelFont);
-    text(fromCode, cardX + 120, cardY + 100);
+    text(FROM_CODE, cardX + 120, cardY + 100);
     text(toCode, cardX + cardW - 120, cardY + 100);
 
     fill(140, 155, 170);
     textFont(smallFont);
-    text("Loading Screen", cardX + 120, cardY + 148); //was departure
-    text("Home Screen", cardX + cardW - 120, cardY + 148); //was arrival
+    text(FROM_FULL_STRING, cardX + 120, cardY + 148); 
+    text(toFullString, cardX + cardW - 120, cardY + 148); 
 
     float startX = cardX + 215;
     float endX   = cardX + cardW - 215;
@@ -116,7 +159,7 @@ void setup() {
     ellipse(startX, routeY, 18, 18);
     ellipse(endX,   routeY, 18, 18);
 
-    float planeX = lerp(startX, endX, loadProgress);    
+    float planeX = lerp(startX, endX, snapshotProgress);    
     stroke(82, 156, 214);
     strokeWeight(4.5);
     line(startX, routeY, planeX, routeY);
@@ -132,21 +175,25 @@ void setup() {
     fill(55, 68, 82);
     rect(barX, barY, barW, barH, 8);
     fill(82, 156, 214);
-    rect(barX, barY, barW * loadProgress, barH, 8);
+    rect(barX, barY, barW * snapshotProgress, barH, 8);
 
     fill(220, 228, 236);
     textAlign(RIGHT, CENTER);
     textFont(smallFont);
-    text(int(loadProgress * 100) + "%", cardX + cardW - 44, cardY + 260);
+    text(int(snapshotProgress * 100) + "%", cardX + cardW - 44, cardY + 260);
+    popStyle();
   }
 
   void drawPlaneIcon(float x, float y) {
+  pushStyle();
   imageMode(CENTER);
   image(planeImg, x, y, 50, 50);
   imageMode(CORNER);
+  popStyle();
 }
 
   void drawProgressText() {
+    pushStyle();
     fill(180, 190, 200);
     textAlign(CENTER, CENTER);
     textFont(smallFont);
@@ -154,6 +201,8 @@ void setup() {
 
     fill(120, 135, 150);
     text("Please wait a moment", width / 2, 662);
+    popStyle();
+
   }
 
   //Ema Caragea, made the loading bar load proportionately to the time spent on the loading screen + Loading animation, 1/04/2026 15:15

@@ -80,6 +80,7 @@ hiH = rh * 0.20;
   // Draws a single GeoMap into a given screen region, preserving aspect ratio
   void drawMap(GeoMap geoMap, float rx, float ry, float rw, float rh) {
     // Scale the full-size map down to fit the region, preserving aspect ratio
+    pushStyle();
     float scaleX  = rw / width;
     float scaleY  = rh / height;
     float s       = min(scaleX, scaleY);
@@ -120,6 +121,7 @@ hiH = rh * 0.20;
     } else {
       popMatrix();
     }
+    popStyle();
   }
 
   void mousePressedInRegion(float rx, float ry, float rw, float rh) {
@@ -178,6 +180,7 @@ hiH = rh * 0.20;
   }
 
   void drawTooltip(String stateName) {
+    pushStyle();
     int total = counts.containsKey(stateName) ? counts.get(stateName) : 0;
     String label = stateName + ": " + nfc(total) + " flights";
     textSize(13);
@@ -193,9 +196,11 @@ hiH = rh * 0.20;
     noStroke();
     textAlign(LEFT, CENTER);
     text(label, bx + 9, by + boxH / 2);
+    popStyle();
   }
 
   void drawLegend(float rx, float ry, float rw, float rh) {
+    pushStyle();
     int lx = (int)(rx + rw) - (int)(rw / 5) - 80;
     int lw = (int) rw / 5;
     int lh = 14;
@@ -226,6 +231,7 @@ hiH = rh * 0.20;
     text(nfc(mapMax / 2), lx + lw / 2, ly + lh + 3);
     textAlign(RIGHT, TOP);
     text(nfc(mapMax), lx + lw, ly + lh + 3);
+    popStyle();
   }
 
   String nameToCode(String stateName) {

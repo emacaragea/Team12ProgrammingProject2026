@@ -41,6 +41,8 @@ class Airport {
   final private int AIRPORT_FORWARD_ARROW_Y = (int)HOME_BAR_HEIGHT+80+(int)HEADINGS_SIZE-40;
   private long maxTableType;
   final private int NUMBER_OF_FLIGHT_ROWS = 15;
+  private boolean setArrivalAirports;
+
 
 
 
@@ -68,8 +70,17 @@ class Airport {
     this.originCityCode = originCityCode;
     charts = new Charts();
     tableType=0;
+    setArrivalAirports=false;
 
 
+  }
+  //Jesse Margarits, 04/04, Fixing airport screen bug
+
+  boolean getSetArrivalAirports(){
+    return setArrivalAirports;
+  }
+  void setSetArrivalAirports(boolean setArrivalAirports){
+    this.setArrivalAirports=setArrivalAirports;
   }
 
   String getOriginCityCode() {
@@ -460,7 +471,7 @@ class Airport {
     //Niko Charles & Jessie Margarites 16:00 01/04/2026 implement table status buttons
     if (tableStatus == TABLE_STATUS_ARRIVALS) {
       maxTableType = (long) Math.ceil((double) flightsIncoming.size() / NUMBER_OF_FLIGHT_ROWS);
-      drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "RETURN", tableType); //idk what scroll Y is
+      drawFilteredFlightTable(flightsIncoming, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "RETURN", tableType); 
     } else {
       maxTableType = (long) Math.ceil((double) flightsLeaving.size() / NUMBER_OF_FLIGHT_ROWS);
       drawFilteredFlightTable(flightsLeaving, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE", tableType);

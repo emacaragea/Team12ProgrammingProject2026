@@ -1,12 +1,16 @@
 import processing.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // full table
-ArrayList<Flight> fullTableAllFlights = new ArrayList<Flight>();
-ArrayList<Flight> fullTableDayFlights = new ArrayList<Flight>();
+//Jesse Margarits, 04/04, Trying to fix loading bug by implementing synchronized lists
+List<Flight> fullTableAllFlights = Collections.synchronizedList(new ArrayList<Flight>());
+List<Flight> fullTableDayFlights = Collections.synchronizedList(new ArrayList<Flight>());
 
 String fullTableCurrentSort = "Flight No.";
 String fullTableSelectedDate = "01/01/2022";
+
 
 PFont fullTableTitleFont;
 
@@ -28,8 +32,8 @@ boolean fullTableCalOpen = false;
 int fullTableCalYear = 2022;
 int fullTableCalMonth = 1;
 int[] fullTableDataDays = {
-  1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
-  17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+  17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 };
 int fullTableFirstDOW = 6;
 
@@ -43,19 +47,33 @@ float fullTableScrollSpeed = 30;
 boolean fullTableDraggingScrollbar = false;
 float fullTableDragOffsetY = 0;
 
+volatile boolean generalTableValuesLoaded = false;
+
+
 
 // setup
-void fullTableSetup() {
+void fullTableSetup(Table table) {
+  //Jesse Margarits, 04/04, Trying to fix loading bug by implementing Java threads
   fullTableTitleFont = createFont("Helvetica Bold", 14);
-  fullTableCalculateLayout();
-  fullTableLoadFlightData();
-  fullTableFilterByDate();
-  fullTableSortByFlightNum();
+
+  final Table newTable = table;
+  Thread tableThread = new Thread(new Runnable() {
+    public void run() {
+      fullTableCalculateLayout();
+      fullTableLoadFlightData(newTable);
+      fullTableFilterByDate();
+      fullTableSortByFlightNum();
+      generalTableValuesLoaded = true;
+    }
+  }
+  );
+  tableThread.start();
 }
 
 
 // main draw
 void fullTableDraw() {
+  pushStyle();
   background(18, 24, 32);
   fullTableDrawBackgroundDecor();
   fullTableDrawHeader();
@@ -64,9 +82,11 @@ void fullTableDraw() {
   fullTableDrawTableCard();
   fullTableDrawTable();
 
+
   if (fullTableCalOpen) {
     fullTableDrawCalendar();
   }
+  popStyle();
 }
 
 
@@ -86,8 +106,8 @@ void fullTableMousePressed() {
   float trackW = 10;
 
   if (fullTableMaxScroll > 0 &&
-      mouseX >= trackX && mouseX <= trackX + trackW &&
-      mouseY >= tableTop && mouseY <= tableBottom) {
+    mouseX >= trackX && mouseX <= trackX + trackW &&
+    mouseY >= tableTop && mouseY <= tableBottom) {
 
     if (mouseY <= tableTop + 20) {
       fullTableScrollY = constrain(fullTableScrollY + fullTableScrollSpeed, -fullTableMaxScroll, 0);
@@ -120,7 +140,7 @@ void fullTableMousePressed() {
   fullTableDraggingScrollbar = false;
 
   if (mouseX >= fullTableCalBtnX && mouseX <= fullTableCalBtnX + fullTableCalBtnW &&
-      mouseY >= fullTableCalBtnY && mouseY <= fullTableCalBtnY + fullTableCalBtnH) {
+    mouseY >= fullTableCalBtnY && mouseY <= fullTableCalBtnY + fullTableCalBtnH) {
     fullTableCalOpen = !fullTableCalOpen;
     return;
   }
@@ -150,19 +170,19 @@ void fullTableMousePressed() {
     }
 
     if (mouseX < fullTableCalX || mouseX > fullTableCalX + fullTableCalW ||
-        mouseY < fullTableCalY || mouseY > fullTableCalY + fullTableCalH) {
+      mouseY < fullTableCalY || mouseY > fullTableCalY + fullTableCalH) {
       fullTableCalOpen = false;
     }
     return;
   }
 
   if (mouseX >= fullTableButtonX1 && mouseX <= fullTableButtonX1 + fullTableButtonW &&
-      mouseY >= fullTableButtonY && mouseY <= fullTableButtonY + fullTableButtonH) {
+    mouseY >= fullTableButtonY && mouseY <= fullTableButtonY + fullTableButtonH) {
     fullTableSortByFlightNum();
   }
 
   if (mouseX >= fullTableButtonX2 && mouseX <= fullTableButtonX2 + fullTableButtonW &&
-      mouseY >= fullTableButtonY && mouseY <= fullTableButtonY + fullTableButtonH) {
+    mouseY >= fullTableButtonY && mouseY <= fullTableButtonY + fullTableButtonH) {
     fullTableSortByDistance();
   }
 }
@@ -230,18 +250,24 @@ void fullTableCalculateLayout() {
 
 
 // data
-void fullTableLoadFlightData() {
-  Table table = loadTable("flights_full.csv", "header");
+//Jesse Margarites, 7PM, 03/04, implementing a new loading screen for the general table
+void fullTableLoadFlightData(Table table) {
+  //generalTableValuesLoaded=false;
+  //Table table = loadTable("flights_full.csv", "header");
 
   if (table == null) {
     println("Could not load allFlights.csv");
     return;
   }
 
-  fullTableAllFlights.clear();
+  int total = table.getRowCount();
 
+  //fullTableAllFlights.clear();
+  //Jesse Margarits, 04/04, Trying to fix loading bug by creating a temp arrayList 
+  List<Flight> temp = new ArrayList<Flight>();
+  int counter =0;
   for (TableRow row : table.rows()) {
-    fullTableAllFlights.add(new Flight(
+    temp.add(new Flight(
       fullTableGetSafeString(row, "FL_DATE"),
       fullTableGetSafeString(row, "MKT_CARRIER"),
       fullTableGetSafeIntFromString(fullTableGetSafeString(row, "MKT_CARRIER_FL_NUM")),
@@ -254,8 +280,19 @@ void fullTableLoadFlightData() {
       fullTableGetSafeInt(row, "CANCELLED"),
       fullTableGetSafeInt(row, "DIVERTED"),
       fullTableGetSafeDouble(row, "DISTANCE")
-    ));
+      ));
+    counter++;
+    loadProgress = (float)(counter + 1) / total; 
+    //Jesse Margarits, 04/04, Trying to fix loading bug by creating letting the thread sleeo every few lines
+    if (counter %50 == 0) {
+      try {
+        Thread.sleep(1);
+      }
+      catch (InterruptedException e) {
+      }
+    }
   }
+  fullTableAllFlights = Collections.synchronizedList(temp);
 }
 
 void fullTableFilterByDate() {
@@ -278,14 +315,18 @@ void fullTableFilterByDate() {
 
 
 // draw helpers
+//Jesse Margarits, 04/04, Trying to fix loading bug by pushing and poping style on all methods
 void fullTableDrawBackgroundDecor() {
+  pushStyle();
   noStroke();
   fill(25, 35, 48, 70);
   ellipse(width - 160, 110, 280, 280);
   ellipse(130, height - 70, 220, 220);
+  popStyle();
 }
 
 void fullTableDrawHeader() {
+  pushStyle();
   fill(240);
   textAlign(LEFT, TOP);
   textSize(28);
@@ -296,11 +337,12 @@ void fullTableDrawHeader() {
   text("Showing " + fullTableDayFlights.size() + " flights for " + fullTableSelectedDate + "  |  Sorted by " + fullTableCurrentSort, 40, 62);
 
   fullTableDrawDateButton();
+  popStyle();
 }
 
 void fullTableDrawDateButton() {
   boolean hov = mouseX >= fullTableCalBtnX && mouseX <= fullTableCalBtnX + fullTableCalBtnW &&
-                mouseY >= fullTableCalBtnY && mouseY <= fullTableCalBtnY + fullTableCalBtnH;
+    mouseY >= fullTableCalBtnY && mouseY <= fullTableCalBtnY + fullTableCalBtnH;
 
   fill(fullTableCalOpen ? color(82, 156, 214) : hov ? color(52, 66, 84) : color(35, 45, 58));
   stroke(fullTableCalOpen ? color(120, 190, 245) : color(70, 90, 110));
@@ -319,6 +361,7 @@ void fullTableDrawButtons() {
 }
 
 void fullTableDrawSortButton(float x, float y, float w, float h, String label, boolean active) {
+  pushStyle();
   boolean hov = mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h;
 
   fill(active ? color(82, 156, 214) : hov ? color(52, 66, 84) : color(35, 45, 58));
@@ -329,9 +372,11 @@ void fullTableDrawSortButton(float x, float y, float w, float h, String label, b
   textAlign(CENTER, CENTER);
   textSize(14);
   text(label, x + w / 2, y + h / 2);
+  popStyle();
 }
 
 void fullTableDrawBookFlightButton() {
+  pushStyle();
   boolean hov = fullTableOverBookFlightButton();
 
   fill(hov ? color(100, 170, 230) : color(82, 156, 214));
@@ -343,23 +388,27 @@ void fullTableDrawBookFlightButton() {
   textAlign(CENTER, CENTER);
   textSize(14);
   text("Book Flight", fullTableBookBtnX + fullTableBookBtnW / 2, fullTableBookBtnY + fullTableBookBtnH / 2);
+  popStyle();
 }
 
 boolean fullTableOverBookFlightButton() {
   return mouseX >= fullTableBookBtnX && mouseX <= fullTableBookBtnX + fullTableBookBtnW &&
-         mouseY >= fullTableBookBtnY && mouseY <= fullTableBookBtnY + fullTableBookBtnH;
+    mouseY >= fullTableBookBtnY && mouseY <= fullTableBookBtnY + fullTableBookBtnH;
 }
 
 void fullTableDrawTableCard() {
+  pushStyle();
   noStroke();
   fill(28, 36, 46);
   rect(fullTableCardX, fullTableCardY, fullTableCardW, fullTableCardH, 18);
 
   fill(36, 46, 58);
   rect(fullTableCardX, fullTableCardY, fullTableCardW, 50, 18, 18, 0, 0);
+  popStyle();
 }
 
 void fullTableDrawTable() {
+  pushStyle();
   if (fullTableDayFlights.size() == 0) {
     fill(150, 165, 180);
     textAlign(CENTER, CENTER);
@@ -428,6 +477,7 @@ void fullTableDrawTable() {
   }
 
   fullTableDrawScrollbar(tableTop, tableHeight, totalContentHeight);
+  popStyle();
 }
 
 void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalContentHeight) {
@@ -441,7 +491,7 @@ void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalConten
   rect(trackX, tableTop, trackW, tableHeight, 5);
 
   boolean upHov = mouseX >= trackX && mouseX <= trackX + trackW &&
-                  mouseY >= tableTop && mouseY <= tableTop + 20;
+    mouseY >= tableTop && mouseY <= tableTop + 20;
   fill(upHov ? color(100, 170, 230) : color(82, 156, 214));
   rect(trackX, tableTop, trackW, 20, 5);
 
@@ -451,7 +501,7 @@ void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalConten
   text("▲", trackX + trackW / 2, tableTop + 10);
 
   boolean downHov = mouseX >= trackX && mouseX <= trackX + trackW &&
-                    mouseY >= tableTop + tableHeight - 20 && mouseY <= tableTop + tableHeight;
+    mouseY >= tableTop + tableHeight - 20 && mouseY <= tableTop + tableHeight;
   fill(downHov ? color(100, 170, 230) : color(82, 156, 214));
   rect(trackX, tableTop + tableHeight - 20, trackW, 20, 5);
 
@@ -465,7 +515,7 @@ void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalConten
   float thumbY = thumbAreaTop + scrollRatio * (thumbAreaH - thumbH);
 
   boolean thumbHov = mouseX >= trackX && mouseX <= trackX + trackW &&
-                     mouseY >= thumbY && mouseY <= thumbY + thumbH;
+    mouseY >= thumbY && mouseY <= thumbY + thumbH;
 
   fill(fullTableDraggingScrollbar || thumbHov ? color(120, 190, 245) : color(82, 156, 214));
   rect(trackX, thumbY, trackW, thumbH, 5);
@@ -494,6 +544,7 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
 }
 
 void fullTableDrawCalendar() {
+  pushStyle();
   noStroke();
   fill(0, 0, 0, 80);
   rect(fullTableCalX + 4, fullTableCalY + 4, fullTableCalW, fullTableCalH, 14);
@@ -555,6 +606,7 @@ void fullTableDrawCalendar() {
     textSize(11);
     text(str(day), cx, cy);
   }
+  popStyle();
 }
 
 
@@ -590,8 +642,8 @@ String fullTableFormatDate(String rawDate) {
 
   if (parts.length == 3) {
     return nf(fullTableGetSafeIntFromString(parts[0]), 2) + "/" +
-           nf(fullTableGetSafeIntFromString(parts[1]), 2) + "/" +
-           fullTableGetSafeIntFromString(parts[2]);
+      nf(fullTableGetSafeIntFromString(parts[1]), 2) + "/" +
+      fullTableGetSafeIntFromString(parts[2]);
   }
 
   return datePart;
@@ -601,7 +653,8 @@ String fullTableGetSafeString(TableRow row, String column) {
   try {
     String v = row.getString(column);
     return v == null ? "" : trim(v);
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     return "";
   }
 }
@@ -611,7 +664,8 @@ int fullTableGetSafeInt(TableRow row, String column) {
     String v = row.getString(column);
     if (v == null || trim(v).equals("")) return 0;
     return int(trim(v));
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     return 0;
   }
 }
@@ -621,7 +675,8 @@ double fullTableGetSafeDouble(TableRow row, String column) {
     String v = row.getString(column);
     if (v == null || trim(v).equals("")) return 0;
     return Double.parseDouble(trim(v));
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     return 0;
   }
 }
@@ -631,7 +686,8 @@ int fullTableGetSafeIntFromString(String value) {
   if (value.equals("")) return 0;
   try {
     return Integer.parseInt(value);
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     return 0;
   }
 }
@@ -640,7 +696,9 @@ String fullTableAirportCode(Flight f, boolean origin) {
   try {
     if (origin) return f.getOriginAirport().getAirportName();
     return f.getDestinationAirport().getAirportName();
-  } catch (Exception e) {
+  }
+  catch (Exception e) {
     return "";
   }
 }
+
