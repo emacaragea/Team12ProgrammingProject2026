@@ -128,7 +128,7 @@ void tableDraw() {
   }
 
   if (tableState == TABLE_BOOKED) {
-    drawBarcodeScreen("Booking Confirmed");
+    drawBookingConfirmedScreen();   //Amanda de Moraes added draw method for confirmed screen
   }
 }
 
@@ -139,6 +139,9 @@ void tableMousePressed() {
     handleDateScreenClicks();
   } else if (tableState == TABLE_FLIGHT_SELECT) {
     handleFlightScreenClicks();
+  }
+  else if(tableState== TABLE_BOOKED){
+    handleDoneButtonClick();  //Amanda de Moraes added handleButtonClick for booking screen confirmed
   }
 }
 
@@ -1259,5 +1262,194 @@ int dateToNumber(String d) {
   String[] p = split(d, '/');
   if (p.length != 3) return 0;
   return parseSafeInt(p[2]) * 10000 + parseSafeInt(p[0]) * 100 + parseSafeInt(p[1]);
+}
+
+//Amanda de Moraes, 12:06, 7/04, added booking confirmed screen
+// background decoration
+void drawBackgroundDecor() {
+  noStroke();
+
+  fill(25, 35, 48, 70);
+  ellipse(180, 120, 220, 220);
+  ellipse(width - 160, 100, 200, 200);
+  ellipse(width - 220, height - 40, 300, 300);
+
+  fill(36, 46, 58, 35);
+  rect(70, 90, width - 140, height - 180, 28);
+}
+
+// top confirmation panel
+void drawConfirmedPanel() {
+  float x = 120;
+  float y = 70;
+  float w = width - 240;
+  float h = 180;
+
+  noStroke();
+  fill(0, 0, 0, 55);
+  rect(x + 8, y + 10, w, h, 22);
+
+  fill(28, 36, 46);
+  rect(x, y, w, h, 22);
+
+  fill(36, 46, 58);
+  rect(x, y, w, 58, 22, 22, 0, 0);
+
+  drawCheckBadge(x + 78, y + 110);
+
+  fill(240);
+  textFont(titleFont);
+  textAlign(LEFT, CENTER);
+  text("Booking Confirmed", x + 145, y + 96);
+
+  fill(170, 185, 205);
+  textFont(bodyFont);
+  text("Your reservation has been successfully completed.", x + 145, y + 132);
+}
+
+// green check badge
+void drawCheckBadge(float cx, float cy) {
+  noStroke();
+  fill(70, 190, 120);
+  circle(cx, cy, 72);
+
+  stroke(255);
+  strokeWeight(6);
+  noFill();
+  line(cx - 14, cy + 2, cx - 1, cy + 16);
+  line(cx - 1, cy + 16, cx + 20, cy - 10);
+}
+
+// lower ticket-style card
+void drawTicketCard() {
+  float x = 150;
+  float y = 305;
+  float w = width - 300;
+  float h = 215;
+
+  noStroke();
+  fill(0, 0, 0, 55);
+  rect(x + 8, y + 10, w, h, 24);
+
+  fill(28, 36, 46);
+  rect(x, y, w, h, 24);
+
+  fill(36, 46, 58);
+  rect(x, y, 205, h, 24, 0, 0, 24);
+
+  fill(18, 24, 32);
+  circle(x + 205, y + 54, 26);
+  circle(x + 205, y + h - 54, 26);
+
+  stroke(90, 110, 130);
+  strokeWeight(2);
+  for (int i = 0; i < 12; i++) {
+    line(x + 205, y + 20 + i * 16, x + 205, y + 28 + i * 16);
+  }
+  noStroke();
+
+  fill(82, 156, 214);
+  rect(x + 28, y + 34, 110, 18, 6);
+
+  fill(150, 165, 180);
+  rect(x + 28, y + 78, 90, 12, 5);
+  rect(x + 28, y + 102, 70, 12, 5);
+  rect(x + 28, y + 126, 95, 12, 5);
+
+  fill(220);
+  rect(x + 245, y + 34, 160, 18, 6);
+
+  fill(150, 165, 180);
+  rect(x + 245, y + 78, 190, 12, 5);
+  rect(x + 245, y + 102, 210, 12, 5);
+  rect(x + 245, y + 126, 160, 12, 5);
+
+  rect(x + 245, y + 165, 80, 12, 5);
+  rect(x + 345, y + 165, 80, 12, 5);
+  rect(x + 445, y + 165, 80, 12, 5);
+
+  fill(33, 42, 54);
+  rect(x + w - 205, y + 36, 145, 110, 14);
+
+  drawBarcode(x + w - 188, y + 52, 112, 78);
+
+  fill(170, 185, 205);
+  textFont(smallFont);
+  textAlign(CENTER, CENTER);
+  text("reference", x + w - 132, y + 165);
+
+  fill(220);
+  rect(x + w - 180, y + 182, 95, 10, 4);
+}
+
+// barcode graphic
+void drawBarcode(float x, float y, float w, float h) {
+  stroke(210, 220, 230);
+  strokeWeight(2);
+
+  float currentX = x;
+  while (currentX < x + w) {
+    line(currentX, y, currentX, y + h);
+    currentX += random(2, 4);
+  }
+
+  noStroke();
+}
+
+// done button
+void drawDoneButton() {
+  float w = 220;
+  float h = 54;
+  float x = width / 2 - w / 2;
+  float y = height - 95;
+
+  boolean hov = mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h;
+
+  noStroke();
+  fill(0, 0, 0, 45);
+  rect(x + 5, y + 7, w, h, 16);
+
+  fill(hov ? color(92, 170, 230) : color(82, 156, 214));
+  stroke(120, 190, 245);
+  strokeWeight(1.5);
+  rect(x, y, w, h, 16);
+
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textFont(bodyFont);
+  text("Done", x + w / 2, y + h / 2);
+}
+
+void drawBookingConfirmedScreen() {
+  background(18, 24, 32);
+  drawBackgroundDecor();
+  drawConfirmedPanel();
+  drawTicketCard();
+  drawDoneButton();
+}
+
+void handleDoneButtonClick() {
+  float w = 220;
+  float h = 54;
+  float x = width / 2 - w / 2;
+  float y = height - 95;
+
+  if (mouseX >= x && mouseX <= x + w &&
+      mouseY >= y && mouseY <= y + h) {
+
+    // reset booking table state
+    tableState = TABLE_DATE_SELECT;
+    selectedGoFlight = null;
+    selectedBackFlight = null;
+    goScrollY = 0;
+    backScrollY = 0;
+    showGoCalendar = false;
+    showBackCalendar = false;
+
+    // go back to home screen
+    currentView = CURRENT_VIEW_HOME;
+    viewHistIndex++;
+    viewHistory.add(viewHistIndex, currentView);
+  }
 }
 
