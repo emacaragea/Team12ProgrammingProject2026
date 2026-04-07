@@ -300,13 +300,6 @@ class FlightMapScreen {
           return;
         }
       }
-      for (int i = 0; i < arcs.length; i++) {
-        if (arcs[i].isClicked()) {
-          selectedArc   = arcs[i];
-          currentScreen = 1;
-          return;
-        }
-      }
       showRoutesPanel = false;
       mapView.startDrag();
     }

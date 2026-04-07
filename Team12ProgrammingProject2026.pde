@@ -356,7 +356,7 @@ void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) 
 
 void loadMapAirport(AirportCoordinates ac) {
   if (!airportsByCode.containsKey(ac.code)) {
-    Airport airport = new Airport(ac.city, 0);
+    Airport airport = new Airport(ac.city, 0, ac.code);
     String path = "data/flights/origin_states/" + ac.stateCode + ".csv";
     try {
       BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path)));
