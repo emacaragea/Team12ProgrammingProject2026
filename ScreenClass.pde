@@ -287,11 +287,18 @@ class Screen{
             Airport chosen = filteredAirports.get(i);
             searchText = chosen.getAirportName();
 
-            setSelectedAirport(chosen);
-            setScreenType(AIRPORT_SCREEN);
+            //setSelectedAirport(chosen);
+            //setScreenType(AIRPORT_SCREEN);
 
             searchActive = false;
             filteredAirports.clear();
+
+            airportName = chosen.getAirportName();
+            thisAirport = chosen;
+            currentView = CURRENT_VIEW_AIRPORT;
+            viewHistIndex++;
+            viewHistory.add(viewHistIndex, currentView);
+            screen2 = new Screen(2);
             return;
         }
     }
