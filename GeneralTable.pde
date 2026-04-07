@@ -431,6 +431,7 @@ void fullTableDrawTable() {
   float colDest = startX + usable * 0.47;
   float colDistance = startX + usable * 0.62;
   float colStatus = startX + usable * 0.76;
+  float colDiverted = startX + usable * 0.90;
 
   textFont(fullTableTitleFont);
   fill(210, 220, 230);
@@ -443,6 +444,8 @@ void fullTableDrawTable() {
   text("Destination", colDest, headerY);
   text("Distance", colDistance, headerY);
   text("Status", colStatus, headerY);
+  text("Diverted", colDiverted, headerY);
+
 
   float tableTop = fullTableCardY + 55;
   float tableBottom = fullTableCardY + fullTableCardH - 10;
@@ -474,10 +477,44 @@ void fullTableDrawTable() {
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDistance, y);
 
     fullTableDrawStatusPill(f, colStatus, y);
+    fullTableDrawCheckboxes(f, colDiverted, y, rowH);
   }
 
   fullTableDrawScrollbar(tableTop, tableHeight, totalContentHeight);
   popStyle();
+}
+    //Jesse Margarites, 11AM, 07/04, implemented diverted checkboxes
+
+void fullTableDrawCheckboxes(Flight f, float colDiverted, float cy, float rowH){
+    pushStyle();
+    float checkbox_width = rowH/2;
+    noFill();
+    stroke(255, 255, 255);
+    strokeWeight(1.2);
+    float checkbox_x_coordinate = colDiverted;//+17
+    float checkbox_y_coordinate = cy-13;
+
+    //rect(checkbox_x_coordinate, checkbox_y_coordinate, checkbox_width, checkbox_width);
+    if (f.getFlightDiverted() == 1) {
+      strokeWeight(1.2);
+      line(checkbox_x_coordinate+4, checkbox_y_coordinate+9, checkbox_x_coordinate+ checkbox_width/2-3, 
+        checkbox_y_coordinate+ checkbox_width-5);
+      line(checkbox_x_coordinate+ checkbox_width/2-3 , checkbox_y_coordinate+ checkbox_width-5, 
+        checkbox_x_coordinate+ checkbox_width-3, checkbox_y_coordinate+3);
+
+    }else{
+      pushStyle();
+      stroke(255, 255, 255);
+      strokeWeight(1.2);
+      line(checkbox_x_coordinate+4, checkbox_y_coordinate+4, checkbox_x_coordinate+ checkbox_width-4, 
+        checkbox_y_coordinate+ checkbox_width-4);
+      
+      line(checkbox_x_coordinate+ checkbox_width-4, checkbox_y_coordinate+4, 
+        checkbox_x_coordinate+4, checkbox_y_coordinate+ checkbox_width-4);
+
+    }
+    popStyle();
+
 }
 
 void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalContentHeight) {
@@ -525,13 +562,40 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
   String status = "On Time";
   int pillColor = color(70, 170, 120);
 
+    //Jesse Margarites, 11AM, 07/04, implemented delayed status
+    String actualArrivalTimeString;
+    String scheduledArrivalTimeString;
+    int actualArrivalTime;
+    int scheduledArrivalTime;
+    actualArrivalTimeString = f.getActualArrivalTime();
+    scheduledArrivalTimeString = f.getScheduledArrivalTime();
+    if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
+      && !scheduledArrivalTimeString.trim().isEmpty()) {
+        actualArrivalTime = Integer.valueOf(actualArrivalTimeString.trim());
+        scheduledArrivalTime = Integer.valueOf(scheduledArrivalTimeString.trim());
+    }else {
+      actualArrivalTime = 0;
+      scheduledArrivalTime = 0;
+    }
+ 
+
+
   if (f.getFlightCancelled() == 1) {
     status = "Canceled";
     pillColor = color(200, 70, 70);
+  }
+  else if ( actualArrivalTime > scheduledArrivalTime) {
+      status="Delayed";
+      pillColor = color(220, 150, 60);
+
+  }
+
+  /*
   } else if (f.getFlightDiverted() == 1) {
     status = "Diverted";
     pillColor = color(220, 150, 60);
   }
+    */
 
   fill(pillColor);
   noStroke();
