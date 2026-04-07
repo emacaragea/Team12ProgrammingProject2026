@@ -168,21 +168,28 @@ class State {
 
     //PFont AIPORT_NAMES_FONT = createFont("Trispace", SUBHEADINGS_SIZE);
     //example
-    int textXCoordinate = 20;
-    int textYCoordinate = 80;
+    int textXCoordinate = 35;
+    int textYCoordinate = 100;
     fill(255);
     textAlign(LEFT,CENTER);
     textFont(TITLE_FONT);
-    text(stateName, textXCoordinate-16, textYCoordinate); //was textXcord-10
+    textSize(38);
+    text(stateName, textXCoordinate - 3, textYCoordinate);
 
-
-    fill(255, 255, 255);
-    textFont(TITLE_FONT);
+    fill(150, 165, 180);
+    textFont(SMALL_FONT);
     textAlign(LEFT, CENTER);
     textSize(18);
-    textYCoordinate+=40;
-    text("Airports: ", textXCoordinate, textYCoordinate);
-    fill(255, 255, 255);
+    textYCoordinate+=42;
+    text("Click on an airport to see its details", textXCoordinate, textYCoordinate);
+
+    fill(255);
+    textFont(SMALL_FONT);
+    textAlign(LEFT, CENTER);
+    textSize(30);
+    textYCoordinate+=55;
+    text("Airports:", textXCoordinate, textYCoordinate);
+    fill(255);
     int maxCounter;
     
     // Orla Kealy, 21:00 PM, 01/04/2026
@@ -233,7 +240,7 @@ class State {
         } else {
           fill(255);
         }
-        textSize(18);
+        textSize(15);
         textFont(SMALL_FONT);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
@@ -257,13 +264,11 @@ class State {
           fill(255);
         }
         textFont(SMALL_FONT);
+        textSize(15);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
     }
-    fill(255, 255, 255);
-    textFont(SMALL_FONT);
-    text("Click on an airport to see it's details", textXCoordinate, SCREEN_HEIGHT-20);
     
   }
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method

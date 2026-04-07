@@ -172,12 +172,12 @@ void drawDateSelectionScreen() {
   textFont(titleFont);
   textAlign(CENTER, TOP);
   textSize(28);
-  text("Book a Flight", width / 2, 70);
+  text("Book a Flight", width / 2, 130);
 
   fill(150, 165, 180);
   textFont(bodyFont);
   textSize(16);
-  text("Choose your departure and return dates first.", width / 2, 122);
+  text("Choose your departure and return dates first.", width / 2, 182);
 
   drawBigDateButton(goBtnX, goBtnY, goBtnW, goBtnH, "Select Departure Date", goDate, showGoCalendar);
   drawBigDateButton(backBtnX, backBtnY, backBtnW, backBtnH, "Select Return Date", backDate, showBackCalendar);
@@ -954,17 +954,17 @@ void calculateTableLayout() {
   goBtnW = 320;
   goBtnH = 110;
   goBtnX = width / 2 - goBtnW - 30;
-  goBtnY = 190;
+  goBtnY = 250;
 
   backBtnW = 320;
   backBtnH = 110;
   backBtnX = width / 2 + 30;
-  backBtnY = 190;
+  backBtnY = 250;
 
   continueBtnW = 220;
   continueBtnH = 55;
   continueBtnX = width / 2 - continueBtnW / 2;
-  continueBtnY = 360;
+  continueBtnY = 420;
 
   sortBtnW = 180;
   sortBtnH = 40;

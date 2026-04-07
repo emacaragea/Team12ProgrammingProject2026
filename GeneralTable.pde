@@ -234,9 +234,9 @@ void fullTableCalculateLayout() {
   fullTableCardW = width - 60;
   fullTableCardH = height - fullTableCardY - 30;
 
-  fullTableCalBtnW = 190;
+  fullTableCalBtnW = fullTableBookBtnW;
   fullTableCalBtnH = 30;
-  fullTableCalBtnX = width - fullTableCalBtnW - 120;
+  fullTableCalBtnX = fullTableBookBtnX;
   fullTableCalBtnY = 57;
 
   fullTableCalW = fullTableCalBtnW;
