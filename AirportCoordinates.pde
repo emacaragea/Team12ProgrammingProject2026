@@ -5,15 +5,16 @@
 class AirportCoordinates {
   FlightMapScreen screen;
 
-  String  code;
+  String  code;      
   String  city;
-  String  stateCode;
-  float   lat, lon;
+  String  stateCode; //  used when clicking an airport to load the correct state's flight data
+  float   lat, lon;  // geographic coordinates, converted to screen x/y in the constructor
   float   x, y;
   boolean hovered;
-  float   dotSize;
-  float   currentSize;
+  float   dotSize;  
+  float   currentSize; 
 
+  // converts lat/lon to pixel coordinates immediately so draw() doesnt need to recalculate each frame, 12/03/2026
   AirportCoordinates(FlightMapScreen screen, String code, String city,
                      float lat, float lon, int rank, String stateCode) {
     this.screen      = screen;
@@ -22,12 +23,13 @@ class AirportCoordinates {
     this.stateCode   = stateCode;
     this.lat         = lat;
     this.lon         = lon;
-    this.x           = screen.lonToX(lon);
+    this.x           = screen.lonToX(lon); 
     this.y           = screen.latToY(lat);
-    this.dotSize     = map(rank, 1, 15, 14, 7);
+    this.dotSize     = map(rank, 1, 15, 14, 7); 
     this.currentSize = dotSize;
   }
 
+  //hover radius is tighter for the NY cluster (JFK/LGA/EWR) to avoid triggering the wrong airport
   void draw() {
     boolean tight = code.equals("JFK") || code.equals("LGA") || code.equals("EWR");
     float hoverRadius = tight ? currentSize / 2 : 15;
@@ -55,24 +57,26 @@ class AirportCoordinates {
     return dist(screen.mapView.mapMouseX(), screen.mapView.mapMouseY(), x, y) < clickRadius;
   }
 
+  // label position is special cased for the crowded NJ/NY area so labels dont collide
   void drawCodeLabel() {
     fill(hovered ? color(255, 220, 0) : color(255, 255, 255, 220));
     noStroke();
     textFont(screen.fontBold);
     textSize(11);
     if (code.equals("EWR")) {
-      textAlign(RIGHT, CENTER);
+      textAlign(RIGHT, CENTER);  // EWR label goes left of the dot to avoid JFK
       text(code, x - currentSize / 2 - 4, y);
     } else if (code.equals("LGA")) {
-      textAlign(LEFT, CENTER);
+      textAlign(LEFT, CENTER);   //LGA label goes right of the dot to avoid JFK
       text(code, x + currentSize / 2 + 4, y);
     } else {
-      textAlign(CENTER, TOP);
+      textAlign(CENTER, TOP);    // all other airports label below the dot
       text(code, x, y + currentSize / 2 + 4);
     }
     textFont(screen.fontRegular);
   }
 
+  // popup label shows full city name on hover, positioned to avoid going off-screen
   void drawHoverLabel() {
     String label = code + "  " + city;
 
@@ -83,11 +87,11 @@ class AirportCoordinates {
 
     float labelX, labelY;
     if (code.equals("JFK")) {
-      // draw above the dot so it doesn't overlap LGA
+      // JFK label goes above the dot so it doesnt overlap LGA which is directly to the left
       labelX = x - boxW / 2;
       labelY = y - currentSize / 2 - boxH - 6;
     } else {
-      labelX = x + currentSize / 2 + 8;
+      labelX = x + currentSize / 2 + 8; // all others appear to the right of the dot
       labelY = y - 8;
     }
 

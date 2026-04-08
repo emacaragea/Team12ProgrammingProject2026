@@ -83,16 +83,17 @@ void settings() {
 //   screen1 = new Screen(3);
 // }
 
-//method that only loads the data, called in setup as a thread so loading screen can be displayed while data is being loaded
+//Ema Caragea, restructured setup to show the loading screen immediately and load data in the background
+//Ema Caragea, loading the data in a thread means draw() keeps running so the loading animation is smooth, 26/03/2026
 void setup() {
-        frameRate(30); // add this
+  frameRate(30);
 
+  // create the loading screen first so it appears on the very first frame before any data is loaded
   loading = new Loading("HMS", "Home Screen");
   loading.loadingSetup();
-  thread("loadData");
+  thread("loadData"); // runs loadData() on a background thread, setting dataLoaded=true when done
 
-
-  //tableSetup();
+  
 }
 
 //new "setup" method
@@ -104,9 +105,6 @@ void loadData() {
   stateCodeToName = buildCodeToNameMap();
   stateFlightCounts = new HashMap<String, Integer>();
   
-
-  // fullTableSetup() and tableSetup() are called lazily in draw() to avoid
-  // blocking the loading screen (loadStrings/loadTable on a background thread stalls draw)
 
   // Count flights per state and track progress
   String path = "data/flights/origin_states/";
@@ -479,18 +477,20 @@ String nextToken(Scanner thisScanner) {
 //Ema Caragea, added home screen when running the program, 24/03/2026, 21:00
 void draw() {
 
-  //Ema caragea, added loading screen while data is being loaded, 26/03/2026, 9:00
+  //Ema Caragea, added loading screen while data is being loaded
+  //Ema Caragea, returning early here means nothing else draws until the background thread finishes loading
   if(!dataLoaded){
     loading.loadingDraw();
     return;
   }
-  // Build GeoMap-dependent objects on the main thread to avoid blue flash from background-thread rendering
+  //  GeoMap must be created on the main thread - creating it on the background thread causes a blue flash, 26/03/2026
+  //  so homeScreen is null until the first frame after dataLoaded becomes true, then we build it here
   if (homeScreen == null) {
     usMap      = new USMapScreen(this, stateFlightCounts);
     homeScreen = new HomeScreen(usMap);
     viewHistIndex = 0;
     viewHistory.add(viewHistIndex, CURRENT_VIEW_HOME);
-    return;
+    return; // return after setup so the first real draw call has everything ready
   }
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_HOME) {
     homeScreen.draw();
