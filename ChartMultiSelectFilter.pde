@@ -91,6 +91,8 @@ class chartMultiSelectFilter
         textAlign(LEFT, CENTER);
         textSize(12);
 
+        float baseX = x + 40;
+
         // Triangle animation
         if (opened)
         {
@@ -118,7 +120,7 @@ class chartMultiSelectFilter
 
         // Header
         boolean hoveringHeader =
-            mouseX > x && mouseX < x + dropdownWidth &&
+            mouseX > baseX && mouseX < baseX + dropdownWidth &&
             mouseY > y && mouseY < y + 20;
 
         if (hoveringHeader)
@@ -131,13 +133,13 @@ class chartMultiSelectFilter
         }
 
         stroke(0);
-        rect(x + 40, y, dropdownWidth, 20);
+        rect(baseX, y, dropdownWidth, 20);
 
         fill(0);
-        text("Filter", x + 45, y + 10);
+        text("Filter", baseX + 5, y + 10);
 
         // Triangle rotation
-        float triX = x + dropdownWidth - 15;
+        float triX = baseX + dropdownWidth - 15;
         float triY = y + 10;
 
         pushMatrix();
@@ -145,7 +147,7 @@ class chartMultiSelectFilter
         rotate(triangleRotation);
         fill(0);
         noStroke();
-        triangle(-5+40, -4, 5+40, -4, 0+40, 4);
+        triangle(-5, -4, 5, -4, 0, 4);
         popMatrix();
 
         float animatedHeight = dropdownHeight * panelAnim;
@@ -154,7 +156,7 @@ class chartMultiSelectFilter
         // Search box
         fill(255);
         stroke(0);
-        rect(x+40, y + 20, dropdownWidth, 20);
+        rect(baseX, y + 20, dropdownWidth, 20);
         
         int blink = (millis()/500)%2;
         String displayText = "Search: " + searchText + (blink == 0 ? "|" : "");
@@ -165,7 +167,7 @@ class chartMultiSelectFilter
         // Panel background
         fill(245);
         stroke(0);
-        rect(x+40, y + 40, dropdownWidth, animatedHeight);
+        rect(baseX, y + 40, dropdownWidth, animatedHeight);
 
         ArrayList<Integer> visible = getVisibleIndices();
         int maxVisibleItems = int((dropdownHeight - selectAllHeight)/itemHeight);
@@ -175,7 +177,7 @@ class chartMultiSelectFilter
         if (panelAnim > 0.25)
         {
             boolean hoveringSelectAll =
-                mouseX > x+5 && mouseX < x+dropdownWidth-5 &&
+                mouseX > baseX + 5 && mouseX < baseX + dropdownWidth-5 &&
                 mouseY > selectAllY && mouseY < selectAllY+selectAllHeight;
 
             selectAllHoverAnim = lerp(selectAllHoverAnim, hoveringSelectAll ? 1 : 0, 0.2);
@@ -189,14 +191,14 @@ class chartMultiSelectFilter
                 fill(230);
             }
 
-            rect(x + 5+40, selectAllY, dropdownWidth - 10, selectAllHeight);
+            rect(baseX + 5, selectAllY, dropdownWidth - 10, selectAllHeight);
 
             float size = lerp(12, 14, selectAllHoverAnim);
             textSize(size);
 
             fill(0);
             textAlign(CENTER, CENTER);
-            text("Select All", x+dropdownWidth / 2, selectAllY+selectAllHeight / 2);
+            text("Select All", baseX + dropdownWidth / 2, selectAllY + selectAllHeight / 2);
 
             textAlign(LEFT, CENTER);
         }
@@ -237,7 +239,7 @@ class chartMultiSelectFilter
             if (hoveringItem)
             {
                 fill(220);
-                rect(x+40, itemY + offset, dropdownWidth, itemHeight);
+                rect(baseX, itemY + offset, dropdownWidth, itemHeight);
             }
 
             labelHoverAnim[index] = lerp(labelHoverAnim[index], hoveringItem ? 1 : 0, 0.2);
@@ -262,7 +264,7 @@ class chartMultiSelectFilter
 
             checkboxScale[index] += checkboxVelocity[index];
 
-            float checkX = x + 5;
+            float checkX = baseX + 5;
             float checkY = itemY + (itemHeight - 14) / 2 + offset;
 
             pushMatrix();
@@ -275,13 +277,13 @@ class chartMultiSelectFilter
 
             fill(255);
             stroke(0);
-            rect(0+40, 0, 14, 14);
+            rect(0, 0, 14, 14);
 
             // Draw tick mark, when selected
             if (selected[index])
             {
-                line(-3+40,0,0+40,3);
-                line(0+40,3,5+40,-4);
+                line(-3,0,0,3);
+                line(0,3,5,-4);
             }
 
             popMatrix();
@@ -292,7 +294,7 @@ class chartMultiSelectFilter
             textSize(labelSize);
 
             fill(0);
-            text(labels[index], x + 25+40, itemY + itemHeight / 2 + offset);
+            text(labels[index], baseX + 25, itemY + itemHeight / 2 + offset);
         }
         popStyle();
     }
