@@ -1,6 +1,6 @@
 // Ema Caragea, added US Interactive Map screen with choropleth, 24/03/2026
 // Ema Caragea, fixed bugs with map  24/03/2026, 21:30
-// Ema Caragea, added Alaska and Hawaii insets, 26/03/2026
+// Ema Caragea, added Alaska and Hawaii inserts, 26/03/2026
 
 //TBD find out why alabama has 0 flights - FIXED!! -by Jesse 25/03/2026
 import org.gicentre.geomap.*;
