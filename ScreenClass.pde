@@ -342,6 +342,7 @@ void handleSearchKey(char key, int keyCode) {
     }
 
     //Jesse Margarits, 04/04, Fixing airport screen bug
+    //Jesse Margarites, 2AM, 08/04, implemented methods to initalise airport from search bar
     void drawAirportScreen(Airport thisAirport, String airportName){
         if(!thisAirport.getSetArrivalAirports()){
             readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
@@ -351,9 +352,18 @@ void handleSearchKey(char key, int keyCode) {
             thisAirport.setSetArrivalAirports(true);
 
         }
-        
-        airportList.add(thisAirport);
-        currentAirportIndex = airportList.size()-1;
+
+        if(thisAirport.getNumberOfFlightsLeaving()==0){
+            readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
+            readFileByArrivalAirport(thisAirport.getOriginCityCode(), thisAirport);
+        }
+
+        if(!airportList.contains(thisAirport)){
+            airportList.add(thisAirport);
+            currentAirportIndex = airportList.size()-1;
+
+        }
+
         //Niko Charles 14:00 02/04/2026 fix pie charts set and draw 
         if (thisAirport != lastAirport) {
             thisChart.clearCharts();

@@ -138,14 +138,25 @@ void loadData() {
   // usMap and homeScreen are constructed on the main thread in draw()
   // to avoid a blue flash from GeoMap interacting with the renderer in a background thread
 
-  try {
+
+  loadAllAirports();
+  dataLoaded = true;
+
+}
+
+//Jesse Margarites, 08/05, implemented correct loading for the search bar
+void loadAllAirports(){
+    try {
     BufferedReader airportReader = new BufferedReader(new FileReader(sketchPath("data/airports.csv")));
     airportReader.readLine();
     String airportLine = airportReader.readLine();
     while (airportLine != null) {
-      String name = airportLine.trim();
-      if (!name.equals("")) {
-        screen1.airportList.add(new Airport(name, 0));
+      Scanner lineScan = new Scanner(airportLine).useDelimiter(",");
+      String originCityCode = nextToken(lineScan);
+      String airportName = nextToken(lineScan);
+      String stateName = nextToken(lineScan);
+      if (!airportName.equals("")) {
+        screen1.airportList.add(new Airport(airportName, 0, originCityCode));
       }
       airportLine = airportReader.readLine();
     }
@@ -153,9 +164,6 @@ void loadData() {
   } catch (Exception e) {
     println("airports.csv error: " + e);
   }
-
-  dataLoaded = true;
-
 }
 
 // Reads StateNameAndCode.csv once and returns the full code-name map
@@ -342,6 +350,53 @@ void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) 
         scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
 
       currentAirport.addFlightsIncoming(newFlight);
+      line = reader.readLine();
+    }
+    reader.close();
+  }
+  catch (Exception e) {
+    println(e);
+  }
+}
+
+//Jesse Margarites, 2AM, 08/04, implemented new read in method
+void readFileByArrivalAirport(String worldAreaCode, Airport currentAirport) {
+  String filePath = "data/flights/origin_airports/";
+  String fileEnding = ".csv";
+  BufferedReader reader;
+  try {
+    reader = new BufferedReader(new FileReader(sketchPath(filePath + worldAreaCode + fileEnding)));
+    String line = reader.readLine();
+    line = reader.readLine(); // skip header
+    while (line != null) {
+      Scanner lineScan = new Scanner(line).useDelimiter(",");
+      String flightDate             = nextToken(lineScan);
+      String airlineCode            = nextToken(lineScan);
+      int    flightNumber           = lineScan.nextInt();
+      String originCityCode         = nextToken(lineScan);
+      String originCityName         = nextToken(lineScan);
+      String originStateCode        = nextToken(lineScan);
+      int    originWorldAreaCode    = lineScan.nextInt();
+      String destinationCityCode    = nextToken(lineScan);
+      String destinationCityName    = nextToken(lineScan);
+      String destinationStateCode   = nextToken(lineScan);
+      int    destinationWorldAreaCode = lineScan.nextInt();
+      String scheduledDepartureTime = nextToken(lineScan);
+      String actualDepartureTime    = nextToken(lineScan);
+      String scheduledArrivalTime   = nextToken(lineScan);
+      String actualArrivalTime      = nextToken(lineScan);
+      int    cancelled              = lineScan.nextInt();
+      int    diverted               = lineScan.nextInt();
+      double airportDistance        = lineScan.nextDouble();
+      lineScan.close();
+
+      Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
+      Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
+      Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
+        originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
+        scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
+
+      currentAirport.addFlightsLeaving(newFlight);
       line = reader.readLine();
     }
     reader.close();

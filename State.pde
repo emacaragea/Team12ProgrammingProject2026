@@ -231,7 +231,7 @@ class State {
         Airport airport = listOfAirports.get(counter);
         String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
         String label = (counter + 1) + ": " + name;
-        textFont(SMALL_FONT);
+        //textFont(SMALL_FONT);
         float w = textWidth(label);
         float h = 20;
         if (mouseX >= textXCoordinate && mouseX <= textXCoordinate + w &&
@@ -240,8 +240,8 @@ class State {
         } else {
           fill(255);
         }
-        textSize(15);
         textFont(SMALL_FONT);
+        textSize(15);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
       }
