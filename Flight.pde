@@ -6,6 +6,7 @@ class Flight{
     private String flightDate;
     private String airlineCode;
     private int flightNumber;
+    private int delayedAmount;
     private Airport originAirport, destinationAirport;
     private String scheduledDepartureTime; 
     private String actualDepartureTime; 
@@ -29,6 +30,7 @@ class Flight{
         this.flightCancelled = flightCancelled;
         this.flightDiverted = flightDiverted;
         this.airportDistanceInMiles = airportDistanceInMiles;
+        this.setFlightDelayAmount(this.scheduledArrivalTime, this.actualArrivalTime);
     }
     //Not sure if we will need se methods but I implemented them for now
     String getFlightDate() {
@@ -103,6 +105,28 @@ class Flight{
     void setAirportDistanceInMiles(double airportDistanceInMiles) {
         this.airportDistanceInMiles = airportDistanceInMiles;
     }
+    //Niko Charles 11:00, 08/04 write method
+    void setFlightDelayAmount(String scheduledArrivalTime, String actualArrivalTime){
+        String actualArrivalTimeString;
+        String scheduledArrivalTimeString;
+        int actualArrivalTimeInt;
+        int scheduledArrivalTimeInt;
+        actualArrivalTimeString = this.getActualArrivalTime();
+        scheduledArrivalTimeString = this.getScheduledArrivalTime();
+        if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
+            && !scheduledArrivalTimeString.trim().isEmpty()) {
+                actualArrivalTimeInt = Integer.valueOf(actualArrivalTimeString.trim());
+                scheduledArrivalTimeInt = Integer.valueOf(scheduledArrivalTimeString.trim());
+        }else {
+            actualArrivalTimeInt = 0;
+        scheduledArrivalTimeInt = 0;
+        }
+        this.delayedAmount = Math.abs(actualArrivalTimeInt-scheduledArrivalTimeInt);
+    }
+
+    int getDelayedAmount(){
+        return delayedAmount;
+    }
     //Amanda de moraes, 18/3, 1:09
     //comparators for the sorting table and helper methods for the format method
      //comparators
@@ -117,6 +141,14 @@ class Flight{
     Comparator<Flight> sortByDistance = new Comparator<Flight>() {
         public int compare(Flight a, Flight b) {
             return Double.compare(a.airportDistanceInMiles, b.airportDistanceInMiles);
+        }
+    };
+
+    //Niko Charles 11:00, 08/04 
+    //comparotor to sort flights by lateness (ascending)
+    Comparator<Flight> sortByLateness = new Comparator<Flight>() {
+        public int compare(Flight a, Flight b) {
+            return Integer.compare(a.delayedAmount, b.delayedAmount);
         }
     };
     
