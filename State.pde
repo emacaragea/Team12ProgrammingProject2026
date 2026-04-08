@@ -1,6 +1,6 @@
 //4PM, 17/03/26, Jesse Margarites
 //cannot make fonts static
-final int MAX_AIRPORT_DISPLAY = 13;
+final int MAX_AIRPORT_DISPLAY = 10;
 final private float CHART_WIDTH = 600;
 final private float CHART_HEIGHT = 200;
 final private int CHART_X_COORDINATE = SCREEN_WIDTH/3+70;
@@ -84,19 +84,23 @@ class State {
     //NO AIRPORT IS NULL
     return null;
   }
+  /*
   void stateMousePressed() {
     //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
       && thisState.getPageNumber()==1) {
+        println("First ");
       thisState.setPageNumber(2);
-    } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
+    } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY*2&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT
       && thisState.getPageNumber()==2) {
-      thisState.setPageNumber(1);
+      thisState.setPageNumber(3);
+       println("Second ");
     }
 
   }
+    */
   int getNumberOfAirports() {
     return listOfAirports.size();
   }
@@ -154,6 +158,7 @@ class State {
     }
   }
 
+  //Jesse Margarites, 08/04, 12PM, updated State airport page to implement more page numbers
   void stateDraw(String stateName) {
     //10PM, 24/03, Jesse Margarites, improving draw aesthetics
     //Jesse Margarites, 11AM, 26/03, updated state draw and fixed fonts
@@ -190,7 +195,6 @@ class State {
     textYCoordinate+=55;
     text("Airports:", textXCoordinate, textYCoordinate);
     fill(255);
-    int maxCounter;
     
     // Orla Kealy, 21:00 PM, 01/04/2026
     // Description: Draws state heat map
@@ -199,8 +203,16 @@ class State {
       stateHeatMap.drawStateHeatMap(CHART_X_COORDINATE, 70, heatmapAirports, heatmapCounts);
     }
 
+    
+    
+    int counter = (pageNumber-1)*MAX_AIRPORT_DISPLAY;
+    int maxCounter= listOfAirports.size();
+
     if (listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
-      maxCounter = MAX_AIRPORT_DISPLAY;
+      maxCounter = counter+MAX_AIRPORT_DISPLAY;
+      if(maxCounter>listOfAirports.size()-1){
+        maxCounter=listOfAirports.size()-1;
+      }
       stroke(255);
       strokeWeight(2);
       noFill();
@@ -228,13 +240,12 @@ class State {
 
       line(STATE_FORWARD_ARROW_X + ARROW_LENGTH, STATE_FORWARD_ARROW_Y,
         STATE_FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, STATE_FORWARD_ARROW_Y + ARROW_HEIGHT);
-    } else {
-      maxCounter = listOfAirports.size();
+      
     }
 
     //Niko Charles 10:00, 25/03/2026 Implemented clickable text links
-    if (pageNumber==1) {
-      for (int counter=0; counter<maxCounter; counter++) {
+   // if (pageNumber==1) {
+      while (counter<maxCounter) {
         /*textYCoordinate+=35;
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
          fill(255, 255, 255);*/
@@ -256,13 +267,15 @@ class State {
         textSize(15);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
+        counter++;
       }
-    } else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
-      for (int counter=MAX_AIRPORT_DISPLAY; counter<listOfAirports.size(); counter++) {
-        textFont(SMALL_FONT);
+    }
+   // } /*else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
+      //for (counter; counter<listOfAirports.size(); counter++) {
+      //  textFont(SMALL_FONT);
         /*textYCoordinate+=35;
          text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-         fill(255, 255, 255);*/
+         fill(255, 255, 255);
         textYCoordinate += 45;
         Airport airport = listOfAirports.get(counter);
         String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
@@ -279,10 +292,8 @@ class State {
         textSize(15);
         text(label, textXCoordinate, textYCoordinate);
         airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
-      }
-    }
-    
-  }
+      }*/
+  
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method
   @Override
     public boolean equals(Object thisObject) {

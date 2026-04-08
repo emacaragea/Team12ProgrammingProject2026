@@ -495,6 +495,7 @@ void draw() {
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_HOME) {
     homeScreen.draw();
     screen1.drawHomeBar();
+    screen1.drawSearchBar();
   } else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_STATE) {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
     screen1.drawHomeBar();
@@ -548,6 +549,7 @@ void mousePressed() {
   }
 
   screen1.mousePressed();
+  screen2.mousePressed();
 
   //Niko Charles, 9:00 26/03/2026 Added Home Button 
   //Niko Charles, 13:30 26/03/2026 Added Back Button
@@ -570,12 +572,13 @@ void mousePressed() {
     //Jesse Margarites, 4PM, 24/03 made interactive forward and back buttons for the State screen
     if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_FORWARD_ARROW_X && mouseX<= STATE_FORWARD_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_FORWARD_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_FORWARD_ARROW_Y+ARROW_HEIGHT
-      && thisState.getPageNumber()==1) {
-      thisState.setPageNumber(2);
-    } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
+      && thisState.getPageNumber()<3) {
+      //Jesse Margarites, 08/04, 12PM, updated State airport page to implement more page numbers
+        thisState.setPageNumber(thisState.getPageNumber()+1);
+    } else if (thisState.getNumberOfAirports()>MAX_AIRPORT_DISPLAY*2&&mouseX>=STATE_BACK_ARROW_X && mouseX<= STATE_BACK_ARROW_X+ARROW_LENGTH
       && mouseY>= STATE_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= STATE_BACK_ARROW_Y+ARROW_HEIGHT
-      && thisState.getPageNumber()==2) {
-      thisState.setPageNumber(1);
+      && thisState.getPageNumber()>1) {
+      thisState.setPageNumber(thisState.getPageNumber()-1);
     }
     thisState.airportClicked();
   } else if (viewHistory.get(viewHistIndex)==CURRENT_VIEW_FLIGHT_MAP) {

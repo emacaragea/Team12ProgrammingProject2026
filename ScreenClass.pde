@@ -203,7 +203,7 @@ class Screen{
         line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
             FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);*/
 
-            drawSearchBar();
+            //drawSearchBar();
         popStyle();
 
     }
