@@ -34,7 +34,7 @@ class Charts
         
         if (enableFilter)
         {
-          filters.add(new chartMultiSelectFilter(labels, values, x + w + 30, y - 40));
+          filters.add(new chartMultiSelectFilter(labels, values, x + w + 30, y - 70));
         }
         else
         {
