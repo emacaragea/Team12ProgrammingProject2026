@@ -577,6 +577,7 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
     String scheduledArrivalTimeString;
     int actualArrivalTime;
     int scheduledArrivalTime;
+    int delayedAmount;
     actualArrivalTimeString = f.getActualArrivalTime();
     scheduledArrivalTimeString = f.getScheduledArrivalTime();
     if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
@@ -587,6 +588,7 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
       actualArrivalTime = 0;
       scheduledArrivalTime = 0;
     }
+    delayedAmount = Math.abs(actualArrivalTime-scheduledArrivalTime);
  
 
 
@@ -694,6 +696,11 @@ void fullTableSortByFlightNum() {
 void fullTableSortByDistance() {
   fullTableDayFlights.sort((a, b) -> Double.compare(a.getAirportDistanceInMiles(), b.getAirportDistanceInMiles()));
   fullTableCurrentSort = "Distance";
+}
+
+void fullTableSortByLateness(){
+  fullTableDayFlights.sort((a, b) -> Integer.compare(a.getDelayedAmount(), b.getDelayedAmount()));
+  fullTableCurrentSort = "Lateness";
 }
 
 
