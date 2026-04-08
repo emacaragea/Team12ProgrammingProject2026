@@ -337,7 +337,7 @@ void fullTableDrawHeader() {
   fill(240);
   textAlign(LEFT, TOP);
   textSize(28);
-  text("Flight Dashboard", 40, 24);
+  //text("Flight Dashboard", 40, 24);
 
   fill(150, 165, 180);
   textSize(14);
