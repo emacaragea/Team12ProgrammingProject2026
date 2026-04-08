@@ -124,8 +124,9 @@ class Flight{
         scheduledArrivalTimeInt = 0;
         }
         this.delayedAmount = Math.abs(actualArrivalTimeInt-scheduledArrivalTimeInt);
+        }else{
+            this.delayedAmount = 5000000;
         }
-        this.delayedAmount = 5000000;
     }
 
     int getDelayedAmount(){

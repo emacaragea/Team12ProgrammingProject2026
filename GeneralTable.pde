@@ -712,7 +712,7 @@ void fullTableSortByDistance() {
 }
 
 void fullTableSortByLateness(){
-  fullTableDayFlights.sort((a,b) -> Integer.compare(a.getFlightCancelled(), b.getFlightCancelled()));
+  //fullTableDayFlights.sort((a,b) -> Integer.compare(a.getFlightCancelled(), b.getFlightCancelled()));
   fullTableDayFlights.sort((a, b) -> Integer.compare(a.getDelayedAmount(), b.getDelayedAmount()));
   fullTableCurrentSort = "Lateness";
 }
