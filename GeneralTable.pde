@@ -494,7 +494,7 @@ void fullTableDrawTable() {
     text(fullTableAirportCode(f, false), colDest, y);
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDistance, y);
 
-    fullTableDrawStatusPill(f, colStatus, y);
+    fullTableDrawStatusPill(f, colStatus, y, fullTableCurrentSort);
     fullTableDrawCheckboxes(f, colDiverted, y, rowH);
   }
 
@@ -579,7 +579,7 @@ void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalConten
   popStyle();
 }
 
-void fullTableDrawStatusPill(Flight f, float x, float y) {
+void fullTableDrawStatusPill(Flight f, float x, float y, String fullTableCurrentSort) {
   pushStyle();
   String status = "On Time";
   int pillColor = color(70, 170, 120);
@@ -609,10 +609,17 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
     pillColor = color(200, 70, 70);
   }
   else if ( actualArrivalTime > scheduledArrivalTime) {
+    //Jesse Margarites & Niko Charles, 1PM, 08/04, implemented a delayed amount to sort by lateness
+
+    if(!fullTableCurrentSort.equals("Lateness")){
       status="Delayed";
+      pillColor = color(220, 150, 60);
+    } else{
+      status = Integer.toString(f.getDelayedAmount())+" min(s)";
       pillColor = color(220, 150, 60);
 
   }
+}
 
   /*
   } else if (f.getFlightDiverted() == 1) {
