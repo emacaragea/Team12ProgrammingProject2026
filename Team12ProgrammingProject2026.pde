@@ -495,6 +495,7 @@ void draw() {
   if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_HOME) {
     homeScreen.draw();
     screen1.drawHomeBar();
+    screen1.drawSearchBar();
   } else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_STATE) {
     screen1.drawStateScreen(selectedStateCode, thisState, stateName);
     screen1.drawHomeBar();
@@ -548,6 +549,7 @@ void mousePressed() {
   }
 
   screen1.mousePressed();
+  screen2.mousePressed();
 
   //Niko Charles, 9:00 26/03/2026 Added Home Button 
   //Niko Charles, 13:30 26/03/2026 Added Back Button
