@@ -1,5 +1,6 @@
 // Amanda de Moraes  - march 15 16:27
 // Loading screen updated, scaled for 1400 x 800
+
 // Ema Caragea connected loading screen to main sketch, 26/03/2026 21:00 
 //Ema Caragea, made the loading bar load proportionately to the time spent on the loading screen, 26/03/2026 17:00
 
@@ -21,6 +22,8 @@ Loading flightTableLoading;
 //Jesse Margarites, 11AM, 26/03, updated loading screen by
 //  1: Making it useable for different screens 
 //  2: pushing and poping styles
+
+//Amana de Moraes, 12/03, added variables for loading screen
 class Loading {
   PFont titleFont;
   PFont labelFont;
@@ -85,6 +88,7 @@ void loadingSetup() {
 
   }
 
+  //Amanda de Moraes, 12/3, added method that draws the header of the loading screen with a loading animation
   void drawBackgroundGlow() {
     pushStyle();
     noStroke();
@@ -97,6 +101,8 @@ void loadingSetup() {
     popStyle();
   }
 
+
+  //Amanda de Moraes, 12/3, added method that draws the header of the loading screen with a loading animation
   void drawHeader() {
     pushStyle();
         background(20, 28, 38);
@@ -116,6 +122,7 @@ void loadingSetup() {
     popStyle();
   }
 
+  //Amanda de Moraes, 12/3, added method that draws the route card in the middle of the loading screen with a loading animation
   void drawRouteCard() {
     pushStyle();
     float cardX = 190;
@@ -184,6 +191,7 @@ void loadingSetup() {
     popStyle();
   }
 
+  //Amanda de Moraes, 12/3, added drawPlaneIcon 
   void drawPlaneIcon(float x, float y) {
   pushStyle();
   imageMode(CENTER);
@@ -192,6 +200,7 @@ void loadingSetup() {
   popStyle();
 }
 
+//Amanda de Moraes, 12/3, added method that draws the progress text at the bottom of the loading screen with a loading animation
   void drawProgressText() {
     pushStyle();
     fill(180, 190, 200);

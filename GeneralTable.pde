@@ -14,6 +14,7 @@ String fullTableSelectedDate = "01/01/2022";
 
 PFont fullTableTitleFont;
 
+//Amanda de Moraes, 25/3, added variables for the general table, including layout dimensions, scroll state, and calendar state
 // layout
 float fullTableButtonW, fullTableButtonH, fullTableButtonY, fullTableButtonGap;
 float fullTableButtonX1, fullTableButtonX2;
@@ -71,7 +72,7 @@ void fullTableSetup(Table table) {
 }
 
 
-// main draw
+// Amanda de Moraes, 25/3, added method that draws the general table
 void fullTableDraw() {
   pushStyle();
   background(18, 24, 32);
@@ -90,7 +91,7 @@ void fullTableDraw() {
 }
 
 
-// mouse
+// Amanda de Moraes, 25/3, added method that handles mouse presses for the general table
 void fullTableMousePressed() {
   if (fullTableOverBookFlightButton()) {
     currentView = CURRENT_VIEW_BOOK_FLIGHT;
@@ -186,7 +187,7 @@ void fullTableMousePressed() {
     fullTableSortByDistance();
   }
 }
-
+//Amanda de Moraes, 25/3, added method that handles mouse drags for the general table (for scrollbar dragging)
 void fullTableMouseDragged() {
   if (!fullTableDraggingScrollbar) return;
 
@@ -213,7 +214,7 @@ void fullTableMouseWheel(MouseEvent event) {
 }
 
 
-// layout
+// Amanda de Moraes, 25/3, added method that calculates the layout for the general table
 void fullTableCalculateLayout() {
   fullTableButtonW = width * 0.16;
   fullTableButtonH = height * 0.055;
@@ -325,6 +326,7 @@ void fullTableDrawBackgroundDecor() {
   popStyle();
 }
 
+//Amanda de Moraes, 25/3, added method that draws the header for the general table
 void fullTableDrawHeader() {
   pushStyle();
   fill(240);
@@ -340,6 +342,7 @@ void fullTableDrawHeader() {
   popStyle();
 }
 
+//Amanda de Moraes, 25/3, added method that draws the date selection button for the general table
 void fullTableDrawDateButton() {
   boolean hov = mouseX >= fullTableCalBtnX && mouseX <= fullTableCalBtnX + fullTableCalBtnW &&
     mouseY >= fullTableCalBtnY && mouseY <= fullTableCalBtnY + fullTableCalBtnH;
@@ -360,6 +363,7 @@ void fullTableDrawButtons() {
   fullTableDrawSortButton(fullTableButtonX2, fullTableButtonY, fullTableButtonW, fullTableButtonH, "Sort by Distance", fullTableCurrentSort.equals("Distance"));
 }
 
+//Amanda de Moraes, 25/3, added method that draws the sort buttons for the general table
 void fullTableDrawSortButton(float x, float y, float w, float h, String label, boolean active) {
   pushStyle();
   boolean hov = mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h;
@@ -375,6 +379,7 @@ void fullTableDrawSortButton(float x, float y, float w, float h, String label, b
   popStyle();
 }
 
+//Amanda de Moraes, 25/3, added method that draws the "Book Flight" button for the general table
 void fullTableDrawBookFlightButton() {
   pushStyle();
   boolean hov = fullTableOverBookFlightButton();
@@ -391,11 +396,14 @@ void fullTableDrawBookFlightButton() {
   popStyle();
 }
 
+//Amanda de Moraes, 25/3, added method that checks if the mouse is hovering over the "Book Flight" button in the general table
 boolean fullTableOverBookFlightButton() {
   return mouseX >= fullTableBookBtnX && mouseX <= fullTableBookBtnX + fullTableBookBtnW &&
     mouseY >= fullTableBookBtnY && mouseY <= fullTableBookBtnY + fullTableBookBtnH;
 }
 
+
+//Amanda de Moraes, 25/3, added method that draws the card background for the general table
 void fullTableDrawTableCard() {
   pushStyle();
   noStroke();
@@ -407,6 +415,7 @@ void fullTableDrawTableCard() {
   popStyle();
 }
 
+//Amanda de Moraes, 25/3, added method that draws the flight table for the general table
 void fullTableDrawTable() {
   pushStyle();
   if (fullTableDayFlights.size() == 0) {
@@ -517,6 +526,7 @@ void fullTableDrawCheckboxes(Flight f, float colDiverted, float cy, float rowH){
 
 }
 
+//Amanda de Moraes, 25/3, added method that draws the scrollbar for the flight table in the general table
 void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalContentHeight) {
   if (fullTableMaxScroll <= 0) return;
 
@@ -607,6 +617,7 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
   text(status, x + 45, y);
 }
 
+//Amanda de Moraes, 25/3, added method that draws the calendar for date selection in the general table
 void fullTableDrawCalendar() {
   pushStyle();
   noStroke();
@@ -674,7 +685,7 @@ void fullTableDrawCalendar() {
 }
 
 
-// sort
+// Amanda de Moraes, 25/3, added methods that sort the flight data in the general table by flight number and distance
 void fullTableSortByFlightNum() {
   fullTableDayFlights.sort((a, b) -> Integer.compare(a.getFlightNumber(), b.getFlightNumber()));
   fullTableCurrentSort = "Flight No.";
@@ -686,7 +697,7 @@ void fullTableSortByDistance() {
 }
 
 
-// small helpers
+// Amanda de Moraes, 25/3, added helper methods for the general table, including date formatting, safe data retrieval from the table, and checking if there is data for a given day
 boolean fullTableHasDataForDay(int day) {
   for (int d : fullTableDataDays) {
     if (d == day) return true;
@@ -694,10 +705,12 @@ boolean fullTableHasDataForDay(int day) {
   return false;
 }
 
+//Jesse Margarits, 04/04, added method that formats a day integer into a date string for the general table
 String fullTableDayString(int day) {
   return nf(fullTableCalMonth, 2) + "/" + nf(day, 2) + "/" + fullTableCalYear;
 }
 
+//Amanda de Moraes, 25/3, added method that formats raw date strings from the flight data into a consistent format for the general table
 String fullTableFormatDate(String rawDate) {
   rawDate = trim(rawDate);
 
@@ -713,6 +726,7 @@ String fullTableFormatDate(String rawDate) {
   return datePart;
 }
 
+//Amanda de Moraes, 25/3, added methods that safely retrieve string, integer, and double values from the flight data table for the general table
 String fullTableGetSafeString(TableRow row, String column) {
   try {
     String v = row.getString(column);
@@ -723,6 +737,7 @@ String fullTableGetSafeString(TableRow row, String column) {
   }
 }
 
+//Amanda de Moraes, 25/3, added method that safely retrieves integer values from the flight data table for the general table, returning 0 if the value is missing or invalid
 int fullTableGetSafeInt(TableRow row, String column) {
   try {
     String v = row.getString(column);
@@ -734,6 +749,7 @@ int fullTableGetSafeInt(TableRow row, String column) {
   }
 }
 
+//Amanda de Moraes, 25/3, added method that safely retrieves double values from the flight data table for the general table, returning 0 if the value is missing or invalid
 double fullTableGetSafeDouble(TableRow row, String column) {
   try {
     String v = row.getString(column);
@@ -745,6 +761,7 @@ double fullTableGetSafeDouble(TableRow row, String column) {
   }
 }
 
+//Amanda de Moraes, 25/3, added method that safely retrieves integer values from strings for the general table, returning 0 if the value is missing or invalid
 int fullTableGetSafeIntFromString(String value) {
   value = trim(value);
   if (value.equals("")) return 0;
@@ -756,6 +773,7 @@ int fullTableGetSafeIntFromString(String value) {
   }
 }
 
+//Amanda de Moraes, 25/3, added method that safely retrieves the airport name for a flight's origin or destination for the general table
 String fullTableAirportCode(Flight f, boolean origin) {
   try {
     if (origin) return f.getOriginAirport().getAirportName();
