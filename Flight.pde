@@ -30,6 +30,7 @@ class Flight{
         this.flightCancelled = flightCancelled;
         this.flightDiverted = flightDiverted;
         this.airportDistanceInMiles = airportDistanceInMiles;
+
         this.setFlightDelayAmount(this.scheduledArrivalTime, this.actualArrivalTime);
     }
     //Not sure if we will need se methods but I implemented them for now
@@ -107,6 +108,7 @@ class Flight{
     }
     //Niko Charles 11:00, 08/04 write method
     void setFlightDelayAmount(String scheduledArrivalTime, String actualArrivalTime){
+        if(flightCancelled == 0){
         String actualArrivalTimeString;
         String scheduledArrivalTimeString;
         int actualArrivalTimeInt;
@@ -122,6 +124,8 @@ class Flight{
         scheduledArrivalTimeInt = 0;
         }
         this.delayedAmount = Math.abs(actualArrivalTimeInt-scheduledArrivalTimeInt);
+        }
+        this.delayedAmount = 5000000;
     }
 
     int getDelayedAmount(){
