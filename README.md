@@ -6,4 +6,3 @@ Team Members:
   Ema-Alexia Caragea, 25384850
   
   Documentation file: https://docs.google.com/document/d/1oSzA7C6wYy7CJAvB7A0RAGOxb4DWNvOlukWF9T4Q0Os/edit?usp=sharing
-  Documentation for every file: https://docs.google.com/document/d/1jGDBjHtf53hXWh5U8V9XtFqHfmkGrguhviX5cWNHNzw/edit?usp=sharing
