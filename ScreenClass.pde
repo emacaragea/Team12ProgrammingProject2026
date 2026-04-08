@@ -56,6 +56,8 @@ class Screen{
     //3PM, 19/03/26, Jesse Margarites
     Charts thisChart;
 
+    //Method to instantiate a new screen
+    //Called in main to create screen1 and screen2 (state and airport screen)
     Screen(int type){
         screenType = type;
         //3PM, 19/03/26, Jesse Margarites
@@ -63,97 +65,35 @@ class Screen{
         
     }
 
+    //Sets the screen type of a screen object
+    //Called in handleSearchKey to instantiate new screen based on selected airport
     void setScreenType(int type){
         screenHistory.add(type);
         screenHistoryIndex++;
         screenType = type;
     }
     
-
+    //Sets the selected airport if the screen type is AIRPORT_SCREEN (2)
+    //Called in handleSearchKey to instantiate new screen based on selected airport
     void setSelectedAirport(Airport airport){
         this.selectedAirport = airport;
         this.selectedAirportName = airport.getAirportName();
 
     }
 
-
+    //Returns current screenType
     int getScreenType(){
         return screenType;
     }
 
-    //Jesse Margarites, 4PM, 24/03
-        void screenDraw(String code, State thisState, String stateName){
-        fill(BACKGROUND_COLOR);
-        drawHomeBar();
-        switch(screenType){
-            case 1:
-            drawHomeScreen();
-            break;
-            case 2:
-            //drawAirportScreen(thisAirport, airportName);
-            //break;
-            case 3:
-            drawStateScreen(code, thisState, stateName);
-            break;
-            case 4:
-            drawFlightScreen();
-            break;
-            case 5:
-            drawLoadScreen();
-            break;
-        }
-    }
-    //Niko Charles, 10:00, 25/03/2026
-    void screenDraw(Airport thisAirport, String airportName){
-        fill(BACKGROUND_COLOR);
-        drawHomeBar();
-        switch(screenType){
-            case 1:
-            drawHomeScreen();
-            break;
-            case 2:
-            drawAirportScreen(thisAirport, airportName);
-            break;
-            case 3:
-            //drawStateScreen();
-            break;
-            case 4:
-            drawFlightScreen();
-            break;
-            case 5:
-            drawLoadScreen();
-            break;
-        }
-    }
-
-    void screenDraw(){
-        fill(BACKGROUND_COLOR);
-        drawHomeBar();
-        switch(screenType){
-            case 1:
-            drawHomeScreen();
-            break;
-            case 2:
-            //drawAirportScreen();
-            break;
-            case 3:
-            //drawStateScreen();
-            break;
-            case 4:
-            drawFlightScreen();
-            break;
-            case 5:
-            drawLoadScreen();
-            break;
-        }
-    }
-
+    //Draws the home bar and home and back button
+    //Draws the buttons in different color when mouse is hovering over them or button is clicked
+    //Called in main draw method for all screens being drawn
     void drawHomeBar(){
         pushStyle();
         fill(200);
         //rect(0, 0, 1400, 40);
         //draw backArrow
-        //ema home bar background 
         noStroke();
         fill(HOME_BAR_COLOR);
         rect(0, 0, width, HOME_BAR_HEIGHT);
@@ -194,23 +134,15 @@ class Screen{
         line(HOME_BUTTON_X-2, HOME_BUTTON_Y, HOME_BUTTON_SIZE/2 + HOME_BUTTON_X, HOME_BUTTON_Y - HOME_BUTTON_SIZE/2);
         line(HOME_BUTTON_X + HOME_BUTTON_SIZE+2, HOME_BUTTON_Y, HOME_BUTTON_X + HOME_BUTTON_SIZE/2, 
             HOME_BUTTON_Y - HOME_BUTTON_SIZE/2);
-
-        //draw forward arrow
-        /*line(FORWARD_ARROW_X, FORWARD_ARROW_Y, FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y);
-        line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
-            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y - ARROW_HEIGHT);
-
-        line(FORWARD_ARROW_X + ARROW_LENGTH, FORWARD_ARROW_Y,
-            FORWARD_ARROW_X + ARROW_LENGTH - ARROW_HEIGHT, FORWARD_ARROW_Y + ARROW_HEIGHT);*/
-
-            //drawSearchBar();
         popStyle();
 
     }
 
 
-     //Amanda de moraes, 19/3, added seach bar
-     void drawSearchBar(){
+    //Amanda de moraes, 19/3, added seach bar
+    //Draws SearchBar
+    //Called in main if the currentScreen is the home screen
+    void drawSearchBar(){
           boolean hover = mouseX >= SEARCHX && mouseX <= SEARCHX + SEARCHW &&
                     mouseY >= SEARCHY && mouseY <= SEARCHY + SEARCHH;
 
@@ -289,12 +221,9 @@ class Screen{
             Airport chosen = filteredAirports.get(i);
             searchText = chosen.getAirportName();
 
-            //setSelectedAirport(chosen);
-            //setScreenType(AIRPORT_SCREEN);
-
             searchActive = false;
             filteredAirports.clear();
-
+//Niko Charles connected the search click to navigate to airport screen
             airportName = chosen.getAirportName();
             thisAirport = chosen;
             currentView = CURRENT_VIEW_AIRPORT;
@@ -339,12 +268,12 @@ void handleSearchKey(char key, int keyCode) {
     }
 }
 
-    void drawHomeScreen(){
-
-    }
 
     //Jesse Margarits, 04/04, Fixing airport screen bug
     //Jesse Margarites, 2AM, 08/04, implemented methods to initalise airport from search bar
+
+    //Draws the airport screen, loads in data, fills pie charts
+    //Called in main method if currentScreen is set to airport screen
     void drawAirportScreen(Airport thisAirport, String airportName){
         if(!thisAirport.getSetArrivalAirports()){
             readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
@@ -379,6 +308,8 @@ void handleSearchKey(char key, int keyCode) {
         popStyle();
     }
 
+    //Draws state screen and creates heatmap 
+    //Called in main if currentScreen is set to state screen
     void drawStateScreen(String code, State thisState, String stateName){
         //4PM, 18/03/26, Jesse Margarites
         if(stateList.isEmpty() || !stateList.contains(thisState)){ //dont think this will work for more states
@@ -404,16 +335,9 @@ void handleSearchKey(char key, int keyCode) {
         airportList = thisState.getAirportList();
     }
 
-
-   
-   void drawFlightScreen(){
-    
-}
-
-    void drawLoadScreen(){
-
-    }
 //Jesse Margarites, 11AM, 26/03, updated moused pressed
+//Mouse pressed method for the bar chart on the state screen, search bar clicks, and flight screen table
+//Called in main method depending on screen type
     void mousePressed() {
         handleSearchClick(mouseX, mouseY);
         //goHome(mouseX, mouseY);
@@ -427,18 +351,10 @@ void handleSearchKey(char key, int keyCode) {
         }
 
     }
-/*
-//Jesse Margarites, 1PM, 01/04, implmenting scroll bar
-    void mouseWheel(MouseEvent event){
-        
-        if(screenType==AIRPORT_SCREEN){
-            tableMouseWheel(event);
-        }
-        
-    }
-*/
-        
+
 //Jesse Margarites, 11AM, 26/03, updated key pressed
+//Key pressed method for the search bar and for bar chart on state screen
+//Called in main method
     void keyPressed(char key, int keyCode){
         handleSearchKey(key,keyCode);
 
@@ -447,6 +363,8 @@ void handleSearchKey(char key, int keyCode) {
         }
     }
 
+//Method determines if home button was pressed: returns true if the home button has been clicked 
+//Called in main method mouse clicked for all screens containing the home bar
     boolean goHome(int mX, int mY){
         if(mouseX >= HOME_BUTTON_X-1 && mouseX <= HOME_BUTTON_X + HOME_BUTTON_SIZE+1 &&
           mouseY >= HOME_BUTTON_Y - HOME_BUTTON_SIZE/2 && mouseY <= HOME_BUTTON_Y + HOME_BUTTON_HEIGHT){
@@ -455,6 +373,8 @@ void handleSearchKey(char key, int keyCode) {
         return false;
     }
 
+//Method determines if the back button was pressed: returns true if back button has been clicked
+//Called in main method mouse clicked for all screens containing the home bar
     boolean goBack(int mX, int mY){
         if(viewHistIndex != 0){
             if(mouseX >= BACK_ARROW_X && mouseX <= BACK_ARROW_X + ARROW_LENGTH &&
@@ -465,11 +385,4 @@ void handleSearchKey(char key, int keyCode) {
         return false;
     }
 
-    void goForward(int mX, int mY){
-        if(mX > FORWARD_ARROW_X && mX < FORWARD_ARROW_X + ARROW_LENGTH && 
-            mY > FORWARD_ARROW_Y && mY < FORWARD_ARROW_Y + ARROW_HEIGHT){
-                screenHistoryIndex++;
-                setScreenType(screenHistory.get(screenHistoryIndex));
-        }
-    }
 }

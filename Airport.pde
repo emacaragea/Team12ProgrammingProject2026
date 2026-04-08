@@ -52,6 +52,9 @@ class Airport {
     TEXT_LINK_Y_COORDINATE, TEXT_LINK_H);
 
 
+
+  //Constructor for aiport object 
+  //Called in main to instantiate airports when reading in data
   Airport(String airportName, int worldAreaCode) {
     this.airportName = airportName;
     this.worldAreaCode = worldAreaCode;
@@ -62,6 +65,8 @@ class Airport {
 
   }
 
+  //Constructor for aiport object edited to include orginCityCode
+  //Called in main to instantiate airports when reading in data
   Airport(String airportName, int worldAreaCode, String originCityCode) {
     this.airportName = airportName;
     this.worldAreaCode = worldAreaCode;
@@ -76,47 +81,75 @@ class Airport {
   }
   //Jesse Margarits, 04/04, Fixing airport screen bug
 
+  //Checks if arrivalAirports have been set
+  //Called in screen class in draw airport screen to help with loading in data
   boolean getSetArrivalAirports(){
     return setArrivalAirports;
   }
+
+  //Sets boolean based on if arrival airports have been set
+  //Called in screen class in the draw airport screen method
   void setSetArrivalAirports(boolean setArrivalAirports){
     this.setArrivalAirports=setArrivalAirports;
   }
 
+  //Returns the origin city 
+  //Called and passed into readFileByArrivalAirport in the screen class drawAirportScreen method
   String getOriginCityCode() {
     return originCityCode;
   }
 
+  //Sets the airport name 
   void setAirportName(String airportName) {
     this.airportName = airportName;
   }
+
+  //Returns airport name
   String getAirportName() {
     return airportName;
   }
+
+  //Sets the world area code
   void setWorldAreaCode(int worldAreaCode) {
     this.worldAreaCode = worldAreaCode;
   }
+
+  //Returns world area code
   int getWorldAreaCode() {
     return worldAreaCode;
   }
 
+  //Adds flight leaving from the state to an array list
+  //Called in main when reading in data for loadingMapAirport and when reading file by arrival airport
+  //Called in main when reading file by state
   void addFlightsLeaving(Flight flightX) {
     if (!flightsLeaving.contains((flightX))) {
       flightsLeaving.add(flightX); //CHECK WORKS
     }
   }
+
+  //Adds flights incoming to the state to an array list
+  //Called in main when reading in data by destination airport
   void addFlightsIncoming(Flight flightX) {
     if (!flightsIncoming.contains(flightX)) {
       flightsIncoming.add(flightX); //CHECK WORKS
     }
   }
+
+  //Returns the number of flights leaving from an airport
+  //Called in screenClass when determing how to read in data (if!(numberOfFlightsLeaving == 0))
   int getNumberOfFlightsLeaving() {
     return flightsLeaving.size();
   }
+
+  //Returns the number of flights incoming to an airport
+  //Not currently called
   int getNumberOfFlightsIncoming() {
     return flightsIncoming.size();
   }
 
+  //Fills an array with pieChartLabels for the departures pie chart
+  //Called in setPieChartValues method in airport class
   //Niko Charles 3:00 25/03/2026 write method
   String[] getPieChartLabelsDepartures() {
     float cancelled = 0;
@@ -170,6 +203,9 @@ class Airport {
     return cancelledDelayedOnTime;
   }
 
+
+  //Fills an array with pieChartLabels for the arrivals pie chart
+  //Called in setPieChartValues method in airport class
   //Niko Charles 13:00 01/04/2026 write method
   String[] getPieChartLabelsArrivals() {
     float cancelled = 0;
@@ -223,6 +259,8 @@ class Airport {
     return cancelledDelayedOnTime;
   }
 
+  //Fills an array with pieChartColors for the arrivals pie chart
+  //Called in setPieChartValues method in airport class
   //Niko Charles 17:00 01/04/2026 write method
   color[] getPieChartColorsArrivals() {
     color[] pieColorsArrivalsArr = new color[this.pieLabelsArrivals.length];
@@ -238,6 +276,8 @@ class Airport {
     return pieColorsArrivalsArr;
   }
 
+  //Fills an array with pieChartColors for the departures pie chart
+  //Called in setPieChartValues method in airport class
   //Niko Charles 17:00 01/04/2026 write method
   color[] getPieChartColorsDepartures() {
     color[] pieColorsDeparturesArr = new color[this.pieLabelsDepartures.length];
@@ -253,6 +293,8 @@ class Airport {
     return pieColorsDeparturesArr;
   }
 
+  //Fills an array with pieChartValues for the arrivals pie chart
+  //Called in setPieChartValues method in airport class
   //Niko Charles 9:00 27/03/2026 write method
   float[] getNumberOfFlightsCancelledArrivals() {
     float cancelled = 0;
@@ -306,6 +348,9 @@ class Airport {
     return cancelledDelayedOnTime;
   }
 
+
+  //Fills an array with pieChartValues for the departures pie chart
+  //Called in setPieChartValues method in airport class
   //Niko Charles 13:00 01/04/2026 write method
   float[] getNumberOfFlightsCancelledDepartures() {
     float cancelled = 0;
@@ -359,6 +404,9 @@ class Airport {
     return cancelledDelayedOnTime;
   }
 
+
+  //Fills values for the departures and arrivals pie charts for airport object
+  //Called in screenClass in the drawAirportScreen method to fill pieChart values before drawing them
   //Niko Charles 9:00 27/03/2026 write method
   //Niko Charles 13:00 01/04/2026 add Arrivals graph
   void setPieChartValues(Charts thisPieChart) {
@@ -373,6 +421,11 @@ class Airport {
     pieColorsArrivals = getPieChartColorsArrivals();
     thisPieChart.addPieChart(pieGraphTitleArrivals, pieLabelsArrivals, pieValuesArrivals, ARRIVALS_PIE_CHART_X_COORDINATE, ARRIVALS_PIE_CHART_Y_COORDINATE, PIE_CHART_DIAMETER, pieColorsArrivals);
   }
+
+  //Mouse clicked method for the airport screen 
+  //Includes text link buttons for navigating between viewing the arrivals and departures in the flight table
+  //Also includes forward and back buttons for navigating between pages of the flight table
+  //Called in main mouse clicked if currentScreen is set to airport screen
   //Niko Charles 15:00 01/04/2026 Write method
   void airportMouseClicked(int mx, int my) {
     if (mouseX >= TEXT_LINK_ARRIVAL_X_COORD && mouseX <= TEXT_LINK_ARRIVAL_X_COORD + TEXT_LINK_ARRIVAL_W &&
@@ -395,11 +448,12 @@ class Airport {
     } else if (tableType>0&&mouseX>=AIRPORT_BACK_ARROW_X && mouseX<= AIRPORT_BACK_ARROW_X+ARROW_LENGTH
       && mouseY>= AIRPORT_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= AIRPORT_BACK_ARROW_Y+ARROW_HEIGHT) {
       tableType--;
-
-
     }
   }
 
+
+  //Draws the airport screen flight table and flight table navigation(Arrows and arrivals/departures buttons)
+  //Called in screenClass drawAirportScreen method
   void airportDraw(String airportName) {
     //Niko Charles 2:00 25/03/2026 create method
     //Jesse Margarites background color and text
@@ -450,11 +504,6 @@ class Airport {
     text(TEXT_LINK_DEPARTURE_LABEL, TEXT_LINK_DEPARTURE_X_COORD, TEXT_LINK_Y_COORDINATE);
     popStyle();
 
-    //stroke(255, 255, 255);
-    //rect(950, textYCoordinate, 200, 50);
-
-    //stroke(255, 255, 255);
-    //rect(1200, textYCoordinate, 200, 50);
     //Jesse Margarites, 7PM, 01/04, implementing arrows to cycle through screens
     //Niko Charles 11:00 08/04/2026, implementing arrow hover color change
     if(mouseX >= AIRPORT_BACK_ARROW_X && mouseX <= AIRPORT_BACK_ARROW_X + ARROW_LENGTH &&
@@ -489,7 +538,6 @@ class Airport {
       maxTableType = (long) Math.ceil((double) flightsLeaving.size() / NUMBER_OF_FLIGHT_ROWS);
       drawFilteredFlightTable(flightsLeaving, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE", tableType);
     }
-    //drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
   }
 
   @Override
@@ -503,8 +551,6 @@ class Airport {
     Airport airportObject = (Airport) thisObject;
     return this.airportName.equals(airportObject.airportName);
   }
-
-
 
 
 }

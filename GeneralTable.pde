@@ -17,7 +17,7 @@ PFont fullTableTitleFont;
 //Amanda de Moraes, 25/3, added variables for the general table, including layout dimensions, scroll state, and calendar state
 // layout
 float fullTableButtonW, fullTableButtonH, fullTableButtonY, fullTableButtonGap;
-float fullTableButtonX1, fullTableButtonX2;
+float fullTableButtonX1, fullTableButtonX2, fullTableButtonX3;
 float fullTableCardX, fullTableCardY, fullTableCardW, fullTableCardH;
 
 // book flight button
@@ -186,6 +186,10 @@ void fullTableMousePressed() {
     mouseY >= fullTableButtonY && mouseY <= fullTableButtonY + fullTableButtonH) {
     fullTableSortByDistance();
   }
+  if (mouseX >= fullTableButtonX3 && mouseX <= fullTableButtonX3 + fullTableButtonW &&
+    mouseY >= fullTableButtonY && mouseY <= fullTableButtonY + fullTableButtonH) {
+    fullTableSortByLateness();
+  }
 }
 //Amanda de Moraes, 25/3, added method that handles mouse drags for the general table (for scrollbar dragging)
 void fullTableMouseDragged() {
@@ -219,11 +223,12 @@ void fullTableCalculateLayout() {
   fullTableButtonW = width * 0.16;
   fullTableButtonH = height * 0.055;
   fullTableButtonY = height * 0.12;
-  fullTableButtonGap = width * 0.025;
+  fullTableButtonGap = width * 0.09;//0.025;
 
   float totalBW = fullTableButtonW * 2 + fullTableButtonGap;
-  fullTableButtonX1 = width / 2.0 - totalBW / 2.0;
+  fullTableButtonX1 = 30;//width / 3.0 - totalBW / 2.0;//-200;
   fullTableButtonX2 = fullTableButtonX1 + fullTableButtonW + fullTableButtonGap;
+  fullTableButtonX3 = fullTableButtonX2 + fullTableButtonW + fullTableButtonGap;
 
   fullTableBookBtnW = 170;
   fullTableBookBtnH = fullTableButtonH;
@@ -332,7 +337,7 @@ void fullTableDrawHeader() {
   fill(240);
   textAlign(LEFT, TOP);
   textSize(28);
-  text("Flight Dashboard", 40, 24);
+  //text("Flight Dashboard", 40, 24);
 
   fill(150, 165, 180);
   textSize(14);
@@ -344,6 +349,7 @@ void fullTableDrawHeader() {
 
 //Amanda de Moraes, 25/3, added method that draws the date selection button for the general table
 void fullTableDrawDateButton() {
+  pushStyle();
   boolean hov = mouseX >= fullTableCalBtnX && mouseX <= fullTableCalBtnX + fullTableCalBtnW &&
     mouseY >= fullTableCalBtnY && mouseY <= fullTableCalBtnY + fullTableCalBtnH;
 
@@ -356,11 +362,14 @@ void fullTableDrawDateButton() {
   textAlign(CENTER, CENTER);
   textSize(13);
   text("Date: " + fullTableSelectedDate, fullTableCalBtnX + fullTableCalBtnW / 2, fullTableCalBtnY + fullTableCalBtnH / 2);
+  popStyle();
 }
 
 void fullTableDrawButtons() {
   fullTableDrawSortButton(fullTableButtonX1, fullTableButtonY, fullTableButtonW, fullTableButtonH, "Sort by Flight No.", fullTableCurrentSort.equals("Flight No."));
   fullTableDrawSortButton(fullTableButtonX2, fullTableButtonY, fullTableButtonW, fullTableButtonH, "Sort by Distance", fullTableCurrentSort.equals("Distance"));
+  fullTableDrawSortButton(fullTableButtonX3, fullTableButtonY, fullTableButtonW, fullTableButtonH, "Sort by Lateness", fullTableCurrentSort.equals("Lateness"));
+
 }
 
 //Amanda de Moraes, 25/3, added method that draws the sort buttons for the general table
@@ -485,7 +494,7 @@ void fullTableDrawTable() {
     text(fullTableAirportCode(f, false), colDest, y);
     text(round((float)f.getAirportDistanceInMiles()) + " mi", colDistance, y);
 
-    fullTableDrawStatusPill(f, colStatus, y);
+    fullTableDrawStatusPill(f, colStatus, y, fullTableCurrentSort);
     fullTableDrawCheckboxes(f, colDiverted, y, rowH);
   }
 
@@ -528,6 +537,7 @@ void fullTableDrawCheckboxes(Flight f, float colDiverted, float cy, float rowH){
 
 //Amanda de Moraes, 25/3, added method that draws the scrollbar for the flight table in the general table
 void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalContentHeight) {
+  pushStyle();
   if (fullTableMaxScroll <= 0) return;
 
   float trackX = fullTableCardX + fullTableCardW - 18;
@@ -566,9 +576,11 @@ void fullTableDrawScrollbar(float tableTop, float tableHeight, float totalConten
 
   fill(fullTableDraggingScrollbar || thumbHov ? color(120, 190, 245) : color(82, 156, 214));
   rect(trackX, thumbY, trackW, thumbH, 5);
+  popStyle();
 }
 
-void fullTableDrawStatusPill(Flight f, float x, float y) {
+void fullTableDrawStatusPill(Flight f, float x, float y, String fullTableCurrentSort) {
+  pushStyle();
   String status = "On Time";
   int pillColor = color(70, 170, 120);
 
@@ -597,10 +609,17 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
     pillColor = color(200, 70, 70);
   }
   else if ( actualArrivalTime > scheduledArrivalTime) {
+    //Jesse Margarites & Niko Charles, 1PM, 08/04, implemented a delayed amount to sort by lateness
+
+    if(!fullTableCurrentSort.equals("Lateness")){
       status="Delayed";
+      pillColor = color(220, 150, 60);
+    } else{
+      status = Integer.toString(f.getDelayedAmount())+" min(s)";
       pillColor = color(220, 150, 60);
 
   }
+}
 
   /*
   } else if (f.getFlightDiverted() == 1) {
@@ -617,6 +636,7 @@ void fullTableDrawStatusPill(Flight f, float x, float y) {
   textAlign(CENTER, CENTER);
   textSize(12);
   text(status, x + 45, y);
+  popStyle();
 }
 
 //Amanda de Moraes, 25/3, added method that draws the calendar for date selection in the general table
@@ -699,6 +719,7 @@ void fullTableSortByDistance() {
 }
 
 void fullTableSortByLateness(){
+  //fullTableDayFlights.sort((a,b) -> Integer.compare(a.getFlightCancelled(), b.getFlightCancelled()));
   fullTableDayFlights.sort((a, b) -> Integer.compare(a.getDelayedAmount(), b.getDelayedAmount()));
   fullTableCurrentSort = "Lateness";
 }

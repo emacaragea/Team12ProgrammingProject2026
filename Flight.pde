@@ -30,6 +30,7 @@ class Flight{
         this.flightCancelled = flightCancelled;
         this.flightDiverted = flightDiverted;
         this.airportDistanceInMiles = airportDistanceInMiles;
+
         this.setFlightDelayAmount(this.scheduledArrivalTime, this.actualArrivalTime);
     }
     //Not sure if we will need se methods but I implemented them for now
@@ -106,13 +107,16 @@ class Flight{
         this.airportDistanceInMiles = airportDistanceInMiles;
     }
     //Niko Charles 11:00, 08/04 write method
+    //Jesse Margarites & Niko Charles, 1PM, 08/04, implemented a delayed amount to sort by lateness
     void setFlightDelayAmount(String scheduledArrivalTime, String actualArrivalTime){
+        if(flightCancelled == 0){
         String actualArrivalTimeString;
         String scheduledArrivalTimeString;
         int actualArrivalTimeInt;
         int scheduledArrivalTimeInt;
         actualArrivalTimeString = this.getActualArrivalTime();
         scheduledArrivalTimeString = this.getScheduledArrivalTime();
+
         if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
             && !scheduledArrivalTimeString.trim().isEmpty()) {
                 actualArrivalTimeInt = Integer.valueOf(actualArrivalTimeString.trim());
@@ -122,6 +126,12 @@ class Flight{
         scheduledArrivalTimeInt = 0;
         }
         this.delayedAmount = Math.abs(actualArrivalTimeInt-scheduledArrivalTimeInt);
+        if(actualArrivalTimeInt<=scheduledArrivalTimeInt){
+            this.delayedAmount=5000000-30;
+        }
+        }else{
+            this.delayedAmount = 5000000;
+        }
     }
 
     int getDelayedAmount(){
