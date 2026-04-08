@@ -209,7 +209,7 @@ class Screen{
     }
 
 
-     //amanda de moraes, 19/3, search bar methods
+     //Amanda de moraes, 19/3, added seach bar
      void drawSearchBar(){
           boolean hover = mouseX >= SEARCHX && mouseX <= SEARCHX + SEARCHW &&
                     mouseY >= SEARCHY && mouseY <= SEARCHY + SEARCHH;
@@ -254,6 +254,7 @@ class Screen{
        
     }
 
+    //Amanda de Moraes, 19/3, added method to update search suggestions based on current search text
     void updateSearchSuggestions() {
     filteredAirports.clear();
 
@@ -268,6 +269,7 @@ class Screen{
     }
 }
 
+//Amanda de Moraes, 19/3, added method to handle clicks on the search bar and suggestions
  void handleSearchClick(int mx, int my) {
 
     // click search bar
@@ -307,7 +309,7 @@ class Screen{
 }
 
 
-// handle key input
+// Amanda de Moraes, 19/3, added method to handle key presses when search bar is active, including backspace, enter, and character input
 void handleSearchKey(char key, int keyCode) {
     if (!searchActive) return;
 

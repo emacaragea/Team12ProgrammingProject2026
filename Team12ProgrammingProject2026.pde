@@ -18,7 +18,7 @@ final int CURRENT_VIEW_STATE = 1;
 final int CURRENT_VIEW_FLIGHT_MAP = 2;
 final int CURRENT_VIEW_AIRPORT = 3;
 final int CURRENT_VIEW_GENERAL_TABLE = 4;
-final int CURRENT_VIEW_BOOK_FLIGHT = 5;   //amanda working here
+final int CURRENT_VIEW_BOOK_FLIGHT = 5;   
 final static float HEADINGS_SIZE = 40;
 final static float SUBHEADINGS_SIZE = 25;
 final static float TEXT_SIZE = 21;
@@ -113,7 +113,7 @@ void loadData() {
   for (int i = 0; i < ALL_STATE_CODES.length; i++) {
     String code = ALL_STATE_CODES[i];
 
-    //amanda de moraes 9:42, added file reader for airports
+    //Amanda de moraes, 9:42, 01/08, added file reader for airports to implement search bar
     try {
       BufferedReader reader = new BufferedReader(new FileReader(sketchPath(path + code + ".csv")));
       reader.readLine();

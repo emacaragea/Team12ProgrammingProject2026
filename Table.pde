@@ -1,8 +1,5 @@
-//Amanda de Moraes, 25/03. Added code for the flights table
-// TABLE NOTE:
-// in main- call tableSetup() in setup()
-// in ScreenClass - drawFlightScreen() must call tableDraw(), and mousePressed() must call tableMousePressed() when on the flight screen
-// also add mouseWheel() in main to call tableMouseWheel() for scrolling
+//Amanda de Moraes, 25/03, Added code for the booking table
+
 import processing.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -133,7 +130,7 @@ void tableDraw() {
 }
 
 
-// call this from mousePressed() when flight screen is open
+// Amanda de Moraes, 31/3, added tableMousePressed() 
 void tableMousePressed() {
   if (tableState == TABLE_DATE_SELECT) {
     handleDateScreenClicks();
@@ -146,7 +143,7 @@ void tableMousePressed() {
 }
 
 
-// call this from mouseWheel() when flight screen is open
+// Amanda de Moraes, 31/3, added  tableMouseWheel() 
 void tableMouseWheel(MouseEvent event) {
   float amt = event.getCount() * scrollSpeed;
 
@@ -166,7 +163,7 @@ void tableMouseWheel(MouseEvent event) {
 }
 
 
-// draws the first screen where dates are selected
+// Amanda de Moraes, 31/3, added method that draws the first screen where dates are selected
 void drawDateSelectionScreen() {
   fill(240);
   textFont(titleFont);
@@ -219,7 +216,7 @@ void drawDateSelectionScreen() {
 }
 
 
-// draws a large date selection button
+// Amanda de Moraes, 31/3, added method that draws a large date selection button
 void drawBigDateButton(float x, float y, float w, float h, String title, String value, boolean active) {
   boolean hov = overRect(x, y, w, h);
 
@@ -240,7 +237,7 @@ void drawBigDateButton(float x, float y, float w, float h, String title, String 
 }
 
 
-// draws the flight selection screen
+// Amanda de Moraes, 31/3, added method that draws the flight selection screen
 void drawFlightSelectionScreen() {
   fill(240);
   textFont(titleFont);
@@ -281,7 +278,7 @@ void drawFlightSelectionScreen() {
 }
 
 
-// draws the main dark card behind both tables
+// Amanda de Moraes, 31/3, added method that draws the main dark card behind both tables
 void drawMainCard() {
   noStroke();
   fill(28, 36, 46);
@@ -299,14 +296,14 @@ void drawMainCard() {
 }
 
 
-// draws both flight tables
+// Amanda de Moraes, 31/3, added method that draws both flight tables
 void drawFlightTables() {
   drawFlightTable(goFlights, goTableX, goTableY, goTableW, goTableH, goScrollY, "DEPARTURE");
   drawFlightTable(backFlights, backTableX, backTableY, backTableW, backTableH, backScrollY, "RETURN");
 }
 
 
-// draws one flight table
+// Amanda de Moraes, 31/3, added method that draws one flight table
 void drawFlightTable(ArrayList<Flight> flights, float x, float y, float w, float h, float scrollY, String type) {
   float rowH = 34;
   float pad = 12;
@@ -618,7 +615,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
 
 
-// draws the popup calendar
+// Amanda de Moraes, 31/3, added method that draws the popup calendar
 void drawCalendar(float x, float y, String which) {
   noStroke();
   fill(0, 0, 0, 90);
@@ -695,7 +692,7 @@ void drawCalendar(float x, float y, String which) {
   }
 }
 
-
+//Amanda de Moraes, 11:30PM, 31/03, created a booking confirmed screen
 // draws the boarding pass screen
 void drawBarcodeScreen(String statusText) {
   background(18, 24, 32);
@@ -767,7 +764,7 @@ void drawBarcodeScreen(String statusText) {
 }
 
 
-// draws a main button
+//Amanda de Moraes, 31/03 added a main button
 void drawStandardButton(float x, float y, float w, float h, String label, boolean active) {
   boolean hov = overRect(x, y, w, h);
 
@@ -784,7 +781,7 @@ void drawStandardButton(float x, float y, float w, float h, String label, boolea
 }
 
 
-// draws a secondary button
+// Amanda de Moraes, 31/03, added a secondary button
 void drawSecondaryButton(float x, float y, float w, float h, String label) {
   boolean hov = overRect(x, y, w, h);
 
@@ -801,7 +798,7 @@ void drawSecondaryButton(float x, float y, float w, float h, String label) {
 }
 
 
-// draws a scrollbar for the tables
+// Amanda de Moraes, 31/03 added a scrollbar for the tables
 void drawScrollbar(float x, float y, float h, float totalContentHeight, float maxScroll, float currentScroll) {
   if (maxScroll <= 0) return;
 
@@ -818,7 +815,7 @@ void drawScrollbar(float x, float y, float h, float totalContentHeight, float ma
 }
 
 
-// handles clicks on the date selection screen
+// Amanda de Moraes, 31/03, added method that handles clicks on the date selection screen
 void handleDateScreenClicks() {
   float goCalX = goBtnX + goBtnW / 2 - calW / 2;
   float goCalY = goBtnY + goBtnH + 18;
@@ -868,7 +865,7 @@ void handleDateScreenClicks() {
 }
 
 
-// handles clicking a calendar day
+//  Amanda de Moraes, 31/03, added method thathandles clicking a calendar day
 boolean handleCalendarClick(float x, float y, String which) {
   float gridTop = y + calHeaderH + 22;
 
@@ -908,7 +905,7 @@ boolean handleCalendarClick(float x, float y, String which) {
 }
 
 
-// handles clicks on the flight selection screen
+// Amanda de Moraes, 31/03, added mehtod that handles clicks on the flight selection screen
 void handleFlightScreenClicks() {
   if (overRect(sortBtn1X, sortBtnY, sortBtnW, sortBtnH)) {
     sortByFlightNum();
@@ -949,7 +946,7 @@ void handleFlightScreenClicks() {
 }
 
 
-// calculates positions and sizes
+// Amanda de Moraes, 31/03, calculated positions and sizes for table layout
 void calculateTableLayout() {
   goBtnW = 320;
   goBtnH = 110;
@@ -1005,31 +1002,31 @@ void calculateTableLayout() {
 }
 
 
-// checks whether mouse is over a rectangle
+// Amanda de Moraes, 31/3, check whether mouse is over a rectangle
 boolean overRect(float x, float y, float w, float h) {
   return mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h;
 }
 
 
-// checks whether selected dates are valid
+//Amanda de Moraes, 31/03, checks whether selected dates are valid
 boolean datesAreValid() {
   return !goDate.equals("") && !backDate.equals("") && dateToNumber(backDate) >= dateToNumber(goDate);
 }
 
 
-// builds a date string for the current calendar month
+// Amanda de Moraes, 31/3, added method that builds a date string for the current calendar month
 String buildCalendarDate(int day) {
   return nf(calMonth, 2) + "/" + nf(day, 2) + "/" + calYear;
 }
 
 
-// returns the left x position of the boarding pass
+// Amanda de Moraes, 31/3returns the left x position of the boarding pass
 float getBoardingPassX() {
   return width / 2 - 220;
 }
 
 
-// checks which flight row was clicked
+// Amanda de Moraes, 31/3, added method thatchecks which flight row was clicked
 Flight getClickedFlight(ArrayList<Flight> flights, float x, float y, float w, float h, float scrollY) {
   float rowH = 34;
 
@@ -1046,7 +1043,7 @@ Flight getClickedFlight(ArrayList<Flight> flights, float x, float y, float w, fl
 }
 
 
-// loads flight data from csv
+// Amanda de Moraes, 31/3, added method thatloads flight data from csv
 void loadFlightData() {
   String[] lines = loadStrings("flights_full.csv");
 
@@ -1107,7 +1104,7 @@ void loadFlightData() {
 }
 
 
-// splits one csv line safely, including quoted values
+// Amanda de Moraes, 31/3, added method thatsplits one csv line safely, including quoted values
 String[] parseCSVLine(String line) {
   ArrayList<String> fields = new ArrayList<String>();
   StringBuilder sb = new StringBuilder();
@@ -1136,7 +1133,7 @@ String[] parseCSVLine(String line) {
 }
 
 
-// picks default dates from the first available date
+// Amanda de Moraes, 31/3, added method thatpicks default dates from the first available date
 void setDefaultDates() {
   if (availableDates.size() > 0) {
     goDate = availableDates.get(0);
@@ -1145,7 +1142,7 @@ void setDefaultDates() {
 }
 
 
-// updates the departure and return flight lists
+//Amanda de Moraes, 31/3, added method that updates the departure and return flight lists
 void updateFlightLists() {
   goFlights.clear();
   backFlights.clear();
@@ -1162,7 +1159,7 @@ void updateFlightLists() {
 }
 
 
-// sorts based on the current sort mode
+// Amanda de Moraes, 31/3, added method thatsorts based on the current sort mode
 void sortCurrentFlights() {
   if (currentSort.equals(SORT_DISTANCE)) {
     sortByDistance();
@@ -1172,7 +1169,7 @@ void sortCurrentFlights() {
 }
 
 
-// sorts flights by flight number
+// Amanda de Moraes, 31/3, added method thatsorts flights by flight number
 void sortByFlightNum() {
   Collections.sort(goFlights, new Comparator<Flight>() {
     public int compare(Flight a, Flight b) {
@@ -1192,7 +1189,7 @@ void sortByFlightNum() {
 }
 
 
-// sorts flights by distance
+// Amanda de Moraes, 31/3, added method thatsorts flights by distance
 void sortByDistance() {
   Collections.sort(goFlights, new Comparator<Flight>() {
     public int compare(Flight a, Flight b) {
@@ -1212,7 +1209,7 @@ void sortByDistance() {
 }
 
 
-// cleans a raw date value
+// Amanda de Moraes, 31/3, added method that cleans a raw date value
 String extractDateOnly(String rawDate) {
   rawDate = trim(rawDate);
   if (rawDate.equals("")) return "";
@@ -1225,7 +1222,7 @@ String extractDateOnly(String rawDate) {
 }
 
 
-// makes sure the date has mm/dd/yyyy format
+// Amanda de Moraes, 31/3, added method that makes sure the date has mm/dd/yyyy format
 String normalizeDate(String d) {
   String[] p = split(d, '/');
   if (p.length == 3) {
@@ -1235,7 +1232,7 @@ String normalizeDate(String d) {
 }
 
 
-// safely converts text to integer
+// Amanda de Moraes, 31/3, added method that safely converts text to integer
 int parseSafeInt(String value) {
   value = trim(value);
   if (value.equals("")) return 0;
@@ -1249,7 +1246,7 @@ int parseSafeInt(String value) {
 }
 
 
-// used to sort date strings in correct order
+// Amanda de Moraes, 31/3, added method that used to sort date strings in correct order
 class DateComparator implements Comparator<String> {
   public int compare(String a, String b) {
     return dateToNumber(a) - dateToNumber(b);
@@ -1257,7 +1254,7 @@ class DateComparator implements Comparator<String> {
 }
 
 
-// turns a date string into a number for comparison
+// Amanda de Moraes, 31/3, added method that turns a date string into a number for comparison
 int dateToNumber(String d) {
   String[] p = split(d, '/');
   if (p.length != 3) return 0;

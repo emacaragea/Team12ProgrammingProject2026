@@ -1,5 +1,5 @@
-//Amanda de Moraes, 9:40 AM 12/3
-//code for a loading/barcode page
+//Amanda de Moraes, 12/3, added code for abarcode page
+
 public class Barcode{
 float scanX = 120;
 PFont font;
