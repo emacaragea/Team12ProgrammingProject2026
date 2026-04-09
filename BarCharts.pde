@@ -326,7 +326,7 @@ class BarChart
     textSize(16);                     
     textAlign(CENTER);   
     fill(255, 255, 255);                          // title colour             
-    text(title, x + w / 2, y - 10);   // draw title
+    text(title, x + w / 2, y - 10);               // draw title
       
     // Draw axes
    // stroke(0);
@@ -468,7 +468,6 @@ class BarChart
         pushMatrix();
         translate(labelX, y + h + 15);
         rotate(-PI/4);   // rotate slightly to avoid overlap
-        //text(labels[j], 0, 0);
         popMatrix();
       }
     }
@@ -478,7 +477,6 @@ class BarChart
     {
       fill(255);
       stroke(0);
-      //rect(mouseX, mouseY - 25, 80, 20, 4);
       rect(mouseX, mouseY - 25, 200, 20, 4);
         
       fill(0);
