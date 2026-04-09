@@ -400,9 +400,6 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colStatus = startX + usable * 0.71; //??
   float colDiverted = startX + usable * 0.86; //??
 
-  PFont TITLE_FONT = createFont("Helvetica-Bold", HEADINGS_SIZE);
-  PFont LABEL_FONT = createFont("Helvetica-Bold", SUBHEADINGS_SIZE);
-  PFont SMALL_FONT = createFont("Helvetica-Light", TEXT_SIZE);
 
   fill(180);
   textFont(TITLE_FONT);

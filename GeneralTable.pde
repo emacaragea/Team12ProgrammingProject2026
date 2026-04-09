@@ -621,12 +621,7 @@ void fullTableDrawStatusPill(Flight f, float x, float y, String fullTableCurrent
   }
 }
 
-  /*
-  } else if (f.getFlightDiverted() == 1) {
-    status = "Diverted";
-    pillColor = color(220, 150, 60);
-  }
-    */
+
 
   fill(pillColor);
   noStroke();

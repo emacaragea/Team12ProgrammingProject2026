@@ -75,7 +75,6 @@ class Airport {
 
   }
   //Jesse Margarits, 04/04, Fixing airport screen bug
-
   boolean getSetArrivalAirports(){
     return setArrivalAirports;
   }
@@ -100,6 +99,7 @@ class Airport {
     return worldAreaCode;
   }
 
+  //only add flights leaving/incoming if the flightsLeaving/flightsIncoming arrayList does not already contain flightX
   void addFlightsLeaving(Flight flightX) {
     if (!flightsLeaving.contains((flightX))) {
       flightsLeaving.add(flightX); //CHECK WORKS
@@ -408,11 +408,7 @@ class Airport {
     strokeWeight(2);
     noFill();
 
-    PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
-    PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
-    PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
-
-    int textXCoordinate = 20;
+    //draws the airportName as a title
     int textYCoordinate = 80;
     fill(255);
     textAlign(LEFT, CENTER);
@@ -423,7 +419,7 @@ class Airport {
     stroke(255);
     strokeWeight(2);
     noFill();
-    line(SCREEN_DIVIDER_X_COORDINATE, 0, SCREEN_DIVIDER_X_COORDINATE, SCREEN_HEIGHT);
+    line(SCREEN_DIVIDER_X_COORDINATE, 0, SCREEN_DIVIDER_X_COORDINATE, SCREEN_HEIGHT); //create screen divider
     fill(255, 255, 255);
     pushStyle();
     textFont(LABEL_FONT);
@@ -450,12 +446,7 @@ class Airport {
     text(TEXT_LINK_DEPARTURE_LABEL, TEXT_LINK_DEPARTURE_X_COORD, TEXT_LINK_Y_COORDINATE);
     popStyle();
 
-    //stroke(255, 255, 255);
-    //rect(950, textYCoordinate, 200, 50);
-
-    //stroke(255, 255, 255);
-    //rect(1200, textYCoordinate, 200, 50);
-    //Jesse Margarites, 7PM, 01/04, implementing arrows to cycle through screens
+    //Jesse Margarites, 7PM, 01/04, implementing arrows to cycle through 10 airports at a time
     //Niko Charles 11:00 08/04/2026, implementing arrow hover color change
     if(mouseX >= AIRPORT_BACK_ARROW_X && mouseX <= AIRPORT_BACK_ARROW_X + ARROW_LENGTH &&
         mouseY >= AIRPORT_BACK_ARROW_Y-ARROW_HEIGHT && mouseY <= AIRPORT_BACK_ARROW_Y + ARROW_HEIGHT){
@@ -489,9 +480,11 @@ class Airport {
       maxTableType = (long) Math.ceil((double) flightsLeaving.size() / NUMBER_OF_FLIGHT_ROWS);
       drawFilteredFlightTable(flightsLeaving, 0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_DIVIDER_X_COORDINATE-10, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, 30, "DEPARTURE", tableType);
     }
-    //drawScrollbar(0, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+textYCoordinate+HEADINGS_SIZE, 0); //currentScroll
   }
 
+  //Jesse Margarites, 4PM, 19/03/26
+  //Creating an equals method to override the typical arrayList compare method.
+  //This ensures that when comparing two arrayList object items, their values are compared and not their memory locations
   @Override
     public boolean equals(Object thisObject) {
     if (this == thisObject) {

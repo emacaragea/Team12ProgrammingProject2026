@@ -7,6 +7,11 @@ import java.util.ArrayList;
 final static int SCREEN_WIDTH  = 1400;
 final static int SCREEN_HEIGHT = 800;
 
+//declaring different fonts to be used for the State and Airport class
+PFont TITLE_FONT;
+PFont LABEL_FONT;
+PFont SMALL_FONT;
+
 final int STATE_BACK_ARROW_X = SCREEN_WIDTH/4-20;
 final int STATE_BACK_ARROW_Y = 650;
 final int STATE_FORWARD_ARROW_X = STATE_BACK_ARROW_X + 70;
@@ -63,7 +68,9 @@ static final String[] ALL_STATE_CODES = {
 
 void settings() {
   size(SCREEN_WIDTH, SCREEN_HEIGHT);
+
 }
+
 
 //old setup, replaced
 
@@ -85,7 +92,12 @@ void settings() {
 
 //method that only loads the data, called in setup as a thread so loading screen can be displayed while data is being loaded
 void setup() {
-        frameRate(30); // add this
+  frameRate(30); // add this
+
+  //creating the different fonts to be used for the State and Airport class
+  TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
+  LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
+  SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
 
   loading = new Loading("HMS", "Home Screen");
   loading.loadingSetup();

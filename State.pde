@@ -22,10 +22,6 @@ class State {
   private String[] heatmapAirports;
   private int[] heatmapCounts;
 
-  PFont TITLE_FONT = createFont("Helvetica Bold", HEADINGS_SIZE);
-  PFont LABEL_FONT = createFont("Helvetica Bold", SUBHEADINGS_SIZE);
-  PFont SMALL_FONT = createFont("Helvetica", TEXT_SIZE);
-
 
   State(String stateName) {
     this.stateName = stateName;
@@ -169,10 +165,6 @@ class State {
     line(SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, SCREEN_HEIGHT);
     airportLinks.clear();
     //Jesse Margarits, 04/04, Fixing aesthetics of state screen
-
-
-    //PFont AIPORT_NAMES_FONT = createFont("Trispace", SUBHEADINGS_SIZE);
-    //example
     int textXCoordinate = 35;
     int textYCoordinate = 100;
     fill(255);
@@ -270,29 +262,6 @@ class State {
         counter++;
       }
     }
-   // } /*else if (pageNumber==2&&listOfAirports.size()>MAX_AIRPORT_DISPLAY) {
-      //for (counter; counter<listOfAirports.size(); counter++) {
-      //  textFont(SMALL_FONT);
-        /*textYCoordinate+=35;
-         text((counter+1)+": "+ listOfAirports.get(counter).getAirportName().substring(0, listOfAirports.get(counter).getAirportName().length()-4), textXCoordinate, textYCoordinate);
-         fill(255, 255, 255);
-        textYCoordinate += 45;
-        Airport airport = listOfAirports.get(counter);
-        String name = airport.getAirportName().substring(0, airport.getAirportName().length() - 4);
-        String label = (counter + 1) + ": " + name;
-        float w = textWidth(label);
-        float h = 20;
-        if (mouseX >= textXCoordinate && mouseX <= textXCoordinate + w &&
-          mouseY >= textYCoordinate - h && mouseY <= textYCoordinate) {
-          fill(200, 200, 255);
-        } else {
-          fill(255);
-        }
-        textFont(SMALL_FONT);
-        textSize(15);
-        text(label, textXCoordinate, textYCoordinate);
-        airportLinks.add(new TextLinks(label, textXCoordinate, textYCoordinate, w, h, airport));
-      }*/
   
   //Jesse Margarites, 4PM, 24/03, implemented an equals method to Override the contains method
   @Override
