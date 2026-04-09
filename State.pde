@@ -23,6 +23,8 @@ class State {
   private int[] heatmapCounts;
 
 
+  //Instantiates a new state object 
+  //Called in usMapScreen where all states are created
   State(String stateName) {
     this.stateName = stateName;
     this.listOfAirports = new ArrayList<Airport>(); //Since every state has an airport
@@ -32,15 +34,15 @@ class State {
     pageNumber=1;
   }
   //4PM, 19/03/26, Jesse Margarites updated and fixed
+  //Sets the boolean value true if graphValues have been filled for a state object
+  //Called in State constructor and set to false
+  //Called in setBarGraphValues and set to true after barGraphValues are filled for the first time
   void setGraphValues(boolean setGraphValues) {
     this.setGraphValues = setGraphValues;
   }
-  void setStateName(String stateName) {
-    this.stateName = stateName;
-  }
-  String getStateName() {
-    return stateName;
-  }
+
+  //Adds airport to a list of airports for the state
+  //Called in main when reading in data by state 
   void addAirport(Airport airportX) {
     if (!listOfAirports.contains(airportX)) {
       listOfAirports.add(airportX);
@@ -48,6 +50,8 @@ class State {
   }
 
   //Niko Charles, 10:00, 25/03/2026
+  //Returns airport if the airport name link in the list of airports for a state is clicked
+  //Called in state class in the airportClicked() method
   Airport linkClicked(float mx, float my) {
     for (TextLinks ct : airportLinks) {
       if (ct.isMouseOver(mx, my)) {
@@ -57,12 +61,20 @@ class State {
     return null;
   }
   //Jesse Margarites, 11AM, 24/03, implementing pageNumber
+  //Returns the page index of the list of airports in a state 
+  //Called in main mouse clicked if the currentScreen is state screen - used to implement the buttons for airport list
   int getPageNumber() {
     return pageNumber;
   }
+
+  //Sets the page index of the list of airports in a state
+  //Called in main mouse clicked if the currentScreen is the state screen - used to implement the buttons for airport list
   void setPageNumber(int pageNumber) {
     this.pageNumber = pageNumber;
   }
+
+  //Returns if if the airport is already in the list of airports for a state
+  //Not currently called anywhere 
   Airport getAirport(String airportName) {
     //HAS TO BE EXACT NAME
     if (listOfAirports!=null) {
@@ -97,10 +109,15 @@ class State {
 
   }
     */
+
+  //Returns the number of airports in a state
   int getNumberOfAirports() {
     return listOfAirports.size();
   }
 
+  //Returns array list of all airports in a state
+  //Called in screen class in the drawStateScreen method
+  //Called in main in the readFileByState method which fills the list with all the airports in the state
   ArrayList<Airport> getAirportList() {
     return listOfAirports;
   }
@@ -117,6 +134,8 @@ class State {
     }
   }
 
+  //Fills the barGraphValues with values associated with the state and adds to charts list
+  //Called in the screen class in the drawStateScreen method in order to retreive values and display the graph
   void setBarGraphValues(Charts thisBarGraph) {
     //12:00 PM, 18/03/2026, Niko write set bar graph values
     //4PM, 19/03/26, Jesse Margarites updated and fixed
@@ -136,6 +155,8 @@ class State {
     }
   }
 
+  //Sets the heatMapValues for the state
+  //Called in the screen class in the drawStateScreen method to retrieve values and draw the heatmap
   void setHeatMapValues()
   {
     // Orla Kealy, 21:00 PM, 01/04/2026
@@ -154,6 +175,8 @@ class State {
     }
   }
 
+  //Draws the state screen list of airports, heatmap, and bargraph
+  //Called in the screenClass drawStateScreen method to draw the state screen attributes
   //Jesse Margarites, 08/04, 12PM, updated State airport page to implement more page numbers
   void stateDraw(String stateName) {
     //10PM, 24/03, Jesse Margarites, improving draw aesthetics

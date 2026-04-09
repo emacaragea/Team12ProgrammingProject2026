@@ -2,7 +2,7 @@
 // Ema Caragea, added and fixed position of airports, added animations for airports, 13/03/2026, 18:00
 // Ema Caragea, added animated flight arcs with airplane icons, 14/3/2026, 15:30
 
-// Ema Caragea, refactored into class for multi-screen program, 18/03/2026
+//Ema Caragea, refactored into class for multi-screen program, 18/03/2026
 //Ema Caragea, added actual routes to the map, 01/04/2026, 19:00
 //Ema Caragea, added ux/ui elements like pop up list of flights, 2/04/2026, 10:00
 
@@ -32,11 +32,14 @@ class FlightMapScreen {
   final float MAP_TOP    =   55.0;
   final float MAP_BOTTOM =   18.0;
 
+  // loads assets and initialises all airports and arcs during the main loading phase
   void setup() {
     usMap          = loadImage("usmap.jpg");
     fontRegular    = createFont("Arial", 12);
     fontBold       = createFont("Arial Bold", 12);
     textFont(fontRegular);
+
+    // three separate plane images so on-time/delayed/cancelled routes are visually distinct
     planeOnTime    = loadImage("onTimeAirplane.png");
     planeDelayed   = loadImage("delayedAirplane.png");
     planeCancelled = loadImage("cancelledAirplane.png");
@@ -47,14 +50,17 @@ class FlightMapScreen {
     airportPage = new AirportScreen(this);
   }
 
+  // routes draw calls to the correct sub-screen 
   void draw() {
     background(10, 15, 25);
     if (currentScreen == 0) {
+      // mapView.begin/end wraps the pan/zoom transform around all map content
       mapView.begin();
         drawMap();
         drawArcs();
         drawAirports();
       mapView.end();
+      //legend and panel button are drawn after mapView.end so they stay fixed on screen during pan/zoom
       drawLegend();
       drawRoutesPanelButton();
       if (showRoutesPanel) drawRoutesPanel();
@@ -66,12 +72,14 @@ class FlightMapScreen {
   }
 
 
+  // draws a fixed legend card in the bottom-left corner explaining the three flight status colors
   void drawLegend() {
     int x        = 32;
-    int y        = height - 206;
+    int y        = height - 206; // bottom-left
     int iconSize = 38;
-    int rowH     = 46;
+    int rowH     = 46; 
 
+    //, semi-transparent dark card so the map shows through slightly behind the legend
     fill(30, 36, 52, 230);
     stroke(70, 80, 110, 180);
     strokeWeight(1.5);
@@ -87,22 +95,23 @@ class FlightMapScreen {
     textFont(fontRegular);
     textSize(13);
     fill(160, 170, 200, 200);
-    text("Click any airport or route to explore", x, y + 22);
+    text("Click any airport or route to explore", x, y + 22); 
 
+   
     imageMode(CENTER);
     textFont(fontRegular);
     textSize(13);
 
     image(planeOnTime,    x + iconSize / 2, y + rowH      + iconSize / 2, iconSize, iconSize);
-    fill(0, 210, 100);
+    fill(0, 210, 100); 
     text("On Time",   x + iconSize + 10, y + rowH      + 10);
 
     image(planeDelayed,   x + iconSize / 2, y + rowH * 2  + iconSize / 2, iconSize, iconSize);
-    fill(255, 200, 0);
+    fill(255, 200, 0); 
     text("Delayed",   x + iconSize + 10, y + rowH * 2  + 10);
 
     image(planeCancelled, x + iconSize / 2, y + rowH * 3  + iconSize / 2, iconSize, iconSize);
-    fill(255, 60, 60);
+    fill(255, 60, 60); 
     text("Cancelled", x + iconSize + 10, y + rowH * 3  + 10);
 
     imageMode(CORNER);
@@ -133,8 +142,7 @@ class FlightMapScreen {
     int panelH   = padY + 3 * sectionH + 2 * gapH + padY;
 
     int px = width - panelW - 20;
-    int py = height - panelH - 70;  // 40 button + 10 gap + 20 margin
-
+    int py = height - panelH - 70;  
     fill(30, 36, 52, 230);
     stroke(70, 80, 110, 180);
     strokeWeight(1.5);
@@ -165,13 +173,16 @@ class FlightMapScreen {
     textAlign(LEFT, BASELINE);
   }
 
+  // draws the satellite map image then overlays a dark tint to make airport dots and arcs more visible
   void drawMap() {
     image(usMap, 0, 0, width, height);
+    // semi-transparent dark overlay darkens the map so the colored arcs stand out
     fill(0, 10, 30, 55);
     noStroke();
     rect(0, 0, width, height);
   }
 
+  // defines the 20 busiest US airports by lat/lon - rank controls dot size on the map, 12/03/2026
   void initAirports() {
     airports = new AirportCoordinates[] {
       new AirportCoordinates(this, "ATL", "Atlanta",        31.64,  -81.43,  1, "GA"),
@@ -202,6 +213,7 @@ class FlightMapScreen {
     for (int i = 0; i < airports.length; i++) airports[i].draw();
   }
 
+  // defines the 30 animated flight arcs based on real top-10 routes per status category
   void initArcs() {
   arcs = new FlightArc[] {
     // top 10 on time routes
@@ -282,7 +294,9 @@ class FlightMapScreen {
     textAlign(LEFT, BASELINE);
   }
 
+  // handles clicks on the back button, the routes panel toggle, airports, and map drag
   void mousePressed() {
+    // back button in the top-left returns to the map from either detail sub-screen
     if (currentScreen == 1 || currentScreen == 2) {
       if (mouseX > 20 && mouseX < 120 && mouseY > 20 && mouseY < 55) {
         currentScreen = 0;
@@ -290,16 +304,19 @@ class FlightMapScreen {
       return;
     }
     if (currentScreen == 0) {
+      // routes panel button toggles the top-routes panel open and closed
       if (isRoutesPanelButtonHovered()) {
         showRoutesPanel = !showRoutesPanel;
         return;
       }
+      // check each airport dot for a click 
       for (int i = 0; i < airports.length; i++) {
         if (airports[i].isClicked()) {
           loadMapAirport(airports[i]);
           return;
         }
       }
+      //  any other click on the map starts a pan drag and closes the routes panel
       showRoutesPanel = false;
       mapView.startDrag();
     }
@@ -318,11 +335,14 @@ class FlightMapScreen {
   }
 
 
+  // maps a longitude value to a screen x coordinate using the map's geographic bounding box
   float lonToX(float lon) {
-    return map(lon, MAP_LEFT, MAP_RIGHT, 0, width);
+    return map(lon, MAP_LEFT, MAP_RIGHT, 0, width); //  MAP_LEFT=-130 (west coast), MAP_RIGHT=-60 (east coast)
   }
 
+  // maps a latitude value to a screen y coordinate 
+  // !lat is inverted
   float latToY(float lat) {
-    return map(lat, MAP_TOP, MAP_BOTTOM, 0, height);
+    return map(lat, MAP_TOP, MAP_BOTTOM, 0, height); 
   }
 }
