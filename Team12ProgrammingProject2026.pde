@@ -39,7 +39,6 @@ HashMap<String, Integer>  stateFlightCounts;
 HashMap<String, Airport>  airportsByCode = new HashMap<String, Airport>();
 int    currentView       = 0;
 int    lastView;
-//String selectedStateCode = "TX";
 String selectedStateCode;
 State thisState;
 String stateName;
@@ -52,6 +51,7 @@ volatile boolean initialiseFlightLoading = false;
 volatile boolean fullTableReady = false;
 boolean tableReady = false;
 volatile float loadProgress = 0;
+
 int viewHistIndex;
 
 Table fullTable=null;
@@ -71,24 +71,6 @@ void settings() {
 
 }
 
-
-//old setup, replaced
-
-// void setup() {
-//   // Build code name lookup once from CSV (used by countAllStateFlights + geoMap hover)
-//   stateCodeToName = buildCodeToNameMap();
-
-//   // Lightweight pass over all state files  just counts origin + destination per state
-//   stateFlightCounts = new HashMap<String, Integer>();
-//   countAllStateFlights();
-
-//   flightMap = new FlightMapScreen();
-//   flightMap.setup();
-
-//   usMap        = new USMapScreen(this, stateFlightCounts);
-//   homeScreen   = new HomeScreen(usMap);
-//   screen1 = new Screen(3);
-// }
 
 //Ema Caragea, restructured setup to show the loading screen immediately and load data in the background
 //Ema Caragea, loading the data in a thread means draw() keeps running so the loading animation is smooth, 26/03/2026
@@ -158,6 +140,7 @@ void loadData() {
 //Jesse Margarites, 08/05, implemented correct loading for the search bar
 void loadAllAirports(){
     try {
+    //implemented a BufferedReader to read data
     BufferedReader airportReader = new BufferedReader(new FileReader(sketchPath("data/airports.csv")));
     airportReader.readLine();
     String airportLine = airportReader.readLine();
@@ -166,8 +149,8 @@ void loadAllAirports(){
       String originCityCode = nextToken(lineScan);
       String airportName = nextToken(lineScan);
       String stateName = nextToken(lineScan);
-      if (!airportName.equals("")) {
-        screen1.airportList.add(new Airport(airportName, 0, originCityCode));
+      if (!airportName.equals("")) { //error handling for if there exists an airportName
+        screen1.airportList.add(new Airport(airportName, -1, originCityCode)); //declaring worldAreaCode to -1 as it is not used
       }
       airportLine = airportReader.readLine();
     }
@@ -239,9 +222,10 @@ void addCount(String stateCode) {
   }
 }
 
-
+//Jesse Margarites, converts the given stateCode into the full state name via the StateNameAndCode file
 String convertStateCodeToStateName(String stateCode) {
   String filePath = "data/StateNameAndCode.csv";
+  
   BufferedReader reader;
   try {
     reader = new BufferedReader(new FileReader(sketchPath(filePath)));
@@ -258,12 +242,12 @@ String convertStateCodeToStateName(String stateCode) {
     }
     reader.close();
   } catch (Exception e) {
-    System.out.println(e);
-    return "error";
+    System.out.println(filePath+" error");
+    return filePath+" error";
   }
-  return null;
+  return null; 
 }
-
+//Method to read all the data needed for a spesific state
 void readFileByState(String stateCode, State currentState) {
   String filePath = "data/flights/origin_states/";
   String fileEnding = ".csv";
@@ -293,13 +277,13 @@ void readFileByState(String stateCode, State currentState) {
       int    diverted               = lineScan.nextInt();
       double airportDistance        = lineScan.nextDouble();
       lineScan.close();
-
+      //creating pbject instances
       Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
       Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
       Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
         originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
         scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
-
+        //adding the objects to certain array lists
       if (!currentState.getAirportList().contains(originAirport)) {
         currentState.addAirport(originAirport);
         originAirport.addFlightsLeaving(newFlight);
@@ -319,13 +303,14 @@ void readFileByState(String stateCode, State currentState) {
     reader.close();
   }
   catch (Exception e) {
-    println(e);
+    println(filePath+" error");
   }
 }
 
 //Niko Charles & Jesse Margarites, 2PM, 01/03, implemented new read in method
-void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) {
-  String filePath = "data/flights/dest_airports/";
+//Jesse Margarites, 2AM, 08/04, updated read in method to encompass origin and departure airports
+void readFileByAirport(String worldAreaCode, Airport currentAirport, String airportType) {
+  String filePath = "data/flights/"+airportType+"_airports/";
   String fileEnding = ".csv";
   BufferedReader reader;
   try {
@@ -333,6 +318,7 @@ void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) 
     String line = reader.readLine();
     line = reader.readLine(); // skip header
     while (line != null) {
+      //Use a scanner to obtain the following variables from every line
       Scanner lineScan = new Scanner(line).useDelimiter(",");
       String flightDate             = nextToken(lineScan);
       String airlineCode            = nextToken(lineScan);
@@ -354,68 +340,30 @@ void readFileByDestinationAirport(String worldAreaCode, Airport currentAirport) 
       double airportDistance        = lineScan.nextDouble();
       lineScan.close();
 
+      //Use the variables to create instances of Airport and Flight
       Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
       Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
       Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
         originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
         scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
 
-      currentAirport.addFlightsIncoming(newFlight);
+      //Add the flight to the assosiated method
+      if(airportType.equals("dest")){
+        currentAirport.addFlightsIncoming(newFlight);
+      }else{
+        currentAirport.addFlightsLeaving(newFlight);
+      }
+      
       line = reader.readLine();
     }
     reader.close();
   }
   catch (Exception e) {
-    println(e);
+    println(filePath + " error");
   }
 }
 
-//Jesse Margarites, 2AM, 08/04, implemented new read in method
-void readFileByArrivalAirport(String worldAreaCode, Airport currentAirport) {
-  String filePath = "data/flights/origin_airports/";
-  String fileEnding = ".csv";
-  BufferedReader reader;
-  try {
-    reader = new BufferedReader(new FileReader(sketchPath(filePath + worldAreaCode + fileEnding)));
-    String line = reader.readLine();
-    line = reader.readLine(); // skip header
-    while (line != null) {
-      Scanner lineScan = new Scanner(line).useDelimiter(",");
-      String flightDate             = nextToken(lineScan);
-      String airlineCode            = nextToken(lineScan);
-      int    flightNumber           = lineScan.nextInt();
-      String originCityCode         = nextToken(lineScan);
-      String originCityName         = nextToken(lineScan);
-      String originStateCode        = nextToken(lineScan);
-      int    originWorldAreaCode    = lineScan.nextInt();
-      String destinationCityCode    = nextToken(lineScan);
-      String destinationCityName    = nextToken(lineScan);
-      String destinationStateCode   = nextToken(lineScan);
-      int    destinationWorldAreaCode = lineScan.nextInt();
-      String scheduledDepartureTime = nextToken(lineScan);
-      String actualDepartureTime    = nextToken(lineScan);
-      String scheduledArrivalTime   = nextToken(lineScan);
-      String actualArrivalTime      = nextToken(lineScan);
-      int    cancelled              = lineScan.nextInt();
-      int    diverted               = lineScan.nextInt();
-      double airportDistance        = lineScan.nextDouble();
-      lineScan.close();
 
-      Airport originAirport      = new Airport(originCityName, originWorldAreaCode, originCityCode);
-      Airport destinationAirport = new Airport(destinationCityName, destinationWorldAreaCode, destinationCityCode);
-      Flight newFlight = new Flight(flightDate, airlineCode, flightNumber,
-        originAirport, destinationAirport, scheduledDepartureTime, actualDepartureTime,
-        scheduledArrivalTime, actualArrivalTime, cancelled, diverted, airportDistance);
-
-      currentAirport.addFlightsLeaving(newFlight);
-      line = reader.readLine();
-    }
-    reader.close();
-  }
-  catch (Exception e) {
-    println(e);
-  }
-}
 
 
 
@@ -525,25 +473,22 @@ void draw() {
 
     if(!initialiseFlightLoading){
       loadProgress=0;
-      flightTableLoading = new Loading("FTS", "Flight Table Screen");
+      flightTableLoading = new Loading("FTS", "Flight Table Screen"); //Initialsing a new Loading object with these arrival Strings
       flightTableLoading.loadingSetup();
       initialiseFlightLoading = true;
 
     }
     
     if(!generalTableValuesLoaded){
-      //loading.setToCode("FTS");
-      //loading.setToFullString("Flight Table Screen");
       if (!fullTableReady) { 
+        //load and setup the full table only once
         fullTable = loadTable("flights_full.csv", "header");
         fullTableSetup(fullTable);
         fullTableReady = true; 
       }
-      flightTableLoading.loadingDraw();
-
-
-      //return;
+      flightTableLoading.loadingDraw(); //draw the loading screen
     }else{
+      //If the values are loaded, draw the table
       fullTableDraw();
       screen1.drawHomeBar();
     }
@@ -640,7 +585,6 @@ else if (viewHistory.get(viewHistIndex) == CURRENT_VIEW_BOOK_FLIGHT) {
 else {
   flightMap.mouseWheel(event);
 }
-  //Jesse Margarites, 1PM, 01/04, implmenting scroll bar for airport screen
   
 }
 

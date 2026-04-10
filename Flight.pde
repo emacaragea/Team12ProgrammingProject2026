@@ -2,7 +2,6 @@ import java.util.Comparator; //Amanda de moraes, 18/03/26, Comparator interface
 // 4PM, 17/03/26, Jesse Margarites
 //4PM, 19/03/26, Jesse Margarites fixed some errors
 class Flight{
-    //fileds may be empty
     private String flightDate;
     private String airlineCode;
     private int flightNumber;
@@ -33,7 +32,6 @@ class Flight{
 
         this.setFlightDelayAmount(this.scheduledArrivalTime, this.actualArrivalTime);
     }
-    //Not sure if we will need se methods but I implemented them for now
     String getFlightDate() {
         return flightDate;
     }
@@ -117,20 +115,21 @@ class Flight{
         actualArrivalTimeString = this.getActualArrivalTime();
         scheduledArrivalTimeString = this.getScheduledArrivalTime();
 
+        //errorCatching depending on if value is empty
         if (actualArrivalTimeString != null && scheduledArrivalTimeString != null && !actualArrivalTimeString.trim().isEmpty()
             && !scheduledArrivalTimeString.trim().isEmpty()) {
                 actualArrivalTimeInt = Integer.valueOf(actualArrivalTimeString.trim());
                 scheduledArrivalTimeInt = Integer.valueOf(scheduledArrivalTimeString.trim());
         }else {
             actualArrivalTimeInt = 0;
-        scheduledArrivalTimeInt = 0;
+            scheduledArrivalTimeInt = 0;
         }
         this.delayedAmount = Math.abs(actualArrivalTimeInt-scheduledArrivalTimeInt);
         if(actualArrivalTimeInt<=scheduledArrivalTimeInt){
-            this.delayedAmount=5000000-30;
+            this.delayedAmount=5000000-30; //Ordering the not delayed flights after
         }
         }else{
-            this.delayedAmount = 5000000;
+            this.delayedAmount = 5000000; //Finally, ordering the cancelled flights 
         }
     }
 

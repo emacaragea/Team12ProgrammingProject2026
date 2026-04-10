@@ -400,7 +400,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   float colStatus = startX + usable * 0.71; //??
   float colDiverted = startX + usable * 0.86; //??
 
-
+//drawing headings
   fill(180);
   textFont(TITLE_FONT);
   textAlign(LEFT, CENTER);
@@ -413,7 +413,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   textFont(SMALL_FONT);
   textAlign(LEFT, CENTER);
   textSize(16); //was 13
-  text("Carrier", colCarrier, y - 5); //y-5, y-20
+  text("Carrier", colCarrier, y - 5); 
   text("Flight", colFlight, y - 5);
   text("Distance", colDist, y - 5);
   text("Status", colStatus, y - 5);
@@ -431,7 +431,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     text("Origin", colOriginOrDest, y - 5);
     popStyle();
   }
-
+//error catching
   if (flights.size() == 0) {
     fill(180);
     textFont(LABEL_FONT);
@@ -441,14 +441,6 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     return;
   }
 
-  float totalContentHeight = flights.size() * rowH;
-  float maxScroll = max(0, totalContentHeight - h);
-
-  /*
-
-   if (type.equals("DEPARTURE")) goMaxScroll = maxScroll;
-   if (type.equals("RETURN")) backMaxScroll = maxScroll;
-   */
 
 
   //Jesse Margarites, 11PM, 01/04, implemented arrows to cycle through flights within flitered flight table
@@ -459,7 +451,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
   }
   int rowCounter=0;
   float checkbox_width = rowH/2;
-  while ( i < maxI) {//why must i redeclare i
+  while ( i < maxI) {
     Flight f = flights.get(i);
 
     float rowTop = y + scrollY + rowCounter * rowH;
@@ -467,34 +459,14 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
     if (rowTop + rowH < y || rowTop > y + h) continue;
 
-    /*
-    boolean selected =
-     (type.equals("DEPARTURE") && selectedGoFlight == f) ||
-     (type.equals("RETURN") && selectedBackFlight == f);
-     */
-
     fill((rowCounter % 2 == 0 ? color(33, 42, 54) : color(26, 34, 44)));
     noStroke();
     rect(x, rowTop, w - 14, rowH - 2, 8);
 
-    /*
-    String originName = "";
-     String destName = "";
-     
-     if (originNameByFlight.containsKey(f)) {
-     originName = originNameByFlight.get(f);
-     }
-     
-     if (destNameByFlight.containsKey(f)) {
-     destName = destNameByFlight.get(f);
-     }
-     */
-
-
-    fill(245); //was 245
+    fill(245); 
     textFont(SMALL_FONT);
     textAlign(LEFT, CENTER);
-    textSize(14);//was 12
+    textSize(14);
     text(f.getAirlineCode(), colCarrier, cy);
     text(f.getAirlineCode() + " " + f.getFlightNumber(), colFlight, cy);
 
@@ -537,26 +509,21 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
       currentStatus = "Cancelled";
       noStroke();
       fill(CANCELLED_COLOR);
-      //circle(colStatus-20, cy, rowH/2-5);
       noStroke();
       rect(colStatus, cy-11, 90, 22, 11);
       popStyle();
-      //CHANGE HERE
     } else if ((type.equals("RETURN") && actualArrivalTime > scheduledArrivalTime) || ((type.equals(("DEPARTURE")) && actualDepartTime > scheduledDepartTime))) {
       pushStyle();
       currentStatus="Delayed";
       noStroke();
       fill(DELAYED_COLOR);
-            rect(colStatus, cy-11, 90, 22, 11);
-      //circle(colStatus-20, cy, rowH/2-5);
+      rect(colStatus, cy-11, 90, 22, 11);
       popStyle();
     } else {
       pushStyle();
       noStroke();
       fill(ON_TIME_COLOR);
-            rect(colStatus, cy-11, 90, 22, 11);
-
-      //circle(colStatus-20, cy, rowH/2-5);
+      rect(colStatus, cy-11, 90, 22, 11);
       popStyle();
     }
     textAlign(CENTER, CENTER);
@@ -564,10 +531,9 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
 
     textAlign(LEFT, CENTER);
     if (type.equals(("DEPARTURE"))) {
-      
-      text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);    // text(destName, colDest, cy);
+      text(f.getDestinationAirport().getAirportName(), colOriginOrDest, cy);   
     } else if (type.equals(("RETURN"))) {
-      text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      //getOriginAirport is not working
+      text(f.getOriginAirport().getAirportName(), colOriginOrDest, cy);      
     }
 
 
@@ -579,8 +545,8 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     strokeWeight(1.2);
     float checkbox_x_coordinate = colDiverted+17;
     float checkbox_y_coordinate = cy-13;
-
-    //rect(checkbox_x_coordinate, checkbox_y_coordinate, checkbox_width, checkbox_width);
+  
+    //draw tick if the flight is diverted
     if(f.getFlightDiverted()==1){
       strokeWeight(1.2);
       line(checkbox_x_coordinate+4, checkbox_y_coordinate+9, checkbox_x_coordinate+ checkbox_width/2-3, 
@@ -589,6 +555,7 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
         checkbox_x_coordinate+ checkbox_width-3, checkbox_y_coordinate+3);
 
     }else{
+      //draw cross if the flight is not diverted
       pushStyle();
       stroke(255, 255, 255);
       strokeWeight(1.2);
@@ -605,9 +572,6 @@ void drawFilteredFlightTable(ArrayList<Flight> flights, float x, float y, float 
     i++;
   }
 
-  //  drawScrollbar(0, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, SCREEN_HEIGHT, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, 0); //currentScroll
-  //drawScrollbar(SCREEN_DIVIDER_X_COORDINATE-20, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, totalContentHeight, maxScroll, scrollY); //currentScroll
-  //popStyle();
 }
 
 

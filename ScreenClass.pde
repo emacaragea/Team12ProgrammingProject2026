@@ -276,17 +276,14 @@ void handleSearchKey(char key, int keyCode) {
     //Called in main method if currentScreen is set to airport screen
     void drawAirportScreen(Airport thisAirport, String airportName){
         if(!thisAirport.getSetArrivalAirports()){
-            readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
-            //ONLY FOR FLIGHTS INCOMING!!!!!!!!!
-            //float totalContentHeight = thisAirport.getNumberOfFlightsIncoming() * 34; //??
-            //drawScrollbar(SCREEN_DIVIDER_X_COORDINATE-20, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, SCREEN_HEIGHT-HOME_BAR_HEIGHT*2, totalContentHeight, HOME_BAR_HEIGHT+80+HEADINGS_SIZE, 0); //currentScroll
+            readFileByAirport(thisAirport.getOriginCityCode(), thisAirport, "dest");
             thisAirport.setSetArrivalAirports(true);
 
         }
 
         if(thisAirport.getNumberOfFlightsLeaving()==0){
-            readFileByDestinationAirport(thisAirport.getOriginCityCode(), thisAirport);
-            readFileByArrivalAirport(thisAirport.getOriginCityCode(), thisAirport);
+            readFileByAirport(thisAirport.getOriginCityCode(), thisAirport, "dest");
+            readFileByAirport(thisAirport.getOriginCityCode(), thisAirport, "origin");
         }
 
         if(!airportList.contains(thisAirport)){

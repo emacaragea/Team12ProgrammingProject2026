@@ -8,17 +8,6 @@
 Loading loading;
 Loading flightTableLoading;
 
-//void setup() {
-//  size(1400, 800);
-//  smooth();
-//  loading = new Loading();
-//  loading.setup();
-//}
-
-//void draw() {
-//  loading.draw();
-//}
-
 //Jesse Margarites, 11AM, 26/03, updated loading screen by
 //  1: Making it useable for different screens 
 //  2: pushing and poping styles
@@ -71,20 +60,16 @@ void loadingSetup() {
         background(20, 28, 38);
     fill(20, 28, 38); 
         noStroke();
-    //if(toCode.equals("HMS")){
       updateAnimation();
       drawBackgroundGlow();
 
-    //}
  
 
     drawHeader();
     drawRouteCard();
     drawProgressText();
     popStyle();
-    
-    //fill(20, 28, 38);  
-    //noStroke();
+  
 
   }
 
@@ -105,8 +90,7 @@ void loadingSetup() {
   //Amanda de Moraes, 12/3, added method that draws the header of the loading screen with a loading animation
   void drawHeader() {
     pushStyle();
-        background(20, 28, 38);
-    //fill(20, 28, 38);  // reseting to fill to background color first
+    background(20, 28, 38);
     noStroke();
     fill(235, 240, 245);
     textAlign(CENTER, CENTER);

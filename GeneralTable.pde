@@ -501,8 +501,7 @@ void fullTableDrawTable() {
   fullTableDrawScrollbar(tableTop, tableHeight, totalContentHeight);
   popStyle();
 }
-    //Jesse Margarites, 11AM, 07/04, implemented diverted checkboxes
-
+//Jesse Margarites, 11AM, 07/04, implemented diverted checkboxes
 void fullTableDrawCheckboxes(Flight f, float colDiverted, float cy, float rowH){
     pushStyle();
     float checkbox_width = rowH/2;
@@ -512,7 +511,7 @@ void fullTableDrawCheckboxes(Flight f, float colDiverted, float cy, float rowH){
     float checkbox_x_coordinate = colDiverted;//+17
     float checkbox_y_coordinate = cy-13;
 
-    //rect(checkbox_x_coordinate, checkbox_y_coordinate, checkbox_width, checkbox_width);
+    //if the flight is diverted, draw a check mark
     if (f.getFlightDiverted() == 1) {
       strokeWeight(1.2);
       line(checkbox_x_coordinate+4, checkbox_y_coordinate+9, checkbox_x_coordinate+ checkbox_width/2-3, 
@@ -520,7 +519,7 @@ void fullTableDrawCheckboxes(Flight f, float colDiverted, float cy, float rowH){
       line(checkbox_x_coordinate+ checkbox_width/2-3 , checkbox_y_coordinate+ checkbox_width-5, 
         checkbox_x_coordinate+ checkbox_width-3, checkbox_y_coordinate+3);
 
-    }else{
+    }else{ //if the flight is not diverted, draw a cross
       pushStyle();
       stroke(255, 255, 255);
       strokeWeight(1.2);
