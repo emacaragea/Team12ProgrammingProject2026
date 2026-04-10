@@ -28,6 +28,8 @@ class Charts
         scatterPlots = new ArrayList<ScatterPlot>();
     }
 
+    // addBarChart
+    // Adds and stores barChart object
     void addBarChart(String title, String[] labels, int[] values, float x, float y, float w, float h, color[] barColors, boolean enableFilter)
     {
         barCharts.add(new BarChart(title, labels, values, x, y, w, h, barColors));
@@ -42,25 +44,30 @@ class Charts
         }
     }
 
+    // addPieChart
+    // Adds and stores pieChart object
     void addPieChart(String title, String[] labels, float[] values, float x, float y, float diameter, color[] sliceColors)
     {
         pieCharts.add(new PieChart(title, labels, values, x, y, diameter, sliceColors));
     }
     
+    // addScatterPlot
+    // Adds and stores scatterPlot object
     void addScatterPlot(String title, String xLabel, String yLabel, float[] xValues, float[] yValues, String[] labels, float x, float y, float w, float h)
     {
       scatterPlots.add(new ScatterPlot(title, xLabel, yLabel, xValues, yValues, labels, x, y, w, h));
     }
 
+    // chartsDraw
+    // Draws each bar chart, pie chart and scatter plot
     void chartsDraw()
     {
-
-
         for (int i = 0; i < barCharts.size(); i++)
         {
             BarChart bar = barCharts.get(i);
             chartMultiSelectFilter filter = filters.get(i);
             
+            // Checks if filter is enabled for the bar chart
             if (filter != null)
             {
               filter.drawFilter();
@@ -86,6 +93,8 @@ class Charts
         }
     }
     
+    // mousePressed
+    // Handles when mouse is pressed for barChart and chartMultiSelectFilter
     void mousePressed()
     {
       for (chartMultiSelectFilter filter : filters)
@@ -102,6 +111,8 @@ class Charts
       }
     }
     
+    // keyPressed
+    // Handles when key is pressed for chartMultiSelectFilter search function
     void keyPressed(char key)
     {
       for (chartMultiSelectFilter filter : filters)
@@ -113,6 +124,8 @@ class Charts
       }
     }
 
+    // clearCharts
+    // Clears the charts when called
     void clearCharts()
     {
         barCharts.clear();

@@ -358,6 +358,8 @@ class StateHeatMap {
     text("Number of Flights", x, y - 10);
   }
   
+  // getPercentileColor
+  // Retrieves the colour for the airport dots based on thresholds
   color getPercentileColor(int value, float[] t)
   {
     color heatColor;
@@ -386,6 +388,8 @@ class StateHeatMap {
     return heatColor;
   }
   
+  // getMaxCount
+  // Returns the maximum flight count 
   int getMaxCount(int[] counts)
   {
     int maxCount = 1;
@@ -401,6 +405,8 @@ class StateHeatMap {
     return maxCount;
   }
   
+  // getPercentileThresholds
+  // Returns thresholds for the airports
   float[] getPercentileThresholds(int[] counts)
   {
     if (counts == null || counts.length == 0 || counts.length < 2)
@@ -420,8 +426,7 @@ class StateHeatMap {
     };
   }
   
-  
-  
+
   // DATA
   float[] airportLatLon(String iata) {
     switch (iata.toUpperCase()) {
